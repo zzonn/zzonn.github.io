@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Git 不要只会 pull 和 push，试试用这些命令来提高效率 | ZZONN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="前言使用 Git 作为代码版本管理，早已是现在开发工程师必备的技能。可大多数工程师还是只会最基本的保存、拉取、推送，遇到一些commit管理的问题就束手无策，或者用一些不优雅的方式解决。 本文分享我在开发工作中实践过的实用命令。这些都能够大大提高工作效率，还能解决不少疑难场景。下面会介绍命令，列出应用场景，手摸手教学使用，让同学们看完即学会。 [官方文档]：https:&#x2F;&#x2F;git-scm.com&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git 不要只会 pull 和 push，试试用这些命令来提高效率">
+<meta property="og:url" content="http://www.zzonn.com/2022/05/28/Git%20%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9A%20pull%20%E5%92%8C%20push%EF%BC%8C%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87-git%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9Apull%E5%92%8Cpush%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87/index.html">
+<meta property="og:site_name" content="ZZONN">
+<meta property="og:description" content="前言使用 Git 作为代码版本管理，早已是现在开发工程师必备的技能。可大多数工程师还是只会最基本的保存、拉取、推送，遇到一些commit管理的问题就束手无策，或者用一些不优雅的方式解决。 本文分享我在开发工作中实践过的实用命令。这些都能够大大提高工作效率，还能解决不少疑难场景。下面会介绍命令，列出应用场景，手摸手教学使用，让同学们看完即学会。 [官方文档]：https:&#x2F;&#x2F;git-scm.com&#x2F;">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-05-28T01:46:29.995Z">
+<meta property="article:modified_time" content="2022-05-28T02:17:19.111Z">
+<meta property="article:author" content="LiPan">
+<meta property="article:tag" content="Git">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="ZZONN" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">ZZONN</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">ZZONN</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.zzonn.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Git 不要只会 pull 和 push，试试用这些命令来提高效率-git不要只会pull和push试试用这些命令来提高效率" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/05/28/Git%20%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9A%20pull%20%E5%92%8C%20push%EF%BC%8C%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87-git%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9Apull%E5%92%8Cpush%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87/" class="article-date">
+  <time class="dt-published" datetime="2022-05-28T01:46:29.995Z" itemprop="datePublished">2022-05-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Git/">Git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Git 不要只会 pull 和 push，试试用这些命令来提高效率
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>使用 Git 作为代码版本管理，早已是现在开发工程师必备的技能。可大多数工程师还是只会最基本的保存、拉取、推送，遇到一些commit管理的问题就束手无策，或者用一些不优雅的方式解决。</p>
+<p>本文分享我在开发工作中实践过的实用命令。这些都能够大大提高工作效率，还能解决不少疑难场景。下面会介绍命令，列出应用场景，手摸手教学使用，让同学们看完即学会。</p>
+<p>[官方文档]：<a target="_blank" rel="noopener" href="https://git-scm.com/docs">https://git-scm.com/docs</a></p>
+<h1 id="stash"><a href="#stash" class="headerlink" title="stash"></a>stash</h1><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>当您想记录工作目录和索引的当前状态，但又想返回一个干净的工作目录时，请使用git stash。该命令将保存本地修改，并恢复工作目录以匹配头部提交。<br>stash 命令能够将还未 commit 的代码存起来，让你的工作目录变得干净。</p>
+</blockquote>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>我猜你心里一定在想：为什么要变干净？</p>
+<p>应用场景：某一天你正在 feature 分支开发新需求，突然产品经理跑过来说线上有bug，必须马上修复。而此时你的功能开发到一半，于是你急忙想切到 master 分支，因为当前有文件更改了，需要提交commit保持工作区干净才能切分支。由于情况紧急，你只有急忙 commit 上去，commit 信息也随便写了个“暂存代码”，于是该分支提交记录就留了一条黑历史(真人真事，看过这种提交)…</p>
+<h3 id="命令使用"><a href="#命令使用" class="headerlink" title="命令使用"></a>命令使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># 保存当前未commit的代码</span><br><span class="line">git stash</span><br><span class="line"></span><br><span class="line"># 保存当前未commit的代码并添加备注</span><br><span class="line">git stash save &quot;备注的内容&quot;</span><br><span class="line"></span><br><span class="line"># 列出stash的所有记录</span><br><span class="line">git stash list</span><br><span class="line"></span><br><span class="line"># 删除stash的所有记录</span><br><span class="line">git stash clear</span><br><span class="line"></span><br><span class="line"># 应用最近一次的stash</span><br><span class="line">git stash apply</span><br><span class="line"></span><br><span class="line"># 应用最近一次的stash，随后删除该记录</span><br><span class="line">git stash pop</span><br><span class="line"></span><br><span class="line"># 删除最近的一次stash</span><br><span class="line">git stash drop</span><br></pre></td></tr></table></figure>
+
+<h1 id="reset-–soft"><a href="#reset-–soft" class="headerlink" title="reset –soft"></a>reset –soft</h1><h3 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>完全不接触索引文件或工作树（但会像所有模式一样，将头部重置为）。这使您的所有更改的文件更改为“要提交的更改”。<br>回退你已提交的 commit，并将 commit 的修改内容放回到暂存区。<br>一般我们在使用 reset 命令时，git reset –hard 会被提及的比较多，它能让 commit 记录强制回溯到某一个节点。而 git reset –soft 的作用正如其名，–soft (柔软的) 除了回溯节点外，还会保留节点的修改内容。</p>
+</blockquote>
+<h3 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h3><p>回溯节点，为什么要保留修改内容？</p>
+<p>应用场景1：有时候手滑不小心把不该提交的内容 commit 了，这时想改回来，只能再 commit 一次，又多一条“黑历史”。</p>
+<p>应用场景2：规范些的团队，一般对于 commit 的内容要求职责明确，颗粒度要细，便于后续出现问题排查。本来属于两块不同功能的修改，一起 commit 上去，这种就属于不规范。这次恰好又手滑了，一次性 commit 上去。</p>
+<h3 id="命令使用-1"><a href="#命令使用-1" class="headerlink" title="命令使用"></a>命令使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 恢复最近一次 commit</span><br><span class="line">git reset --soft HEAD^</span><br></pre></td></tr></table></figure>
+<p>reset –soft 相当于后悔药，给你重新改过的机会。对于上面的场景，就可以再次修改重新提交，保持干净的 commit 记录。</p>
+<p>以上说的是还未 push 的commit。对于已经 push 的 commit，也可以使用该命令，不过再次 push 时，由于远程分支和本地分支有差异，需要强制推送 git push -f 来覆盖被 reset 的 commit。</p>
+<p>还有一点需要注意，在 reset –soft 指定 commit 号时，会将该 commit 到最近一次 commit 的所有修改内容全部恢复，而不是只针对该 commit。</p>
+<h1 id="cherry-pick"><a href="#cherry-pick" class="headerlink" title="cherry-pick"></a>cherry-pick</h1><h3 id="描述-2"><a href="#描述-2" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>给定一个或多个现有提交，应用每个提交引入的更改，为每个提交记录一个新的提交。这需要您的工作树清洁（没有从头提交的修改）。<br>将已经提交的 commit，复制出新的 commit 应用到分支里。</p>
+</blockquote>
+<h3 id="应用场景-2"><a href="#应用场景-2" class="headerlink" title="应用场景"></a>应用场景</h3><p>commit 都提交了，为什么还要复制新的出来？</p>
+<p>应用场景1：有时候版本的一些优化需求开发到一半，可能其中某一个开发完的需求要临时上，或者某些原因导致待开发的需求卡住了已开发完成的需求上线。这时候就需要把 commit 抽出来，单独处理。</p>
+<p>应用场景2：有时候开发分支中的代码记录被污染了，导致开发分支合到线上分支有问题，这时就需要拉一条干净的开发分支，再从旧的开发分支中，把 commit 复制到新分支。</p>
+<h3 id="命令使用-2"><a href="#命令使用-2" class="headerlink" title="命令使用"></a>命令使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 一次转移多个提交</span><br><span class="line">git cherry-pick commit1 commit2</span><br><span class="line"># 多个连续的commit，也可区间复制：</span><br><span class="line">git cherry-pick commit1^..commit2</span><br><span class="line"># 放弃 cherry-pick (冲突时使用)</span><br><span class="line">gits cherry-pick --abort</span><br><span class="line"># 退出 cherry-pick</span><br><span class="line">git cherry-pick --quit</span><br></pre></td></tr></table></figure>
+<h1 id="revert"><a href="#revert" class="headerlink" title="revert"></a>revert</h1><h3 id="描述-3"><a href="#描述-3" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>给定一个或多个现有提交，恢复相关提交引入的更改，并记录一些这些更改的新提交。这就要求你的工作树是干净的（没有来自头部的修改）。<br>将现有的提交还原，恢复提交的内容，并生成一条还原记录。</p>
+</blockquote>
+<h3 id="应用场景-3"><a href="#应用场景-3" class="headerlink" title="应用场景"></a>应用场景</h3><p>有一天测试突然跟你说，你开发上线的功能有问题，需要马上撤回，否则会影响到系统使用。这时可能会想到用 reset 回退，可是你看了看分支上最新的提交还有其他同事的代码，用 reset 会把这部分代码也撤回了。由于情况紧急，又想不到好方法，还是任性的使用 reset，然后再让同事把他的代码合一遍（同事听到想打人），于是你的技术形象在同事眼里一落千丈。</p>
+<h3 id="命令使用-3"><a href="#命令使用-3" class="headerlink" title="命令使用"></a>命令使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># revert 普通提交</span><br><span class="line">git revert 21dcd937fe555f58841b17466a99118deb489212</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="reflog"><a href="#reflog" class="headerlink" title="reflog"></a>reflog</h1><h3 id="描述-4"><a href="#描述-4" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>此命令管理重录中记录的信息。<br>如果说 reset –soft 是后悔药，那 reflog 就是强力后悔药。它记录了所有的 commit 操作记录，便于错误操作后找回记录。</p>
+</blockquote>
+<h3 id="应用场景-4"><a href="#应用场景-4" class="headerlink" title="应用场景"></a>应用场景</h3><p>某天你眼花，发现自己在其他人分支提交了代码还推到远程分支，这时因为分支只有你的最新提交，就想着使用 reset –hard，结果紧张不小心记错了 commitHash，reset 过头，把同事的 commit 搞没了。没办法，reset –hard 是强制回退的，找不到 commitHash 了，只能让同事从本地分支再推一次（同事瞬间拳头就硬了，怎么又是你）。于是，你的技术形象又一落千丈。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本文主要分享了5个在开发中实用的 Git 命令和设置短命令的方式。</p>
+<ul>
+<li>stash：存储临时代码。</li>
+<li>reset –soft：软回溯，回退 commit 的同时保留修改内容。</li>
+<li>cherry-pick：复制 commit。</li>
+<li>revert：撤销 commit 的修改内容。</li>
+<li>reflog：记录了 commit 的历史操作。</li>
+</ul>
+<p>文中列举的应用场景有部分不太恰当，只是想便于同学们理解，最重要的是要理解命令的作用是什么，活学活用才能发挥最大功效。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zzonn.com/2022/05/28/Git%20%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9A%20pull%20%E5%92%8C%20push%EF%BC%8C%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87-git%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9Apull%E5%92%8Cpush%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87/" data-id="clf0jcv6s000g6ocxh4mw0pr3" data-title="Git 不要只会 pull 和 push，试试用这些命令来提高效率" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/05/28/%E8%BF%87%E6%97%A9%E7%9A%84%E7%BB%99%E6%96%B9%E6%B3%95%E4%B8%AD%20%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%20%E8%AE%BE%E4%B8%BA%20null%20%E5%8F%AF%E8%A2%AB%20GC%E6%8F%90%E5%89%8D%E5%9B%9E%E6%94%B6%E5%90%97%EF%BC%9F-%E8%BF%87%E6%97%A9%E7%9A%84%E7%BB%99%E6%96%B9%E6%B3%95%E4%B8%AD%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%E8%AE%BE%E4%B8%BAnull%E5%8F%AF%E8%A2%ABgc%E6%8F%90%E5%89%8D%E5%9B%9E%E6%94%B6%E5%90%97/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          过早的给方法中 引用对象 设为 null 可被 GC提前回收吗？
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/03/11/ClickHouse%E7%AE%80%E4%BB%8B-clickhouse%E7%AE%80%E4%BB%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ClickHouse简介</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Net/">.Net</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Other/">Other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/">Tool</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/net/" rel="tag">.net</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/netcore/" rel="tag">.netcore</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abp/" rel="tag">Abp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blazor/" rel="tag">Blazor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Elasticsearch/" rel="tag">Elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/" rel="tag">Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/" rel="tag">code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/" rel="tag">mongodb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/" rel="tag">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlserver/" rel="tag">sqlserver</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vs-code/" rel="tag">vs code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag">微服务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%8F%E6%8D%B7/" rel="tag">敏捷</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/net/" style="font-size: 20px;">.net</a> <a href="/tags/netcore/" style="font-size: 16.67px;">.netcore</a> <a href="/tags/Abp/" style="font-size: 10px;">Abp</a> <a href="/tags/Blazor/" style="font-size: 10px;">Blazor</a> <a href="/tags/C/" style="font-size: 16.67px;">C#</a> <a href="/tags/Elasticsearch/" style="font-size: 10px;">Elasticsearch</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Tool/" style="font-size: 13.33px;">Tool</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.33px;">redis</a> <a href="/tags/sql/" style="font-size: 13.33px;">sql</a> <a href="/tags/sqlserver/" style="font-size: 10px;">sqlserver</a> <a href="/tags/vs-code/" style="font-size: 10px;">vs code</a> <a href="/tags/vue/" style="font-size: 13.33px;">vue</a> <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="font-size: 10px;">微服务</a> <a href="/tags/%E6%95%8F%E6%8D%B7/" style="font-size: 10px;">敏捷</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/05/28/%E8%BF%87%E6%97%A9%E7%9A%84%E7%BB%99%E6%96%B9%E6%B3%95%E4%B8%AD%20%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%20%E8%AE%BE%E4%B8%BA%20null%20%E5%8F%AF%E8%A2%AB%20GC%E6%8F%90%E5%89%8D%E5%9B%9E%E6%94%B6%E5%90%97%EF%BC%9F-%E8%BF%87%E6%97%A9%E7%9A%84%E7%BB%99%E6%96%B9%E6%B3%95%E4%B8%AD%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%E8%AE%BE%E4%B8%BAnull%E5%8F%AF%E8%A2%ABgc%E6%8F%90%E5%89%8D%E5%9B%9E%E6%94%B6%E5%90%97/">过早的给方法中 引用对象 设为 null 可被 GC提前回收吗？</a>
+          </li>
+        
+          <li>
+            <a href="/2022/05/28/Git%20%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9A%20pull%20%E5%92%8C%20push%EF%BC%8C%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87-git%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9Apull%E5%92%8Cpush%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87/">Git 不要只会 pull 和 push，试试用这些命令来提高效率</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/11/ClickHouse%E7%AE%80%E4%BB%8B-clickhouse%E7%AE%80%E4%BB%8B/">ClickHouse简介</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/04/%E5%8F%91%E5%B8%83.netcore%E9%A1%B9%E7%9B%AE%E5%88%B0linux-fa-bu-netcore-xiang-mu-dao-linux/">发布.netcore项目到linux</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/12/code%20review%20%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83-codereview%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83/">code review 流程规范</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 LiPan<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>ZZONN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="www.zzonn.com">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZZONN">
+<meta property="og:url" content="http://www.zzonn.com/page/3/index.html">
+<meta property="og:site_name" content="ZZONN">
+<meta property="og:description" content="www.zzonn.com">
+<meta property="og:locale">
+<meta property="article:author" content="LiPan">
+<meta property="article:tag" content="ZZONN">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="ZZONN" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">ZZONN</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">ZZONN</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.zzonn.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-NetCore最具代表性的几个项目-hello-halo" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/04/12/NetCore%E6%9C%80%E5%85%B7%E4%BB%A3%E8%A1%A8%E6%80%A7%E7%9A%84%E5%87%A0%E4%B8%AA%E9%A1%B9%E7%9B%AE-hello-halo/" class="article-date">
+  <time class="dt-published" datetime="2020-04-12T05:11:33.000Z" itemprop="datePublished">2020-04-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Net/">.Net</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/04/12/NetCore%E6%9C%80%E5%85%B7%E4%BB%A3%E8%A1%A8%E6%80%A7%E7%9A%84%E5%87%A0%E4%B8%AA%E9%A1%B9%E7%9B%AE-hello-halo/">NetCore最具代表性的几个项目</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>近几年.NET Core的关注度持续上升，微服务及云原生应用开发上采用.NET Core也越来越多，基于 .NET Core 平台的项目也犹如雨后春笋般拔地而起，这里介绍其中最具代表性的几个项目.</p>
+<h3 id="Ocelot"><a href="#Ocelot" class="headerlink" title="Ocelot"></a>Ocelot</h3><p>Ocelot是一个基于.NET Core的开源WebAPI服务网关项目，它的功能非常强大，包括了路由、请求聚合、服务发现、认证鉴权、限流、负载均衡等功能。而这些功能都可以直接通过修改json配置文件即可使用，非常方便。Ocelot是系统中对外暴露的一个请求入口，所有外部接口都必须通过这个网关才能向下游API发出请求，就如地铁中的安检系统，所有人都必须经过安检才能乘坐地铁。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ThreeMammals/Ocelot">https://github.com/ThreeMammals/Ocelot</a></p>
+<h3 id="CAP"><a href="#CAP" class="headerlink" title="CAP"></a>CAP</h3><p>CAP 是基于 .Net 标准的库，它是处理分布式事务的解决方案，具有 EventBusS 的功能，重量轻、使用方便、高效。</p>
+<p>在构建SOA或微服务系统的过程中，我们通常需要使用事件来集成每个服务。在此过程中，简单使用消息队列并不能保证可靠性。CAP 采用与当前数据库集成的本地消息表程序，以解决分布式系统相互调用过程中可能发生的异常。它可以确保事件消息在任何情况下都不会丢失。</p>
+<p>您还可以使用 CAP 作为EventBus。CAP 提供了一种更简单的方式来实现事件发布和订阅。在订阅和发送过程中，您不需要继承或实现任何接口。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/dotnetcore/CAP">https://github.com/dotnetcore/CAP</a></p>
+<h3 id="surging"><a href="#surging" class="headerlink" title="surging"></a>surging</h3><p>surging 是一个分布式微服务框架,提供高性能RPC远程服务调用，采用Zookeeper、Consul作为surging服务的注册中心，集成了哈希，随机，轮询，压力最小优先作为负载均衡的算法，RPC可以选择采用netty或thrift框架，采用异步非阻塞传输。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/fanliang11/surging">https://github.com/fanliang11/surging</a></p>
+<h3 id="DotnetSpider"><a href="#DotnetSpider" class="headerlink" title="DotnetSpider"></a>DotnetSpider</h3><p>DotnetSpider 是一个轻量、灵活、高性能、跨平台的分布式网络爬虫框架，可以帮助 .NET 工程师快速的完成爬虫的开发。</p>
+<p>整个爬虫设计是纯异步的，利用消息队列进行各个组件的解耦，若是只需要单机爬虫则不需要做任何额外的配置，默认使用了一个内存型的消息队列；若是想要实一个纯分布式爬虫，则需要引入一个消息队列即可。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/dotnetcore/DotnetSpider">https://github.com/dotnetcore/DotnetSpider</a></p>
+<h3 id="Avalonia"><a href="#Avalonia" class="headerlink" title="Avalonia"></a>Avalonia</h3><p>Avalonia是一个基于 XAML 的跨平台 UI 框架，提供灵活的样式系统，并支持各种操作系统，如 Windows （.NET Framework， .NET Core）、 Linux （通过 Xorg）、 macOS）。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/AvaloniaUI/Avalonia">https://github.com/AvaloniaUI/Avalonia</a></p>
+<h3 id="ABP-vNext"><a href="#ABP-vNext" class="headerlink" title="ABP vNext"></a>ABP vNext</h3><p>ABP是一个开源应用程序框架，专注于基于ASP.NET Core的Web应用程序开发，也支持开发其他类型的应用程序。非常的强大。</p>
+<p>ABP vNext 是 ABP 框架作者所发起的新项目，新的 ABP vNext 框架完全是基于 ASP .NET Core 进行开发，其完全模块化的组件库能够让开发人员拥有更多的选择空间。</p>
+<p>ABP vNext 框架核心库比 ABP 框架更加精简，因为将原有许多的组件从其核心库抽离成独立的组件。这样开发人员可以更加灵活的选择自己需要的功能进行集成，使项目远离臃肿的库。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/abpframework/abp">https://github.com/abpframework/abp</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zzonn.com/2020/04/12/NetCore%E6%9C%80%E5%85%B7%E4%BB%A3%E8%A1%A8%E6%80%A7%E7%9A%84%E5%87%A0%E4%B8%AA%E9%A1%B9%E7%9B%AE-hello-halo/" data-id="clf0jcv6y000x6ocxgnfb4t6s" data-title="NetCore最具代表性的几个项目" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/netcore/" rel="tag">.netcore</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-微服务架构技术栈-微服务架构技术栈" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/04/03/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E6%8A%80%E6%9C%AF%E6%A0%88-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E6%8A%80%E6%9C%AF%E6%A0%88/" class="article-date">
+  <time class="dt-published" datetime="2020-04-03T01:55:51.000Z" itemprop="datePublished">2020-04-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Net/">.Net</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/04/03/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E6%8A%80%E6%9C%AF%E6%A0%88-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E6%8A%80%E6%9C%AF%E6%A0%88/">微服务架构技术栈</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="微服务的前世今生"><a href="#微服务的前世今生" class="headerlink" title="微服务的前世今生"></a>微服务的前世今生</h1><p>与微服务架构相对的，叫单体架构。这是我们最熟悉的开发方式，就是一个项目搞定业务全过程，在同一个进程里面完成。随着业务发展，数据量和并发上去了，一般会选择右边的垂直拆分，拆分后的每个系统，依旧是单体架构的。</p>
+<p>垂直拆分后，子系统都能独立做集群，承载能力大大提升。但随着业务进一步发展，子系统会越来臃肿，而且根据二八原则，80%的请求其实都集中在20%的业务上，不同的子系统也都有很多重复的功能模块。于是乎分布式就诞生了，将高频重复的功能拆成独立的服务部署，各系统都通过调用服务来完成功能。</p>
+<p>分布式拆出服务独立部署和维护， 既完成了功能的复用，又能保证高频服务的伸缩性和高可用，代表着更高的生产力。然而欲戴王冠必承其重，分布式带来的问题跟提供的价值一样多，比如分布式锁、一致性、可用性、复杂度等要命问题。</p>
+<p>随着时间推移，业务倒逼技术进步，在大数据高并发的要求下，分布式技术慢慢开始成熟，针对各种问题都形成了行之有效的办法，然后分布式也成了架构设计系统的常规手段。基于服务的形式来完成对业务的解耦，提供高可用和伸缩性的特性，满足了日益增长的业务需求。随着业务的不断拆分，粒度越来越细，一个新的称谓微服务(Microservice)就应运而生！</p>
+<p>什么是微服务架构？我理解为是一种架构设计系统的风格，基于小粒度的服务来完成对业务的解耦，将业务流程拆分成多个服务组装。就像以前三层架构里面，一个业务会调用多个BLL方法，而现在换成了调用多个服务。这就是微服务了，当然，小伙伴儿认真想想会发现，真的要落地微服务，问题太多了！下面，我就以.Net Core技术栈下，对微服务架构落地的种种问题和解决方案来一一探讨！</p>
+<h1 id="落地微服务架构"><a href="#落地微服务架构" class="headerlink" title="落地微服务架构"></a>落地微服务架构</h1><h2 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h2><p>这个是构建微服务的基础，通常有以下三大类：</p>
+<p>基于第三方存储共享的通讯(数据库&#x2F;Redis&#x2F;队列等)<br>基于Http协议的服务(WebService&#x2F;WCF&#x2F;WebApi)<br>远程调用模式(FX下的RPC和.Net Core下的gRPC)</p>
+<h2 id="服务注册与发现"><a href="#服务注册与发现" class="headerlink" title="服务注册与发现"></a>服务注册与发现</h2><p>微服务架构是搭建在底层服务实例基础上，必须通过集群来保证服务的高可用和动态伸缩，因此服务注册，服务发现，健康检查，异常下线功能都是必须的，在.Net Core下可以考虑选择Consul(首选)、etcd或者ZooKeeper。</p>
+<h2 id="网关Gateway"><a href="#网关Gateway" class="headerlink" title="网关Gateway"></a>网关Gateway</h2><p>微服务架构支持多客户端共用服务，而且底层服务数目众多，不可能全部都暴露给外部客户端(安全隐患&#x2F;公网IP)，而且多客户端也不可能维护无止境的服务实例地址，因此网关gateway是必须的！就像门面模式Façade一样管理好底层服务，通过路由映射底层服务实例，客户端一律通过网关来完成服务调用。此外，由于请求都从网关走，那么也可以在网关这里完成鉴权授权、限流、熔断、降级等进阶功能。</p>
+<h2 id="鉴权授权"><a href="#鉴权授权" class="headerlink" title="鉴权授权"></a>鉴权授权</h2><p>微服务架构里到处都是服务实例，还都是集群化部署，甚至还兼容不同技术平台的服务实例，传统的session共享式做权限验证已经行不通了，当下都是使用token来做用户识别。大致原理如下图，由鉴权中心颁发token，然后带着token去访问各服务实例。在.Net Core里面首选IdentityServer4或者JWT。在真实落地微服务时，一般会建立个独立的鉴权中心，然后在网关层完成鉴权授权，非常方便。</p>
+<p><strong>以上是系统架构，往下是功能性需求</strong></p>
+<h2 id="瞬态故障处理"><a href="#瞬态故障处理" class="headerlink" title="瞬态故障处理"></a>瞬态故障处理</h2><p>真的去写代码时，你会发现调用服务总没有调用方法那么方便，会因为网络、延迟等造成种种意外，因此需要一种优雅的方式来执行请求重试、超时处理、故障恢复等策略，目前.Net Core下推荐使用Polly，常见应用是集成到gateway或者AOP的模式插入到客户端里面。</p>
+<h2 id="分布式追踪"><a href="#分布式追踪" class="headerlink" title="分布式追踪"></a>分布式追踪</h2><p>一个请求会涉及多个服务，而服务本身还有依赖，整个请求路径就构成了一个网状的调用链，想象一下其实挺害怕！在整个调用链中一旦某个节点发生异常，整个调用链的稳定性就会受到影响，因此必须得有跟踪请求，性能分析的工具，以便快速定位和解决问题。SkyWalking (推荐)、Cat、Zipkin、Pinpoint都是可选项，这里就不建议大家自己造轮子了。</p>
+<h2 id="日志收集与分析"><a href="#日志收集与分析" class="headerlink" title="日志收集与分析"></a>日志收集与分析</h2><p>微服务下的日志已经不是单机系统日志那么简单，茫茫多的服务节点，复杂的依赖调用关系，会带来海量的日志，一套优秀的分布式日志收集和分析框架是必须入手的，这里我给大家推荐的是ExceptionLess，入手简单资料齐全。</p>
+<h2 id="统一配置中心"><a href="#统一配置中心" class="headerlink" title="统一配置中心"></a>统一配置中心</h2><p>配置管理平台是必不可少的，那么多服务那么多集群，一个个人肉管理会疯掉的。Apollo能够集中化管理应用不同环境、不同集群的配置，配置修改后能够实时推送到应用端，并且具备规范的权限、流程治理等特性，是由携程框架部门研发的开源配置管理中心，.Net社区的骄傲，点赞！</p>
+<h2 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h2><p>单体架构下，多线程操作同一个对象，可以用lock锁保证只有一个线程能进入，微服务架构多进程下，怎么管控？核心思路是基于第三方的共享数据访问加上互斥逻辑来完成管控，像数据库&#x2F;Nosql&#x2F;Consul等介质均可。实践中，Redis是首选不解释。</p>
+<h2 id="分布式事务"><a href="#分布式事务" class="headerlink" title="分布式事务"></a>分布式事务</h2><p>CAP有言，在分布式的情况下，系统的可用性和一致性是没法同时满足的。微服务体系下，一个业务请求都需要N个服务节点协作，可用性是最高优先级，否则系统没法正常运转了。那如何数据的一致性怎么办？当下主流的模式有3种，2PC&#x2F;3PC，TCC以及本地消息表，前一个是牺牲可用性去保障一致性，用的较少，后面都是保障数据最终一致性。目前在互联网公司主流选择是下图的基于消息队列的分布式事务实现。</p>
+<h2 id="Jenkins-CI-x2F-CD"><a href="#Jenkins-CI-x2F-CD" class="headerlink" title="Jenkins-CI&#x2F;CD"></a>Jenkins-CI&#x2F;CD</h2><p>持续集成持续交付(CI&#x2F;CD)是敏捷开发的核心，在微服务架构下也是常备的。简单来说，就是能持续的合并代码分支纳入新功能，能持续的交付产出给下游，让整个项目进展肉眼可见。不过静心想想就知道有很多麻烦事儿，所以这一切就交给专业的工具来完成了，Jenkins值得拥有。</p>
+<h2 id="Docker容器部署"><a href="#Docker容器部署" class="headerlink" title="Docker容器部署"></a>Docker容器部署</h2><p>微服务架构里，需要快捷启动服务实例，支持不同系统环境，不同运行环境，不同语言的各种服务实例，独立的物理服务器是不现实的，虚拟化技术的成本太高，快捷的沙箱环境+高效的资源利用+可复制快速启动的容器Docker 成为首选，Build Once,Run AnyWhere!不会docker的程序员，已经不是一个好的工程师了。</p>
+<h2 id="容器编排Kubernetes"><a href="#容器编排Kubernetes" class="headerlink" title="容器编排Kubernetes"></a>容器编排Kubernetes</h2><p>有了Docker，我们可以肆无忌惮轻松惬意的扩充服务实例，乐极生悲，容器实例可能会膨胀到你控制不住的地步，可能一个月后整个团队就没人能搞清楚服务和容器间错综复杂的关系了。所以你需要一个管理工具，那就是Kubernete，用于编排容器，是管理应用的全生命周期的工具，可以理解为docker管家。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zzonn.com/2020/04/03/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E6%8A%80%E6%9C%AF%E6%A0%88-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E6%8A%80%E6%9C%AF%E6%A0%88/" data-id="clf0jcv7900246ocx3o6xgb7r" data-title="微服务架构技术栈" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag">微服务</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-敏捷管理-每日站会实践-数据库设计规范" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/03/22/%E6%95%8F%E6%8D%B7%E7%AE%A1%E7%90%86-%E6%AF%8F%E6%97%A5%E7%AB%99%E4%BC%9A%E5%AE%9E%E8%B7%B5-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" class="article-date">
+  <time class="dt-published" datetime="2020-03-22T01:58:59.000Z" itemprop="datePublished">2020-03-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Other/">Other</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/03/22/%E6%95%8F%E6%8D%B7%E7%AE%A1%E7%90%86-%E6%AF%8F%E6%97%A5%E7%AB%99%E4%BC%9A%E5%AE%9E%E8%B7%B5-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/">敏捷管理-每日站会实践</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="📖每日站会"><a href="#📖每日站会" class="headerlink" title="📖每日站会"></a>📖每日站会</h2><h3 id="📗会议规定："><a href="#📗会议规定：" class="headerlink" title="📗会议规定："></a>📗会议规定：</h3><p>每个工作日早上9点25准时开始<br>时长不超过15分钟<br>所有团队成员需要自觉按时到场，按时召开<br>同一时间只能有一个人发言，只说相关的问题，任何跑题或扩展讨论，请在会议结束后进行<br>团队成员最好提前准备发言内容，别的成员发言时，注意倾听</p>
+<h3 id="📘会议内容："><a href="#📘会议内容：" class="headerlink" title="📘会议内容："></a>📘会议内容：</h3><p>我昨天完成了什么？（你昨天做了什么来改变世界）<br>我今天要做什么？（你今天准备怎么做）<br>什么障碍拖延了我的进度？（你准备怎么突破任何不幸挡了你路的困难）</p>
+<h3 id="📙会议目的"><a href="#📙会议目的" class="headerlink" title="📙会议目的"></a>📙会议目的</h3><p>项目进度定期同步<br>对目标有同样的理解<br>协调工作<br>分享问题和改进<br>识别为一个团队</p>
+<h3 id="💥注意事项："><a href="#💥注意事项：" class="headerlink" title="💥注意事项："></a>💥注意事项：</h3><p>会议是团队成员互相交流，而不是工作报告<br>更多的是沟通互相的进度，而不是解决具体的问题，具体的问题，会后讨论<br>商量决定接下来还有什么需要做，谁来做，并为当天排一个计划</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zzonn.com/2020/03/22/%E6%95%8F%E6%8D%B7%E7%AE%A1%E7%90%86-%E6%AF%8F%E6%97%A5%E7%AB%99%E4%BC%9A%E5%AE%9E%E8%B7%B5-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" data-id="clf0jcv7a00276ocx7jlmb0me" data-title="敏捷管理-每日站会实践" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%8F%E6%8D%B7/" rel="tag">敏捷</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Elasticsearch高频问答-elasticsearch-gao-pin-wen-da" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/03/01/Elasticsearch%E9%AB%98%E9%A2%91%E9%97%AE%E7%AD%94-elasticsearch-gao-pin-wen-da/" class="article-date">
+  <time class="dt-published" datetime="2020-03-01T00:30:09.000Z" itemprop="datePublished">2020-03-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/SQL/">SQL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/03/01/Elasticsearch%E9%AB%98%E9%A2%91%E9%97%AE%E7%AD%94-elasticsearch-gao-pin-wen-da/">Elasticsearch高频问答</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="1、Elasticsearch是如何实现master选举的？"><a href="#1、Elasticsearch是如何实现master选举的？" class="headerlink" title="1、Elasticsearch是如何实现master选举的？"></a>1、Elasticsearch是如何实现master选举的？</h2><p>1、对所有可以成为master的节点根据nodeId排序，每次选举每个节点都把自己所知道节点排一次序，然后<br>选出第一个（第0位）节点，暂且认为它是master节点。<br>2、如果对某个节点的投票数达到一定的值（可以成为master节点数n&#x2F;2+1）并且该节点自己也选举自己，那<br>这个节点就是master。否则重新选举。<br>3、对于brain split问题，需要把候选master节点最小值设置为可以成为master节点数n&#x2F;2+1（quorum）</p>
+<h2 id="2、详细描述一下-Elasticsearch-索引文档的过程。"><a href="#2、详细描述一下-Elasticsearch-索引文档的过程。" class="headerlink" title="2、详细描述一下 Elasticsearch 索引文档的过程。"></a>2、详细描述一下 Elasticsearch 索引文档的过程。</h2><p>1、当分片所在的节点接收到来自协调节点的请求后，会将请求写入到 MemoryBuffer，然后定时（默认是每<br>隔 1 秒）写入到 Filesystem Cache，这个从 MomeryBuffer 到 Filesystem Cache 的过程就叫做<br>refresh；<br>2、当然在某些情况下，存在 Momery Buffer 和 Filesystem Cache 的数据可能会丢失，ES 是通过<br>translog 的机制来保证数据的可靠性的。其实现机制是接收到请求后，同时也会写入到 translog 中，当<br>Filesystem cache 中的数据写入到磁盘中时，才会清除掉，这个过程叫做 flush；<br>3、在 flush 过程中，内存中的缓冲将被清除，内容被写入一个新段，段的 fsync将创建一个新的提交点，<br>并将内容刷新到磁盘，旧的 translog 将被删除并开始一个新的 translog。<br>4、flush 触发的时机是定时触发（默认 30 分钟）或者 translog 变得太大（默认为 512M）时；</p>
+<h2 id="3、详细描述一下-Elasticsearch-更新和删除文档的过程。"><a href="#3、详细描述一下-Elasticsearch-更新和删除文档的过程。" class="headerlink" title="3、详细描述一下 Elasticsearch 更新和删除文档的过程。"></a>3、详细描述一下 Elasticsearch 更新和删除文档的过程。</h2><p>1、删除和更新也都是写操作，但是 Elasticsearch 中的文档是不可变的，因此不能被删除或者改动以展<br>示其变更。<br>2、磁盘上的每个段都有一个相应的.del 文件。当删除请求发送后，文档并没有真的被删除，而是在.del<br>文件中被标记为删除。该文档依然能匹配查询，但是会在结果中被过滤掉。当段合并时，在.del 文件中被标<br>记为删除的文档将不会被写入新段。<br>3、在新的文档被创建时，Elasticsearch 会为该文档指定一个版本号，当执行更新时，旧版本的文档<br>在.del 文件中被标记为删除，新版本的文档被索引到一个新段。旧版本的文档依然能匹配查询，但是会在结<br>果中被过滤掉。</p>
+<h2 id="4、详细描述一下-Elasticsearch-搜索的过程？"><a href="#4、详细描述一下-Elasticsearch-搜索的过程？" class="headerlink" title="4、详细描述一下 Elasticsearch 搜索的过程？"></a>4、详细描述一下 Elasticsearch 搜索的过程？</h2><p>1、搜索被执行成一个两阶段过程，我们称之为 Query Then Fetch；<br>2、在初始查询阶段时，查询会广播到索引中每一个分片拷贝（主分片或者副本分片）。 每个分片在本地执行<br>搜索并构建一个匹配文档的大小为 from + size 的优先队列。<br>备注：在搜索的时候是会查询 Filesystem Cache 的，但是有部分数据还在 MemoryBuffer，所以搜索<br>是近实时的。<br>3、每个分片返回各自优先队列中 所有文档的 ID 和排序值 给协调节点，它合并这些值到自己的优先队列中<br>来产生一个全局排序后的结果列表。<br>4、接下来就是 取回阶段，协调节点辨别出哪些文档需要被取回并向相关的分片提交多个 GET 请求。每个分<br>片加载并 丰富 文档，如果有需要的话，接着返回文档给协调节点。一旦所有的文档都被取回了，协调节点返<br>回结果给客户端。<br>5、补充：Query Then Fetch 的搜索类型在文档相关性打分的时候参考的是本分片的数据，这样在文档数<br>量较少的时候可能不够准确，DFS Query Then Fetch 增加了一个预查询的处理，询问 Term 和<br>Document frequency，这个评分更准确，但是性能会变差。</p>
+<h2 id="5、Elasticsearch-对于大数据量（上亿量级）的聚合如何实现？"><a href="#5、Elasticsearch-对于大数据量（上亿量级）的聚合如何实现？" class="headerlink" title="5、Elasticsearch 对于大数据量（上亿量级）的聚合如何实现？"></a>5、Elasticsearch 对于大数据量（上亿量级）的聚合如何实现？</h2><p>Elasticsearch 提供的首个近似聚合是 cardinality 度量。它提供一个字段的基数，即该字段的<br>distinct 或者unique 值的数目。它是基于 HLL 算法的。HLL 会先对我们的输入作哈希运算，然后根据<br>哈希运算的结果中的 bits 做概率估算从而得到基数。其特点是：可配置的精度，用来控制内存的使用（更<br>精确 ＝ 更多内存）；小的数据集精度是非常高的；我们可以通过配置参数，来设置去重需要的固定内存使用<br>量。无论数千还是数十亿的唯一值，内存使用量只与你配置的精确度相关。</p>
+<h2 id="6、在并发情况下，Elasticsearch-如果保证读写一致？"><a href="#6、在并发情况下，Elasticsearch-如果保证读写一致？" class="headerlink" title="6、在并发情况下，Elasticsearch 如果保证读写一致？"></a>6、在并发情况下，Elasticsearch 如果保证读写一致？</h2><p>1、可以通过版本号使用乐观并发控制，以确保新版本不会被旧版本覆盖，由应用层来处理具体的冲突；<br>2、另外对于写操作，一致性级别支持 quorum&#x2F;one&#x2F;all，默认为 quorum，即只有当大多数分片可用时才<br>允许写操作。但即使大多数可用，也可能存在因为网络等原因导致写入副本失败，这样该副本被认为故障，分<br>片将会在一个不同的节点上重建。<br>3、对于读操作，可以设置 replication 为 sync(默认)，这使得操作在主分片和副本分片都完成后才会<br>返回；如果设置 replication 为 async 时，也可以通过设置搜索请求参数_preference 为 primary<br>来查询主分片，确保文档是最新版本。</p>
+<h2 id="7、ElasticSearch中的集群、节点、索引、文档、类型是什么？"><a href="#7、ElasticSearch中的集群、节点、索引、文档、类型是什么？" class="headerlink" title="7、ElasticSearch中的集群、节点、索引、文档、类型是什么？"></a>7、ElasticSearch中的集群、节点、索引、文档、类型是什么？</h2><p>群集：一个或多个节点（服务器）的集合，它们共同保存您的整个数据，并提供跨所有节点的联合索引和搜索<br>功能。群集由唯一名称标识，默认情况下为“elasticsearch”。此名称很重要，因为如果节点设置为按名称<br>加入群集，则该节点只能是群集的一部分。<br>节点：属于集群一部分的单个服务器。它存储数据并参与群集索引和搜索功能。<br>索引：就像关系数据库中的“数据库”。它有一个定义多种类型的映射。索引是逻辑名称空间，映射到一个或多<br>个主分片，并且可以有零个或多个副本分片。<br>eg: MySQL &#x3D;&gt;数据库 ElasticSearch &#x3D;&gt;索引<br>文档：类似于关系数据库中的一行。不同之处在于索引中的每个文档可以具有不同的结构（字段），但是对于<br>通用字段应该具有相同的数据类型。<br>MySQL &#x3D;&gt; Databases &#x3D;&gt; Tables &#x3D;&gt; Columns &#x2F; Rows ElasticSearch &#x3D;&gt; Indices &#x3D;&gt;<br>Types &#x3D;&gt;具有属性的文档<br>类型：是索引的逻辑类别&#x2F;分区，其语义完全取决于用户。</p>
+<h2 id="8、Elasticsearch的倒排索引是什么？"><a href="#8、Elasticsearch的倒排索引是什么？" class="headerlink" title="8、Elasticsearch的倒排索引是什么？"></a>8、Elasticsearch的倒排索引是什么？</h2><p>1、倒排索引是搜索引擎的核心。搜索引擎的主要目标是在查找发生搜索条件的文档时提供快速搜索。倒排索<br>引是一种像数据结构一样的散列图，可将用户从单词导向文档或网页。它是搜索引擎的核心。其主要目标是快<br>速搜索从数百万文件中查找数据。<br>2、传统的我们的检索是通过文章，逐个遍历找到对应关键词的位置。而倒排索引，是通过分词策略，形成了<br>词和文章的映射关系表，这种词典+映射表即为倒排索引。有了倒排索引，就能实现o（1）时间复杂度的效率<br>检索文章了，极大的提高了检索效率。<br>学术的解答方式：<br>倒排索引，相反于一篇文章包含了哪些词，它从词出发，记载了这个词在哪些文档中出现过，由两部分组成——<br>词典和倒排表。<br>加分项：倒排索引的底层实现是基于：FST（Finite State Transducer）数据结构。<br>lucene从4+版本后开始大量使用的数据结构是FST。FST有两个优点：<br>1）空间占用小。通过对词典中单词前缀和后缀的重复利用，压缩了存储空间；<br>2）查询速度快。O(len(str))的查询时间复杂度。</p>
+<h2 id="9、ElasticSearch中的分析器是什么？"><a href="#9、ElasticSearch中的分析器是什么？" class="headerlink" title="9、ElasticSearch中的分析器是什么？"></a>9、ElasticSearch中的分析器是什么？</h2><p>1、在ElasticSearch中索引数据时，数据由为索引定义的Analyzer在内部进行转换。 分析器由一个<br>Tokenizer和零个或多个TokenFilter组成。编译器可以在一个或多个CharFilter之前。分析模块允许您<br>在逻辑名称下注册分析器，然后可以在映射定义或某些API中引用它们。<br>2、Elasticsearch附带了许多可以随时使用的预建分析器。或者，您可以组合内置的字符过滤器，编译器和<br>过滤器器来创建自定义分析器。</p>
+<h2 id="10、启用属性，索引和存储的用途是什么？"><a href="#10、启用属性，索引和存储的用途是什么？" class="headerlink" title="10、启用属性，索引和存储的用途是什么？"></a>10、启用属性，索引和存储的用途是什么？</h2><p>1、Enabled属性适用于各类ElasticSearch特定&#x2F;创建领域，如index和size。用户提供的字段没有“已启<br>用”属性。 存储意味着数据由Lucene存储，如果询问，将返回这些数据。<br>2、存储字段不一定是可搜索的。默认情况下，字段不存储，但源文件是完整的。因为您希望使用默认值(这是<br>有意义的)，所以不要设置store属性 该指数属性用于搜索。<br>3、索引属性只能用于搜索。只有索引域可以进行搜索。差异的原因是在分析期间对索引字段进行了转换，因<br>此如果需要的话，您不能检索原始数据。</p>
+<h2 id="11、Elasticsearch了解多少，说说你们公司es的集群架构，索引数据大小，分片有多少，以及一些调优手段"><a href="#11、Elasticsearch了解多少，说说你们公司es的集群架构，索引数据大小，分片有多少，以及一些调优手段" class="headerlink" title="11、Elasticsearch了解多少，说说你们公司es的集群架构，索引数据大小，分片有多少，以及一些调优手段"></a>11、Elasticsearch了解多少，说说你们公司es的集群架构，索引数据大小，分片有多少，以及一些调优手段</h2><p>比如：ES集群架构13个节点，索引根据通道不同共20+索引，根据日期，每日递增20+，索引：10分片，每日<br>递增1亿+数据，每个通道每天索引大小控制：150GB之内。<br>仅索引层面调优手段：<br>1.1、设计阶段调优<br>1）根据业务增量需求，采取基于日期模板创建索引，通过roll over API滚动索引；<br>2）使用别名进行索引管理；<br>3）每天凌晨定时对索引做force_merge操作，以释放空间；<br>4）采取冷热分离机制，热数据存储到SSD，提高检索效率；冷数据定期进行shrink操作，以缩减存储；<br>5）采取curator进行索引的生命周期管理；<br>6）仅针对需要分词的字段，合理的设置分词器；<br>7）Mapping阶段充分结合各个字段的属性，是否需要检索、是否需要存储等。 …<br>1.2、写入调优<br>1）写入前副本数设置为0；<br>2）写入前关闭refresh_interval设置为-1，禁用刷新机制；<br>3）写入过程中：采取bulk批量写入；<br>4）写入后恢复副本数和刷新间隔；<br>5）尽量使用自动生成的id。<br>1.3、查询调优<br>1）禁用wildcard；<br>2）禁用批量terms（成百上千的场景）；<br>3）充分利用倒排索引机制，能keyword类型尽量keyword；<br>4）数据量大时候，可以先基于时间敲定索引再检索；<br>5）设置合理的路由机制。<br>1.4、其他调优<br>部署调优，业务调优等。</p>
+<h2 id="12、Elasticsearch-索引数据多了怎么办，如何调优，部署？"><a href="#12、Elasticsearch-索引数据多了怎么办，如何调优，部署？" class="headerlink" title="12、Elasticsearch 索引数据多了怎么办，如何调优，部署？"></a>12、Elasticsearch 索引数据多了怎么办，如何调优，部署？</h2><p>1 动态索引层面<br>基于模板+时间+rollover api滚动创建索引，举例：设计阶段定义：blog索引的模板格式为：<br>blog_index_时间戳的形式，每天递增数据。这样做的好处：不至于数据量激增导致单个索引数据量非常<br>大，接近于上线2的32次幂-1，索引存储达到了TB+甚至更大。一旦单个索引很大，存储等各种风险也随之而<br>来，所以要提前考虑+及早避免。<br>2 存储层面<br>冷热数据分离存储，热数据（比如最近3天或者一周的数据），其余为冷数据。对于冷数据不会再写入新数<br>据，可以考虑定期force_merge加shrink压缩操作，节省存储空间和检索效率。<br>3 部署层面<br>一旦之前没有规划，这里就属于应急策略。结合ES自身的支持动态扩展的特点，动态新增机器的方式可以缓解<br>集群压力，注意：如果之前主节点等规划合理，不需要重启集群也能完成动态新增的。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="13、在使用-Elasticsearch-时要注意什么？"><a href="#13、在使用-Elasticsearch-时要注意什么？" class="headerlink" title="13、在使用 Elasticsearch 时要注意什么？"></a>13、在使用 Elasticsearch 时要注意什么？</h2><p>由于ES使用的Java写的，所有注意的是GC方面的问题<br>1、倒排词典的索引需要常驻内存，无法 GC，需要监控 data node 上 segmentmemory 增长趋势。<br>2、各类缓存，field cache, filter cache, indexing cache, bulk queue 等等，要设置合理的<br>大小，并且要应该根据最坏的情况来看 heap 是否够用，也就是各类缓存全部占满的时候，还有 heap 空间<br>可以分配给其他任务吗？避免采用 clear cache等“自欺欺人”的方式来释放内存。<br>3、避免返回大量结果集的搜索与聚合。确实需要大量拉取数据的场景，可以采用scan &amp; scroll api 来实<br>现。<br>4、cluster stats 驻留内存并无法水平扩展，超大规模集群可以考虑分拆成多个集群通过 tribe node<br>连接<br>5、想知道 heap 够不够，必须结合实际应用场景，并对集群的 heap 使用情况做持续的监控。</p>
+<h2 id="14、Elasticsearch-支持哪些类型的查询？"><a href="#14、Elasticsearch-支持哪些类型的查询？" class="headerlink" title="14、Elasticsearch 支持哪些类型的查询？"></a>14、Elasticsearch 支持哪些类型的查询？</h2><p>查询主要分为两种类型：精确匹配、全文检索匹配。<br>精确匹配，例如 term、exists、term set、 range、prefix、 ids、 wildcard、regexp、<br>fuzzy等。<br>全文检索，例如match、match_phrase、multi_match、match_phrase_prefix、query_string 等</p>
+<h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2><h2 id="15、你能否列出与-Elasticsearch-有关的主要可用字段数据类型？"><a href="#15、你能否列出与-Elasticsearch-有关的主要可用字段数据类型？" class="headerlink" title="15、你能否列出与 Elasticsearch 有关的主要可用字段数据类型？"></a>15、你能否列出与 Elasticsearch 有关的主要可用字段数据类型？</h2><p>1、字符串数据类型，包括支持全文检索的 text 类型 和 精准匹配的 keyword 类型。<br>2、数值数据类型，例如字节，短整数，长整数，浮点数，双精度数，half_float，scaled_float。<br>3、日期类型，日期纳秒Date nanoseconds，布尔值，二进制（Base64编码的字符串）等。<br>4、范围（整数范围 integer_range，长范围 long_range，双精度范围 double_range，浮动范围<br>float_range，日期范围 date_range）。<br>5、包含对象的复杂数据类型，nested 、Object。<br>6、GEO 地理位置相关类型。<br>7、特定类型如：数组（数组中的值应具有相同的数据类型）</p>
+<h2 id="16、如何监控-Elasticsearch-集群状态？"><a href="#16、如何监控-Elasticsearch-集群状态？" class="headerlink" title="16、如何监控 Elasticsearch 集群状态？"></a>16、如何监控 Elasticsearch 集群状态？</h2><p>Marvel 让你可以很简单的通过 Kibana 监控 Elasticsearch。你可以实时查看你的集群健康状态和性<br>能，也可以分析过去的集群、索引和节点指标。</p>
+<h2 id="17、有了解过Elasticsearch的性化搜索方案吗？"><a href="#17、有了解过Elasticsearch的性化搜索方案吗？" class="headerlink" title="17、有了解过Elasticsearch的性化搜索方案吗？"></a>17、有了解过Elasticsearch的性化搜索方案吗？</h2><p>基于word2vec和Elasticsearch实现个性化搜索<br>（1）基于word2vec、Elasticsearch和自定义的脚本插件，我们就实现了一个个性化的搜索服务，相对于<br>原有的实现，新版的点击率和转化率都有大幅的提升；<br>（2）基于word2vec的商品向量还有一个可用之处，就是可以用来实现相似商品的推荐；<br>（3）使用word2vec来实现个性化搜索或个性化推荐是有一定局限性的，因为它只能处理用户点击历史这样的<br>时序数据，而无法全面的去考虑用户偏好，这个还是有很大的改进和提升的空间；</p>
+<h2 id="18、ElasticSearch是否有架构？"><a href="#18、ElasticSearch是否有架构？" class="headerlink" title="18、ElasticSearch是否有架构？"></a>18、ElasticSearch是否有架构？</h2><p>1、ElasticSearch可以有一个架构。架构是描述文档类型以及如何处理文档的不同字段的一个或多个字段的<br>描述。Elasticsearch中的架构是一种映射，它描述了JSON文档中的字段及其数据类型，以及它们应该如何<br>在Lucene索引中进行索引。因此，在Elasticsearch术语中，我们通常将此模式称为“映射”。<br>2、Elasticsearch具有架构灵活的能力，这意味着可以在不明确提供架构的情况下索引文档。如果未指定映<br>射，则默认情况下，Elasticsearch会在索引期间检测文档中的新字段时动态生成一个映射。</p>
+<h2 id="19、为什么要使用Elasticsearch"><a href="#19、为什么要使用Elasticsearch" class="headerlink" title="19、为什么要使用Elasticsearch?"></a>19、为什么要使用Elasticsearch?</h2><p>因为在我们商城中的数据，将来会非常多，所以采用以往的模糊查询，模糊查询前置配置，会放弃索引，导致<br>商品查询是全表扫面，在百万级别的数据库中，效率非常低下，而我们使用ES做一个全文索引，我们将经常查<br>询的商品的某些字段，比如说商品名，描述、价格还有id这些字段我们放入我们索引库里，可以提高查询速<br>度。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zzonn.com/2020/03/01/Elasticsearch%E9%AB%98%E9%A2%91%E9%97%AE%E7%AD%94-elasticsearch-gao-pin-wen-da/" data-id="clf0jcv6u000k6ocx8k0mcg6u" data-title="Elasticsearch高频问答" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Elasticsearch/" rel="tag">Elasticsearch</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Redis高频问答-redis-gao-pin-wen-da" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/02/12/Redis%E9%AB%98%E9%A2%91%E9%97%AE%E7%AD%94-redis-gao-pin-wen-da/" class="article-date">
+  <time class="dt-published" datetime="2020-02-12T07:54:22.000Z" itemprop="datePublished">2020-02-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Redis/">Redis</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/02/12/Redis%E9%AB%98%E9%A2%91%E9%97%AE%E7%AD%94-redis-gao-pin-wen-da/">Redis高频问答</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="1、什么是Redis？简述它的优缺点？"><a href="#1、什么是Redis？简述它的优缺点？" class="headerlink" title="1、什么是Redis？简述它的优缺点？"></a>1、什么是Redis？简述它的优缺点？</h3><p>Redis本质上是一个Key-Value类型的内存数据库，很像memcached，整个数据库统统加载在内存当中<br>进行操作，定期通过异步操作把数据库数据flush到硬盘上进行保存。<br>因为是纯内存操作，Redis的性能非常出色，每秒可以处理超过 10万次读写操作，是已知性能最快的<br>Key-Value DB。<br>Redis的出色之处不仅仅是性能，Redis最大的魅力是支持保存多种数据结构，此外单个value的最大限<br>制是1GB，不像 memcached只能保存1MB的数据，因此Redis可以用来实现很多有用的功能。<br>比方说用他的List来做FIFO双向链表，实现一个轻量级的高性 能消息队列服务，用他的Set可以做高性<br>能的tag系统等等。<br>另外Redis也可以对存入的Key-Value设置expire时间，因此也可以被当作一 个功能加强版的<br>memcached来用。 Redis的主要缺点是数据库容量受到物理内存的限制，不能用作海量数据的高性能<br>读写，因此Redis适合的场景主要局限在较小数据量的高性能操作和运算上。</p>
+<h3 id="2、Redis相比memcached有哪些优势？"><a href="#2、Redis相比memcached有哪些优势？" class="headerlink" title="2、Redis相比memcached有哪些优势？"></a>2、Redis相比memcached有哪些优势？</h3><p>(1) memcached所有的值均是简单的字符串，redis作为其替代者，支持更为丰富的数据类型<br>(2) redis的速度比memcached快很多<br>(3) redis可以持久化其数据</p>
+<h3 id="3、Redis支持哪几种数据类型？"><a href="#3、Redis支持哪几种数据类型？" class="headerlink" title="3、Redis支持哪几种数据类型？"></a>3、Redis支持哪几种数据类型？</h3><ol>
+<li>字符串（string）类型</li>
+<li>列表（list）类型</li>
+<li>哈希（hash）类型</li>
+<li>集合（set）类型</li>
+<li>有序集合（sorted set）类型</li>
+<li>唯一计数（HyperLogLog）类型</li>
+<li>地理位置（Geo）类型</li>
+</ol>
+<h3 id="4、Redis主要消耗什么物理资源？"><a href="#4、Redis主要消耗什么物理资源？" class="headerlink" title="4、Redis主要消耗什么物理资源？"></a>4、Redis主要消耗什么物理资源？</h3><p>内存。</p>
+<h3 id="5、Redis的全称是什么？"><a href="#5、Redis的全称是什么？" class="headerlink" title="5、Redis的全称是什么？"></a>5、Redis的全称是什么？</h3><p>Remote Dictionary Server。</p>
+<h3 id="6、Redis有哪几种数据淘汰策略？"><a href="#6、Redis有哪几种数据淘汰策略？" class="headerlink" title="6、Redis有哪几种数据淘汰策略？"></a>6、Redis有哪几种数据淘汰策略？</h3><p>noeviction:返回错误当内存限制达到并且客户端尝试执行会让更多内存被使用的命令（大部分的写入指<br>令，但DEL和几个例外）<br>allkeys-lru: 尝试回收最少使用的键（LRU），使得新添加的数据有空间存放。<br>volatile-lru: 尝试回收最少使用的键（LRU），但仅限于在过期集合的键,使得新添加的数据有空间存<br>放。<br>allkeys-random: 回收随机的键使得新添加的数据有空间存放。<br>volatile-random: 回收随机的键使得新添加的数据有空间存放，但仅限于在过期集合的键。<br>volatile-ttl: 回收在过期集合的键，并且优先回收存活时间（TTL）较短的键,使得新添加的数据有空间存<br>放。</p>
+<h3 id="7、Redis官方为什么不提供Windows版本？"><a href="#7、Redis官方为什么不提供Windows版本？" class="headerlink" title="7、Redis官方为什么不提供Windows版本？"></a>7、Redis官方为什么不提供Windows版本？</h3><p>因为目前Linux版本已经相当稳定，而且用户量很大，无需开发windows版本，反而会带来兼容性等问<br>题。</p>
+<h3 id="8、一个字符串类型的值能存储最大容量是多少？"><a href="#8、一个字符串类型的值能存储最大容量是多少？" class="headerlink" title="8、一个字符串类型的值能存储最大容量是多少？"></a>8、一个字符串类型的值能存储最大容量是多少？</h3><p>512M</p>
+<h3 id="9、为什么Redis需要把所有数据放到内存中？"><a href="#9、为什么Redis需要把所有数据放到内存中？" class="headerlink" title="9、为什么Redis需要把所有数据放到内存中？"></a>9、为什么Redis需要把所有数据放到内存中？</h3><p>Redis为了达到最快的读写速度将数据都读到内存中，并通过异步的方式将数据写入磁盘。<br>所以redis具有快速和数据持久化的特征。如果不将数据放在内存中，磁盘I&#x2F;O速度为严重影响redis的性<br>能。<br>在内存越来越便宜的今天，redis将会越来越受欢迎。 如果设置了最大使用的内存，则数据已有记录数<br>达到内存限值后不能继续插入新值。</p>
+<h3 id="10、Redis集群方案应该怎么做？都有哪些方案？"><a href="#10、Redis集群方案应该怎么做？都有哪些方案？" class="headerlink" title="10、Redis集群方案应该怎么做？都有哪些方案？"></a>10、Redis集群方案应该怎么做？都有哪些方案？</h3><p>1.codis。<br>目前用的最多的集群方案，基本和twemproxy一致的效果，但它支持在 节点数量改变情况下，旧节点<br>数据可恢复到新hash节点。<br>2.redis cluster3.0自带的集群，特点在于他的分布式算法不是一致性hash，而是hash槽的概念，以及<br>自身支持节点设置从节点。具体看官方文档介绍。<br>3.在业务代码层实现，起几个毫无关联的redis实例，在代码层，对key 进行hash计算，然后去对应的<br>redis实例操作数据。 这种方式对hash层代码要求比较高，考虑部分包括，节点失效后的替代算法方<br>案，数据震荡后的自动脚本恢复，实例的监控，等等。</p>
+<h3 id="11、Redis集群方案什么情况下会导致整个集群不可用？"><a href="#11、Redis集群方案什么情况下会导致整个集群不可用？" class="headerlink" title="11、Redis集群方案什么情况下会导致整个集群不可用？"></a>11、Redis集群方案什么情况下会导致整个集群不可用？</h3><p>有A，B，C三个节点的集群,在没有复制模型的情况下,如果节点B失败了，那么整个集群就会以为缺少<br>5501-11000这个范围的槽而不可用。</p>
+<h3 id="12、MySQL里有2000w数据，redis中只存20w的数据，如何保证"><a href="#12、MySQL里有2000w数据，redis中只存20w的数据，如何保证" class="headerlink" title="12、MySQL里有2000w数据，redis中只存20w的数据，如何保证"></a>12、MySQL里有2000w数据，redis中只存20w的数据，如何保证</h3><p>redis中的数据都是热点数据？<br>redis内存数据集大小上升到一定大小的时候，就会施行数据淘汰策略。</p>
+<h3 id="13、Redis有哪些适合的场景？"><a href="#13、Redis有哪些适合的场景？" class="headerlink" title="13、Redis有哪些适合的场景？"></a>13、Redis有哪些适合的场景？</h3><p>（1）会话缓存（Session Cache）<br>最常用的一种使用Redis的情景是会话缓存（session cache）。用Redis缓存会话比其他存储（如<br>Memcached）的优势在于：Redis提供持久化。当维护一个不是严格要求一致性的缓存时，如果用户的<br>购物车信息全部丢失，大部分人都会不高兴的，现在，他们还会这样吗？<br>幸运的是，随着 Redis 这些年的改进，很容易找到怎么恰当的使用Redis来缓存会话的文档。甚至广为<br>人知的商业平台Magento也提供Redis的插件。<br>（2）全页缓存（FPC）<br>除基本的会话token之外，Redis还提供很简便的FPC平台。回到一致性问题，即使重启了Redis实例，<br>因为有磁盘的持久化，用户也不会看到页面加载速度的下降，这是一个极大改进，类似PHP本地FPC。<br>再次以Magento为例，Magento提供一个插件来使用Redis作为全页缓存后端。<br>此外，对WordPress的用户来说，Pantheon有一个非常好的插件 wp-redis，这个插件能帮助你以最快<br>速度加载你曾浏览过的页面。<br>（3）队列<br>Reids在内存存储引擎领域的一大优点是提供 list 和 set 操作，这使得Redis能作为一个很好的消息队列<br>平台来使用。Redis作为队列使用的操作，就类似于本地程序语言（如Python）对 list 的 push&#x2F;pop 操<br>作。<br>如果你快速的在Google中搜索“Redis queues”，你马上就能找到大量的开源项目，这些项目的目的就是<br>利用Redis创建非常好的后端工具，以满足各种队列需求。例如，Celery有一个后台就是使用Redis作为<br>broker，你可以从这里去查看。<br>（4）排行榜&#x2F;计数器<br>Redis在内存中对数字进行递增或递减的操作实现的非常好。集合（Set）和有序集合（Sorted Set）也<br>使得我们在执行这些操作的时候变的非常简单，Redis只是正好提供了这两种数据结构。<br>所以，我们要从排序集合中获取到排名最靠前的10个用户–我们称之为“user_scores”，我们只需要像下<br>面一样执行即可：<br>当然，这是假定你是根据你用户的分数做递增的排序。如果你想返回用户及用户的分数，你需要这样执<br>行：<br>ZRANGE user_scores 0 10 WITHSCORES<br>Agora Games就是一个很好的例子，用Ruby实现的，它的排行榜就是使用Redis来存储数据的，你可以<br>在这里看到。<br>（5）发布&#x2F;订阅<br>最后（但肯定不是最不重要的）是Redis的发布&#x2F;订阅功能。发布&#x2F;订阅的使用场景确实非常多。我已看见<br>人们在社交网络连接中使用，还可作为基于发布&#x2F;订阅的脚本触发器，甚至用Redis的发布&#x2F;订阅功能来建<br>立聊天系统！</p>
+<h3 id="14、Redis支持的Java客户端都有哪些？官方推荐用哪个？"><a href="#14、Redis支持的Java客户端都有哪些？官方推荐用哪个？" class="headerlink" title="14、Redis支持的Java客户端都有哪些？官方推荐用哪个？"></a>14、Redis支持的Java客户端都有哪些？官方推荐用哪个？</h3><p>Redisson、Jedis、lettuce等等，官方推荐使用Redisson。</p>
+<h3 id="15、Redis和Redisson有什么关系？"><a href="#15、Redis和Redisson有什么关系？" class="headerlink" title="15、Redis和Redisson有什么关系？"></a>15、Redis和Redisson有什么关系？</h3><p>Redisson是一个高级的分布式协调Redis客服端，能帮助用户在分布式环境中轻松实现一些Java的对象<br>(Bloom filter, BitSet, Set, SetMultimap, ScoredSortedSet, SortedSet, Map, ConcurrentMap, List,<br>ListMultimap, Queue, BlockingQueue, Deque, BlockingDeque, Semaphore, Lock, ReadWriteLock,<br>AtomicLong, CountDownLatch, Publish &#x2F; Subscribe, HyperLogLog)。</p>
+<h3 id="16、Jedis与Redisson对比有什么优缺点？"><a href="#16、Jedis与Redisson对比有什么优缺点？" class="headerlink" title="16、Jedis与Redisson对比有什么优缺点？"></a>16、Jedis与Redisson对比有什么优缺点？</h3><p>Jedis是Redis的Java实现的客户端，其API提供了比较全面的Redis命令的支持；<br>Redisson实现了分布式和可扩展的Java数据结构，和Jedis相比，功能较为简单，不支持字符串操作，不<br>支持排序、事务、管道、分区等Redis特性。Redisson的宗旨是促进使用者对Redis的关注分离，从而让<br>使用者能够将精力更集中地放在处理业务逻辑上。</p>
+<h3 id="17、Redis如何设置密码及验证密码？"><a href="#17、Redis如何设置密码及验证密码？" class="headerlink" title="17、Redis如何设置密码及验证密码？"></a>17、Redis如何设置密码及验证密码？</h3><p>设置密码：config set requirepass 123456<br>授权密码：auth 123456</p>
+<h3 id="18、说说Redis哈希槽的概念？"><a href="#18、说说Redis哈希槽的概念？" class="headerlink" title="18、说说Redis哈希槽的概念？"></a>18、说说Redis哈希槽的概念？</h3><p>Redis集群没有使用一致性hash,而是引入了哈希槽的概念，Redis集群有16384个哈希槽，每个key通过<br>CRC16校验后对16384取模来决定放置哪个槽，集群的每个节点负责一部分hash槽。</p>
+<h3 id="19、Redis集群的主从复制模型是怎样的？"><a href="#19、Redis集群的主从复制模型是怎样的？" class="headerlink" title="19、Redis集群的主从复制模型是怎样的？"></a>19、Redis集群的主从复制模型是怎样的？</h3><p>为了使在部分节点失败或者大部分节点无法通信的情况下集群仍然可用，所以集群使用了主从复制模型,<br>每个节点都会有N-1个复制品.</p>
+<h3 id="20、Redis集群会有写操作丢失吗？为什么？"><a href="#20、Redis集群会有写操作丢失吗？为什么？" class="headerlink" title="20、Redis集群会有写操作丢失吗？为什么？"></a>20、Redis集群会有写操作丢失吗？为什么？</h3><p>Redis并不能保证数据的强一致性，这意味这在实际中集群在特定的条件下可能会丢失写操作。</p>
+<h3 id="21、Redis集群之间是如何复制的？"><a href="#21、Redis集群之间是如何复制的？" class="headerlink" title="21、Redis集群之间是如何复制的？"></a>21、Redis集群之间是如何复制的？</h3><p>异步复制</p>
+<h3 id="22、Redis集群最大节点个数是多少？"><a href="#22、Redis集群最大节点个数是多少？" class="headerlink" title="22、Redis集群最大节点个数是多少？"></a>22、Redis集群最大节点个数是多少？</h3><p>16384个。</p>
+<h3 id="23、Redis集群如何选择数据库？"><a href="#23、Redis集群如何选择数据库？" class="headerlink" title="23、Redis集群如何选择数据库？"></a>23、Redis集群如何选择数据库？</h3><p>Redis集群目前无法做数据库选择，默认在0数据库。</p>
+<h3 id="24、怎么测试Redis的连通性？"><a href="#24、怎么测试Redis的连通性？" class="headerlink" title="24、怎么测试Redis的连通性？"></a>24、怎么测试Redis的连通性？</h3><p>ping</p>
+<h3 id="25、Redis中的管道有什么用？"><a href="#25、Redis中的管道有什么用？" class="headerlink" title="25、Redis中的管道有什么用？"></a>25、Redis中的管道有什么用？</h3><p>一次请求&#x2F;响应服务器能实现处理新的请求即使旧的请求还未被响应。这样就可以将多个命令发送到服<br>务器，而不用等待回复，最后在一个步骤中读取该答复。<br>这就是管道（pipelining），是一种几十年来广泛使用的技术。例如许多POP3协议已经实现支持这个功<br>能，大大加快了从服务器下载新邮件的过程。</p>
+<h3 id="26、怎么理解Redis事务？"><a href="#26、怎么理解Redis事务？" class="headerlink" title="26、怎么理解Redis事务？"></a>26、怎么理解Redis事务？</h3><p>事务是一个单独的隔离操作：事务中的所有命令都会序列化、按顺序地执行。事务在执行的过程中，不<br>会被其他客户端发送来的命令请求所打断。<br>事务是一个原子操作：事务中的命令要么全部被执行，要么全部都不执行。</p>
+<h3 id="27、Redis事务相关的命令有哪几个？"><a href="#27、Redis事务相关的命令有哪几个？" class="headerlink" title="27、Redis事务相关的命令有哪几个？"></a>27、Redis事务相关的命令有哪几个？</h3><p>MULTI、EXEC、DISCARD、WATCH</p>
+<h3 id="28、Redis-key的过期时间和永久有效分别怎么设置？"><a href="#28、Redis-key的过期时间和永久有效分别怎么设置？" class="headerlink" title="28、Redis key的过期时间和永久有效分别怎么设置？"></a>28、Redis key的过期时间和永久有效分别怎么设置？</h3><p>EXPIRE和PERSIST命令。</p>
+<h3 id="29、Redis如何做内存优化？"><a href="#29、Redis如何做内存优化？" class="headerlink" title="29、Redis如何做内存优化？"></a>29、Redis如何做内存优化？</h3><p>尽可能使用散列表（hashes），散列表（是说散列表里面存储的数少）使用的内存非常小，所以你应该<br>尽可能的将你的数据模型抽象到一个散列表里面。<br>比如你的web系统中有一个用户对象，不要为这个用户的名称，姓氏，邮箱，密码设置单独的key,而是<br>应该把这个用户的所有信息存储到一张散列表里面。</p>
+<h3 id="30、Redis回收进程如何工作的？"><a href="#30、Redis回收进程如何工作的？" class="headerlink" title="30、Redis回收进程如何工作的？"></a>30、Redis回收进程如何工作的？</h3><p>一个客户端运行了新的命令，添加了新的数据。<br>Redi检查内存使用情况，如果大于maxmemory的限制, 则根据设定好的策略进行回收。<br>一个新的命令被执行，等等。<br>所以我们不断地穿越内存限制的边界，通过不断达到边界然后不断地回收回到边界以下。<br>如果一个命令的结果导致大量内存被使用（例如很大的集合的交集保存到一个新的键），不用多久内存<br>限制就会被这个内存使用量超越。</p>
+<h3 id="31、为什么redis需要把所有数据放到内存中？"><a href="#31、为什么redis需要把所有数据放到内存中？" class="headerlink" title="31、为什么redis需要把所有数据放到内存中？"></a>31、为什么redis需要把所有数据放到内存中？</h3><p>Redis为了达到最快的读写速度将数据都读到内存中，并通过异步的方式将数据写入磁盘。所以redis具<br>有快速和数据持久化的特征。如果不将数据放在内存中，磁盘I&#x2F;O速度为严重影响redis的性能。在内存<br>越来越便宜的今天，redis将会越来越受欢迎。如果设置了最大使用的内存，则数据已有记录数达到内存<br>限值后不能继续插入新值。</p>
+<h3 id="32、Redis常见的性能问题都有哪些？如何解决？"><a href="#32、Redis常见的性能问题都有哪些？如何解决？" class="headerlink" title="32、Redis常见的性能问题都有哪些？如何解决？"></a>32、Redis常见的性能问题都有哪些？如何解决？</h3><p>● Master写内存快照，save命令调度rdbSave函数，会阻塞主线程的工作，当快照比较大时对性能影响<br>是非常大的，会间断性暂停服务，所以Master最好不要写内存快照。<br>● Master AOF持久化，如果不重写AOF文件，这个持久化方式对性能的影响是最小的，但是AOF文件会<br>不断增大，AOF文件过大会影响Master重启的恢复速度。Master最好不要做任何持久化工作，包括内<br>存快照和AOF日志文件，特别是不要启用内存快照做持久化，如果数据比较关键，某个Slave开启AOF备<br>份数据，策略为每秒同步一次。<br>● Master调用BGREWRITEAOF重写AOF文件，AOF在重写的时候会占大量的CPU和内存资源，导致服务<br>load过高，出现短暂服务暂停现象。<br>● Redis主从复制的性能问题，为了主从复制的速度和连接的稳定性，Slave和Master最好在同一个局域<br>网内。</p>
+<h3 id="33、Redis最适合的场景有哪些？"><a href="#33、Redis最适合的场景有哪些？" class="headerlink" title="33、Redis最适合的场景有哪些？"></a>33、Redis最适合的场景有哪些？</h3><p>● 会话缓存（Session Cache）<br>● 全页缓存（FPC）<br>● 队列<br>● 排行榜&#x2F;计数器<br>● 发布&#x2F;订阅</p>
+<h3 id="34、Memcache与Redis的区别都有哪些？"><a href="#34、Memcache与Redis的区别都有哪些？" class="headerlink" title="34、Memcache与Redis的区别都有哪些？"></a>34、Memcache与Redis的区别都有哪些？</h3><p>● 存储方式不同，Memcache是把数据全部存在内存中，数据不能超过内存的大小，断电后数据库会挂<br>掉。Redis有部分存在硬盘上，这样能保证数据的持久性。<br>● 数据支持的类型不同memcahe对数据类型支持相对简单，redis有复杂的数据类型。<br>● 使用底层模型不同 它们之间底层实现方式以及与客户端之间通信的应用协议不一样。Redis直接自己<br>构建了VM机制，因为一般的系统调用系统函数的话，会浪费一定的时间去移动和请求。<br>● 支持的value大小不一样redis最大可以达到1GB，而memcache只有1MB。</p>
+<h3 id="35、Redis有哪几种数据结构？"><a href="#35、Redis有哪几种数据结构？" class="headerlink" title="35、Redis有哪几种数据结构？"></a>35、Redis有哪几种数据结构？</h3><p>● String——字符串<br>String数据结构是简单的key-value类型，value不仅可以是String，也可以是数字（当数字类型用Long<br>可以表示的时候encoding就是整型，其他都存储在sdshdr当做字符串）。<br>● Hash——字典<br>在Memcached中，我们经常将一些结构化的信息打包成hashmap，在客户端序列化后存储为一个字符<br>串的值（一般是JSON格式），比如用户的昵称、年龄、性别、积分等。<br>● List——列表<br>List说白了就是链表（redis使用双端链表实现的List）<br>● Set——集合<br>Set就是一个集合，集合的概念就是一堆不重复值的组合。利用Redis提供的Set数据结构，可以存储一<br>些集合性的数据。<br>● Sorted Set——有序集合<br>和Set相比，Sorted Set是将Set中的元素增加了一个权重参数score，使得集合中的元素能够按score进<br>行有序排列，<br>● 带有权重的元素，比如一个游戏的用户得分排行榜<br>● 比较复杂的数据结构，一般用到的场景不算太多</p>
+<h3 id="36、Redis的持久化是什么？"><a href="#36、Redis的持久化是什么？" class="headerlink" title="36、Redis的持久化是什么？"></a>36、Redis的持久化是什么？</h3><p>RDB持久化：该机制可以在指定的时间间隔内生成数据集的时间点快照（point-in-time snapshot）。<br>AOF持久化：记录服务器执行的所有写操作命令，并在服务器启动时，通过重新执行这些命令来还原数<br>据集。AOF文件中的命令全部以Redis协议的格式来保存，新命令会被追加到文件的末尾。Redis还可以<br>在后台对AOF文件进行重写（rewrite），使得AOF文件的体积不会超出保存数据集状态所需的实际大<br>小。<br>AOF和RDB的同时应用：当Redis重启时，它会优先使用AOF文件来还原数据集，因为AOF文件保存的数<br>据集通常比RDB文件所保存的数据集更完整。</p>
+<h3 id="37、RDB的优缺点？"><a href="#37、RDB的优缺点？" class="headerlink" title="37、RDB的优缺点？"></a>37、RDB的优缺点？</h3><p>优点：RDB是一个非常紧凑（compact）的文件，它保存了Redis在某个时间点上的数据集。这种<br>文件非常适合用于进行备份：比如说，你可以在最近的24小时内，每小时备份一次RDB文件，并<br>且在每个月的每一天，也备份一个RDB文件。这样的话，即使遇上问题，也可以随时将数据集还原<br>到不同的版本。RDB非常适用于灾难恢复（disaster recovery）：它只有一个文件，并且内容都非<br>常紧凑，可以（在加密后）将它传送到别的数据中心，或者亚马逊S3中。RDB可以最大化Redis的<br>性能：父进程在保存RDB文件时唯一要做的就是fork出一个子进程，然后这个子进程就会处理接下<br>来的所有保存工作，父进程无须执行任何磁盘I&#x2F;O操作。RDB在恢复大数据集时的速度比AOF的恢<br>复速度要快。<br>缺点：如果你需要尽量避免在服务器故障时丢失数据，那么RDB不适合你。虽然Redis允许你设置<br>不同的保存点（save point）来控制保存RDB文件的频率，但是，因为RDB文件需要保存整个数据<br>集的状态，所以它并不是一个轻松的操作。因此你可能会至少5分钟才保存一次RDB文件。在这种<br>情况下，一旦发生故障停机，你就可能会丢失好几分钟的数据。每次保存RDB的时候，Redis都要<br>fork()出一个子进程，并由子进程来进行实际的持久化工作。在数据集比较庞大时，fork()可能会非<br>常耗时，造成服务器在某某毫秒内停止处理客户端；如果数据集非常巨大，并且CPU时间非常紧张<br>的话，那么这种停止时间甚至可能会长达整整一秒。</p>
+<h3 id="38、AOF的优缺点？"><a href="#38、AOF的优缺点？" class="headerlink" title="38、AOF的优缺点？"></a>38、AOF的优缺点？</h3><p>● 优点：<br>使用AOF持久化会让Redis变得非常耐久（much more durable）：你可以设置不同的fsync策略，比如<br>无fsync，每秒钟一次fsync，或者每次执行写入命令时fsync。AOF的默认策略为每秒钟fsync一次，在<br>这种配置下，Redis仍然可以保持良好的性能，并且就算发生故障停机，也最多只会丢失一秒钟的数据<br>（fsync会在后台线程执行，所以主线程可以继续努力地处理命令请求）。AOF文件是一个只进行追加<br>操作的日志文件（append onlylog），因此对AOF文件的写入不需要进行seek，即使日志因为某些原因<br>而包含了未写入完整的命令（比如写入时磁盘已满，写入中途停机，等等），redis-check-aof工具也可<br>以 轻易地修复这种问题。<br>Redis可以在AOF文件体积变得过大时，自动地在后台对AOF进行重写：重写后的新AOF文件包含了恢复<br>当前数据集所需的最小命令集合。整个重写操作是绝对安全的，因为Redis在创建新AOF文件的过程<br>中，会继续将命令追加到现有的AOF文件里面，即使重写过程中发生停机，现有的AOF文件也不会丢<br>失。而一旦新AOF文件创建完毕，Redis就会从旧AOF文件切换到新AOF文件，并开始对新AOF文件进行<br>追加操作。<br>● 缺点：<br>对于相同的数据集来说，AOF文件的体积通常要大于RDB文件的体积。根据所使用的fsync策略，AOF的<br>速度可能会慢于RDB。在一般情况下，每秒fsync的性能依然非常高，而关闭fsync可以让AOF的速度和<br>RDB一样快，即使在高负荷之下也是如此。不过在处理巨大的写入载入时，RDB可以提供更有保证的最<br>大延迟时间（latency）。<br>AOF在过去曾经发生过这样的bug：因为个别命令的原因，导致AOF文件在重新载入时，无法将数据集<br>恢复成保存时的原样。（举个例子，阻塞命令BRPOPLPUSH就曾经引起过这样的bug。）测试套件里为<br>这种情况添加了测试：它们会自动生成随机的、复杂的数据集，并通过重新载入这些数据来确保一切正<br>常。虽然这种bug在AOF文件中并不常见，但是对比来说，RDB几乎是不可能出现这种bug的。</p>
+<h3 id="39、简单说说缓存雪崩及解决方法"><a href="#39、简单说说缓存雪崩及解决方法" class="headerlink" title="39、简单说说缓存雪崩及解决方法"></a>39、简单说说缓存雪崩及解决方法</h3><p>缓存雪崩我们可以简单的理解为：由于原有缓存失效，新缓存未到期间<br>(例如：我们设置缓存时采用了相同的过期时间，在同一时刻出现大面积的缓存过期)，所有原本应该访<br>问缓存的请求都去查询数据库了，而对数据库CPU和内存造成巨大压力，严重的会造成数据库宕机。从<br>而形成一系列连锁反应，造成整个系统崩溃。)<br>解决办法：<br>大多数系统设计者考虑用加锁（ 最多的解决方案）或者队列的方式保证来保证不会有大量的线程对数据<br>库一次性进行读写，从而避免失效时大量的并发请求落到底层存储系统上。还有一个简单方案就时讲缓<br>存失效时间分散开。</p>
+<h3 id="40、缓存穿透怎么导致的？"><a href="#40、缓存穿透怎么导致的？" class="headerlink" title="40、缓存穿透怎么导致的？"></a>40、缓存穿透怎么导致的？</h3><p>在高并发下查询key不存在的数据，会穿过缓去存查询数据库。导致数据库压力过大而宕机。<br>解决方法:</p>
+<ol>
+<li>对查询结果为空的情况也进行缓存，缓存时间（ttl）设置短一点，或者该key对应的数据insert了<br>之后清理缓存。<br>缺点：缓存太多空值占用了更多的空间</li>
+<li>使用布隆过滤器。在缓存之前在加一层布隆过滤器，在查询的时候先去布隆过滤器查询 key 是否<br>存在，如果不存在就直接返回，存在再查缓存和DB。<br>布隆过滤器原理： 当一个元素被加入集合时，将这个元素通过n次Hash函数结果映射成一个数组中的n<br>个点，把它们置为1。检索时，我们只要看看这些点是不是都是1就（大约）知道集合中有没有它了：如<br>果这些点有任何一个0，则被检元素一定不在；如果都是1，则被检元素很可能在。总之布隆过滤器是一<br>个很大二进制的位数组，数组里面只存0和1。</li>
+</ol>
+<h3 id="41、项目中有出现过缓存击穿，简单说说怎么回事？"><a href="#41、项目中有出现过缓存击穿，简单说说怎么回事？" class="headerlink" title="41、项目中有出现过缓存击穿，简单说说怎么回事？"></a>41、项目中有出现过缓存击穿，简单说说怎么回事？</h3><p>缓存在某个时间点过期的时候，恰好在这个时间点对这个Key有大量的并发请求过来，这些请求发现缓<br>存过期一般会从数据库中加载数据并回设到缓存，这个时候大并发的请求可能会瞬间把后端DB压垮<br>解决方案：</p>
+<ol>
+<li>用分布式锁控制访问的线程，使用redis的setnx互斥锁先进行判断，这样其他线程就处于等待状<br>态，保证不会有大并发操作去操作数据库。</li>
+<li>不设超时时间，采用volatile-lru淘汰策略<br>缺点：会造成写一致问题，当数据库数据发生更新时，缓存中的数据不会及时更新，这样会造成数<br>据库中的数据与缓存中的数据的不一致，应用会从缓存中读取到脏数据。可采用延时双删策略处<br>理。</li>
+</ol>
+<h3 id="42、遇到缓存一致性问题，你怎么解决的？"><a href="#42、遇到缓存一致性问题，你怎么解决的？" class="headerlink" title="42、遇到缓存一致性问题，你怎么解决的？"></a>42、遇到缓存一致性问题，你怎么解决的？</h3><p>由于缓存和数据库不属于同一个数据源，本质上非原子操作，所以是无法保证强一致性的，只能去实现<br>最终一致性。<br>解决方案：</p>
+<ol>
+<li>延时双删：先更新数据库同时删除缓存，等2秒后再删除一次缓存，等到读的时候在回写到缓存。</li>
+<li>利用工具(canal)将数据库的binlog日志采集发送到MQ中，然后通过ACK机制确认处理删除缓存</li>
+</ol>
+<h3 id="43、为什么要用-Redis-而不用-map-x2F-guava-做缓存"><a href="#43、为什么要用-Redis-而不用-map-x2F-guava-做缓存" class="headerlink" title="43、为什么要用 Redis 而不用 map&#x2F;guava 做缓存?"></a>43、为什么要用 Redis 而不用 map&#x2F;guava 做缓存?</h3><p>缓存分为本地缓存和分布式缓存。以 Java 为例，使用自带的 map 或者 guava 实现的是本地缓存，最<br>主要的特点是轻量以及快速，生命周期随着 jvm 的销毁而结束，并且在多实例的情况下，每个实例都需<br>要各自保存一份缓存，缓存不具有一致性。<br>使用 redis 或 memcached 之类的称为分布式缓存，在多实例的情况下，各实例共用一份缓存数据，缓<br>存具有一致性。缺点是需要保持 redis 或 memcached服务的高可用，整个程序架构上较为复杂。</p>
+<h3 id="44、如何选择合适的持久化方式？"><a href="#44、如何选择合适的持久化方式？" class="headerlink" title="44、如何选择合适的持久化方式？"></a>44、如何选择合适的持久化方式？</h3><p>1、一般来说， 如果想达到足以媲美PostgreSQL的数据安全性，你应该同时使用两种持久化功能。在这<br>种情况下，当 Redis 重启的时候会优先载入AOF文件来恢复原始的数据，因为在通常情况下AOF文件保<br>存的数据集要比RDB文件保存的数据集要完整。<br>2、如果你非常关心你的数据， 但仍然可以承受数分钟以内的数据丢失，那么你可以只使用RDB持久<br>化。<br>3、有很多用户都只使用AOF持久化，但并不推荐这种方式，因为定时生成RDB快照（snapshot）非常<br>便于进行数据库备份， 并且 RDB 恢复数据集的速度也要比AOF恢复的速度要快，除此之外，使用RDB<br>还可以避免AOF程序的bug。<br>4、如果你只希望你的数据在服务器运行的时候存在，你也可以不使用任何持久化方式。</p>
+<h3 id="45、Redis持久化数据和缓存怎么做扩容？"><a href="#45、Redis持久化数据和缓存怎么做扩容？" class="headerlink" title="45、Redis持久化数据和缓存怎么做扩容？"></a>45、Redis持久化数据和缓存怎么做扩容？</h3><p>1、如果Redis被当做缓存使用，使用一致性哈希实现动态扩容缩容。<br>2、如果Redis被当做一个持久化存储使用，必须使用固定的keys-to-nodes映射关系，节点的数量一旦<br>确定不能变化。否则的话(即Redis节点需要动态变化的情况），必须使用可以在运行时进行数据再平衡<br>的一套系统，而当前只有Redis集群可以做到这样。</p>
+<h3 id="46、Redis的内存淘汰策略有哪些？"><a href="#46、Redis的内存淘汰策略有哪些？" class="headerlink" title="46、Redis的内存淘汰策略有哪些？"></a>46、Redis的内存淘汰策略有哪些？</h3><p>Redis的内存淘汰策略是指在Redis的用于缓存的内存不足时，怎么处理需要新写入且需要申请额外空间<br>的数据。<br>1、全局的键空间选择性移除<br>noeviction：当内存不足以容纳新写入数据时，新写入操作会报错。<br>allkeys-lru：当内存不足以容纳新写入数据时，在键空间中，移除最近最少使用的key。（这个是<br>最常用的）<br>allkeys-random：当内存不足以容纳新写入数据时，在键空间中，随机移除某个key。<br>2、设置过期时间的键空间选择性移除<br>volatile-lru：当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，移除最近最少使用<br>的key。<br>volatile-random：当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，随机移除某<br>个key。<br>volatile-ttl：当内存不足以容纳新写入数据时，在设置了过期时间的键空间中，有更早过期时间的<br>key优先移除。</p>
+<h3 id="47、简单描述下Redis线程模型"><a href="#47、简单描述下Redis线程模型" class="headerlink" title="47、简单描述下Redis线程模型"></a>47、简单描述下Redis线程模型</h3><p>Redis基于Reactor模式开发了网络事件处理器，这个处理器被称为文件事件处理器（file event<br>handler）。它的组成结构为4部分：多个套接字、IO多路复用程序、文件事件分派器、事件处理器。因<br>为文件事件分派器队列的消费是单线程的，所以Redis才叫单线程模型。<br>文件事件处理器使用 I&#x2F;O 多路复用（multiplexing）程序来同时监听多个套接字， 并根据套接字目<br>前执行的任务来为套接字关联不同的事件处理器。<br>当被监听的套接字准备好执行连接应答（accept）、读取（read）、写入（write）、关闭<br>（close）等操作时， 与操作相对应的文件事件就会产生， 这时文件事件处理器就会调用套接字之<br>前关联好的事件处理器来处理这些事件。<br>虽然文件事件处理器以单线程方式运行， 但通过使用 I&#x2F;O 多路复用程序来监听多个套接字， 文件事件<br>处理器既实现了高性能的网络通信模型， 又可以很好地与 redis 服务器中其他同样以单线程方式运行的<br>模块进行对接， 这保持了 Redis 内部单线程设计的简单性。</p>
+<h3 id="48、Redis事务其他实现方式"><a href="#48、Redis事务其他实现方式" class="headerlink" title="48、Redis事务其他实现方式?"></a>48、Redis事务其他实现方式?</h3><p>1、基于Lua脚本，Redis可以保证脚本内的命令一次性、按顺序地执行，<br>其同时也不提供事务运行错误的回滚，执行过程中如果部分命令运行错误，剩下的命令还是会继续运行<br>完<br>2、基于中间标记变量，通过另外的标记变量来标识事务是否执行完成，读取数据时先读取该标记变量<br>判断是否事务执行完成。但这样会需要额外写代码实现，比较繁琐</p>
+<h3 id="49、生产环境中的-redis-是怎么部署的？"><a href="#49、生产环境中的-redis-是怎么部署的？" class="headerlink" title="49、生产环境中的 redis 是怎么部署的？"></a>49、生产环境中的 redis 是怎么部署的？</h3><p>redis cluster，10 台机器，5 台机器部署了 redis 主实例，另外 5 台机器部署了 redis 的从实例，每个<br>主实例挂了一个从实例，5 个节点对外提供读写服务，每个节点的读写高峰qps可能可以达到每秒 5<br>万，5 台机器最多是 25 万读写请求&#x2F;s。<br>机器是什么配置？32G 内存+ 8 核 CPU + 1T 磁盘，但是分配给 redis 进程的是10g内存，一般线上生产<br>环境，redis 的内存尽量不要超过 10g，超过 10g 可能会有问题。<br>5 台机器对外提供读写，一共有 50g 内存。<br>因为每个主实例都挂了一个从实例，所以是高可用的，任何一个主实例宕机，都会自动故障迁移，redis<br>从实例会自动变成主实例继续提供读写服务。<br>你往内存里写的是什么数据？每条数据的大小是多少？商品数据，每条数据是 10kb。100 条数据是<br>1mb，10 万条数据是 1g。常驻内存的是 200 万条商品数据，占用内存是 20g，仅仅不到总内存的<br>50%。目前高峰期每秒就是 3500 左右的请求量。<br>其实大型的公司，会有基础架构的 team 负责缓存集群的运维。</p>
+<h3 id="50、-如何解决-Redis-的并发竞争-Key-问题？"><a href="#50、-如何解决-Redis-的并发竞争-Key-问题？" class="headerlink" title="50、 如何解决 Redis 的并发竞争 Key 问题？"></a>50、 如何解决 Redis 的并发竞争 Key 问题？</h3><p>所谓 Redis 的并发竞争 Key 的问题也就是多个系统同时对一个 key 进行操作，但是最后执行的顺序和我<br>们期望的顺序不同，这样也就导致了结果的不同！<br>推荐一种方案：分布式锁（zookeeper 和 redis 都可以实现分布式锁）。（如果不存在 Redis 的并发竞<br>争 Key 问题，不要使用分布式锁，这样会影响性能）<br>基于zookeeper临时有序节点可以实现的分布式锁。大致思想为：每个客户端对某个方法加锁时，在<br>zookeeper上的与该方法对应的指定节点的目录下，生成一个唯一的瞬时有序节点。判断是否获取锁的<br>方式很简单，只需要判断有序节点中序号最小的一个。当释放锁的时候，只需将这个瞬时节点删除即<br>可。同时，其可以避免服务宕机导致的锁无法释放，而产生的死锁问题。完成业务流程后，删除对应的<br>子节点释放锁。<br>在实践中，当然是从以可靠性为主。所以首推Zookeeper。</p>
+<h3 id="51、-什么是-RedLock？"><a href="#51、-什么是-RedLock？" class="headerlink" title="51、 什么是 RedLock？"></a>51、 什么是 RedLock？</h3><p>Redis 官方站提出了一种权威的基于 Redis 实现分布式锁的方式名叫 Redlock，此种方式比原先的单节<br>点的方法更安全。它可以保证以下特性：</p>
+<ol>
+<li>安全特性：互斥访问，即永远只有一个 client 能拿到锁</li>
+<li>避免死锁：最终 client 都可能拿到锁，不会出现死锁的情况，即使原本锁住某资源的 client crash<br>了或者出现了网络分区</li>
+<li>容错性：只要大部分 Redis 节点存活就可以正常提供服务</li>
+</ol>
+<h3 id="52、什么时候需要缓存降级？"><a href="#52、什么时候需要缓存降级？" class="headerlink" title="52、什么时候需要缓存降级？"></a>52、什么时候需要缓存降级？</h3><p>当访问量剧增、服务出现问题（如响应时间慢或不响应）或非核心服务影响到核心流程的性能时，仍然<br>需要保证服务还是可用的，即使是有损服务。系统可以根据一些关键数据进行自动降级，也可以配置开<br>关实现人工降级。<br>缓存降级的最终目的是保证核心服务可用，即使是有损的。而且有些服务是无法降级的（如加入购物<br>车、结算）。<br>在进行降级之前要对系统进行梳理，看看系统是不是可以丢卒保帅；从而梳理出哪些必须誓死保护，哪<br>些可降级；比如可以参考日志级别设置预案：</p>
+<ol>
+<li>一般：比如有些服务偶尔因为网络抖动或者服务正在上线而超时，可以自动降级；</li>
+<li>警告：有些服务在一段时间内成功率有波动（如在95~100%之间），可以自动降级或人工降级，<br>并发送告警；</li>
+<li>错误：比如可用率低于90%，或者数据库连接池被打爆了，或者访问量突然猛增到系统能承受的最<br>大阀值，此时可以根据情况自动降级或者人工降级；</li>
+<li>严重错误：比如因为特殊原因数据错误了，此时需要紧急人工降级。<br>服务降级的目的，是为了防止Redis服务故障，导致数据库跟着一起发生雪崩问题。因此，对于不重要<br>的缓存数据，可以采取服务降级策略，例如一个比较常见的做法就是，Redis出现问题，不去数据库查<br>询，而是直接返回默认值给用户。</li>
+</ol>
+<h3 id="53、如何保证缓存与数据库双写时的数据一致性？"><a href="#53、如何保证缓存与数据库双写时的数据一致性？" class="headerlink" title="53、如何保证缓存与数据库双写时的数据一致性？"></a>53、如何保证缓存与数据库双写时的数据一致性？</h3><p>你只要用缓存，就可能会涉及到缓存与数据库双存储双写，你只要是双写，就一定会有数据一致性的问<br>题，那么你如何解决一致性问题？<br>一般来说，就是如果你的系统不是严格要求缓存+数据库必须一致性的话，缓存可以稍微的跟数据库偶<br>尔有不一致的情况，最好不要做这个方案，读请求和写请求串行化，串到一个内存队列里去，这样就可<br>以保证一定不会出现不一致的情况<br>串行化之后，就会导致系统的吞吐量会大幅度的降低，用比正常情况下多几倍的机器去支撑线上的一个<br>请求。<br>还有一种方式就是可能会暂时产生不一致的情况，但是发生的几率特别小，就是先更新数据库，然后再<br>删除缓存。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zzonn.com/2020/02/12/Redis%E9%AB%98%E9%A2%91%E9%97%AE%E7%AD%94-redis-gao-pin-wen-da/" data-id="clf0jcv6y00106ocx93ivgk9o" data-title="Redis高频问答" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/" rel="tag">redis</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-MongoDB高频问答-mongodb-gao-pin-wen-da" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/02/08/MongoDB%E9%AB%98%E9%A2%91%E9%97%AE%E7%AD%94-mongodb-gao-pin-wen-da/" class="article-date">
+  <time class="dt-published" datetime="2020-02-08T02:50:14.000Z" itemprop="datePublished">2020-02-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/SQL/">SQL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/02/08/MongoDB%E9%AB%98%E9%A2%91%E9%97%AE%E7%AD%94-mongodb-gao-pin-wen-da/">MongoDB高频问答</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="1、MongoDB是什么？"><a href="#1、MongoDB是什么？" class="headerlink" title="1、MongoDB是什么？"></a>1、MongoDB是什么？</h2><p>MongoDB是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。在高负载的情况下，添加更多<br>的节点，可以保证服务器性能。 MongoDB旨在为WEB应用提供可扩展的高性能数据存储解决方案，将数据存<br>储为一个文档，数据结构由键值(key&#x3D;&gt;value)对组成。MongoDB文档类似于 JSON 对象。字段值可以包含<br>其他文档，数组及文档数组。</p>
+<h2 id="2、MongoDB有哪些特点？"><a href="#2、MongoDB有哪些特点？" class="headerlink" title="2、MongoDB有哪些特点？"></a>2、MongoDB有哪些特点？</h2><p>（1）MongoDB 是一个面向文档存储的数据库，操作起来比较简单和容易；<br>（2）可以在MongoDB记录中设置任何属性的索引；<br>（3）可以通过本地或者网络创建数据镜像，这使得MongoDB有更强的扩展性：<br>（4）如果负载的增加（需要更多的存储空间和更强的处理能力），它可以分布在计算机网络中的其他节点上<br>这就是所谓的分片；<br>（5）支持丰富的查询表达式，查询指令使用JSON形式的标记，可轻易查询文档中内嵌的对象及数组。</p>
+<h2 id="3、MySQL与MongoDB之间最基本的差别是什么"><a href="#3、MySQL与MongoDB之间最基本的差别是什么" class="headerlink" title="3、MySQL与MongoDB之间最基本的差别是什么?"></a>3、MySQL与MongoDB之间最基本的差别是什么?</h2><p>MySQL和MongoDB两者都是免费开源的数据库。MySQL和MongoDB有许多基本差别包括数据的表示查询、关<br>系、事务、schema的设计和定义、标准化、速度和性能。通过比较MySQL和MongoDB，实际上我们是在比较<br>关系型和非关系型数据库，即数据存储结构不同。</p>
+<h2 id="4、monogodb中的分片什么意思？"><a href="#4、monogodb中的分片什么意思？" class="headerlink" title="4、monogodb中的分片什么意思？"></a>4、monogodb中的分片什么意思？</h2><p>分片是将数据水平切分到不同的物理节点，当应用数据越来越大的时候，数据量也会越来越大。当数据量增长<br>时，单台机器有可能无法存储数据或可接受的读取写入吞吐量，利用分片技术可以添加更多的机器来应对数据<br>量增加以及读写操作的要求。</p>
+<h2 id="5、MongoDB中的命名空间是什么意思"><a href="#5、MongoDB中的命名空间是什么意思" class="headerlink" title="5、MongoDB中的命名空间是什么意思?"></a>5、MongoDB中的命名空间是什么意思?</h2><p>mongodb存储bson对象在丛集(collection)中，数据库名字和丛集名字以句点连结起来叫做名字空间，一<br>个集合命名空间又有多个数据域(extent)，集合命名空间里存储着集合的元数据，比如集合名称，集合的第<br>一个数据域和最后一个数据域的位置等等。而一个数据域由若干条文档(document)组成，每个数据域都有一<br>个头部，记录着第一条文档和最后一条文档的为知，以及该数据域的一些元数据。extent之间，document之<br>间通过双向链表连接，索引的存储数据结构是B树，索引命名空间存储着对B树的根节点的指针。</p>
+<h2 id="6、在MongoDb中索引是什么？"><a href="#6、在MongoDb中索引是什么？" class="headerlink" title="6、在MongoDb中索引是什么？"></a>6、在MongoDb中索引是什么？</h2><p>索引用于高效的执行查询，没有索引的MongoDB将扫描整个集合中的所有文档，这种扫描效率很低，需要处理<br>大量的数据，索引是一种特殊的数据结构,将一小块数据集合保存为容易遍历的形式。索引能够存储某种特殊<br>字段或字段集的值，并按照索引指定的方式将字段值进行排序。</p>
+<h2 id="7、MongoDB成为最好NoSQL数据库的原因是什么"><a href="#7、MongoDB成为最好NoSQL数据库的原因是什么" class="headerlink" title="7、MongoDB成为最好NoSQL数据库的原因是什么?"></a>7、MongoDB成为最好NoSQL数据库的原因是什么?</h2><p>以下特点使得MongoDB成为最好的NoSQL数据库：面向文件的；高性能；高可用性；易扩展性；丰富的查询语<br>言。</p>
+<h2 id="8、解释一下什么是MongoDB中的GridFS"><a href="#8、解释一下什么是MongoDB中的GridFS" class="headerlink" title="8、解释一下什么是MongoDB中的GridFS ?"></a>8、解释一下什么是MongoDB中的GridFS ?</h2><p>为了存储和检索大文件，例如图像，视频文件和音频文件，使用GridFS。默认情况下，它使用两个文件<br>fs.files和fs.chunks来存储文件的元数据和块。</p>
+<h2 id="9、分析器在MongoDB中的作用是什么"><a href="#9、分析器在MongoDB中的作用是什么" class="headerlink" title="9、分析器在MongoDB中的作用是什么?"></a>9、分析器在MongoDB中的作用是什么?</h2><p>MongoDB中包括了一个可以显示数据库中每个操作性能特点的数据库分析器。通过这个分析器你可以找到比预<br>期慢的查询(或写操作);利用这一信息，比如，可以确定是否需要添加索引。</p>
+<h2 id="10、MongoDB更新操作会立刻-fsync-到磁盘"><a href="#10、MongoDB更新操作会立刻-fsync-到磁盘" class="headerlink" title="10、MongoDB更新操作会立刻 fsync 到磁盘?"></a>10、MongoDB更新操作会立刻 fsync 到磁盘?</h2><p>不会，磁盘写操作默认是延迟执行的。写操作可能在两三秒(默认在 60 秒内)后到达磁盘。例如，如果一秒<br>内数据库收到一千个对一个对象递增的操作，仅刷新磁盘一次。(注意，尽管 fsync 选项在命令行和经过<br>getLastError_old 是有效的）</p>
+<h2 id="11、MongoDB副本集选举条件有那些？"><a href="#11、MongoDB副本集选举条件有那些？" class="headerlink" title="11、MongoDB副本集选举条件有那些？"></a>11、MongoDB副本集选举条件有那些？</h2><p>1.复制集初始化。<br>2.主节点挂掉。<br>3.主节点脱离副本集（可能是网络原因）。<br>4.参与选举的节点数量必须大于副本集总节点数量的一半，如果已经小于一半了所有节点保持只读状态。</p>
+<h2 id="12、简单的描述下MongoDB选举流程"><a href="#12、简单的描述下MongoDB选举流程" class="headerlink" title="12、简单的描述下MongoDB选举流程"></a>12、简单的描述下MongoDB选举流程</h2><p>1、副本集中的主节点选举必须满足“大多数”的原则，所谓“大多数”是指副本中一半以上的成员。副本集中成<br>员只有在得到大多数成员投票支持时，才能成为主节点。例如：有N个副本集成员节点，必须有N&#x2F;2+1个成员<br>投票支持某个节点，此节点才能成为主节点。注意：副本集中若有成员节点处于不可用状态，并不会影响副本<br>集中的“大多数”，“大多数”是以副本集的配置来计算的。<br>2、仲裁节点（Arbiter）它并不保存数据，并且不能被选举为主节点，但是具有投票权。仲裁节点使用最小<br>的资源，不能将Arbiter部署在同一个数据集节点中。<br>3、副本集中最好是有奇数个成员节点，如果有偶数个节点，最好加一个仲裁节点。若副本集中有偶数个成员<br>节点，如图2所示，IDC1网络连不通IDC2，IDC1和IDC2内的成员节点分别会发生选举主节点的行为，然而选<br>举因都无法满足大多数的原则，都不能选出主节点；加入一个仲裁节点之后，则副本集就能满足大多数原则，<br>从中选出主节点了。<br>4.如果副本集成员节点数量是奇数，就不再需要仲裁者。但是如果在成员节点是奇数时，强行使用仲裁者，会<br>导致选举耗时变长。由于添加了仲裁者就可能出现两个成员节点票数相同的情况，从而导致选举耗时变长。<br>5.若在一轮投票中，副本集中成员节点被投了反对票，则本轮不能被选为主节点。例如，在一个10个成员节点<br>的副本集，某轮投票中，成员节点A由于数据延迟较大被某个成员节点投了反对票，则A同时收到了9票赞成<br>票，然而A仍然不能被选为主节点。<br>6.集群中的优先级为0的节点不能成为主节点，并且不能触发选举，但是具有投票权，并且拥有与主节点一致<br>的数据集。</p>
+<h2 id="13、什么是MongoDB分片集群"><a href="#13、什么是MongoDB分片集群" class="headerlink" title="13、什么是MongoDB分片集群?"></a>13、什么是MongoDB分片集群?</h2><p>Sharding cluster是一种可以水平扩展的模式,在数据量很大时特给力,实际大规模应用一般会采用这种架<br>构去构建。sharding分片很好的解决了单台服务器磁盘空间、内存、cpu等硬件资源的限制问题，把数据水<br>平拆分出去，降低单节点的访问压力。每个分片都是一个独立的数据库，所有的分片组合起来构成一个逻辑上<br>的完整的数据库。因此，分片机制降低了每个分片的数据操作量及需要存储的数据量，达到多台服务器来应对<br>不断增加的负载和数据的效果。</p>
+<h2 id="14、MongoDB中为何需要水平分片？"><a href="#14、MongoDB中为何需要水平分片？" class="headerlink" title="14、MongoDB中为何需要水平分片？"></a>14、MongoDB中为何需要水平分片？</h2><p>1）减少单机请求数,将单机负载,提高总负载<br>2）减少单机的存储空间,提高总存空间</p>
+<h2 id="15、MongoDB中分片键的意义何在？"><a href="#15、MongoDB中分片键的意义何在？" class="headerlink" title="15、MongoDB中分片键的意义何在？"></a>15、MongoDB中分片键的意义何在？</h2><p>1、一个好的片键对分片至关重要。 片键必须是一个索引 ,通 过 sh.shardCollection 加会自动创建索<br>引。一个自增的片键对写入和数据均匀分布就不是很好, 因为自增的片键总会在一个分片上写入,后续达到某<br>个阀值可能会写到别的分片。但是按照片键查询会非常高效。随机片键对数据的均匀分布效果很好。注意尽量<br>避免在多个分片上进行查询。<br>2、在所有分片上查询,mongos 会对结果进行归并排序，提高查询效率和速度</p>
+<h2 id="16、什么情况下需要用到MongoDB的分片？"><a href="#16、什么情况下需要用到MongoDB的分片？" class="headerlink" title="16、什么情况下需要用到MongoDB的分片？"></a>16、什么情况下需要用到MongoDB的分片？</h2><p>1）机器的磁盘不够用了。使用分片解决磁盘空间的问题。<br>2）单个mongod已经不能满足写数据的性能要求。通过分片让写压力分散到各个分片上面,使用分片服务器自<br>身的资源。<br>3）想把大量数据放到内存里提高性能。和上面一样,通过分片使用分片服务器自身的资源。</p>
+<h2 id="17、构建一个分片集群需要用的那些角色？分别是什么？"><a href="#17、构建一个分片集群需要用的那些角色？分别是什么？" class="headerlink" title="17、构建一个分片集群需要用的那些角色？分别是什么？"></a>17、构建一个分片集群需要用的那些角色？分别是什么？</h2><p>1）分片服务器（Shard Server）<br>mongod 实例,用于存储实际的数据块,实际生产环境中一个 shard server 角色可由几台机器组个一<br>个 relica set 承担,防止主机单点故障<br>这是一个独立普通的mongod进程,保存数据信息。可以是一个副本集也可以是单独的一台服务器。<br>2）配置服务器（Config Server）<br>mongod 实例,存储了整个 Cluster Metadata,其中包括 chunk 信息。<br>这是一个独立的mongod进程,保存集群和分片的元数据,即各分片包含了哪些数据的信息。最先开始建立,<br>启用日志功能。像启动普通的 mongod 一样启动<br>配置服务器,指定configsvr 选项。不需要太多的空间和资源,配置服务器的 1KB 空间相当于真是数据<br>的 200MB。保存的只是数据的分布表。<br>3）路由服务器（Route Server）<br>mongos实例,前端路由,客户端由此接入,且让整个集群看上去像单一数据库,前端应用<br>起到一个路由的功能,供程序连接。本身不保存数据,在启动时从配置服务器加载集群信息,开启 mongos<br>进程需要知道配置服务器的地址,指定configdb选项。</p>
+<h2 id="18、如何执行事务-x2F-加锁"><a href="#18、如何执行事务-x2F-加锁" class="headerlink" title="18、如何执行事务&#x2F;加锁?"></a>18、如何执行事务&#x2F;加锁?</h2><p>ongoDB没有使用传统的锁或者复杂的带回滚的事务，因为它设计的宗旨是轻量，快速以及可预计的高性能。<br>可以把它类比成MySQL MylSAM的自动提交模式。通过精简对事务的支持，性能得到了提升，特别是在一个可<br>能会穿过多个服务器的系统里。</p>
+<h2 id="19、副本集角色有那些？做是什么？"><a href="#19、副本集角色有那些？做是什么？" class="headerlink" title="19、副本集角色有那些？做是什么？"></a>19、副本集角色有那些？做是什么？</h2><ol>
+<li>主节点（Primary）</li>
+</ol>
+<p>接收所有的写请求，然后把修改同步到所有Secondary。一个Replica Set只能有一个Primary节点，当<br>Primary挂掉后，其他Secondary或者Arbiter节点会重新选举出来一个主节点。<br>默认读请求也是发到Primary节点处理的，可以通过修改客户端连接配置以支持读取Secondary节点。</p>
+<ol start="2">
+<li>副本节点（Secondary）</li>
+</ol>
+<p>与主节点保持同样的数据集。当主节点挂掉的时候，参与选主。</p>
+<ol start="3">
+<li>仲裁者（Arbiter）</li>
+</ol>
+<p>不保有数据，不参与选主，只进行选主投票。使用Arbiter可以减轻数据存储的硬件需求，Arbiter几乎没什<br>么大的硬件资源需求，但重要的一点是，在生产环境下它和其他数据节点不要部署在同一台机器上。</p>
+<h2 id="20、非关系型数据库有哪些类型？"><a href="#20、非关系型数据库有哪些类型？" class="headerlink" title="20、非关系型数据库有哪些类型？"></a>20、非关系型数据库有哪些类型？</h2><p>1、 Key-Value 存储 Eg:Amazon S3<br>2、图表 Eg:Neo4J<br>3、文档存储 Eg:MongoDB<br>4、基于列存储 Eg:Cassandra</p>
+<h2 id="21、数据在什么时候才会扩展到多个分片-shard-里"><a href="#21、数据在什么时候才会扩展到多个分片-shard-里" class="headerlink" title="21、数据在什么时候才会扩展到多个分片(shard)里?"></a>21、数据在什么时候才会扩展到多个分片(shard)里?</h2><p>MongoDB 分片是基于区域(range)的。所以一个集合(collection)中的所有的对象都被存放到一个块<br>(chunk)中。只有当存在多余一个块的时候，才会有多个分片获取数据的选项。现在，每个默认块的大小是<br>64Mb，所以你需要至少 64 Mb 空间才可以实施一个迁移。</p>
+<h2 id="22、如果在一个分片-shard-停止或者很慢的时候，我发起一个查询会怎样"><a href="#22、如果在一个分片-shard-停止或者很慢的时候，我发起一个查询会怎样" class="headerlink" title="22、如果在一个分片(shard)停止或者很慢的时候，我发起一个查询会怎样?"></a>22、如果在一个分片(shard)停止或者很慢的时候，我发起一个查询会怎样?</h2><p>如果一个分片(shard)停止了，除非查询设置了“Partial”选项，否则查询会返回一个错误。如果一个分片<br>(shard)响应很慢，MongoDB则会等待它的响应。</p>
+<h2 id="23、如何理解MongoDB中的GridFS机制，MongoDB为何使用GridFS来存储文件？"><a href="#23、如何理解MongoDB中的GridFS机制，MongoDB为何使用GridFS来存储文件？" class="headerlink" title="23、如何理解MongoDB中的GridFS机制，MongoDB为何使用GridFS来存储文件？"></a>23、如何理解MongoDB中的GridFS机制，MongoDB为何使用GridFS来存储文件？</h2><p>GridFS是一种将大型文件存储在MongoDB中的文件规范。使用GridFS可以将大文件分隔成多个小文档存放，<br>这样我们能够有效的保存大文档，而且解决了BSON对象有限制的问题。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="24、我应该启动一个集群分片-sharded-还是一个非集群分片的-MongoDB-环境"><a href="#24、我应该启动一个集群分片-sharded-还是一个非集群分片的-MongoDB-环境" class="headerlink" title="24、我应该启动一个集群分片(sharded)还是一个非集群分片的 MongoDB 环境?"></a>24、我应该启动一个集群分片(sharded)还是一个非集群分片的 MongoDB 环境?</h2><p>为开发便捷起见，我们建议以非集群分片(unsharded)方式开始一个 MongoDB 环境，除非一台服务器不足<br>以存放你的初始数据集。从非集群分片升级到集群分片(sharding)是无缝的，所以在你的数据集还不是很大<br>的时候没必要考虑集群分片(sharding)。</p>
+<h2 id="25、MongoDB适合应用在那些场景"><a href="#25、MongoDB适合应用在那些场景" class="headerlink" title="25、MongoDB适合应用在那些场景?"></a>25、MongoDB适合应用在那些场景?</h2><p>从目前阿里云 MongoDB 云数据库上的用户看，MongoDB 的应用已经渗透到各个领域，比如游戏、物流、电<br>商、内容管理、社交、物联网、视频直播等，以下是几个实际的应用案例。<br>游戏场景，使用 MongoDB 存储游戏用户信息，用户的装备、积分等直接以内嵌文档的形式存储，方便查询、<br>更新<br>物流场景，使用 MongoDB 存储订单信息，订单状态在运送过程中会不断更新，以 MongoDB 内嵌数组的形<br>式来存储，一次查询就能将订单所有的变更读取出来。<br>社交场景，使用 MongoDB 存储存储用户信息，以及用户发表的朋友圈信息，通过地理位置索引实现附近的<br>人、地点等功能<br>物联网场景，使用 MongoDB 存储所有接入的智能设备信息，以及设备汇报的日志信息，并对这些信息进行多<br>维度的分析<br>视频直播，使用 MongoDB 存储用户信息、礼物信息等</p>
+<h2 id="26、”ObjectID”有哪些部分组成"><a href="#26、”ObjectID”有哪些部分组成" class="headerlink" title="26、”ObjectID”有哪些部分组成"></a>26、”ObjectID”有哪些部分组成</h2><p>一共有四部分组成:时间戳、客户端ID、客户进程ID、三个字节的增量计数器。<br>_id是一个 12 字节长的十六进制数，它保证了每一个文档的唯一性。在插入文档时，需要提供_id。如果你<br>不提供，那么 MongoDB 就会为每一文档提供一个唯一的 id。_id的头 4 个字节代表的是当前的时间戳，<br>接着的后 3 个字节表示的是机器 id 号，接着的 2 个字节表示 MongoDB 服务器进程 id，最后的 3 个<br>字节代表递增值。</p>
+<h2 id="27、如何使用”AND”或”OR”条件循环查询集合中的文档"><a href="#27、如何使用”AND”或”OR”条件循环查询集合中的文档" class="headerlink" title="27、如何使用”AND”或”OR”条件循环查询集合中的文档"></a>27、如何使用”AND”或”OR”条件循环查询集合中的文档</h2><p>在 find() 方法中，如果传入多个键，并用逗号( , )分隔它们，那么 MongoDB 会把它看成是AND条件。</p>
+<blockquote>
+<p>db.mycol.find({key1:value1, key2:value2}).pretty()<br>若基于OR条件来查询文档，可以使用关键字$or。<br>db.mycol.find(<br>{<br>$or: [<br>{key1: value1}, {key2:value2}<br>]<br>}<br>).pretty()</p>
+</blockquote>
+<h2 id="28、在MongoDB中如何排序？"><a href="#28、在MongoDB中如何排序？" class="headerlink" title="28、在MongoDB中如何排序？"></a>28、在MongoDB中如何排序？</h2><p>MongoDB 中的文档排序是通过 sort() 方法来实现的。 sort() 方法可以通过一些参数来指定要进行排序<br>的字段，并使用 1 和 -1 来指定排序方式，其中 1 表示升序，而 -1 表示降序。</p>
+<blockquote>
+<p>db.connectionName.find({key:value}).sort({columnName:1})</p>
+</blockquote>
+<h2 id="29、什么是聚合？"><a href="#29、什么是聚合？" class="headerlink" title="29、什么是聚合？"></a>29、什么是聚合？</h2><p>聚合操作能够处理数据记录并返回计算结果。聚合操作能将多个文档中的值组合起来，对成组数据执行各种操<br>作，返回单一的结果。它相当于 SQL 中的 count(*) 组合 group by。对于 MongoDB 中的聚合操作，<br>应该使用 aggregate() 方法。</p>
+<blockquote>
+<p>db.COLLECTION_NAME.aggregate(AGGREGATE_OPERATION)</p>
+</blockquote>
+<h2 id="30、raft-选举过程，投票规则？"><a href="#30、raft-选举过程，投票规则？" class="headerlink" title="30、raft 选举过程，投票规则？"></a>30、raft 选举过程，投票规则？</h2><p>选举过程：<br>当系统启动好之后，初始选举后系统由1个Leader和若干个Follower角色组成。然后突然由于某个异常<br>原因，Leader服务出现了异常，导致Follower角色检测到和Leader的上次RPC更新时间超过给定阈值时间<br>时。此时Follower会认为Leader服务已出现异常，然后它将会发起一次新的Leader选举行为，同时将自身<br>的状态从Follower切换为Candidate身份。随后请求其它Follower投票选择自己。<br>投票规则：<br>当一个候选人获得了同一个任期号内的大多数选票，就成为领导人。<br>每个节点最多在一个任期内投出一张选票。并且按照先来先服务的原则。<br>一旦候选人赢得选举，立刻成为领导，并发送心跳维持权威，同时阻止新领导人的诞生</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zzonn.com/2020/02/08/MongoDB%E9%AB%98%E9%A2%91%E9%97%AE%E7%AD%94-mongodb-gao-pin-wen-da/" data-id="clf0jcv6v000n6ocxc3be5vlm" data-title="MongoDB高频问答" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb/" rel="tag">mongodb</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-SQLServer高频问答-sqlserver-gao-pin-wen-da" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/02/03/SQLServer%E9%AB%98%E9%A2%91%E9%97%AE%E7%AD%94-sqlserver-gao-pin-wen-da/" class="article-date">
+  <time class="dt-published" datetime="2020-02-03T07:53:02.000Z" itemprop="datePublished">2020-02-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/SQL/">SQL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/02/03/SQLServer%E9%AB%98%E9%A2%91%E9%97%AE%E7%AD%94-sqlserver-gao-pin-wen-da/">SQLServer高频问答</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="一、数据库基础知识篇（SQLServer-x2F-MySQL通用）"><a href="#一、数据库基础知识篇（SQLServer-x2F-MySQL通用）" class="headerlink" title="一、数据库基础知识篇（SQLServer&#x2F;MySQL通用）"></a>一、数据库基础知识篇（SQLServer&#x2F;MySQL通用）</h2><h3 id="1-说说主键、外键、超键、候选键"><a href="#1-说说主键、外键、超键、候选键" class="headerlink" title="1.说说主键、外键、超键、候选键"></a>1.说说主键、外键、超键、候选键</h3><p>超键：在关系中能唯一标识元组的属性集称为关系模式的超键。一个属性可以为作为一个超键，多个属 性组合在一起也可以作为一个超键。超键包含候选键和主键。 候选键：是最小超键，即没有冗余元素的超键。 主键：数据库表中对储存数据对象予以唯一和完整标识的数据列或属性的组合。一个数据列只能有一个 主键，且主键的取值不能缺失，即不能为空值（Null）。 外键：在一个表中存在的另一个表的主键称此表的外键。</p>
+<h3 id="2-为什么用自增列作为主键？"><a href="#2-为什么用自增列作为主键？" class="headerlink" title="2.为什么用自增列作为主键？"></a>2.为什么用自增列作为主键？</h3><p>如果我们定义了主键(PRIMARY KEY)，那么InnoDB会选择主键作为聚集索引、 如果没有显式定义主键，则InnoDB会选择第一个不包含有NULL值的唯一索引作为主键索引、 如果也没有这样的唯一索引，则InnoDB会选择内置6字节长的ROWID作为隐含的聚集索引(ROWID随着 行记录的写入而主键递增，这个ROWID不像ORACLE的ROWID那样可引用，是隐含的)。 数据记录本身被存于主索引（一颗B+Tree）的叶子节点上。这就要求同一个叶子节点内（大小为一个内 存页或磁盘页）的各条数据记录按主键顺序存放，因此每当有一条新的记录插入时，MySQL会根据其主 键将其插入适当的节点和位置，如果页面达到装载因子（InnoDB默认为15&#x2F;16），则开辟一个新的页<br>（节点） 如果表使用自增主键，那么每次插入新的记录，记录就会顺序添加到当前索引节点的后续位置，当一页 写满，就会自动开辟一个新的页 如果使用非自增主键（如果身份证号或学号等），由于每次插入主键的值近似于随机，因此每次新记录 都要被插到现有索引页的中间某个位置，此时MySQL不得不为了将新记录插到合适位置而移动数据，甚 至目标页面可能已经被回写到磁盘上而从缓存中清掉，此时又要从磁盘上读回来，这增加了很多开销， 同时频繁的移动、分页操作造成了大量的碎片，得到了不够紧凑的索引结构，后续不得不通过 OPTIMIZE TABLE来重建表并优化填充页面。</p>
+<h3 id="3-触发器的作用是什么？"><a href="#3-触发器的作用是什么？" class="headerlink" title="3.触发器的作用是什么？"></a>3.触发器的作用是什么？</h3><p>触发器是一种特殊的存储过程，主要是通过事件来触发而被执行的。它可以强化约束，来维护数据的完 整性和一致性，可以跟踪数据库内的操作从而不允许未经许可的更新和变化。可以联级运算。如，某表 上的触发器上包含对另一个表的数据操作，而该操作又会导致该表触发器被触发。</p>
+<h3 id="4-什么是存储过程？用什么来调用？"><a href="#4-什么是存储过程？用什么来调用？" class="headerlink" title="4.什么是存储过程？用什么来调用？"></a>4.什么是存储过程？用什么来调用？</h3><p>存储过程是一个预编译的SQL语句，优点是允许模块化的设计，就是说只需创建一次，以后在该程序中 就可以调用多次。如果某次操作需要执行多次SQL，使用存储过程比单纯SQL语句执行要快。<br>调用：<br>1）可以用一个命令对象来调用存储过程。<br>2）可以供外部程序调用，比如：java程序。</p>
+<h3 id="5-说说存储过程的优缺点？"><a href="#5-说说存储过程的优缺点？" class="headerlink" title="5.说说存储过程的优缺点？"></a>5.说说存储过程的优缺点？</h3><p>优点：<br>1）存储过程是预编译过的，执行效率高。<br>2）存储过程的代码直接存放于数据库中，通过存储过程名直接调用，减少网络通讯。<br>3）安全性高，执行存储过程需要有一定权限的用户。<br>4）存储过程可以重复使用，可减少数据库开发人员的工作量。<br>缺点：<br>移植性差</p>
+<h3 id="6-说说存储过程与函数的区别"><a href="#6-说说存储过程与函数的区别" class="headerlink" title="6.说说存储过程与函数的区别"></a>6.说说存储过程与函数的区别</h3><p>（1）存储过程用户在数据库中完成特定操作或者任务（如插入，删除等），函数用于返回特定的数 据。<br>（2）存储过程声明用procedure，函数用function。<br>（3）存储过程不需要返回类型，函数必须要返回类型。<br>（4）存储过程可作为独立的pl-sql执行，函数不能作为独立的plsql执行，必须作为表达式的一部分。<br>（5）存储过程只能通过out和in&#x2F;out来返回值，函数除了可以使用out，in&#x2F;out以外，还可以使用return 返回值。<br>（6）sql语句（DML或SELECT)中不可用调用存储过程，而函数可以。</p>
+<h3 id="7-什么叫视图？游标是什么？"><a href="#7-什么叫视图？游标是什么？" class="headerlink" title="7.什么叫视图？游标是什么？"></a>7.什么叫视图？游标是什么？</h3><p>视图： 是一种虚拟的表，具有和物理表相同的功能。可以对视图进行增，改，查，操作，试图通常是有一个表 或者多个表的行或列的子集。对视图的修改会影响基本表。它使得我们获取数据更容易，相比多表查 询。<br>游标： 是对查询出来的结果集作为一个单元来有效的处理。游标可以定在该单元中的特定行，从结果集的当前 行检索一行或多行。可以对结果集当前行做修改。一般不使用游标，但是需要逐条处理数据的时候，游 标显得十分重要。</p>
+<h3 id="8-视图的优缺点有哪些？"><a href="#8-视图的优缺点有哪些？" class="headerlink" title="8.视图的优缺点有哪些？"></a>8.视图的优缺点有哪些？</h3><p>优点：<br>1对数据库的访问，因为视图可以有选择性的选取数据库里的一部分。<br>2)用户通过简单的查询可以从复杂查询中得到结果。<br>3)维护数据的独立性，试图可从多个表检索数据。<br>4)对于相同的数据可产生不同的视图。 缺点：<br>性能：查询视图时，必须把视图的查询转化成对基本表的查询，如果这个视图是由一个复杂的多表查询 所定义，那么，那么就无法更改数据</p>
+<h3 id="9-说说drop、truncate、-delete区别"><a href="#9-说说drop、truncate、-delete区别" class="headerlink" title="9.说说drop、truncate、 delete区别"></a>9.说说drop、truncate、 delete区别</h3><p>最基本：</p>
+<ol>
+<li>drop直接删掉表。</li>
+<li>truncate删除表中数据，再插入时自增长id又从1开始。</li>
+<li>delete删除表中数据，可以加where字句。<br>（1） DELETE语句执行删除的过程是每次从表中删除一行，并且同时将该行的删除操作作为事务记录在 日志中保存以便进行进行回滚操作。TRUNCATE TABLE 则一次性地从表中删除所有的数据并不把单独 的删除操作记录记入日志保存，删除行是不能恢复的。并且在删除的过程中不会激活与表有关的删除触 发器。执行速度快。<br>（2） 表和索引所占空间。当表被TRUNCATE 后，这个表和索引所占用的空间会恢复到初始大小，而<br>DELETE操作不会减少表或索引所占用的空间。drop语句将表所占用的空间全释放掉。<br>（3） 一般而言，drop &gt; truncate &gt; delete<br>（4） 应用范围。TRUNCATE 只能对TABLE；DELETE可以是table和view<br>（5） TRUNCATE 和DELETE只删除数据，而DROP则删除整个表（结构和数据）。<br>（6） truncate与不带where的delete ：只删除数据，而不删除表的结构（定义）drop语句将删除表的 结构被依赖的约束（constrain),触发器（trigger)索引（index);依赖于该表的存储过程&#x2F;函数将被保留， 但其状态会变为：invalid。<br>（7） delete语句为DML（data maintain Language),这个操作会被放到 rollback segment中,事务提交 后才生效。如果有相应的 tigger,执行的时候将被触发。<br>（8） truncate、drop是DLL（data define language),操作立即生效，原数据不放到 rollback segment中，不能回滚。<br>（9） 在没有备份情况下，谨慎使用 drop 与 truncate。要删除部分数据行采用delete且注意结合 where来约束影响范围。回滚段要足够大。要删除表用drop;若想保留表而将表中数据删除，如果与事 务无关，用truncate即可实现。如果和事务有关，或老师想触发trigger,还是用delete。<br>（10） Truncate table 表名 速度快,而且效率高,因为:?truncate table 在功能上与不带 WHERE 子句的 DELETE 语句相同：二者均删除表中的全部行。但 TRUNCATE TABLE 比 DELETE 速度快，且使用的系统 和事务日志资源少。DELETE 语句每次删除一行，并在事务日志中为所删除的每行记录一项。 TRUNCATE TABLE 通过释放存储表数据所用的数据页来删除数据，并且只在事务日志中记录页的释 放。<br>（11） TRUNCATE TABLE 删除表中的所有行，但表结构及其列、约束、索引等保持不变。新行标识所 用的计数值重置为该列的种子。如果想保留标识计数值，请改用 DELETE。如果要删除表定义及其数 据，请使用 DROP TABLE 语句。<br>（12） 对于由 FOREIGN KEY 约束引用的表，不能使用 TRUNCATE TABLE，而应使用不带 WHERE 子 句的 DELETE 语句。由于 TRUNCATE TABLE 不记录在日志中，所以它不能激活触发器。</li>
+</ol>
+<p> 
+ </p>
+<h3 id="10-什么是临时表，临时表什么时候删除"><a href="#10-什么是临时表，临时表什么时候删除" class="headerlink" title="10.什么是临时表，临时表什么时候删除?"></a>10.什么是临时表，临时表什么时候删除?</h3><p>临时表可以手动删除：<br>DROP TEMPORARY TABLE IF EXISTS temp_tb;<br>临时表只在当前连接可见，当关闭连接时，MySQL会自动删除表并释放所有空间。因此在不同的连接中 可以创建同名的临时表，并且操作属于本连接的临时表。 创建临时表的语法与创建表语法类似，不同之处是增加关键字TEMPORARY，<br>如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> TEMPORARY <span class="keyword">TABLE</span> tmp_table ( NAME <span class="type">VARCHAR</span> (<span class="number">10</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line"><span class="type">time</span> <span class="type">date</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> tmp_table;</span><br></pre></td></tr></table></figure>
+<p> 
+ </p>
+<h3 id="11-说说非关系型数据库和关系型数据库区别，优势比较"><a href="#11-说说非关系型数据库和关系型数据库区别，优势比较" class="headerlink" title="11.说说非关系型数据库和关系型数据库区别，优势比较?"></a>11.说说非关系型数据库和关系型数据库区别，优势比较?</h3><p>非关系型数据库的优势：<br>性能：NOSQL是基于键值对的，可以想象成表中的主键和值的对应关系，而且不需要经过SQL层的解 析，所以性能非常高。<br>可扩展性：同样也是因为基于键值对，数据之间没有耦合性，所以非常容易水平扩展。 </p>
+<p>关系型数据库的优势：<br>复杂查询：可以用SQL语句方便的在一个表以及多个表之间做非常复杂的数据查询。<br>事务支持：使得对于安全性能很高的数据访问要求得以实现。<br> 其他：</p>
+<ol>
+<li>对于这两类数据库，对方的优势就是自己的弱势，反之亦然。</li>
+<li>NOSQL数据库慢慢开始具备SQL数据库的一些复杂查询功能，比如MongoDB。</li>
+<li>对于事务的支持也可以用一些系统级的原子操作来实现例如乐观锁之类的方法来曲线救国，比如Redis set nx。</li>
+</ol>
+<p> 
+ </p>
+<h3 id="12-什么是数据库范式，根据某个场景设计数据表"><a href="#12-什么是数据库范式，根据某个场景设计数据表" class="headerlink" title="12.什么是数据库范式，根据某个场景设计数据表?"></a>12.什么是数据库范式，根据某个场景设计数据表?</h3><p>第一范式:(确保每列保持原子性)所有字段值都是不可分解的原子值。 第一范式是最基本的范式。如果数据库表中的所有字段值都是不可分解的原子值，就说明该数据库表满 足了第一范式。 第一范式的合理遵循需要根据系统的实际需求来定。比如某些数据库系统中需要用到“地址”这个属性， 本来直接将“地址”属性设计成一个数据库表的字段就行。但是如果系统经常会访问“地址”属性中的“城市” 部分，那么就非要将“地址”这个属性重新拆分为省份、城市、详细地址等多个部分进行存储，这样在对 地址中某一部分操作的时候将非常方便。这样设计才算满足了数据库的第一范式，如下表所示。 上表所示的用户信息遵循了第一范式的要求，这样在对用户使用城市进行分类的时候就非常方便，也提 高了数据库的性能。<br> 第二范式:(确保表中的每列都和主键相关)在一个数据库表中，一个表中只能保存一种数据，不可以把多 种数据保存在同一张数据库表中。 第二范式在第一范式的基础之上更进一层。第二范式需要确保数据库表中的每一列都和主键相关，而不 能只与主键的某一部分相关（主要针对联合主键而言）。也就是说在一个数据库表中，一个表中只能保 存一种数据，不可以把多种数据保存在同一张数据库表中。 比如要设计一个订单信息表，因为订单中可能会有多种商品，所以要将订单编号和商品编号作为数据库 表的联合主键。<br>第三范式:(确保每列都和主键列直接相关,而不是间接相关) 数据表中的每一列数据都和主键直接相关， 而不能间接相关。第三范式需要确保数据表中的每一列数据都和主键直接相关，而不能间接相关。 比如在设计一个订单数据表的时候，可以将客户编号作为一个外键和订单表建立相应的关系。而不可以 在订单表中添加关于客户其它信息（比如姓名、所属公司等）的字段。 BCNF:符合3NF，并且，主属性不依赖于主属性。 若关系模式属于第二范式，且每个属性都不传递依赖于键码，则R属于BC范式。 通常BC范式的条件有多种等价的表述：每个非平凡依赖的左边必须包含键码；每个决定因素必须包含键 码。 BC范式既检查非主属性，又检查主属性。当只检查非主属性时，就成了第三范式。满足BC范式的关系 都必然满足第三范式。 还可以这么说：若一个关系达到了第三范式，并且它只有一个候选码，或者它的每个候选码都是单属 性，则该关系自然达到BC范式。<br>一般，一个数据库设计符合3NF或BCNF就可以了。 第四范式:要求把同一表内的多对多关系删除。 第五范式:从最终结构重新建立原始结构。
+ 
+ </p>
+<h3 id="13-什么是-内连接、外连接、交叉连接、笛卡尔积等"><a href="#13-什么是-内连接、外连接、交叉连接、笛卡尔积等" class="headerlink" title="13.什么是 内连接、外连接、交叉连接、笛卡尔积等?"></a>13.什么是 内连接、外连接、交叉连接、笛卡尔积等?</h3><ol>
+<li>内连接: 只连接匹配的行</li>
+<li>左外连接: 包含左边表的全部行（不管右边的表中是否存在与它们匹配的行），以及右边表中全部匹配的行</li>
+<li>右外连接: 包含右边表的全部行（不管左边的表中是否存在与它们匹配的行），以及左边表中全部匹配的行</li>
+</ol>
+<p>例如1：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.,b. <span class="keyword">FROM</span> luntan <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> usertable <span class="keyword">as</span> b <span class="keyword">ON</span> a.username<span class="operator">=</span>b.username</span><br></pre></td></tr></table></figure>
+
+
+<p>例如2：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.,b. <span class="keyword">FROM</span> city <span class="keyword">as</span> a <span class="keyword">FULL</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> <span class="keyword">user</span> <span class="keyword">as</span> b <span class="keyword">ON</span> a.username<span class="operator">=</span>b.username</span><br></pre></td></tr></table></figure>
+<p> <br>全外连接: 包含左、右两个表的全部行，不管另外一边的表中是否存在与它们匹配的行。<br>交叉连接: 生成笛卡尔积－它不使用任何匹配或者选取条件，而是直接将一个数据源中的每个行与另一 个数据源的每个行都一一匹配<br>例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> type,pub_name <span class="keyword">FROM</span> titles <span class="keyword">CROSS</span> <span class="keyword">JOIN</span> publishers <span class="keyword">ORDER</span> <span class="keyword">BY</span> type</span><br></pre></td></tr></table></figure>
+
+
+<p> </p>
+<h3 id="14-varchar和char的使用场景"><a href="#14-varchar和char的使用场景" class="headerlink" title="14.varchar和char的使用场景?"></a>14.varchar和char的使用场景?</h3><p>1.char的长度是不可变的，而varchar的长度是可变的。 定义一个char[10]和varchar[10]。<br>如果存进去的是‘csdn’,那么char所占的长度依然为10，除了字符‘csdn’外，后面跟六个空格，varchar就 立马把长度变为4了，取数据的时候，char类型的要用trim()去掉多余的空格，而varchar是不需要的。 2.char的存取速度还是要比varchar要快得多，因为其长度固定，方便程序的存储与查找。 char也为此付出的是空间的代价，因为其长度固定，所以难免会有多余的空格占位符占据空间，可谓是 以空间换取时间效率。<br>varchar是以空间效率为首位。 3.char的存储方式是：对英文字符（ASCII）占用1个字节，对一个汉字占用两个字节。 varchar的存储方式是：对每个英文字符占用2个字节，汉字也占用2个字节。 4.两者的存储数据都非unicode的字符数据。
+ 
+ </p>
+<h3 id="15-SQL语言分类"><a href="#15-SQL语言分类" class="headerlink" title="15.SQL语言分类"></a>15.SQL语言分类</h3><p>SQL语言共分为四大类： </p>
+<ol>
+<li>数据查询语言DQL</li>
+</ol>
+<p>数据查询语言DQL基本结构是由SELECT子句，FROM子句，WHERE子句组成的查询块：<br>SELECT FROM WHERE</p>
+<ol start="2">
+<li>数据操纵语言DML 数据操纵语言DML主要有三种形式：<ul>
+<li>插入：INSERT</li>
+<li>更新：UPDATE</li>
+<li>删除：DELETE</li>
+</ul>
+</li>
+<li>数据定义语言DDL</li>
+</ol>
+<p>数据定义语言DDL用来创建数据库中的各种对象—–表、视图、索引、同义词、聚簇等如：<br>CREATE TABLE&#x2F;VIEW&#x2F;INDEX&#x2F;SYN&#x2F;CLUSTER<br>表 视图 索引 同义词 簇<br>DDL操作是隐性提交的！不能rollback </p>
+<ol start="4">
+<li>数据控制语言DCL</li>
+</ol>
+<p>数据控制语言DCL用来授予或回收访问数据库的某种特权，并控制数据库操纵事务发生的时间及效 果，对数据库实行监视等。如：</p>
+<ul>
+<li>GRANT：授权。</li>
+<li>ROLLBACK [WORK] TO [SAVEPOINT]：回退到某一点。回滚—ROLLBACK；回滚命令使数据库 状态回到上次最后提交的状态。其格式为：SQL&gt;ROLLBACK;</li>
+<li>COMMIT [WORK]：提交。 在数据库的插入、删除和修改操作时，只有当事务在提交到数据库时才算完成。在事务提交前，只 有操作数据库的这个人才能有权看到所做的事情，别人只有在最后提交完成后才可以看到。 提交数据有三种类型：显式提交、隐式提交及自动提交。下面分别说明这三种类型。</li>
+</ul>
+<p>(1) 显式提交 用COMMIT命令直接完成的提交为显式提交。其格式为：SQL&gt;COMMIT；<br>(2) 隐式提交 用SQL命令间接完成的提交为隐式提交。这些命令是：ALTER，AUDIT，COMMENT，CONNECT，CREATE，DISCONNECT，DROP， EXIT，GRANT，NOAUDIT，QUIT，REVOKE，RENAME。<br>(3) 自动提交 若把AUTOCOMMIT设置为ON，则在插入、修改、删除语句执行后， 系统将自动进行提交，这就是自动提交。其格式为：SQL&gt;SET AUTOCOMMIT ON；
+ 
+ </p>
+<h3 id="16-说说like-和-的区别"><a href="#16-说说like-和-的区别" class="headerlink" title="16.说说like %和-的区别"></a>16.说说like %和-的区别</h3><p>通配符的分类</p>
+<ul>
+<li>% 百分号通配符：表示任何字符出现任意次数(可以是0次).</li>
+<li>_ 下划线通配符：表示只能匹配单个字符,不能多也不能少,就是一个字符.</li>
+<li>like 操作符：LIKE作用是指示mysql后面的搜索模式是利用通配符而不是直接相等匹配进行比较.</li>
+</ul>
+<p>注意: 如果在使用like操作符时,后面的没有使用通用匹配符效果是和&#x3D;一致的,<br>SELECT * FROM products WHERE products.prod_name like ‘1000’;  能匹配的结果为1000,而不能匹配像JetPack 1000这样的结果.</p>
+<p>技巧与建议:<br>正如所见，通配符很有用，但这种功能是有代价的：通配符搜索的处理一般要比前面讨论的 其他搜索所花时间更长。这里给出一些使用通配符要记住的技巧。 不要过度使用通配符。如果其他操作符能达到相同的目的，应该 使用其他操作符。 在确实需要使用通配符时，除非绝对有必要，否则不要把它们用 在搜索模式的开始处。把通配符置于搜 索模式的开始处，搜索起 来是最慢的。 仔细注意通配符的位置。如果放错地方，可能不会返回想要的数.
+ 
+ </p>
+<h3 id="17-说说count-、count-1-、count-column-的区别"><a href="#17-说说count-、count-1-、count-column-的区别" class="headerlink" title="17.说说count(*)、count(1)、count(column)的区别"></a>17.说说count(*)、count(1)、count(column)的区别</h3><p>count() 对行的数目进行计算,包含NULL<br>count(column) 对特定的列的值具有的行数进行计算,不包含NULL值。<br>count() 还有一种使用方式,count(1)这个用法和count()的结果是一样的。<br>性能问题:</p>
+<ol>
+<li>任何情况下 SELECT COUNT() FROM tablename 是最优选择;</li>
+<li>尽量减少 SELECT COUNT() FROM tablename WHERE COL &#x3D; ‘value’ 这种查询;</li>
+<li>杜绝 SELECT COUNT(COL) FROM tablename WHERE COL2 &#x3D;‘value’ 的出现。 </li>
+<li>如果表没有主键,那么 count(1) 比 count() 快。 如果有主键,那么 count(主键,联合主键) 比 count() 快。 如果表只有一个字段 ,count() 最快。count(1) 跟 count(主键) 一样,只扫描主键。 count() 跟 count(非主键) 一样,扫描整个表。明显前者更快一 些。</li>
+</ol>
+<p> 
+ </p>
+<h3 id="18-什么是最左前缀原则？"><a href="#18-什么是最左前缀原则？" class="headerlink" title="18.什么是最左前缀原则？"></a>18.什么是最左前缀原则？</h3><p>多列索引： </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> people <span class="keyword">ADD</span> INDEX lname_fname_age (lame,fname,age);</span><br></pre></td></tr></table></figure>
+<p> <br>为了提高搜索效率，我们需要考虑运用多列索引,由于索引文件以B－Tree格式保存，所以我们不用扫描 任何记录，即可得到最终结果。 注：在mysql中执行查询时，只能使用一个索引，如果我们在lname,fname,age上分别建索引,执行查询 时，只能使用一个索引，mysql会选择一个最严格(获得结果集记录数最少)的索引。 最左前缀原则：顾名思义，就是最左优先，上例中我们创建了lname_fname_age多列索引,相当于创建 了(lname)单列索引，(lname,fname)组合索引以及(lname,fname,age)组合索引。</p>
+<h3 id="19-什么是索引？"><a href="#19-什么是索引？" class="headerlink" title="19.什么是索引？"></a>19.什么是索引？</h3><p>何为索引： 数据库索引，是数据库管理系统中一个排序的数据结构，索引的实现通常使用B树及其变种B+树。 在数据之外，数据库系统还维护着满足特定查找算法的数据结构，这些数据结构以某种方式引用（指 向）数据，这样就可以在这些数据结构上实现高级查找算法。这种数据结构，就是索引。</p>
+<h3 id="20-索引的作用？它的优点缺点是什么？"><a href="#20-索引的作用？它的优点缺点是什么？" class="headerlink" title="20.索引的作用？它的优点缺点是什么？"></a>20.索引的作用？它的优点缺点是什么？</h3><p>索引作用： 协助快速查询、更新数据库表中数据。 为表设置索引要付出代价的： 一是增加了数据库的存储空间<br>二是在插入和修改数据时要花费较多的时间(因为索引也要随之变动)。</p>
+<p> </p>
+<h3 id="21-索引的优缺点有哪些？"><a href="#21-索引的优缺点有哪些？" class="headerlink" title="21.索引的优缺点有哪些？"></a>21.索引的优缺点有哪些？</h3><p>创建索引可以大大提高系统的性能（优点）：<br>（1）通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性。<br>（2）可以大大加快数据的检索速度，这也是创建索引的最主要的原因。<br>（3）可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义。<br>（4）在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间。<br>（5）通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能。</p>
+<p>增加索引也有许多不利的方面(缺点)：<br>（1）.创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加。<br>（2）.索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果要 建立聚簇索引，那么需要的空间就会更大。<br>（3）.当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，这样就降低了数据的维护 速度。<br>（4）.哪些列适合建立索引、哪些不适合建索引？ 索引是建立在数据库表中的某些列的上面。在创建索引的时候，应该考虑在哪些列上可以创建索引，在 哪些列上不能创建索引。</p>
+<p>一般来说，应该在这些列上创建索引：<br>（1）在经常需要搜索的列上，可以加快搜索的速度；<br>（2）在作为主键的列上，强制该列的唯一性和组织表中数据的排列结构；<br>（3）在经常用在连接的列上，这些列主要是一些外键，可以加快连接的速度；<br>（4）在经常需要根据范围进行搜索的列上创建索引，因为索引已经排序，其指定的范围是连续的；<br>（5）在经常需要排序的列上创建索引，因为索引已经排序，这样查询可以利用索引的排序，加快排序 查询时间；<br>（6）在经常使用在WHERE子句中的列上面创建索引，加快条件的判断速度。</p>
+<p>对于有些列不应该创建索引：<br>（1）对于那些在查询中很少使用或者参考的列不应该创建索引。 这是因为，既然这些列很少使用到，因此有索引或者无索引，并不能提高查询速度。相反，由于增加了 索引，反而降低了系统的维护速度和增大了空间需求。<br>（2）对于那些只有很少数据值的列也不应该增加索引。 这是因为，由于这些列的取值很少，例如人事表的性别列，在查询的结果中，结果集的数据行占了表中 数据行的很大比例，即需要在表中搜索的数据行的比例很大。增加索引，并不能明显加快检索速度。<br>（3）对于那些定义为text, image和bit数据类型的列不应该增加索引。 这是因为，这些列的数据量要么相当大，要么取值很少。(4)当修改性能远远大于检索性能时，不应该创建索引。 这是因为，修改性能和检索性能是互相矛盾的。当增加索引时，会提高检索性能，但是会降低修改性 能。当减少索引时，会提高修改性能，降低检索性能。因此，当修改性能远远大于检索性能时，不应该 创建索引。<br>索引详解：带你从头到尾捋一遍MySQL索引结构！
+ 
+ </p>
+<h3 id="22-什么样的字段适合建索引？"><a href="#22-什么样的字段适合建索引？" class="headerlink" title="22.什么样的字段适合建索引？"></a>22.什么样的字段适合建索引？</h3><p>唯一、不为空、经常被查询的字段</p>
+<h3 id="23-说说聚集索引和非聚集索引区别"><a href="#23-说说聚集索引和非聚集索引区别" class="headerlink" title="23.说说聚集索引和非聚集索引区别?"></a>23.说说聚集索引和非聚集索引区别?</h3><p>聚合索引(clustered index):<br>聚集索引表记录的排列顺序和索引的排列顺序一致，所以查询效率快，只要找到第一个索引值记录，其 余就连续性的记录在物理也一样连续存放。聚集索引对应的缺点就是修改慢，因为为了保证表中记录的 物理和索引顺序一致，在记录插入的时候，会对数据页重新排序。<br>聚集索引类似于新华字典中用拼音去查找汉字，拼音检索表于书记顺序都是按照a~z排列的，就像相同 的逻辑顺序于物理顺序一样，当你需要查找a,ai两个读音的字，或是想一次寻找多个傻(sha)的同音字 时，也许向后翻几页，或紧接着下一行就得到结果了。</p>
+<p>非聚合索引(nonclustered index):<br>非聚集索引指定了表中记录的逻辑顺序，但是记录的物理和索引不一定一致，两种索引都采用B+树结 构，非聚集索引的叶子层并不和实际数据页相重叠，而采用叶子层包含一个指向表中的记录在数据页中 的指针方式。非聚集索引层次多，不会造成数据重排。 非聚集索引类似在新华字典上通过偏旁部首来查询汉字，检索表也许是按照横、竖、撇来排列的，但是 由于正文中是a~z的拼音顺序，所以就类似于逻辑地址于物理地址的不对应。同时适用的情况就在于分组，大数目的不同值，频繁更新的列中，这些情况即不适合聚集索引。</p>
+<p>根本区别： 聚集索引和非聚集索引的根本区别是表记录的排列顺序和与索引的排列顺序是否一致。</p>
+<hr>
+<h2 id="二、SqlServer笔试基础篇"><a href="#二、SqlServer笔试基础篇" class="headerlink" title="二、SqlServer笔试基础篇"></a>二、SqlServer笔试基础篇</h2><p>试用SQL查询语句表达下列对教学数据库中三个基本表 S、SC 、C 的查询： S(sno,sname,SAGE,SSEX) 各字段表示学号，姓名，年龄，性别 Sc(sno,cno,grade) 各字段表示学号，课程号，成绩、<br>C(cno,cname, TEACHER) 各字段表示课程号，课程名和教师名 其 中 SAGE， grade 是数值型，其他均 为字符型。</p>
+<h3 id="1-求年龄大于所有女同学年龄的男学生姓名和年龄。"><a href="#1-求年龄大于所有女同学年龄的男学生姓名和年龄。" class="headerlink" title="1.求年龄大于所有女同学年龄的男学生姓名和年龄。"></a>1.求年龄大于所有女同学年龄的男学生姓名和年龄。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECTSNAME,SAGE <span class="keyword">FROM</span> S <span class="keyword">AS</span> X</span><br><span class="line"><span class="keyword">WHERE</span> X.SSEX<span class="operator">=</span><span class="string">&#x27; 男&#x27;</span><span class="keyword">AND</span> X.SAGE <span class="operator">&gt;</span><span class="keyword">ALL</span> (<span class="keyword">SELECT</span> SAGE FROMS <span class="keyword">AS</span> Y <span class="keyword">WHERE</span> Y.SSEX<span class="operator">=</span><span class="string">&#x27; 女&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="2-求年龄大于女同学平均年龄的男学生姓名和年龄。"><a href="#2-求年龄大于女同学平均年龄的男学生姓名和年龄。" class="headerlink" title="2.求年龄大于女同学平均年龄的男学生姓名和年龄。"></a>2.求年龄大于女同学平均年龄的男学生姓名和年龄。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> SNAME,SAGE <span class="keyword">FROM</span> S</span><br><span class="line"><span class="keyword">WHERE</span> SSEX<span class="operator">=</span><span class="string">&#x27; 男&#x27;</span></span><br><span class="line"><span class="keyword">AND</span> SAGE<span class="operator">&gt;</span>(SELECTAVG(SAGE) <span class="keyword">FROM</span> S <span class="keyword">WHERE</span> SSEX<span class="operator">=</span><span class="string">&#x27;女&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="3-在-SC-中检索成绩为空值的学生学号和课程号。"><a href="#3-在-SC-中检索成绩为空值的学生学号和课程号。" class="headerlink" title="3.在 SC 中检索成绩为空值的学生学号和课程号。"></a>3.在 SC 中检索成绩为空值的学生学号和课程号。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Sno,CnoFROM SC <span class="keyword">WHERE</span> GRADE <span class="keyword">IS</span> <span class="keyword">NULL</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="4-检索姓名以-WANG-打头的所有学生的姓名和年龄。"><a href="#4-检索姓名以-WANG-打头的所有学生的姓名和年龄。" class="headerlink" title="4.检索姓名以 WANG 打头的所有学生的姓名和年龄。"></a>4.检索姓名以 WANG 打头的所有学生的姓名和年龄。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> SNAME,SAGE <span class="keyword">FROM</span> S <span class="keyword">WHERE</span> SNAME <span class="keyword">LIKE</span> <span class="string">&#x27;WANG%&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="5-检索学号比-WANG-同学大，而年龄比他小的学生姓名。"><a href="#5-检索学号比-WANG-同学大，而年龄比他小的学生姓名。" class="headerlink" title="5.检索学号比 WANG 同学大，而年龄比他小的学生姓名。"></a>5.检索学号比 WANG 同学大，而年龄比他小的学生姓名。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> X.SNAME <span class="keyword">FROM</span> S <span class="keyword">AS</span> X, S <span class="keyword">AS</span> Y</span><br><span class="line"><span class="keyword">WHERE</span> Y .SNAME<span class="operator">=</span><span class="string">&#x27;WANG&#x27;</span> <span class="keyword">AND</span> X.Sno<span class="operator">&gt;</span>Y.Sno <span class="keyword">AND</span> X.SAGE</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> SNAME</span><br><span class="line"><span class="keyword">from</span> s</span><br><span class="line"><span class="keyword">where</span> sno<span class="operator">&gt;</span>(<span class="keyword">select</span> sno <span class="keyword">from</span> s <span class="keyword">where</span> SNAME<span class="operator">=</span><span class="string">&#x27;WANG&#x27;</span>) andSAGE<span class="operator">&lt;</span>(<span class="keyword">select</span> sAGE <span class="keyword">from</span> s <span class="keyword">where</span> SNAME<span class="operator">=</span><span class="string">&#x27;WANG&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>**</p>
+<h3 id="6-统计每门课程的学生选修人数-（超过-2-人的课程才统计）-。要求-输出课程号和选修人数，查询结果按人数降序排列，若人数相同，按-课程号升序排列。"><a href="#6-统计每门课程的学生选修人数-（超过-2-人的课程才统计）-。要求-输出课程号和选修人数，查询结果按人数降序排列，若人数相同，按-课程号升序排列。" class="headerlink" title="6.统计每门课程的学生选修人数 （超过 2 人的课程才统计） 。要求 输出课程号和选修人数，查询结果按人数降序排列，若人数相同，按 课程号升序排列。"></a>6.统计每门课程的学生选修人数 （超过 2 人的课程才统计） 。要求 输出课程号和选修人数，查询结果按人数降序排列，若人数相同，按 课程号升序排列。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> Cno,<span class="built_in">COUNT</span>(Sno) <span class="keyword">FROM</span> SC GROUPBY Cno <span class="keyword">HAVING</span> <span class="built_in">COUNT</span>(Sno)<span class="operator">&gt;</span><span class="number">2</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="number">2</span> <span class="keyword">DESC</span>, Cno <span class="keyword">ASC</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> Cno,<span class="built_in">COUNT</span>(Sno) <span class="keyword">as</span> 人数</span><br><span class="line">FROMSC <span class="keyword">GROUP</span> <span class="keyword">BY</span> Cno <span class="keyword">HAVING</span> <span class="built_in">COUNT</span>(Sno)<span class="operator">&gt;</span><span class="number">2</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> 人 数 <span class="keyword">DESC</span>, Cno <span class="keyword">ASC</span></span><br></pre></td></tr></table></figure>
+<p> </p>
+<h3 id="7-求-LIU-老师所授课程的每门课程的学生平均成绩。"><a href="#7-求-LIU-老师所授课程的每门课程的学生平均成绩。" class="headerlink" title="7.求 LIU 老师所授课程的每门课程的学生平均成绩。"></a>7.求 LIU 老师所授课程的每门课程的学生平均成绩。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">AVG</span>(GRADE)</span><br><span class="line"><span class="keyword">FROM</span> SC <span class="keyword">join</span> C <span class="keyword">on</span> SC.Cno<span class="operator">=</span>C.Cno <span class="keyword">WHERE</span> TEACHER<span class="operator">=</span><span class="string">&#x27;liu&#x27;</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> c.Cno</span><br><span class="line"> </span><br><span class="line">SELECTCNAME,<span class="built_in">AVG</span>(GRADE) <span class="keyword">FROM</span> SC ,C <span class="keyword">WHERE</span> SC.Cno<span class="operator">=</span>C.Cno <span class="keyword">AND</span> TEACHER<span class="operator">=</span><span class="string">&#x27;liu&#x27;</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> c.Cno,cname</span><br></pre></td></tr></table></figure>
+<p> </p>
+<h3 id="8-求选修-C4-课程的学生的平均年龄。"><a href="#8-求选修-C4-课程的学生的平均年龄。" class="headerlink" title="8.求选修 C4 课程的学生的平均年龄。"></a>8.求选修 C4 课程的学生的平均年龄。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">AVG</span>(SAGE ) FROMS <span class="keyword">WHERE</span> Sno</span><br><span class="line"><span class="keyword">IN</span>(<span class="keyword">SELECT</span> Sno <span class="keyword">FROM</span> SC <span class="keyword">WHERE</span> Cno<span class="operator">=</span><span class="string">&#x27;4&#x27;</span>)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">AVG</span>(SAGE)</span><br><span class="line"><span class="keyword">FROM</span> S,SC WHERES.Sno<span class="operator">=</span>SC.Sno <span class="keyword">AND</span> Cno<span class="operator">=</span><span class="string">&#x27;4&#x27;</span></span><br></pre></td></tr></table></figure>
+<p> </p>
+<h3 id="9．统计有学生选修的课程门数。"><a href="#9．统计有学生选修的课程门数。" class="headerlink" title="9．统计有学生选修的课程门数。"></a>9．统计有学生选修的课程门数。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="keyword">DISTINCT</span> Cno) <span class="keyword">FROM</span> SC</span><br></pre></td></tr></table></figure>
+<p> </p>
+<hr>
+<p>试用 SQL 更新语句表达对教学数据库中三个基本表 S、 SC 、C的各个更新操作：</p>
+<p> </p>
+<h3 id="10-在基本表-SC-中修改-4-号课程的成绩，若成绩小于等于-75-分时提-高-5-，-若成绩大于-75-分时提高-4-（用两个-UPDATE-语句实-现）。"><a href="#10-在基本表-SC-中修改-4-号课程的成绩，若成绩小于等于-75-分时提-高-5-，-若成绩大于-75-分时提高-4-（用两个-UPDATE-语句实-现）。" class="headerlink" title="10.在基本表 SC 中修改 4 号课程的成绩，若成绩小于等于 75 分时提 高 5% ， 若成绩大于 75 分时提高 4% （用两个 UPDATE 语句实 现）。"></a>10.在基本表 SC 中修改 4 号课程的成绩，若成绩小于等于 75 分时提 高 5% ， 若成绩大于 75 分时提高 4% （用两个 UPDATE 语句实 现）。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> SC SETGRADE<span class="operator">=</span>GRADE<span class="operator">*</span><span class="number">1.05</span> <span class="keyword">WHERE</span> Cno<span class="operator">=</span><span class="string">&#x27;4&#x27;</span> <span class="keyword">AND</span> GRADE<span class="operator">&lt;=</span><span class="number">75</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">UPDATE</span> SC <span class="keyword">SET</span> GRADE<span class="operator">=</span>GRADE<span class="operator">*</span><span class="number">1.04</span> <span class="keyword">WHERE</span> Cno<span class="operator">=</span><span class="string">&#x27;4&#x27;</span> <span class="keyword">AND</span> GRADE<span class="operator">&gt;</span><span class="number">75</span></span><br></pre></td></tr></table></figure>
+<p> </p>
+<h3 id="11-把低于总平均成绩的女同学成绩提高-5-。"><a href="#11-把低于总平均成绩的女同学成绩提高-5-。" class="headerlink" title="11 .把低于总平均成绩的女同学成绩提高 5% 。"></a>11 .把低于总平均成绩的女同学成绩提高 5% 。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> SC SETGRADE<span class="operator">=</span>GRADE<span class="operator">*</span><span class="number">1.05</span> <span class="keyword">WHERE</span> GRADE<span class="operator">&lt;</span>(<span class="keyword">SELECT</span> <span class="built_in">AVG</span>(GRADE) <span class="keyword">FROM</span> SC) <span class="keyword">AND</span> Sno <span class="keyword">IN</span> (<span class="keyword">SELECT</span> Sno <span class="keyword">FROM</span> SWHERE SSEX<span class="operator">=</span><span class="string">&#x27; 女&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p> </p>
+<h3 id="12-把选修数据库原理课不及格的成绩全改为空值。"><a href="#12-把选修数据库原理课不及格的成绩全改为空值。" class="headerlink" title="12 .把选修数据库原理课不及格的成绩全改为空值。"></a>12 .把选修数据库原理课不及格的成绩全改为空值。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> SC <span class="keyword">SET</span> GRADE<span class="operator">=</span><span class="keyword">NULL</span></span><br><span class="line"><span class="keyword">WHERE</span> GRADE<span class="operator">&lt;</span><span class="number">60</span> <span class="keyword">AND</span> Cno <span class="keyword">IN</span>(<span class="keyword">SELECT</span> Cno <span class="keyword">FROM</span> C <span class="keyword">WHERE</span> CNAME<span class="operator">=</span><span class="string">&#x27; 数据库原理 &#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p> </p>
+<h3 id="13．把WANG-同学的学习选课和成绩全部删去。"><a href="#13．把WANG-同学的学习选课和成绩全部删去。" class="headerlink" title="13．把WANG 同学的学习选课和成绩全部删去。"></a>13．把WANG 同学的学习选课和成绩全部删去。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETEFROM SC <span class="keyword">WHERE</span> Sno <span class="keyword">IN</span>(<span class="keyword">SELECT</span> Sno <span class="keyword">FROM</span> S <span class="keyword">WHERE</span> SNAME<span class="operator">=</span><span class="string">&#x27;WANG&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p> </p>
+<h3 id="14-．在基本表-SC-中删除尚无成绩的选课元组。"><a href="#14-．在基本表-SC-中删除尚无成绩的选课元组。" class="headerlink" title="14 ．在基本表 SC 中删除尚无成绩的选课元组。"></a>14 ．在基本表 SC 中删除尚无成绩的选课元组。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> SCWHERE GRADE <span class="keyword">IS</span> <span class="keyword">NULL</span></span><br></pre></td></tr></table></figure>
+<p> </p>
+<h3 id="15-．往基本表-S-中插入一个学生元组（-‘-S9’，‘-WU-’，18-）。。"><a href="#15-．往基本表-S-中插入一个学生元组（-‘-S9’，‘-WU-’，18-）。。" class="headerlink" title="15 ．往基本表 S 中插入一个学生元组（ ‘ S9’，‘ WU ’，18 ）。。"></a>15 ．往基本表 S 中插入一个学生元组（ ‘ S9’，‘ WU ’，18 ）。。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> S(Sno,SNAME,SAGE) <span class="keyword">VALUES</span>(<span class="string">&#x27;59&#x27;</span>,<span class="string">&#x27;WU&#x27;</span>,<span class="number">18</span>)</span><br></pre></td></tr></table></figure>
+<p> </p>
+<h3 id="16-什么是SQL注入式攻击？"><a href="#16-什么是SQL注入式攻击？" class="headerlink" title="16.什么是SQL注入式攻击？"></a>16.什么是SQL注入式攻击？</h3><p>所谓SQL注入式攻击，就是攻击者把SQL命令插入到Web表单的输入域或页面请求的查询字符串，欺骗 服务器执行恶意的SQL命令。在某些表单中，用户输入的内容直接用来构造（或者影响）动态SQL命 令，或作为存储过程的输入参数，这类表单特别容易受到SQL注入式攻击。</p>
+<hr>
+<h2 id="三、SqlServer笔试高级篇"><a href="#三、SqlServer笔试高级篇" class="headerlink" title="三、SqlServer笔试高级篇"></a>三、SqlServer笔试高级篇</h2><h3 id="1-什么是内存泄漏？"><a href="#1-什么是内存泄漏？" class="headerlink" title="1.什么是内存泄漏？"></a>1.什么是内存泄漏？</h3><p>一般我们所说的内存泄漏指的是堆内存的泄漏。堆内存是程序从堆中为其分配的，大小任意的，使用完 后要显示释放内存。当应用程序用关键字new 等创建对象时，就从堆中为它分配一块内存，使用完后程 序调用free 或者delete 释放该内存，否则就说该内存就不能被使用，我们就说该内存被泄漏了。
+ </p>
+<h3 id="2-维护数据库的完整性和一致性，你喜欢用触发器还是自写业务逻-辑？为什么？"><a href="#2-维护数据库的完整性和一致性，你喜欢用触发器还是自写业务逻-辑？为什么？" class="headerlink" title="2.维护数据库的完整性和一致性，你喜欢用触发器还是自写业务逻 辑？为什么？"></a>2.维护数据库的完整性和一致性，你喜欢用触发器还是自写业务逻 辑？为什么？</h3><p>是这样做的，尽可能使用约束，如check, 主键，外键，非空字段等来约束，这样做效率最高，也最方 便。其次是使用触发器，这种方法可以保证，无论什么业务系统访问数据库都可以保证数据的完整新和 一致性。最后考虑的是自写业务逻辑，但这样做麻烦，编程复杂，效率低下。
+ </p>
+<h3 id="3-什么是事务？什么是锁？"><a href="#3-什么是事务？什么是锁？" class="headerlink" title="3.什么是事务？什么是锁？"></a>3.什么是事务？什么是锁？</h3><p>事务就是被绑定在一起作为一个逻辑工作单元的SQL 语句分组，如果任何一个语句操作失败那么整个操 作就被失败，以后操作就会回滚到操作前状态，或者是上有个节点。为了确保要么执行，要么不执行， 就可以使用事务。要将有组语句作为事务考虑，就需要通过ACID 测试，即原子性，一致性，隔离性和 持久性。<br>锁：在所以的 DBMS中，锁是实现事务的关键，锁可以保证事务的完整性和并发性。与现实生活中锁一 样，它可以使某些数据的拥有者，在某段时间内不能使用某些数据或数据结构。当然锁还分级别的。
+ </p>
+<h3 id="4-对一个投入使用的在线事务处理表格有过多索引需要有什么样的性-能考虑"><a href="#4-对一个投入使用的在线事务处理表格有过多索引需要有什么样的性-能考虑" class="headerlink" title="4.对一个投入使用的在线事务处理表格有过多索引需要有什么样的性 能考虑?"></a>4.对一个投入使用的在线事务处理表格有过多索引需要有什么样的性 能考虑?</h3><p>对一个表格的索引越多，数据库引擎用来更新、插入或者删除数据所需要的时间就越多，因为在数据操 控发生的时候索引也必须要维护。</p>
+<h3 id="5-什么是相关子查询-如何使用这些查询"><a href="#5-什么是相关子查询-如何使用这些查询" class="headerlink" title="5.什么是相关子查询?如何使用这些查询?"></a>5.什么是相关子查询?如何使用这些查询?</h3><p>相关子查询是一种包含子查询的特殊类型的查询。查询里包含的子查询会真正请求外部查询的值，从而 形成一个类似于循环的状况。</p>
+<h3 id="6-什么是SQL注入式攻击？"><a href="#6-什么是SQL注入式攻击？" class="headerlink" title="6.什么是SQL注入式攻击？"></a>6.什么是SQL注入式攻击？</h3><p>就是攻击者把SQL命令插入到Web表单的输入域或页面请求的查询字符串，欺骗服务器执行恶意的SQL 命令。在某些表单中，用户输入的内容直接用来构造（或者影响）动态SQL命令，或作为存储过程的输 入参数，这类表单特别容易受到SQL注入式攻击</p>
+<h3 id="7-如何防范SQL注入式攻击？"><a href="#7-如何防范SQL注入式攻击？" class="headerlink" title="7.如何防范SQL注入式攻击？"></a>7.如何防范SQL注入式攻击？</h3><p>好在要防止ASP.NET应用被SQL注入式攻击闯入并不是一件特别困难的事情，只要在利用表单输入的内 容构造SQL命令之前，把所有输入内容过滤一番就可以了。过滤输入内容可以按多种方式进行。</p>
+<ol>
+<li>对于动态构造SQL查询的场合，可以使用下面的技术：</li>
+</ol>
+<p>第一：替换单引号，即把所有单独出现的单引号改成两个单引号，防止攻击者修改SQL命令的含义。 再来看前面的例子，“SELECT * from Users WHERE login &#x3D; ’’’ or ’’1’’&#x3D;’’1’ AND password &#x3D; ’’’ or ’’1’’&#x3D;’’1’” 显然会得到与“SELECT * from Users WHERE login &#x3D; ’’ or ’1’&#x3D;’1’ AND password &#x3D; ’’ or ’1’&#x3D;’1’”不同的结果。<br>第二：删除用户输入内容中的所有连字符，防止攻击者构造出类如“SELECT * from Users WHERE login &#x3D; ’mas’ —— AND password &#x3D;’’”之类的查询，因为这类查询的后半部分已经被注释掉，不再有 效，攻击者只要知道一个合法的用户登录名称，根本不需要知道用户的密码就可以顺利获得访问权限。第三：对于用来执行查询的数据库帐户，限制其权限。用不同的用户帐户执行查询、插入、更新、删 除操作。由于隔离了不同帐户可执行的操作，因而也就防止了原本用于执行SELECT命令的地方却被用 于执行INSERT、UPDATE或DELETE命令。</p>
+<ol start="2">
+<li>用存储过程来执行所有的查询。SQL参数的传递方式将防止攻击者利用单引号和连字符实施攻击。 此外，它还使得数据库权限可以限制到只允许特定的存储过程执行，所有的用户输入必须遵从被调用的 存储过程的安全上下文，这样就很难再发生注入式攻击了。</li>
+<li>限制表单或查询字符串输入的长度。如果用户的登录名字最多只有10个字符，那么不要认可表单中 输入的10个以上的字符，这将大大增加攻击者在SQL命令中插入有害代码的难度。</li>
+<li>检查用户输入的合法性，确信输入的内容只包含合法的数据。数据检查应当在客户端和服务器端都 执行——之所以要执行服务器端验证，是为了弥补客户端验证机制脆弱的安全性。 在客户端，攻击者完全有可能获得网页的源代码，修改验证合法性的脚本(或者直接删除脚本)，然后将 非法内容通过修改后的表单提交给服务器。因此，要保证验证操作确实已经执行，唯一的办法就是在服 务器端也执行验证。你可以使用许多内建的验证对象，例如RegularExpressionValidator，它们能够自动生成验证用的客户端脚本，当然你也可以插入服务器端的方法调用。如果找不到现成的验证对象，你 可以通过CustomValidator自己创建一个。</li>
+<li>将用户登录名称、密码等数据加密保存。加密用户输入的数据，然后再将它与数据库中保存的数据 比较，这相当于对用户输入 的数据进行了“消毒”处理，用户输入的数据不再对数据库有任何特殊的意义，从而也就防止了攻击者注 入SQL命令。System.Web.Security.FormsAuthentication类有一个 HashPasswordForStoringInConfigFile，非常适合于对输入数据进行消毒处理。</li>
+<li>检查提取数据的查询所返回的记录数量。如果程序只要求返回一个记录，但实际返回的记录却超过 一行，那就当作出错处理。</li>
+<li>使用预处理语句</li>
+</ol>
+<h3 id="8-你可以用什么来确保表格里的字段只接受特定范围里的值"><a href="#8-你可以用什么来确保表格里的字段只接受特定范围里的值" class="headerlink" title="8.你可以用什么来确保表格里的字段只接受特定范围里的值?"></a>8.你可以用什么来确保表格里的字段只接受特定范围里的值?</h3><p>master 主要保存系统级的信息，比如本数据库实例都有哪些数据库 ，都有哪些账号等，需备份；model 模板，每创建一个数据库 ，都会根据这个库的结构来创建，如果改过此库，建议备份；msdb 保存计划任务，作业之类的信息，需备份，否则会丢失作业和备份计划；<br>tempdb 用户对sqlserver操作时产生的临时数据依赖于此库，最常见的是临时表，不许备份；
+ </p>
+<h3 id="9-有哪些操作会使用到TempDB；如果TempDB异常变大，可能的原-因是什么，该如何处理；"><a href="#9-有哪些操作会使用到TempDB；如果TempDB异常变大，可能的原-因是什么，该如何处理；" class="headerlink" title="9.有哪些操作会使用到TempDB；如果TempDB异常变大，可能的原 因是什么，该如何处理；"></a>9.有哪些操作会使用到TempDB；如果TempDB异常变大，可能的原 因是什么，该如何处理；</h3><p>每个sqlserver运行时所产生的临时数据都会用到tempdb，最常见的是执行sql脚本需要返回的记录集； 异常变大的原因是执行的操作返回的记录集过大造成，找出该语句优化，减少数据范围，或者分批操作 这些数据
+ </p>
+<h3 id="10-Index有哪些类型，它们的区别和实现原理是什么，索引有啥优点-和缺点；如何为SQL语句创建合适的索引，索引创建时有哪些需要-注-意的项，如何查看你创建的索引是否被使用；如何维护索引；索引损-坏如何检查，怎么修复；T-SQL有更好的索引存在，但是运行-时并没-有使用该索引，原因可能是什么；"><a href="#10-Index有哪些类型，它们的区别和实现原理是什么，索引有啥优点-和缺点；如何为SQL语句创建合适的索引，索引创建时有哪些需要-注-意的项，如何查看你创建的索引是否被使用；如何维护索引；索引损-坏如何检查，怎么修复；T-SQL有更好的索引存在，但是运行-时并没-有使用该索引，原因可能是什么；" class="headerlink" title="10.Index有哪些类型，它们的区别和实现原理是什么，索引有啥优点 和缺点；如何为SQL语句创建合适的索引，索引创建时有哪些需要,注 意的项，如何查看你创建的索引是否被使用；如何维护索引；索引损 坏如何检查，怎么修复；T-SQL有更好的索引存在，但是运行,时并没 有使用该索引，原因可能是什么；"></a>10.Index有哪些类型，它们的区别和实现原理是什么，索引有啥优点 和缺点；如何为SQL语句创建合适的索引，索引创建时有哪些需要,注 意的项，如何查看你创建的索引是否被使用；如何维护索引；索引损 坏如何检查，怎么修复；T-SQL有更好的索引存在，但是运行,时并没 有使用该索引，原因可能是什么；</h3><p>聚集索引，非聚集索引；聚集索引只能有一个，非聚集可有多个，数据依赖于聚集索引来保存，如果没 有聚集索引，数据是一个乱序的堆； 优点：合适的索引可有效提高查询效率；缺点：过多的索引，在insert、update 和 delete 的时候增加 索引的维护成本，降低并发量；<br>一般索引的创建要依赖于 where 和 order by 这两个关键字，执行计划可以看出是否用到了索引； 还没遇到过索引损坏的情况，如果损坏，重建之；<br>用不到索引可能是索引碎片过多 ，可进行碎片整理，若不行可加强制索引with(index( 索引名 ))
+ </p>
+<h3 id="11-Job信息我们可以通过哪些表获取；系统正在运行的语句可以通过-哪些视图获取；如何获取某个T-SQL语句的IO、Time等信息；"><a href="#11-Job信息我们可以通过哪些表获取；系统正在运行的语句可以通过-哪些视图获取；如何获取某个T-SQL语句的IO、Time等信息；" class="headerlink" title="11.Job信息我们可以通过哪些表获取；系统正在运行的语句可以通过 哪些视图获取；如何获取某个T-SQL语句的IO、Time等信息；"></a>11.Job信息我们可以通过哪些表获取；系统正在运行的语句可以通过 哪些视图获取；如何获取某个T-SQL语句的IO、Time等信息；</h3><p>sql2000下是通过 master.dbo.sysjobs 来查看作业信息；系统正在运行的语句可通过 master.dbo.sysprocesses 结合 dbcc inputbuffer 来查看，IO，在sql2000下我本人都是通过profiler 看reads，duration，sql2005下有了动态视图（dmv）；</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zzonn.com/2020/02/03/SQLServer%E9%AB%98%E9%A2%91%E9%97%AE%E7%AD%94-sqlserver-gao-pin-wen-da/" data-id="clf0jcv7000176ocxgi7f15cv" data-title="SQLServer高频问答" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sqlserver/" rel="tag">sqlserver</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-MySql高频问答-mysql-gao-pin-wen-da" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/02/02/MySql%E9%AB%98%E9%A2%91%E9%97%AE%E7%AD%94-mysql-gao-pin-wen-da/" class="article-date">
+  <time class="dt-published" datetime="2020-02-02T07:51:46.000Z" itemprop="datePublished">2020-02-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/SQL/">SQL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/02/02/MySql%E9%AB%98%E9%A2%91%E9%97%AE%E7%AD%94-mysql-gao-pin-wen-da/">MySql高频问答</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="一、数据库知识通用篇"><a href="#一、数据库知识通用篇" class="headerlink" title="一、数据库知识通用篇"></a>一、数据库知识通用篇</h2><h3 id="1-说说主键、外键、超键、候选键"><a href="#1-说说主键、外键、超键、候选键" class="headerlink" title="1.说说主键、外键、超键、候选键"></a>1.说说主键、外键、超键、候选键</h3><p>超键：在关系中能唯一标识元组的属性集称为关系模式的超键。一个属性可以为作为一个超键，多个属<br>性组合在一起也可以作为一个超键。超键包含候选键和主键。<br>候选键：是最小超键，即没有冗余元素的超键。<br>主键：数据库表中对储存数据对象予以唯一和完整标识的数据列或属性的组合。一个数据列只能有一个<br>主键，且主键的取值不能缺失，即不能为空值（Null）。<br>外键：在一个表中存在的另一个表的主键称此表的外键。</p>
+<h3 id="2-为什么用自增列作为主键？"><a href="#2-为什么用自增列作为主键？" class="headerlink" title="2.为什么用自增列作为主键？"></a>2.为什么用自增列作为主键？</h3><p>如果我们定义了主键(PRIMARY KEY)，那么InnoDB会选择主键作为聚集索引、<br>如果没有显式定义主键，则InnoDB会选择第一个不包含有NULL值的唯一索引作为主键索引、<br>如果也没有这样的唯一索引，则InnoDB会选择内置6字节长的ROWID作为隐含的聚集索引(ROWID随着<br>行记录的写入而主键递增，这个ROWID不像ORACLE的ROWID那样可引用，是隐含的)。<br>数据记录本身被存于主索引（一颗B+Tree）的叶子节点上。这就要求同一个叶子节点内（大小为一个内<br>存页或磁盘页）的各条数据记录按主键顺序存放，因此每当有一条新的记录插入时，MySQL会根据其主<br>键将其插入适当的节点和位置，如果页面达到装载因子（InnoDB默认为15&#x2F;16），则开辟一个新的页<br>（节点）<br>如果表使用自增主键，那么每次插入新的记录，记录就会顺序添加到当前索引节点的后续位置，当一页<br>写满，就会自动开辟一个新的页<br>如果使用非自增主键（如果身份证号或学号等），由于每次插入主键的值近似于随机，因此每次新记录<br>都要被插到现有索引页的中间某个位置，此时MySQL不得不为了将新记录插到合适位置而移动数据，甚<br>至目标页面可能已经被回写到磁盘上而从缓存中清掉，此时又要从磁盘上读回来，这增加了很多开销，<br>同时频繁的移动、分页操作造成了大量的碎片，得到了不够紧凑的索引结构，后续不得不通过<br>OPTIMIZE TABLE来重建表并优化填充页面。</p>
+<h3 id="3-触发器的作用是什么？"><a href="#3-触发器的作用是什么？" class="headerlink" title="3.触发器的作用是什么？"></a>3.触发器的作用是什么？</h3><p>触发器是一种特殊的存储过程，主要是通过事件来触发而被执行的。它可以强化约束，来维护数据的完<br>整性和一致性，可以跟踪数据库内的操作从而不允许未经许可的更新和变化。可以联级运算。如，某表<br>上的触发器上包含对另一个表的数据操作，而该操作又会导致该表触发器被触发。</p>
+<h3 id="4-什么是存储过程？用什么来调用？"><a href="#4-什么是存储过程？用什么来调用？" class="headerlink" title="4.什么是存储过程？用什么来调用？"></a>4.什么是存储过程？用什么来调用？</h3><p>存储过程是一个预编译的SQL语句，优点是允许模块化的设计，就是说只需创建一次，以后在该程序中<br>就可以调用多次。如果某次操作需要执行多次SQL，使用存储过程比单纯SQL语句执行要快。<br>调用：<br>1）可以用一个命令对象来调用存储过程。<br>2）可以供外部程序调用，比如：java程序。</p>
+<h3 id="5-说说存储过程的优缺点？"><a href="#5-说说存储过程的优缺点？" class="headerlink" title="5.说说存储过程的优缺点？"></a>5.说说存储过程的优缺点？</h3><p>优点：<br>1）存储过程是预编译过的，执行效率高。<br>2）存储过程的代码直接存放于数据库中，通过存储过程名直接调用，减少网络通讯。<br>3）安全性高，执行存储过程需要有一定权限的用户。<br>4）存储过程可以重复使用，可减少数据库开发人员的工作量。<br>缺点：<br>移植性差</p>
+<h3 id="6-说说存储过程与函数的区别"><a href="#6-说说存储过程与函数的区别" class="headerlink" title="6.说说存储过程与函数的区别"></a>6.说说存储过程与函数的区别</h3><p>（1）存储过程用户在数据库中完成特定操作或者任务（如插入，删除等），函数用于返回特定的数<br>据。<br>（2）存储过程声明用procedure，函数用function。<br>（3）存储过程不需要返回类型，函数必须要返回类型。<br>（4）存储过程可作为独立的pl-sql执行，函数不能作为独立的plsql执行，必须作为表达式的一部分。<br>（5）存储过程只能通过out和in&#x2F;out来返回值，函数除了可以使用out，in&#x2F;out以外，还可以使用return<br>返回值。<br>（6）sql语句（DML或SELECT)中不可用调用存储过程，而函数可以。</p>
+<h3 id="7-什么叫视图？游标是什么？"><a href="#7-什么叫视图？游标是什么？" class="headerlink" title="7.什么叫视图？游标是什么？"></a>7.什么叫视图？游标是什么？</h3><p>视图：<br>是一种虚拟的表，具有和物理表相同的功能。可以对视图进行增，改，查，操作，试图通常是有一个表<br>或者多个表的行或列的子集。对视图的修改会影响基本表。它使得我们获取数据更容易，相比多表查<br>询。<br>游标：<br>是对查询出来的结果集作为一个单元来有效的处理。游标可以定在该单元中的特定行，从结果集的当前<br>行检索一行或多行。可以对结果集当前行做修改。一般不使用游标，但是需要逐条处理数据的时候，游<br>标显得十分重要。</p>
+<h3 id="8-视图的优缺点有哪些？"><a href="#8-视图的优缺点有哪些？" class="headerlink" title="8.视图的优缺点有哪些？"></a>8.视图的优缺点有哪些？</h3><p>优点：<br>1对数据库的访问，因为视图可以有选择性的选取数据库里的一部分。<br>2)用户通过简单的查询可以从复杂查询中得到结果。<br>3)维护数据的独立性，试图可从多个表检索数据。<br>4)对于相同的数据可产生不同的视图。<br>缺点：<br>性能：查询视图时，必须把视图的查询转化成对基本表的查询，如果这个视图是由一个复杂的多表查询<br>所定义，那么，那么就无法更改数据</p>
+<h3 id="9-说说drop、truncate、-delete区别"><a href="#9-说说drop、truncate、-delete区别" class="headerlink" title="9.说说drop、truncate、 delete区别"></a>9.说说drop、truncate、 delete区别</h3><p>最基本：</p>
+<ol>
+<li>drop直接删掉表。</li>
+<li>truncate删除表中数据，再插入时自增长id又从1开始。</li>
+<li>delete删除表中数据，可以加where字句。<br>（1） DELETE语句执行删除的过程是每次从表中删除一行，并且同时将该行的删除操作作为事务记录在<br>日志中保存以便进行进行回滚操作。TRUNCATE TABLE 则一次性地从表中删除所有的数据并不把单独<br>的删除操作记录记入日志保存，删除行是不能恢复的。并且在删除的过程中不会激活与表有关的删除触<br>发器。执行速度快。<br>（2） 表和索引所占空间。当表被TRUNCATE 后，这个表和索引所占用的空间会恢复到初始大小，而<br>DELETE操作不会减少表或索引所占用的空间。drop语句将表所占用的空间全释放掉。<br>（3） 一般而言，drop &gt; truncate &gt; delete<br>（4） 应用范围。TRUNCATE 只能对TABLE；DELETE可以是table和view<br>（5） TRUNCATE 和DELETE只删除数据，而DROP则删除整个表（结构和数据）。<br>（6） truncate与不带where的delete ：只删除数据，而不删除表的结构（定义）drop语句将删除表的<br>结构被依赖的约束（constrain),触发器（trigger)索引（index);依赖于该表的存储过程&#x2F;函数将被保留，<br>但其状态会变为：invalid。<br>（7） delete语句为DML（data maintain Language),这个操作会被放到 rollback segment中,事务提交<br>后才生效。如果有相应的 tigger,执行的时候将被触发。<br>（8） truncate、drop是DLL（data define language),操作立即生效，原数据不放到 rollback<br>segment中，不能回滚。<br>（9） 在没有备份情况下，谨慎使用 drop 与 truncate。要删除部分数据行采用delete且注意结合<br>where来约束影响范围。回滚段要足够大。要删除表用drop;若想保留表而将表中数据删除，如果与事<br>务无关，用truncate即可实现。如果和事务有关，或老师想触发trigger,还是用delete。<br>（10） Truncate table 表名 速度快,而且效率高,因为:?truncate table 在功能上与不带 WHERE 子句的<br>DELETE 语句相同：二者均删除表中的全部行。但 TRUNCATE TABLE 比 DELETE 速度快，且使用的系统<br>和事务日志资源少。DELETE 语句每次删除一行，并在事务日志中为所删除的每行记录一项。<br>TRUNCATE TABLE 通过释放存储表数据所用的数据页来删除数据，并且只在事务日志中记录页的释<br>放。<br>（11） TRUNCATE TABLE 删除表中的所有行，但表结构及其列、约束、索引等保持不变。新行标识所<br>用的计数值重置为该列的种子。如果想保留标识计数值，请改用 DELETE。如果要删除表定义及其数<br>据，请使用 DROP TABLE 语句。<br>（12） 对于由 FOREIGN KEY 约束引用的表，不能使用 TRUNCATE TABLE，而应使用不带 WHERE 子<br>句的 DELETE 语句。由于 TRUNCATE TABLE 不记录在日志中，所以它不能激活触发器。</li>
+</ol>
+<h3 id="10-什么是临时表，临时表什么时候删除"><a href="#10-什么是临时表，临时表什么时候删除" class="headerlink" title="10.什么是临时表，临时表什么时候删除?"></a>10.什么是临时表，临时表什么时候删除?</h3><p>临时表可以手动删除：<br>DROP TEMPORARY TABLE IF EXISTS temp_tb;<br>临时表只在当前连接可见，当关闭连接时，MySQL会自动删除表并释放所有空间。因此在不同的连接中<br>可以创建同名的临时表，并且操作属于本连接的临时表。<br>创建临时表的语法与创建表语法类似，不同之处是增加关键字TEMPORARY，<br>如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> TEMPORARY <span class="keyword">TABLE</span> tmp_table (</span><br><span class="line">NAME <span class="type">VARCHAR</span> (<span class="number">10</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line"><span class="type">time</span> <span class="type">date</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> tmp_table;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="11-说说非关系型数据库和关系型数据库区别，优势比较"><a href="#11-说说非关系型数据库和关系型数据库区别，优势比较" class="headerlink" title="11.说说非关系型数据库和关系型数据库区别，优势比较?"></a>11.说说非关系型数据库和关系型数据库区别，优势比较?</h3><p>非关系型数据库的优势：<br>性能：NOSQL是基于键值对的，可以想象成表中的主键和值的对应关系，而且不需要经过SQL层的解<br>析，所以性能非常高。<br>可扩展性：同样也是因为基于键值对，数据之间没有耦合性，所以非常容易水平扩展。<br>关系型数据库的优势：<br>复杂查询：可以用SQL语句方便的在一个表以及多个表之间做非常复杂的数据查询。<br>事务支持：使得对于安全性能很高的数据访问要求得以实现。<br>其他：<br>1.对于这两类数据库，对方的优势就是自己的弱势，反之亦然。<br>2.NOSQL数据库慢慢开始具备SQL数据库的一些复杂查询功能，比如MongoDB。<br>3.对于事务的支持也可以用一些系统级的原子操作来实现例如乐观锁之类的方法来曲线救国，比如<br>Redis set nx。</p>
+<h3 id="12-什么是数据库范式，根据某个场景设计数据表"><a href="#12-什么是数据库范式，根据某个场景设计数据表" class="headerlink" title="12.什么是数据库范式，根据某个场景设计数据表?"></a>12.什么是数据库范式，根据某个场景设计数据表?</h3><p>第一范式:(确保每列保持原子性)所有字段值都是不可分解的原子值。<br>第一范式是最基本的范式。如果数据库表中的所有字段值都是不可分解的原子值，就说明该数据库表满<br>足了第一范式。<br>第一范式的合理遵循需要根据系统的实际需求来定。比如某些数据库系统中需要用到“地址”这个属性，<br>本来直接将“地址”属性设计成一个数据库表的字段就行。但是如果系统经常会访问“地址”属性中的“城市”<br>部分，那么就非要将“地址”这个属性重新拆分为省份、城市、详细地址等多个部分进行存储，这样在对<br>地址中某一部分操作的时候将非常方便。这样设计才算满足了数据库的第一范式，如下表所示。<br>上表所示的用户信息遵循了第一范式的要求，这样在对用户使用城市进行分类的时候就非常方便，也提<br>高了数据库的性能。<br>第二范式:(确保表中的每列都和主键相关)在一个数据库表中，一个表中只能保存一种数据，不可以把多<br>种数据保存在同一张数据库表中。<br>第二范式在第一范式的基础之上更进一层。第二范式需要确保数据库表中的每一列都和主键相关，而不<br>能只与主键的某一部分相关（主要针对联合主键而言）。也就是说在一个数据库表中，一个表中只能保<br>存一种数据，不可以把多种数据保存在同一张数据库表中。<br>比如要设计一个订单信息表，因为订单中可能会有多种商品，所以要将订单编号和商品编号作为数据库<br>表的联合主键。<br>第三范式:(确保每列都和主键列直接相关,而不是间接相关) 数据表中的每一列数据都和主键直接相关，<br>而不能间接相关。<br>第三范式需要确保数据表中的每一列数据都和主键直接相关，而不能间接相关。<br>比如在设计一个订单数据表的时候，可以将客户编号作为一个外键和订单表建立相应的关系。而不可以<br>在订单表中添加关于客户其它信息（比如姓名、所属公司等）的字段。<br>BCNF:符合3NF，并且，主属性不依赖于主属性。<br>若关系模式属于第二范式，且每个属性都不传递依赖于键码，则R属于BC范式。<br>通常BC范式的条件有多种等价的表述：每个非平凡依赖的左边必须包含键码；每个决定因素必须包含键<br>码。<br>BC范式既检查非主属性，又检查主属性。当只检查非主属性时，就成了第三范式。满足BC范式的关系<br>都必然满足第三范式。<br>还可以这么说：若一个关系达到了第三范式，并且它只有一个候选码，或者它的每个候选码都是单属<br>性，则该关系自然达到BC范式。<br>一般，一个数据库设计符合3NF或BCNF就可以了。<br>第四范式:要求把同一表内的多对多关系删除。<br>第五范式:从最终结构重新建立原始结构。</p>
+<h3 id="13-什么是-内连接、外连接、交叉连接、笛卡尔积等"><a href="#13-什么是-内连接、外连接、交叉连接、笛卡尔积等" class="headerlink" title="13.什么是 内连接、外连接、交叉连接、笛卡尔积等?"></a>13.什么是 内连接、外连接、交叉连接、笛卡尔积等?</h3><p>内连接: 只连接匹配的行<br>左外连接: 包含左边表的全部行（不管右边的表中是否存在与它们匹配的行），以及右边表中全部匹配<br>的行<br>右外连接: 包含右边表的全部行（不管左边的表中是否存在与它们匹配的行），以及左边表中全部匹配<br>的行<br>例如1：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.,b. <span class="keyword">FROM</span> luntan <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> usertable <span class="keyword">as</span> b <span class="keyword">ON</span> a.username<span class="operator">=</span>b.username</span><br></pre></td></tr></table></figure>
+<p>例如2：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.,b. <span class="keyword">FROM</span> city <span class="keyword">as</span> a <span class="keyword">FULL</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> <span class="keyword">user</span> <span class="keyword">as</span> b <span class="keyword">ON</span> a.username<span class="operator">=</span>b.username</span><br></pre></td></tr></table></figure>
+<p>全外连接: 包含左、右两个表的全部行，不管另外一边的表中是否存在与它们匹配的行。<br>交叉连接: 生成笛卡尔积－它不使用任何匹配或者选取条件，而是直接将一个数据源中的每个行与另一<br>个数据源的每个行都一一匹配<br>例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> type,pub_name <span class="keyword">FROM</span> titles <span class="keyword">CROSS</span> <span class="keyword">JOIN</span> publishers <span class="keyword">ORDER</span> <span class="keyword">BY</span> type</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="14-varchar和char的使用场景"><a href="#14-varchar和char的使用场景" class="headerlink" title="14.varchar和char的使用场景?"></a>14.varchar和char的使用场景?</h3><p>1.char的长度是不可变的，而varchar的长度是可变的。<br>定义一个char[10]和varchar[10]。<br>如果存进去的是‘csdn’,那么char所占的长度依然为10，除了字符‘csdn’外，后面跟六个空格，varchar就<br>立马把长度变为4了，取数据的时候，char类型的要用trim()去掉多余的空格，而varchar是不需要的。<br>2.char的存取速度还是要比varchar要快得多，因为其长度固定，方便程序的存储与查找。<br>char也为此付出的是空间的代价，因为其长度固定，所以难免会有多余的空格占位符占据空间，可谓是<br>以空间换取时间效率。<br>varchar是以空间效率为首位。<br>3.char的存储方式是：对英文字符（ASCII）占用1个字节，对一个汉字占用两个字节。<br>varchar的存储方式是：对每个英文字符占用2个字节，汉字也占用2个字节。<br>4.两者的存储数据都非unicode的字符数据。</p>
+<h3 id="15-SQL语言分类"><a href="#15-SQL语言分类" class="headerlink" title="15.SQL语言分类"></a>15.SQL语言分类</h3><p>SQL语言共分为四大类：<br>一、数据查询语言DQL<br>二、数据操纵语言DML<br>三、数据定义语言DDL<br>四、数据控制语言DCL。</p>
+<ol>
+<li><p>数据查询语言DQL<br>数据查询语言DQL基本结构是由SELECT子句，FROM子句，WHERE子句组成的查询块：<br>SELECT<br>FROM<br>WHERE</p>
+</li>
+<li><p>数据操纵语言DML<br>数据操纵语言DML主要有三种形式：</p>
+</li>
+<li><p>插入：INSERT</p>
+</li>
+<li><p>更新：UPDATE</p>
+</li>
+<li><p>删除：DELETE</p>
+</li>
+<li><p>数据定义语言DDL<br>数据定义语言DDL用来创建数据库中的各种对象—–表、视图、索引、同义词、聚簇等如：<br>CREATE TABLE&#x2F;VIEW&#x2F;INDEX&#x2F;SYN&#x2F;CLUSTER<br>表 视图 索引 同义词 簇<br>DDL操作是隐性提交的！不能rollback</p>
+</li>
+<li><p>数据控制语言DCL<br>数据控制语言DCL用来授予或回收访问数据库的某种特权，并控制数据库操纵事务发生的时间及效<br>果，对数据库实行监视等。如：</p>
+</li>
+<li><p>GRANT：授权。</p>
+</li>
+<li><p>ROLLBACK [WORK] TO [SAVEPOINT]：回退到某一点。回滚—ROLLBACK；回滚命令使数据库<br>状态回到上次最后提交的状态。其格式为：<br>SQL&gt;ROLLBACK;</p>
+</li>
+<li><p>COMMIT [WORK]：提交。<br>在数据库的插入、删除和修改操作时，只有当事务在提交到数据库时才算完成。在事务提交前，只<br>有操作数据库的这个人才能有权看到所做的事情，别人只有在最后提交完成后才可以看到。<br>提交数据有三种类型：显式提交、隐式提交及自动提交。下面分别说明这三种类型。<br>(1) 显式提交<br>用COMMIT命令直接完成的提交为显式提交。其格式为：SQL&gt;COMMIT；<br>(2) 隐式提交<br>用SQL命令间接完成的提交为隐式提交。这些命令是：<br>ALTER，AUDIT，COMMENT，CONNECT，CREATE，DISCONNECT，DROP，<br>EXIT，GRANT，NOAUDIT，QUIT，REVOKE，RENAME。<br>(3) 自动提交<br>若把AUTOCOMMIT设置为ON，则在插入、修改、删除语句执行后，<br>系统将自动进行提交，这就是自动提交。<br>其格式为：SQL&gt;SET AUTOCOMMIT ON；</p>
+</li>
+</ol>
+<h3 id="16-说说like-和-的区别"><a href="#16-说说like-和-的区别" class="headerlink" title="16.说说like %和-的区别"></a>16.说说like %和-的区别</h3><p>通配符的分类<br>%百分号通配符:表示任何字符出现任意次数(可以是0次).<br>下划线通配符:表示只能匹配单个字符,不能多也不能少,就是一个字符.<br>like操作符: LIKE作用是指示mysql后面的搜索模式是利用通配符而不是直接相等匹配进行比较.<br>注意: 如果在使用like操作符时,后面的没有使用通用匹配符效果是和&#x3D;一致的,SELECT * FROM products<br>WHERE products.prod_name like ‘1000’;只能匹配的结果为1000,而不能匹配像JetPack 1000这样的结果.<br>%通配符使用: 匹配以”yves”开头的记录:(包括记录”yves”) SELECT FROM products WHERE<br>products.prod_name like ‘yves%’;<br>匹配包含”yves”的记录(包括记录”yves”) SELECT FROM products WHERE products.prod_name like<br>‘%yves%’;<br>匹配以”yves”结尾的记录(包括记录”yves”,不包括记录”yves “,也就是yves后面有空格的记录,这里需要注意)<br>SELECT * FROM products WHERE products.prod_name like ‘%yves’;<br>通配符使用: SELECT FROM products WHERE products.prod_name like ‘yves’; 匹配结果为: 像”yyves”这样<br>记录. SELECT FROM products WHERE products.prodname like ‘yves’; 匹配结果为: 像”yvesHe”这样<br>的记录.(一个下划线只能匹配一个字符,不能多也不能少)<br>注意事项:<br>注意大小写,在使用模糊匹配时,也就是匹配文本时,mysql是可能区分大小的,也可能是不区分大小写的,这<br>个结果是取决于用户对MySQL的配置方式.如果是区分大小写,那么像YvesHe这样记录是不能<br>被”yves__”这样的匹配条件匹配的.<br>注意尾部空格,”%yves”是不能匹配”heyves “这样的记录的.<br>注意NULL,%通配符可以匹配任意字符,但是不能匹配NULL,也就是说SELECT * FROM products WHERE<br>products.prod_name like ‘%;是匹配不到products.prod_name为NULL的的记录.<br>技巧与建议:<br>正如所见， MySQL的通配符很有用。但这种功能是有代价的：通配符搜索的处理一般要比前面讨论的<br>其他搜索所花时间更长。这里给出一些使用通配符要记住的技巧。<br>不要过度使用通配符。如果其他操作符能达到相同的目的，应该 使用其他操作符。<br>在确实需要使用通配符时，除非绝对有必要，否则不要把它们用 在搜索模式的开始处。把通配符置于搜<br>索模式的开始处，搜索起 来是最慢的。<br>仔细注意通配符的位置。如果放错地方，可能不会返回想要的数.</p>
+<h3 id="17-说说count-、count-1-、count-column-的区别"><a href="#17-说说count-、count-1-、count-column-的区别" class="headerlink" title="17.说说count(*)、count(1)、count(column)的区别"></a>17.说说count(*)、count(1)、count(column)的区别</h3><p>count()对行的数目进行计算,包含NULL<br>count(column)对特定的列的值具有的行数进行计算,不包含NULL值。<br>count()还有一种使用方式,count(1)这个用法和count()的结果是一样的。<br>性能问题:<br>1.任何情况下SELECT COUNT() FROM tablename是最优选择;<br>2.尽量减少SELECT COUNT() FROM tablename WHERE COL &#x3D; ‘value’ 这种查询;<br>3.杜绝SELECT COUNT(COL) FROM tablename WHERE COL2 &#x3D; ‘value’ 的出现。<br>如果表没有主键,那么count(1)比count()快。<br>如果有主键,那么count(主键,联合主键)比count()快。<br>如果表只有一个字段,count()最快。<br>count(1)跟count(主键)一样,只扫描主键。count()跟count(非主键)一样,扫描整个表。明显前者更快一<br>些。</p>
+<h3 id="18-什么是最左前缀原则？"><a href="#18-什么是最左前缀原则？" class="headerlink" title="18.什么是最左前缀原则？"></a>18.什么是最左前缀原则？</h3><p>多列索引：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> people <span class="keyword">ADD</span> INDEX lname_fname_age (lame,fname,age);</span><br></pre></td></tr></table></figure>
+<p>为了提高搜索效率，我们需要考虑运用多列索引,由于索引文件以B－Tree格式保存，所以我们不用扫描<br>任何记录，即可得到最终结果。<br>注：在mysql中执行查询时，只能使用一个索引，如果我们在lname,fname,age上分别建索引,执行查询<br>时，只能使用一个索引，mysql会选择一个最严格(获得结果集记录数最少)的索引。<br>ALTER TABLE people ADD INDEX lname_fname_age (lame,fname,age);<br>最左前缀原则：顾名思义，就是最左优先，上例中我们创建了lname_fname_age多列索引,相当于创建<br>了(lname)单列索引，(lname,fname)组合索引以及(lname,fname,age)组合索引。</p>
+<h3 id="19-什么是索引？"><a href="#19-什么是索引？" class="headerlink" title="19.什么是索引？"></a>19.什么是索引？</h3><p>何为索引：<br>数据库索引，是数据库管理系统中一个排序的数据结构，索引的实现通常使用B树及其变种B+树。<br>在数据之外，数据库系统还维护着满足特定查找算法的数据结构，这些数据结构以某种方式引用（指<br>向）数据，这样就可以在这些数据结构上实现高级查找算法。这种数据结构，就是索引。</p>
+<h3 id="20-索引的作用？它的优点缺点是什么？"><a href="#20-索引的作用？它的优点缺点是什么？" class="headerlink" title="20.索引的作用？它的优点缺点是什么？"></a>20.索引的作用？它的优点缺点是什么？</h3><p>索引作用：<br>协助快速查询、更新数据库表中数据。<br>为表设置索引要付出代价的：<br>一是增加了数据库的存储空间<br>二是在插入和修改数据时要花费较多的时间(因为索引也要随之变动)。</p>
+<h3 id="21-索引的优缺点有哪些？"><a href="#21-索引的优缺点有哪些？" class="headerlink" title="21.索引的优缺点有哪些？"></a>21.索引的优缺点有哪些？</h3><p>创建索引可以大大提高系统的性能（优点）：<br>（1）通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性。<br>（2）可以大大加快数据的检索速度，这也是创建索引的最主要的原因。<br>（3）可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义。<br>（4）在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间。<br>（5）通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能。<br>增加索引也有许多不利的方面(缺点)：<br>（1）.创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加。<br>（2）.索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果要<br>建立聚簇索引，那么需要的空间就会更大。<br>（3）.当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，这样就降低了数据的维护<br>速度。<br>（4）.哪些列适合建立索引、哪些不适合建索引？<br>索引是建立在数据库表中的某些列的上面。在创建索引的时候，应该考虑在哪些列上可以创建索引，在<br>哪些列上不能创建索引。<br>一般来说，应该在这些列上创建索引：<br>（1）在经常需要搜索的列上，可以加快搜索的速度；<br>（2）在作为主键的列上，强制该列的唯一性和组织表中数据的排列结构；<br>（3）在经常用在连接的列上，这些列主要是一些外键，可以加快连接的速度；<br>（4）在经常需要根据范围进行搜索的列上创建索引，因为索引已经排序，其指定的范围是连续的；<br>（5）在经常需要排序的列上创建索引，因为索引已经排序，这样查询可以利用索引的排序，加快排序<br>查询时间；<br>（6）在经常使用在WHERE子句中的列上面创建索引，加快条件的判断速度。<br>对于有些列不应该创建索引：<br>（1）对于那些在查询中很少使用或者参考的列不应该创建索引。<br>这是因为，既然这些列很少使用到，因此有索引或者无索引，并不能提高查询速度。相反，由于增加了<br>索引，反而降低了系统的维护速度和增大了空间需求。<br>（2）对于那些只有很少数据值的列也不应该增加索引。<br>这是因为，由于这些列的取值很少，例如人事表的性别列，在查询的结果中，结果集的数据行占了表中<br>数据行的很大比例，即需要在表中搜索的数据行的比例很大。增加索引，并不能明显加快检索速度。<br>（3）对于那些定义为text, image和bit数据类型的列不应该增加索引。<br>这是因为，这些列的数据量要么相当大，要么取值很少。<br>(4)当修改性能远远大于检索性能时，不应该创建索引。<br>这是因为，修改性能和检索性能是互相矛盾的。当增加索引时，会提高检索性能，但是会降低修改性<br>能。当减少索引时，会提高修改性能，降低检索性能。因此，当修改性能远远大于检索性能时，不应该<br>创建索引。<br>索引详解：带你从头到尾捋一遍MySQL索引结构！</p>
+<h3 id="22-什么样的字段适合建索引？"><a href="#22-什么样的字段适合建索引？" class="headerlink" title="22.什么样的字段适合建索引？"></a>22.什么样的字段适合建索引？</h3><p>唯一、不为空、经常被查询的字段</p>
+<h3 id="23-说说MySQL-B-Tree索引和Hash索引的区别"><a href="#23-说说MySQL-B-Tree索引和Hash索引的区别" class="headerlink" title="23.说说MySQL B+Tree索引和Hash索引的区别?"></a>23.说说MySQL B+Tree索引和Hash索引的区别?</h3><p>Hash索引和B+树索引的特点：<br>Hash索引结构的特殊性，其检索效率非常高，索引的检索可以一次定位;<br>B+树索引需要从根节点到枝节点，最后才能访问到页节点这样多次的IO访问;<br>为什么不都用Hash索引而使用B+树索引？<br>Hash索引仅仅能满足”&#x3D;”,”IN”和””查询，不能使用范围查询,因为经过相应的Hash算法处理之后的Hash<br>值的大小关系，并不能保证和Hash运算前完全一样；<br>Hash索引无法被用来避免数据的排序操作，因为Hash值的大小关系并不一定和Hash运算前的键值完全<br>一样；<br>Hash索引不能利用部分索引键查询，对于组合索引，Hash索引在计算Hash值的时候是组合索引键合并<br>后再一起计算Hash值，而不是单独计算Hash值，所以通过组合索引的前面一个或几个索引键进行查询<br>的时候，Hash索引也无法被利用；<br>Hash索引在任何时候都不能避免表扫描，由于不同索引键存在相同Hash值，所以即使取满足某个Hash<br>键值的数据的记录条数，也无法从Hash索引中直接完成查询，还是要回表查询数据；<br>Hash索引遇到大量Hash值相等的情况后性能并不一定就会比B+树索引高。<br>补充：<br>（1）.MySQL中，只有HEAP&#x2F;MEMORY引擎才显示支持Hash索引。<br>（2）.常用的InnoDB引擎中默认使用的是B+树索引，它会实时监控表上索引的使用情况，如果认为建<br>立哈希索引可以提高查询效率，则自动在内存中的“自适应哈希索引缓冲区”建立哈希索引（在InnoDB中<br>默认开启自适应哈希索引），通过观察搜索模式，MySQL会利用index key的前缀建立哈希索引，如果<br>一个表几乎大部分都在缓冲池中，那么建立一个哈希索引能够加快等值查询。<br>B+树索引和哈希索引的明显区别是：<br>（3）.如果是等值查询，那么哈希索引明显有绝对优势，因为只需要经过一次算法即可找到相应的键<br>值；当然了，这个前提是，键值都是唯一的。如果键值不是唯一的，就需要先找到该键所在位置，然后<br>再根据链表往后扫描，直到找到相应的数据；<br>（4）.如果是范围查询检索，这时候哈希索引就毫无用武之地了，因为原先是有序的键值，经过哈希算<br>法后，有可能变成不连续的了，就没办法再利用索引完成范围查询检索；<br>同理，哈希索引没办法利用索引完成排序，以及like ‘xxx%’ 这样的部分模糊查询（这种部分模糊查询，<br>其实本质上也是范围查询）；<br>（5）.哈希索引也不支持多列联合索引的最左匹配规则；<br>（6）.B+树索引的关键字检索效率比较平均，不像B树那样波动幅度大，在有大量重复键值情况下，哈<br>希索引的效率也是极低的，因为存在所谓的哈希碰撞问题。<br>（7）在大多数场景下，都会有范围查询、排序、分组等查询特征，用B+树索引就可以了。</p>
+<h3 id="24-说说B树和B-树的区别"><a href="#24-说说B树和B-树的区别" class="headerlink" title="24.说说B树和B+树的区别"></a>24.说说B树和B+树的区别</h3><p>B树，每个节点都存储key和data，所有节点组成这棵树，并且叶子节点指针为nul，叶子结点不包含任<br>何关键字信息。<br>B+树，所有的叶子结点中包含了全部关键字的信息，及指向含有这些关键字记录的指针，且叶子结点本<br>身依关键字的大小自小而大的顺序链接，所有的非终端结点可以看成是索引部分，结点中仅含有其子树<br>根结点中最大（或最小）关键字。(而B 树的非终节点也包含需要查找的有效信息)</p>
+<h3 id="25-为什么说B-比B树更适合实际应用中操作系统的文件索引和数据"><a href="#25-为什么说B-比B树更适合实际应用中操作系统的文件索引和数据" class="headerlink" title="25.为什么说B+比B树更适合实际应用中操作系统的文件索引和数据"></a>25.为什么说B+比B树更适合实际应用中操作系统的文件索引和数据</h3><p>库索引？<br>1.B+的磁盘读写代价更低<br>B+的内部结点并没有指向关键字具体信息的指针。因此其内部结点相对B树更小。如果把所有同一内部<br>结点的关键字存放在同一盘块中，那么盘块所能容纳的关键字数量也越多。一次性读入内存中的需要查<br>找的关键字也就越多。相对来说IO读写次数也就降低了。<br>2.B+tree的查询效率更加稳定<br>由于非终结点并不是最终指向文件内容的结点，而只是叶子结点中关键字的索引。所以任何关键字的查<br>找必须走一条从根结点到叶子结点的路。所有关键字查询的路径长度相同，导致每一个数据的查询效率<br>相当。</p>
+<h3 id="26-说说聚集索引和非聚集索引区别"><a href="#26-说说聚集索引和非聚集索引区别" class="headerlink" title="26.说说聚集索引和非聚集索引区别?"></a>26.说说聚集索引和非聚集索引区别?</h3><p>聚合索引(clustered index):<br>聚集索引表记录的排列顺序和索引的排列顺序一致，所以查询效率快，只要找到第一个索引值记录，其<br>余就连续性的记录在物理也一样连续存放。聚集索引对应的缺点就是修改慢，因为为了保证表中记录的<br>物理和索引顺序一致，在记录插入的时候，会对数据页重新排序。<br>聚集索引类似于新华字典中用拼音去查找汉字，拼音检索表于书记顺序都是按照a<del>z排列的，就像相同<br>的逻辑顺序于物理顺序一样，当你需要查找a,ai两个读音的字，或是想一次寻找多个傻(sha)的同音字<br>时，也许向后翻几页，或紧接着下一行就得到结果了。<br>非聚合索引(nonclustered index):<br>非聚集索引指定了表中记录的逻辑顺序，但是记录的物理和索引不一定一致，两种索引都采用B+树结<br>构，非聚集索引的叶子层并不和实际数据页相重叠，而采用叶子层包含一个指向表中的记录在数据页中<br>的指针方式。非聚集索引层次多，不会造成数据重排。<br>非聚集索引类似在新华字典上通过偏旁部首来查询汉字，检索表也许是按照横、竖、撇来排列的，但是<br>由于正文中是a</del>z的拼音顺序，所以就类似于逻辑地址于物理地址的不对应。同时适用的情况就在于分<br>组，大数目的不同值，频繁更新的列中，这些情况即不适合聚集索引。<br>根本区别：<br>聚集索引和非聚集索引的根本区别是表记录的排列顺序和与索引的排列顺序是否一致。</p>
+<h2 id="二、数据库MySql基础篇"><a href="#二、数据库MySql基础篇" class="headerlink" title="二、数据库MySql基础篇"></a>二、数据库MySql基础篇</h2><h3 id="1-函数的分类？经常使用的函数有哪些？"><a href="#1-函数的分类？经常使用的函数有哪些？" class="headerlink" title="1.函数的分类？经常使用的函数有哪些？"></a>1.函数的分类？经常使用的函数有哪些？</h3><p>lower<br>upper<br>substr<br>length<br>trim(去首尾空格，不会去除中间的空格)<br>str_to_date(%Y-%m-%d)<br>date_format<br>format(保留小数)<br>round<br>rand()随机数<br>ifnull（如果为空，则替换为0）<br>聚合函数&#x2F;分组函数<br>分组函数自动忽略空值<br>count<br>sum<br>avg<br>min<br>max</p>
+<h3 id="2-分组查询需要注意条件？"><a href="#2-分组查询需要注意条件？" class="headerlink" title="2.分组查询需要注意条件？"></a>2.分组查询需要注意条件？</h3><p>如果使用了order by，order by 必须放到group by后面。<br>在sql语句中，select语句后面只能跟分组函数+参与分组的字段。<br>如果想要对分组数据再进行过滤需要使用having子句。</p>
+<h3 id="3-limit使用方法？"><a href="#3-limit使用方法？" class="headerlink" title="3.limit使用方法？"></a>3.limit使用方法？</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> emp limit m,n;</span><br></pre></td></tr></table></figure>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="4-mysql常见数据类型？"><a href="#4-mysql常见数据类型？" class="headerlink" title="4.mysql常见数据类型？"></a>4.mysql常见数据类型？</h3><p>char:定长字符串，适合做主键或者外键<br>varchar：可变长字符串<br>double&#x2F;float<br>int&#x2F;bigint<br>date</p>
+<h3 id="5-如何增加删除修改表结构"><a href="#5-如何增加删除修改表结构" class="headerlink" title="5.如何增加删除修改表结构"></a>5.如何增加删除修改表结构</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">add</span> 字段名 数据类型(长度) <span class="comment">--添加字段</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 modify 字段名 数据类型(长度) <span class="comment">--修改字段长度</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 change 原字段名 现在字段名 数据类型(长度) <span class="comment">--修改字段名称</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> 表名 <span class="keyword">drop</span> 字段名 <span class="comment">--删除字段</span></span><br></pre></td></tr></table></figure>
+<h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3><h3 id="6-如何开启MySQL服务-关闭My服务"><a href="#6-如何开启MySQL服务-关闭My服务" class="headerlink" title="6.如何开启MySQL服务,关闭My服务"></a>6.如何开启MySQL服务,关闭My服务</h3><p>开启服务：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service mysqld <span class="keyword">start</span></span><br><span class="line"><span class="operator">/</span>init.d<span class="operator">/</span>mysqld <span class="keyword">start</span></span><br><span class="line">safe_mysql <span class="operator">&amp;</span></span><br></pre></td></tr></table></figure>
+<p>关闭服务：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service mysqld stop</span><br><span class="line"><span class="operator">/</span>etc<span class="operator">/</span>init.d<span class="operator">/</span>mysqld stop</span><br><span class="line">mysqladmin <span class="operator">-</span>uroot <span class="operator">-</span>p123456 shutdown</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="7-检测端口是否运行"><a href="#7-检测端口是否运行" class="headerlink" title="7.检测端口是否运行"></a>7.检测端口是否运行</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lsof <span class="operator">-</span>i:<span class="number">3306</span></span><br><span class="line">netstat <span class="operator">-</span>tunlp<span class="operator">|</span>grep <span class="number">3306</span></span><br><span class="line">ss <span class="operator">-</span>tulnp<span class="operator">|</span>grep <span class="number">3306</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="8-如何为MySQL设置密码或者修改密码。"><a href="#8-如何为MySQL设置密码或者修改密码。" class="headerlink" title="8.如何为MySQL设置密码或者修改密码。"></a>8.如何为MySQL设置密码或者修改密码。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">方法一</span><br><span class="line">mysqladmin <span class="operator">-</span>u root <span class="operator">-</span>p123456 password <span class="string">&#x27;abc123&#x27;</span> #比较常用</span><br><span class="line">方法二（<span class="keyword">sql</span>语句修改）</span><br><span class="line"><span class="keyword">update</span> mysql.user <span class="keyword">set</span> password<span class="operator">=</span>password(<span class="number">123456</span>) <span class="keyword">where</span> <span class="keyword">user</span><span class="operator">=</span><span class="string">&#x27;root&#x27;</span> <span class="keyword">and</span></span><br><span class="line">host<span class="operator">=</span><span class="string">&#x27;localhost&#x27;</span>;</span><br><span class="line">flush privileges;</span><br><span class="line">方法三（<span class="keyword">sql</span>语句修改）</span><br><span class="line"><span class="keyword">set</span> password<span class="operator">=</span>password(<span class="string">&#x27;abc123&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="9-如何登陆MySQL数据库。"><a href="#9-如何登陆MySQL数据库。" class="headerlink" title="9.如何登陆MySQL数据库。"></a>9.如何登陆MySQL数据库。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">单实例登陆</span><br><span class="line">mysql <span class="operator">-</span>uroot <span class="operator">-</span>p123456</span><br><span class="line">多实例登陆</span><br><span class="line">mysql <span class="operator">-</span>uroot <span class="operator">-</span>p123456 <span class="operator">-</span>S <span class="operator">/</span>data<span class="operator">/</span><span class="number">3306</span><span class="operator">/</span>mysql.sock</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="10-查看当前数据库的字符集"><a href="#10-查看当前数据库的字符集" class="headerlink" title="10.查看当前数据库的字符集"></a>10.查看当前数据库的字符集</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">show</span> variables <span class="keyword">like</span> &quot;%charac%&quot;;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="11-如何查看当前数据库版本"><a href="#11-如何查看当前数据库版本" class="headerlink" title="11.如何查看当前数据库版本"></a>11.如何查看当前数据库版本</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># mysql <span class="operator">-</span>V</span><br><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">select</span> version();</span><br></pre></td></tr></table></figure>
+<h3 id="-2"><a href="#-2" class="headerlink" title=""></a></h3><h3 id="12-如何-查看当前登录的用户。"><a href="#12-如何-查看当前登录的用户。" class="headerlink" title="12.如何 查看当前登录的用户。"></a>12.如何 查看当前登录的用户。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">select</span> <span class="keyword">user</span>();</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="13-查看T1数据库中有哪儿些表"><a href="#13-查看T1数据库中有哪儿些表" class="headerlink" title="13.查看T1数据库中有哪儿些表"></a>13.查看T1数据库中有哪儿些表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> use T1;</span><br><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">show</span> tables;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="14-创建GBK字符集的数据库oldboy，并查看已建库完整语句"><a href="#14-创建GBK字符集的数据库oldboy，并查看已建库完整语句" class="headerlink" title="14.创建GBK字符集的数据库oldboy，并查看已建库完整语句"></a>14.创建GBK字符集的数据库oldboy，并查看已建库完整语句</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">create</span> database oldboy <span class="keyword">default</span> <span class="type">character</span> <span class="keyword">set</span> gbk;</span><br><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">show</span> <span class="keyword">create</span> database oldboy;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="15-创建用户oldboy，使之可以管理数据库oldboy"><a href="#15-创建用户oldboy，使之可以管理数据库oldboy" class="headerlink" title="15.创建用户oldboy，使之可以管理数据库oldboy"></a>15.创建用户oldboy，使之可以管理数据库oldboy</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">grant</span> <span class="keyword">select</span>,<span class="keyword">update</span>,<span class="keyword">insert</span>,<span class="keyword">delete</span>,<span class="keyword">alter</span> <span class="keyword">on</span> oldboy.<span class="operator">*</span> <span class="keyword">to</span> oldboy@<span class="string">&#x27;localhost&#x27;</span></span><br><span class="line">identified <span class="keyword">by</span> <span class="string">&#x27;123456&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="16-查看创建的用户oldboy拥有哪些权限"><a href="#16-查看创建的用户oldboy拥有哪些权限" class="headerlink" title="16.查看创建的用户oldboy拥有哪些权限"></a>16.查看创建的用户oldboy拥有哪些权限</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">show</span> grants <span class="keyword">for</span> oldboy@<span class="string">&#x27;localhost&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="17-查看当前数据库里有哪些用户"><a href="#17-查看当前数据库里有哪些用户" class="headerlink" title="17.查看当前数据库里有哪些用户"></a>17.查看当前数据库里有哪些用户</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">select</span> <span class="keyword">user</span>,host <span class="keyword">from</span> mysql.user;</span><br></pre></td></tr></table></figure>
+<h3 id="18-如何进入oldboy数据库"><a href="#18-如何进入oldboy数据库" class="headerlink" title="18.如何进入oldboy数据库"></a>18.如何进入oldboy数据库</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> use oldboy();</span><br></pre></td></tr></table></figure>
+<h3 id="-3"><a href="#-3" class="headerlink" title=""></a></h3><h3 id="19-请写一个脚本：-创建一个innodb-GBK表test，字段id-int-4-和"><a href="#19-请写一个脚本：-创建一个innodb-GBK表test，字段id-int-4-和" class="headerlink" title="19.请写一个脚本： 创建一个innodb GBK表test，字段id int(4)和"></a>19.请写一个脚本： 创建一个innodb GBK表test，字段id int(4)和</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">create</span> <span class="keyword">table</span> test (id <span class="type">int</span>(<span class="number">4</span>),name <span class="type">varchar</span>(<span class="number">16</span>)) engine<span class="operator">=</span>InnoDB <span class="keyword">default</span></span><br><span class="line">charset<span class="operator">=</span>gbk;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="20-查看建表结构及表结构的SQL语句"><a href="#20-查看建表结构及表结构的SQL语句" class="headerlink" title="20.查看建表结构及表结构的SQL语句"></a>20.查看建表结构及表结构的SQL语句</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">desc</span> test;</span><br><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">show</span> <span class="keyword">create</span> <span class="keyword">table</span> test\G</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="21-请使用脚本查询一条数据：插入一条数据“1-oldboy”"><a href="#21-请使用脚本查询一条数据：插入一条数据“1-oldboy”" class="headerlink" title="21.请使用脚本查询一条数据：插入一条数据“1,oldboy”"></a>21.请使用脚本查询一条数据：插入一条数据“1,oldboy”</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">insert</span> <span class="keyword">into</span> test (id,name) <span class="keyword">values</span> (<span class="number">1</span>,<span class="string">&#x27;oldboy&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="22-再批量插入2行数据-“2-老男孩”，“3-oldboyedu”"><a href="#22-再批量插入2行数据-“2-老男孩”，“3-oldboyedu”" class="headerlink" title="22.再批量插入2行数据 “2,老男孩”，“3,oldboyedu”"></a>22.再批量插入2行数据 “2,老男孩”，“3,oldboyedu”</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">insert</span> <span class="keyword">into</span> test (id,name) <span class="keyword">values</span> (<span class="number">2</span>,<span class="string">&#x27;老男孩&#x27;</span>),(<span class="number">3</span>,<span class="string">&#x27;oldboyedu&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="23-查询名字为oldboy的记录"><a href="#23-查询名字为oldboy的记录" class="headerlink" title="23.查询名字为oldboy的记录"></a>23.查询名字为oldboy的记录</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> test <span class="keyword">where</span> name<span class="operator">=</span><span class="string">&#x27;oldboy&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="24-把数据id等于1的名字oldboy更改为oldgirl"><a href="#24-把数据id等于1的名字oldboy更改为oldgirl" class="headerlink" title="24.把数据id等于1的名字oldboy更改为oldgirl"></a>24.把数据id等于1的名字oldboy更改为oldgirl</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">update</span> test <span class="keyword">set</span> name<span class="operator">=</span><span class="string">&#x27;oldgirl&#x27;</span> <span class="keyword">where</span> id<span class="operator">=</span><span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="25-在字段name前插入age字段，类型tinyint-2"><a href="#25-在字段name前插入age字段，类型tinyint-2" class="headerlink" title="25.在字段name前插入age字段，类型tinyint(2)"></a>25.在字段name前插入age字段，类型tinyint(2)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">alter</span> <span class="keyword">table</span> test <span class="keyword">add</span> age tinyint(<span class="number">2</span>) after id;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="26-不退出数据库-完成备份oldboy数据库"><a href="#26-不退出数据库-完成备份oldboy数据库" class="headerlink" title="26.不退出数据库,完成备份oldboy数据库"></a>26.不退出数据库,完成备份oldboy数据库</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">system</span> mysqldump <span class="operator">-</span>uroot <span class="operator">-</span>p123456 <span class="operator">-</span>B <span class="operator">-</span>x <span class="operator">-</span>F <span class="comment">--events oldboy &gt;/opt/bak.sql</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="27-删除test表中的所有数据，并查看"><a href="#27-删除test表中的所有数据，并查看" class="headerlink" title="27.删除test表中的所有数据，并查看"></a>27.删除test表中的所有数据，并查看</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">delete</span> <span class="keyword">from</span> test;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="三、数据库MySql篇"><a href="#三、数据库MySql篇" class="headerlink" title="三、数据库MySql篇"></a>三、数据库MySql篇</h2><h3 id="1-说一下-MySQL-的行锁和表锁？"><a href="#1-说一下-MySQL-的行锁和表锁？" class="headerlink" title="1.说一下 MySQL 的行锁和表锁？"></a>1.说一下 MySQL 的行锁和表锁？</h3><p>MyISAM 只支持表锁，InnoDB 支持表锁和行锁，默认为行锁。 表级锁：开销小，加锁快，不会出现死<br>锁。锁定粒度大，发生锁冲突的概率最高，并发量最低。 行级锁：开销大，加锁慢，会出现死锁。锁力<br>度小，发生锁冲突的概率小，并发度最高。</p>
+<h3 id="2-MySQL的默认事务隔离级别是"><a href="#2-MySQL的默认事务隔离级别是" class="headerlink" title="2.MySQL的默认事务隔离级别是?"></a>2.MySQL的默认事务隔离级别是?</h3><p>读未提交(RU): 一个事务还没提交时, 它做的变更就能被别的事务看到.<br>读提交(RC): 一个事务提交之后, 它做的变更才会被其他事务看到.<br>可重复读(RR): 一个事务执行过程中看到的数据, 总是跟这个事务在启动时看到的数据是一致的. 当然在<br>可重复读隔离级别下, 未提交变更对其他事务也是不可见的.<br>串行化(S): 对于同一行记录, 读写都会加锁. 当出现读写锁冲突的时候, 后访问的事务必须等前一个事务执<br>行完成才能继续执行.</p>
+<h3 id="3-Mysql数据库表类型有哪些？"><a href="#3-Mysql数据库表类型有哪些？" class="headerlink" title="3.Mysql数据库表类型有哪些？"></a>3.Mysql数据库表类型有哪些？</h3><p>MyISAM、InnoDB、HEAP、BOB,ARCHIVE,CSV等。<br>MyISAM：成熟、稳定、易于管理，快速读取。一些功能不支持（事务等），表级锁。<br>InnoDB：支持事务、外键等特性、数据行锁定。空间占用大，不支持全文索引等。</p>
+<h3 id="4-MySQL怎么恢复半个月前的数据？"><a href="#4-MySQL怎么恢复半个月前的数据？" class="headerlink" title="4.MySQL怎么恢复半个月前的数据？"></a>4.MySQL怎么恢复半个月前的数据？</h3><p>通过整库备份+binlog进行恢复. 前提是要有定期整库备份且保存了binlog日志.</p>
+<h3 id="5-一张自增表里面总共有-7-条数据，删除了最后-2-条数据，重启MySQL-数据库，又插入了一条数据，此时-id-是几？"><a href="#5-一张自增表里面总共有-7-条数据，删除了最后-2-条数据，重启MySQL-数据库，又插入了一条数据，此时-id-是几？" class="headerlink" title="5.一张自增表里面总共有 7 条数据，删除了最后 2 条数据，重启MySQL 数据库，又插入了一条数据，此时 id 是几？"></a>5.一张自增表里面总共有 7 条数据，删除了最后 2 条数据，重启MySQL 数据库，又插入了一条数据，此时 id 是几？</h3><p>表类型如果是 MyISAM ，那 id 就是 8。<br>表类型如果是 InnoDB，那 id 就是 6。<br>InnoDB 表只会把自增主键的最大 id 记录在内存中，所以重启之后会导致最大 id 丢失。</p>
+<h3 id="6-MySQL-的内连接、左连接、右连接有什么区别？"><a href="#6-MySQL-的内连接、左连接、右连接有什么区别？" class="headerlink" title="6.MySQL 的内连接、左连接、右连接有什么区别？"></a>6.MySQL 的内连接、左连接、右连接有什么区别？</h3><p>内连接关键字：inner join；左连接：left join；右连接：right join。 内连接是把匹配的关联数据显示<br>出来；左连接是左边的表全部显示出来，右边的表显示出符合条件的数据；右连接正好相反。</p>
+<h3 id="7-MySQL-问题排查都有哪些手段？"><a href="#7-MySQL-问题排查都有哪些手段？" class="headerlink" title="7.MySQL 问题排查都有哪些手段？"></a>7.MySQL 问题排查都有哪些手段？</h3><p>使用 show processlist 命令查看当前所有连接信息。 使用 explain 命令查询 SQL 语句执行计划。 开启<br>慢查询日志，查看慢查询的 SQL。</p>
+<h3 id="8-如何做-MySQL-的性能优化？"><a href="#8-如何做-MySQL-的性能优化？" class="headerlink" title="8.如何做 MySQL 的性能优化？"></a>8.如何做 MySQL 的性能优化？</h3><p>为搜索字段创建索引。<br>避免使用 select *，列出需要查询的字段。<br>垂直分割分表。<br>选择正确的存储引擎。<br>读写分离</p>
+<h3 id="9-MySQL数据库作发布系统的存储，一天五万条以上的增量，预计运维三年-怎么优化？"><a href="#9-MySQL数据库作发布系统的存储，一天五万条以上的增量，预计运维三年-怎么优化？" class="headerlink" title="9.MySQL数据库作发布系统的存储，一天五万条以上的增量，预计运维三年,怎么优化？"></a>9.MySQL数据库作发布系统的存储，一天五万条以上的增量，预计运维三年,怎么优化？</h3><p>（1）设计良好的数据库结构，允许部分数据冗余，尽量避免join查询，提高效率。<br>（2） 选择合适的表字段数据类型和存储引擎，适当的添加索引。<br>（3） 做mysql主从复制读写分离。<br>（4）对数据表进行分表，减少单表中的数据量提高查询速度。<br>（5）添加缓存机制，比如redis，memcached等。<br>（6）对不经常改动的页面，生成静态页面（比如做ob缓存）。<br>（7）书写高效率的SQL。比如 SELECT * FROM TABEL 改为 SELECT field_1, field_2, field_3 FROM<br>TABLE.</p>
+<h3 id="10-MySQL由哪些部分组成-分别用来做什么？"><a href="#10-MySQL由哪些部分组成-分别用来做什么？" class="headerlink" title="10.MySQL由哪些部分组成, 分别用来做什么？"></a>10.MySQL由哪些部分组成, 分别用来做什么？</h3><p>（1）Server<br>（2）连接器: 管理连接, 权限验证.<br>（3）分析器: 词法分析, 语法分析.<br>（4）优化器: 执行计划生成, 索引的选择.<br>（5）执行器: 操作存储引擎, 返回执行结果.<br>（6）存储引擎: 存储数据, 提供读写接口.</p>
+<h3 id="11-怎么验证-MySQL-的索引是否满足需求？"><a href="#11-怎么验证-MySQL-的索引是否满足需求？" class="headerlink" title="11.怎么验证 MySQL 的索引是否满足需求？"></a>11.怎么验证 MySQL 的索引是否满足需求？</h3><p>使用 explain 查看 SQL 是如何执行查询语句的，从而分析你的索引是否满足需求。 explain 语法：<br>explain select * from table where type&#x3D;1。</p>
+<h3 id="12-请你介绍一下-mysql的主从复制？"><a href="#12-请你介绍一下-mysql的主从复制？" class="headerlink" title="12.请你介绍一下 mysql的主从复制？"></a>12.请你介绍一下 mysql的主从复制？</h3><p>考察点：数据库<br>MySQL主从复制是其最重要的功能之一。主从复制是指一台服务器充当主数据库服务器，另一台或多台<br>服务器充当从数据库服务器，主服务器中的数据自动复制到从服务器之中。对于多级复制，数据库服务<br>器即可充当主机，也可充当从机。MySQL主从复制的基础是主服务器对数据库修改记录二进制日志，从<br>服务器通过主服务器的二进制日志自动执行更新。<br>MySQL主从复制的两种情况：同步复制和异步复制，实际复制架构中大部分为异步复制。<br>复制的基本过程如下：<br>Slave上面的IO进程连接上Master，并请求从指定日志文件的指定位置（或者从最开始的日志）之后的<br>日志内容。<br>Master接收到来自Slave的IO进程的请求后，负责复制的IO进程会根据请求信息读取日志指定位置之后<br>的日志信息，返回给Slave的IO进程。返回信息中除了日志所包含的信息之外，还包括本次返回的信息<br>已经到Master端的bin-log文件的名称以及bin-log的位置。<br>Slave的IO进程接收到信息后，将接收到的日志内容依次添加到Slave端的relay-log文件的最末端，并将<br>读取到的Master端的bin-log的文件名和位置记录到master-info文件中，以便在下一次读取的时候能够<br>清楚的告诉Master“我需要从某个bin-log的哪个位置开始往后的日志内容，请发给我”。<br>Slave的Sql进程检测到relay-log中新增加了内容后，会马上解析relay-log的内容成为在Master端真实执<br>行时候的那些可执行的内容，并在自身执行。</p>
+<h3 id="13-请你介绍一下mysql的MVCC机制"><a href="#13-请你介绍一下mysql的MVCC机制" class="headerlink" title="13.请你介绍一下mysql的MVCC机制"></a>13.请你介绍一下mysql的MVCC机制</h3><p>MVCC是一种多版本并发控制机制，是MySQL的InnoDB存储引擎实现隔离级别的一种具体方式，用于<br>实现提交读和可重复读这两种隔离级别。MVCC是通过保存数据在某个时间点的快照来实现该机制，其<br>在每行记录后面保存两个隐藏的列，分别保存这个行的创建版本号和删除版本号，然后Innodb的MVCC<br>使用到的快照存储在Undo日志中，该日志通过回滚指针把一个数据行所有快照连接起来。</p>
+<h3 id="14-常用的Mysql复制架构有哪些？"><a href="#14-常用的Mysql复制架构有哪些？" class="headerlink" title="14.常用的Mysql复制架构有哪些？"></a>14.常用的Mysql复制架构有哪些？</h3><p>（1）一主多从 在主库读取请求压力非常大的场景下, 可以通过配置一主多从复制架构实现读写分离, 把<br>大量对实时性要求不是特别高的读请求通过负载均衡分布到多个从库上, 降低主库的读取压力，在主库<br>出现异常宕机的情况下, 可以把一个从库切换为主库继续提供服务 。<br>（2）多级复制 一主多从的架构能够解决大部分读请求压力特别大的场景的需求, 考虑到 MysQL的复制<br>是主库“推送” Binlog日志到从库,主库的 I&#x2F;0压力和网络压力会随着从库的增加而增长(每个从库都会在主<br>库上有一个独立的 Binlog Dump线程来发送事件), 而多级复制架构解决了一主多从场景下,主库额外的<br>I&#x2F;0和网络压力。<br>（3）双主复制&#x2F;Dual Master 其实就是主库 Master和 Master2互为主从， client客户端的写请求都访问<br>主库 Master,而读请求可以选择访问主库 Master或 Master2。</p>
+<h3 id="15-Mysql-的存储引擎-myisam和innodb的区别？"><a href="#15-Mysql-的存储引擎-myisam和innodb的区别？" class="headerlink" title="15.Mysql 的存储引擎,myisam和innodb的区别？"></a>15.Mysql 的存储引擎,myisam和innodb的区别？</h3><p>（1）InnoDB支持事务, MyISAM不支持.<br>（2）InnoDB支持行级锁, MyISAM支持表级锁.<br>（3）InnoDB支持多版本并发控制(MVVC), MyISAM不支持.<br>（4）InnoDB支持外键, MyISAM不支持.<br>（5）MyISAM支持全文索引, InnoDB不支持(但可以使用Sphinx插件)</p>
+<h3 id="16-请问MySQL的端口号是多少，如何修改这个端口号"><a href="#16-请问MySQL的端口号是多少，如何修改这个端口号" class="headerlink" title="16.请问MySQL的端口号是多少，如何修改这个端口号"></a>16.请问MySQL的端口号是多少，如何修改这个端口号</h3><p>查看端口号：<br>使用命令show global variables like ‘port’;查看端口号 ，mysql的默认端口是3306。（补充：<br>sqlserver默认端口号为：1433；oracle默认端口号为：1521；DB2默认端口号为：5000；PostgreSQL<br>默认端口号为：5432）<br>修改端口号：<br>修改端口号：编辑&#x2F;etc&#x2F;my.cnf文件，早期版本有可能是my.conf文件名，增加端口参数，并且设定端<br>口，注意该端口未被使用，保存退出。</p>
+<h3 id="17-Mysql如何为表字段添加索引？"><a href="#17-Mysql如何为表字段添加索引？" class="headerlink" title="17.Mysql如何为表字段添加索引？"></a>17.Mysql如何为表字段添加索引？</h3><p>（1）添加PRIMARY KEY（主键索引）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name <span class="keyword">ADD</span> <span class="keyword">PRIMARY</span> KEY ( <span class="keyword">column</span> )</span><br></pre></td></tr></table></figure>
+<p>（2）添加UNIQUE(唯一索引)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span> ( <span class="keyword">column</span> )</span><br></pre></td></tr></table></figure>
+<p>（3）添加INDEX(普通索引)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name <span class="keyword">ADD</span> INDEX index_name ( <span class="keyword">column</span> )</span><br></pre></td></tr></table></figure>
+<p>（4）添加FULLTEXT(全文索引)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name <span class="keyword">ADD</span> FULLTEXT ( <span class="keyword">column</span>)</span><br></pre></td></tr></table></figure>
+<p>（5）添加多列索引</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name <span class="keyword">ADD</span> INDEX index_name ( column1, column2, column3)</span><br></pre></td></tr></table></figure>
+<h3 id="-4"><a href="#-4" class="headerlink" title=""></a></h3><h3 id="18-说说自己对于-MySQL-常见的两种存储引擎：MyISAM与InnoDB的理解？"><a href="#18-说说自己对于-MySQL-常见的两种存储引擎：MyISAM与InnoDB的理解？" class="headerlink" title="18.说说自己对于 MySQL 常见的两种存储引擎：MyISAM与InnoDB的理解？"></a>18.说说自己对于 MySQL 常见的两种存储引擎：MyISAM与InnoDB的理解？</h3><ul>
+<li><strong>InnoDB 引擎：</strong>InnoDB 引擎提供了对数据库 acid 事务的支持，并且还提供了行级锁和外键的约束，它</li>
+</ul>
+<p>的设计的目标就是处理大数据容量的数据库系统。MySQL 运行的时候，InnoDB 会在内存中建立缓冲<br>池，用于缓冲数据和索引。但是该引擎是不支持全文搜索，同时启动也比较的慢，它是不会保存表的行<br>数的，所以当进行 select count() from table 指令的时候，需要进行扫描全表。由于锁的粒度小，写操<br>作是不会锁定全表的,所以在并发度较高的场景下使用会提升效率的。</p>
+<ul>
+<li><strong>MyIASM 引擎：</strong>MySQL 的默认引擎，但不提供事务的支持，也不支持行级锁和外键。因此当执行插入</li>
+</ul>
+<p>和更新语句时，即执行写操作的时候需要锁定这个表，所以会导致效率会降低。不过和 InnoDB 不同的<br>是，MyIASM 引擎是保存了表的行数，于是当进行 select count() from table 语句时，可以直接的读取<br>已经保存的值而不需要进行扫描全表。所以，如果表的读操作远远多于写操作时，并且不需要事务的支<br>持的，可以将 MyIASM 作为数据库引擎的首选。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zzonn.com/2020/02/02/MySql%E9%AB%98%E9%A2%91%E9%97%AE%E7%AD%94-mysql-gao-pin-wen-da/" data-id="clf0jcv6x000u6ocx68w25qbs" data-title="MySql高频问答" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Windows错误代码对应解决方案-windows错误代码对应解决方案" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/11/01/Windows%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%81%E5%AF%B9%E5%BA%94%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-windows%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%81%E5%AF%B9%E5%BA%94%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="article-date">
+  <time class="dt-published" datetime="2019-11-01T09:49:55.000Z" itemprop="datePublished">2019-11-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Other/">Other</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/11/01/Windows%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%81%E5%AF%B9%E5%BA%94%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-windows%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%81%E5%AF%B9%E5%BA%94%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">Windows错误代码对应解决方案</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="错误代码0x80131500"><a href="#错误代码0x80131500" class="headerlink" title="错误代码0x80131500"></a>错误代码0x80131500</h2><p>打开“运行”输入 inetcpl.cpl （“WINDOWS”+“R”键，输入 inetcpl.cpl亦可）<br>点开高级往下拉，勾上”使用TLS 1.2”选项，或者点还原高级设置。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zzonn.com/2019/11/01/Windows%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%81%E5%AF%B9%E5%BA%94%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-windows%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%81%E5%AF%B9%E5%BA%94%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-id="clf0jcv73001h6ocx1uvpb6da" data-title="Windows错误代码对应解决方案" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-让开发效率“飞起”的VS Code插件-让开发效率飞起的vscode插件" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/08/10/%E8%AE%A9%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87%E2%80%9C%E9%A3%9E%E8%B5%B7%E2%80%9D%E7%9A%84VS%20Code%E6%8F%92%E4%BB%B6-%E8%AE%A9%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87%E9%A3%9E%E8%B5%B7%E7%9A%84vscode%E6%8F%92%E4%BB%B6/" class="article-date">
+  <time class="dt-published" datetime="2019-08-10T03:25:38.000Z" itemprop="datePublished">2019-08-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Tool/">Tool</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/08/10/%E8%AE%A9%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87%E2%80%9C%E9%A3%9E%E8%B5%B7%E2%80%9D%E7%9A%84VS%20Code%E6%8F%92%E4%BB%B6-%E8%AE%A9%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87%E9%A3%9E%E8%B5%B7%E7%9A%84vscode%E6%8F%92%E4%BB%B6/">让开发效率“飞起”的VS Code插件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>VSCode，是一个免费的、开源的跨平台编辑器,也是我最满意的编辑器之一。<br>本文向大家推荐一些我喜欢的vscode插件，不出意外的话，这些插件将对你的工作效率提升有不小的帮助！</p>
+<h2 id="GitLens"><a href="#GitLens" class="headerlink" title="GitLens"></a>GitLens</h2><p>VS Code中的 Git 体验在易用性和完整性之间取得了一个不错的平衡，大部分用户都能够使用它完成工作，同时又不会被太多的功能吓到。但是很多硬核的 Git 用户肯定会觉得功能还不够用。包括但不限于：<br>不能查看某个 commit 中的代码改动；<br>不能比较两个 commit 或者 branch，然后阅览代码改动；<br>不能查看代码历史记录。<br>不过 GitLens 这个插件的出现，就弥补上了上述不足。<br>类似的 Extension：</p>
+<p>Git History – 用来查看 git log 或则一个文件的 git 历史，比较不同的分支，commits<br>Git Blame  - 它允许您在当前选定行的状态栏中看到 Git Blame 信息。GitLens 也提供了类似的功能。<br>Git Project Manager –可以一键搜索并打开某个的基于 Git 管理的项目</p>
+<h2 id="Quokka-js"><a href="#Quokka-js" class="headerlink" title="Quokka.js"></a>Quokka.js</h2><p>Quokka.js 是一个用于 JavaScript 和 TypeScript 的实时运行代码平台。这意味着它会在你输入后立即运行您的代码，并在您的代码编辑器中显示各种执行结果。<br>Quokka 其实也就是一个调试工具，可以为您正在编写的代码提供实时反馈。它能够预览变量的函数和计算值结果。<br>建议你亲自尝试一下。</p>
+<h2 id="Visual-Studio-Intellicode"><a href="#Visual-Studio-Intellicode" class="headerlink" title="Visual Studio Intellicode"></a>Visual Studio Intellicode</h2><p>Visual Studio Intellicode 超过 350 万下载量，是 Visual Studio 上下载次数最多的插件。并且，在我看来，它会是你用过的最有用的插件之一。<br>这个插件能帮助开发人员生成智能代码补全提示，并且它内置支持很多种编程语言。<br>Visual Studio Intellicode 使用机器学习技术，通过学习大量 GitHub 项目的代码，能找到一些编码模式，然后在你编程时给予代码提示。</p>
+<h2 id="Debugger-for-Chrome"><a href="#Debugger-for-Chrome" class="headerlink" title="Debugger for Chrome"></a>Debugger for Chrome</h2><p>如果你想调试 JavaScript 程序，你可以不必离开 VSCode 开发环境。<br>Debugger for Chrome 这款插件就可以做到这点，它由微软发布，允许你在 VSCode 中直接调试网页源文件，该插件主要利用 Chrome 所开放出来的接口来实现对其渲染的页面进行调试。</p>
+<h2 id="Auto-Rename-Tag"><a href="#Auto-Rename-Tag" class="headerlink" title="Auto Rename Tag"></a>Auto Rename Tag</h2><p>无论你选择哪种框架，假如当开始和结束标签间的代码有 50 多行时，你想将一个H2标签更改为H3标签，或者你想将一个div标签更改为span标签，不管要做什么，你都要浪费时间来查找结束标签，这时候就该用这个插件– Auto Rename Tag<br>这个插件在你修改某一个标签时会自动匹配结束标签修改为相应的结束标签，反之亦然。</p>
+<h2 id="SCSS-IntelliSense"><a href="#SCSS-IntelliSense" class="headerlink" title="SCSS IntelliSense"></a>SCSS IntelliSense</h2><p>在 SCSS 中创建变量，这是很棒的体验。但创建后，你还记得它们吗？可能大多没记住。<br>有了这个插件，你能在应用的任何位置快速获取你发明的那些 SCSS 变量名。再也不用记住那些名称，也无需进行文件搜索。</p>
+<h2 id="ESLint"><a href="#ESLint" class="headerlink" title="ESLint"></a>ESLint</h2><p>ESLint 插件将 ESLint 集成进了 Visual Studio Code 中。如果你还不了解这款插件，我简单说一下，这款插件会静态分析你的代码，快速找到代码中的问题。<br>ESLint 找到的大部分问题都可以由其自动修复。ESLint 会根据当前文件使用的语法进行自动修复，所以就不会像传统的“寻找 - 替换”算法那样产生语法错误。<br>最重要的是，ESLint 是高度可定制化的。</p>
+<h2 id="Prettier"><a href="#Prettier" class="headerlink" title="Prettier"></a>Prettier</h2><p>对那些想严格遵守一组编码规则格式的开发者来说，Prettier 是相当有用的插件。<br>并且，它是一个健壮的、固守成规的代码格式化利器，它可以一键美化你的 JavaScript&#x2F;TypeScript&#x2F;CSS 代码。</p>
+<h2 id="Vetur"><a href="#Vetur" class="headerlink" title="Vetur"></a>Vetur</h2><p>Vetur是一款必备的Vue开发工具。支持多种功能，比如语法高亮、错误检测、Emmet和Snippet等等。</p>
+<h2 id="Code-Runner"><a href="#Code-Runner" class="headerlink" title="Code Runner"></a>Code Runner</h2><p>时至今日，Code Runner已经有了超过300万的下载量，代码一键运行，支持超过40种语言。<br>安装好Code Runner之后，打开你所要运行的文件，有多种方式来快捷地运行你的代码：</p>
+<p>在编辑区，右键选择 Run Code<br>键盘快捷键 Ctrl+Alt+N<br>快捷键 F1 调出 命令面板, 然后输入 Run Code<br>在左侧的文件管理器，右键选择 Run Code<br>右上角的运行小三角按钮</p>
+<h2 id="Path-Intellisense"><a href="#Path-Intellisense" class="headerlink" title="Path Intellisense"></a>Path Intellisense</h2><p>Path Intellisense 可以快速提高你的开发效率。如果你同时开发多个项目，并使用很多不同的技术，你肯定想要一个方便的工具，它能帮你记住文件路径。<br>这款插件就能为你节省很多这方面的时间，帮你省去找到正确文件路径的时间。</p>
+<h2 id="Color-Picker"><a href="#Color-Picker" class="headerlink" title="Color Picker"></a>Color Picker</h2><p>在书写 HTML 和 CSS 的时候，你可能经常需要修改元素的颜色。VS Code 为修改颜色，提供了一个图形化的界面，其中包含了颜色相关的属性。<br>当你打开一段 HTML 或者 CSS 代码时，你可以看到，VS Code 在颜色的前面画了一个方块（即颜色装饰器 Color Decorator），用于展示这段颜色属性所对应的最终效果。然后你把鼠标移动到这段代码上时，一个颜色选择器窗口就显示出来了，根据你需要来调整颜色。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zzonn.com/2019/08/10/%E8%AE%A9%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87%E2%80%9C%E9%A3%9E%E8%B5%B7%E2%80%9D%E7%9A%84VS%20Code%E6%8F%92%E4%BB%B6-%E8%AE%A9%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87%E9%A3%9E%E8%B5%B7%E7%9A%84vscode%E6%8F%92%E4%BB%B6/" data-id="clf0jcv7b002f6ocx0hqacf5p" data-title="让开发效率“飞起”的VS Code插件" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vs-code/" rel="tag">vs code</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Net/">.Net</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Other/">Other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/">Tool</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/net/" rel="tag">.net</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/netcore/" rel="tag">.netcore</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abp/" rel="tag">Abp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blazor/" rel="tag">Blazor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Elasticsearch/" rel="tag">Elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/" rel="tag">Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/" rel="tag">code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/" rel="tag">mongodb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/" rel="tag">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlserver/" rel="tag">sqlserver</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vs-code/" rel="tag">vs code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag">微服务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%8F%E6%8D%B7/" rel="tag">敏捷</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/net/" style="font-size: 20px;">.net</a> <a href="/tags/netcore/" style="font-size: 16.67px;">.netcore</a> <a href="/tags/Abp/" style="font-size: 10px;">Abp</a> <a href="/tags/Blazor/" style="font-size: 10px;">Blazor</a> <a href="/tags/C/" style="font-size: 16.67px;">C#</a> <a href="/tags/Elasticsearch/" style="font-size: 10px;">Elasticsearch</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Tool/" style="font-size: 13.33px;">Tool</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.33px;">redis</a> <a href="/tags/sql/" style="font-size: 13.33px;">sql</a> <a href="/tags/sqlserver/" style="font-size: 10px;">sqlserver</a> <a href="/tags/vs-code/" style="font-size: 10px;">vs code</a> <a href="/tags/vue/" style="font-size: 13.33px;">vue</a> <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="font-size: 10px;">微服务</a> <a href="/tags/%E6%95%8F%E6%8D%B7/" style="font-size: 10px;">敏捷</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/05/28/%E8%BF%87%E6%97%A9%E7%9A%84%E7%BB%99%E6%96%B9%E6%B3%95%E4%B8%AD%20%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%20%E8%AE%BE%E4%B8%BA%20null%20%E5%8F%AF%E8%A2%AB%20GC%E6%8F%90%E5%89%8D%E5%9B%9E%E6%94%B6%E5%90%97%EF%BC%9F-%E8%BF%87%E6%97%A9%E7%9A%84%E7%BB%99%E6%96%B9%E6%B3%95%E4%B8%AD%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%E8%AE%BE%E4%B8%BAnull%E5%8F%AF%E8%A2%ABgc%E6%8F%90%E5%89%8D%E5%9B%9E%E6%94%B6%E5%90%97/">过早的给方法中 引用对象 设为 null 可被 GC提前回收吗？</a>
+          </li>
+        
+          <li>
+            <a href="/2022/05/28/Git%20%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9A%20pull%20%E5%92%8C%20push%EF%BC%8C%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87-git%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9Apull%E5%92%8Cpush%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87/">Git 不要只会 pull 和 push，试试用这些命令来提高效率</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/11/ClickHouse%E7%AE%80%E4%BB%8B-clickhouse%E7%AE%80%E4%BB%8B/">ClickHouse简介</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/04/%E5%8F%91%E5%B8%83.netcore%E9%A1%B9%E7%9B%AE%E5%88%B0linux-fa-bu-netcore-xiang-mu-dao-linux/">发布.netcore项目到linux</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/12/code%20review%20%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83-codereview%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83/">code review 流程规范</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 LiPan<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

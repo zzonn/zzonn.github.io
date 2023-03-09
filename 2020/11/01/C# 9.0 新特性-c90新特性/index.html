@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>C# 9.0 新特性 | ZZONN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="简化 模式匹配模式匹配（Pattern Matching）是在 C# 7.0 引入的，是对 switch 语句的增强，可以支持实现复杂的条件匹配。下面我先用一个示例来展示一下模式匹配的一般的用法。 假如现在我们要计算各种车辆在某高速的通行费，比如有下面四种车辆，分别定义为以下四个类，各个类中定义了和通行费计算相关的属性： 1234567891011121314151617181920public">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C# 9.0 新特性">
+<meta property="og:url" content="http://www.zzonn.com/2020/11/01/C#%209.0%20%E6%96%B0%E7%89%B9%E6%80%A7-c90%E6%96%B0%E7%89%B9%E6%80%A7/index.html">
+<meta property="og:site_name" content="ZZONN">
+<meta property="og:description" content="简化 模式匹配模式匹配（Pattern Matching）是在 C# 7.0 引入的，是对 switch 语句的增强，可以支持实现复杂的条件匹配。下面我先用一个示例来展示一下模式匹配的一般的用法。 假如现在我们要计算各种车辆在某高速的通行费，比如有下面四种车辆，分别定义为以下四个类，各个类中定义了和通行费计算相关的属性： 1234567891011121314151617181920public">
+<meta property="og:locale">
+<meta property="og:image" content="https://mmbiz.qpic.cn/sz_mmbiz_png/TIcgLjdQYUzBRouMkabxbAIxviaU8YL9RDwtpVicfY8ybS3bTTeEeuMVNhLhF7ibfIVRKOHnZFlicUiaqHyOnKRAVgg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="article:published_time" content="2020-11-01T09:55:13.000Z">
+<meta property="article:modified_time" content="2021-04-08T10:38:04.768Z">
+<meta property="article:author" content="LiPan">
+<meta property="article:tag" content=".net">
+<meta property="article:tag" content="C#">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mmbiz.qpic.cn/sz_mmbiz_png/TIcgLjdQYUzBRouMkabxbAIxviaU8YL9RDwtpVicfY8ybS3bTTeEeuMVNhLhF7ibfIVRKOHnZFlicUiaqHyOnKRAVgg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+  
+    <link rel="alternate" href="/atom.xml" title="ZZONN" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">ZZONN</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">ZZONN</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.zzonn.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-C# 9.0 新特性-c90新特性" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/11/01/C#%209.0%20%E6%96%B0%E7%89%B9%E6%80%A7-c90%E6%96%B0%E7%89%B9%E6%80%A7/" class="article-date">
+  <time class="dt-published" datetime="2020-11-01T09:55:13.000Z" itemprop="datePublished">2020-11-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Net/">.Net</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      C# 9.0 新特性
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="简化-模式匹配"><a href="#简化-模式匹配" class="headerlink" title="简化 模式匹配"></a>简化 模式匹配</h2><p>模式匹配（Pattern Matching）是在 C# 7.0 引入的，是对 switch 语句的增强，可以支持实现复杂的条件匹配。下面我先用一个示例来展示一下模式匹配的一般的用法。</p>
+<p>假如现在我们要计算各种车辆在某高速的通行费，比如有下面四种车辆，分别定义为以下四个类，各个类中定义了和通行费计算相关的属性：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Car</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Passengers &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DeliveryTruck</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> GrossWeightClass &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Taxi</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Fares &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Bus</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Capacity &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Riders &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面用用模式匹配的方式来实现一个计算通行费的方法：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">decimal</span> <span class="title">CalculateToll</span>(<span class="params"><span class="built_in">object</span> vehicle</span>)</span> =&gt;</span><br><span class="line">    vehicle <span class="keyword">switch</span></span><br><span class="line">&#123;</span><br><span class="line">    Car &#123; Passengers: <span class="number">0</span>&#125;        =&gt; <span class="number">2.00</span>m + <span class="number">0.50</span>m,</span><br><span class="line">    Car &#123; Passengers: <span class="number">1</span>&#125;        =&gt; <span class="number">2.0</span>m,</span><br><span class="line">    Car &#123; Passengers: <span class="number">2</span>&#125;        =&gt; <span class="number">2.0</span>m - <span class="number">0.50</span>m,</span><br><span class="line">    Car c                       =&gt; <span class="number">2.00</span>m - <span class="number">1.0</span>m,</span><br><span class="line"></span><br><span class="line">    Taxi t =&gt; t.Fares <span class="keyword">switch</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="number">0</span> =&gt; <span class="number">3.50</span>m + <span class="number">1.00</span>m,</span><br><span class="line">        <span class="number">1</span> =&gt; <span class="number">3.50</span>m,</span><br><span class="line">        <span class="number">2</span> =&gt; <span class="number">3.50</span>m - <span class="number">0.50</span>m,</span><br><span class="line">        _ =&gt; <span class="number">3.50</span>m - <span class="number">1.00</span>m</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="function">Bus b <span class="title">when</span> (<span class="params">(<span class="built_in">double</span></span>)b.Riders / (<span class="params"><span class="built_in">double</span></span>)b.Capacity) &lt; 0.50</span> =&gt; <span class="number">5.00</span>m + <span class="number">2.00</span>m,</span><br><span class="line">    <span class="function">Bus b <span class="title">when</span> (<span class="params">(<span class="built_in">double</span></span>)b.Riders / (<span class="params"><span class="built_in">double</span></span>)b.Capacity) &gt; 0.90</span> =&gt; <span class="number">5.00</span>m - <span class="number">1.00</span>m,</span><br><span class="line">    Bus b =&gt; <span class="number">5.00</span>m,</span><br><span class="line"></span><br><span class="line">    <span class="function">DeliveryTruck t <span class="title">when</span> (<span class="params">t.GrossWeightClass &gt; <span class="number">5000</span></span>)</span> =&gt; <span class="number">10.00</span>m + <span class="number">5.00</span>m,</span><br><span class="line">    <span class="function">DeliveryTruck t <span class="title">when</span> (<span class="params">t.GrossWeightClass &lt; <span class="number">3000</span></span>)</span> =&gt; <span class="number">10.00</span>m - <span class="number">2.00</span>m,</span><br><span class="line">    DeliveryTruck _ =&gt; <span class="number">10.00</span>m,</span><br><span class="line"></span><br><span class="line">    &#123; &#125; =&gt; <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentException(message: <span class="string">&quot;Not a known vehicle type&quot;</span>, paramName: <span class="keyword">nameof</span>(vehicle)),</span><br><span class="line">    <span class="literal">null</span> =&gt; <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="keyword">nameof</span>(vehicle))</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+<p>实现这个业务逻辑，若在 C# 7.0 之前，需要用一堆的 if&#x2F;else 来实现。有了模式匹配后，变得方便了很多，而且使用上很灵活，代码结构也更优美。</p>
+<p>对我来说，模式匹配是个极好的特性！但这还不够，C# 9.0 对模式匹配的写法做了进一步的简化！</p>
+<p>以上面代码为例，模式匹配可以分为三种：简单模式、关系模式和逻辑模式。下面分别说说 C# 9.0 对三种模式的简化。</p>
+<h3 id="简单模式"><a href="#简单模式" class="headerlink" title="简单模式"></a>简单模式</h3><p>以上面 CalculateToll 方法示例代码为例，简单模式对应的代码片段是这样的：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vehicle <span class="keyword">switch</span></span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    Car c =&gt; <span class="number">2.00</span>m - <span class="number">1.0</span>m</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们其实可以发现，上面的变量 c 声明了却没用被使用，现在 C# 9.0 中可以把它省略了：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vehicle <span class="keyword">switch</span></span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    Car =&gt; <span class="number">2.00</span>m - <span class="number">1.0</span>m</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="关系模式"><a href="#关系模式" class="headerlink" title="关系模式"></a>关系模式</h3><p>以上面 CalculateToll 方法示例代码为例，关系模式是通过比较（大小）关系来匹配的，对应的代码片段如下：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">DeliveryTruck t <span class="title">when</span> (<span class="params">t.GrossWeightClass &gt; <span class="number">5000</span></span>)</span> =&gt; <span class="number">10.00</span>m + <span class="number">5.00</span>m,</span><br><span class="line"><span class="function">DeliveryTruck t <span class="title">when</span> (<span class="params">t.GrossWeightClass &lt; <span class="number">3000</span></span>)</span> =&gt; <span class="number">10.00</span>m - <span class="number">2.00</span>m,</span><br></pre></td></tr></table></figure>
+<p>现在 C# 9.0 可以简写成：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DeliveryTruck t <span class="keyword">when</span> t.GrossWeightClass <span class="keyword">switch</span></span><br><span class="line">&#123;</span><br><span class="line">    &gt; <span class="number">5000</span> =&gt; <span class="number">10.00</span>m + <span class="number">5.00</span>m,</span><br><span class="line">    &lt; <span class="number">3000</span> =&gt; <span class="number">10.00</span>m - <span class="number">2.00</span>m,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="逻辑模式"><a href="#逻辑模式" class="headerlink" title="逻辑模式"></a>逻辑模式</h3><p>在 C# 9.0 中，你可以通过逻辑操作符 and、or 和 not 对模式进行组合，下面是一些示例：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">DeliveryTruck t <span class="keyword">when</span> t.GrossWeightClass <span class="keyword">switch</span></span><br><span class="line">&#123;</span><br><span class="line">    &lt; <span class="number">3000</span> =&gt; <span class="number">10.00</span>m - <span class="number">2.00</span>m,</span><br><span class="line">    &gt;= <span class="number">3000</span> <span class="keyword">and</span> &lt;= <span class="number">5000</span> =&gt; <span class="number">10.00</span>m,</span><br><span class="line">    &gt; <span class="number">5000</span> =&gt; <span class="number">10.00</span>m + <span class="number">5.00</span>m,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">not</span> <span class="literal">null</span> =&gt; <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentException(<span class="string">$&quot;Not a known vehicle type: <span class="subst">&#123;vehicle&#125;</span>&quot;</span>, <span class="keyword">nameof</span>(vehicle)),</span><br><span class="line"><span class="literal">null</span> =&gt; <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="keyword">nameof</span>(vehicle))</span><br></pre></td></tr></table></figure>
+<p>另外，not 关键字还可以用来替代 if 条件判断中的逻辑非(!)，比如：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原来的写法</span></span><br><span class="line"><span class="keyword">if</span> (!(e <span class="keyword">is</span> Customer)) &#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新的写法（易读性更好）</span></span><br><span class="line"><span class="keyword">if</span> (e <span class="keyword">is</span> <span class="keyword">not</span> Customer) &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="简化-参数非空检查"><a href="#简化-参数非空检查" class="headerlink" title="简化 参数非空检查"></a>简化 参数非空检查</h2><p>参数非空检查是编写类库很常见的操作，在一个方法中要求参数不能为空，否则抛出相应的异常。比如：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">string</span> <span class="title">HashPassword</span>(<span class="params"><span class="built_in">string</span> password</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(password <span class="keyword">is</span> <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="keyword">nameof</span>(password));</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当异常发生时，调用者很容易知道是什么问题。如果不加这个检查，可能就会由系统抛出未将对象引用为实例之类的错误，这不利于调用者诊断错误。</p>
+<p>由于这个场景太常见了，于是我经常在我的项目中通过一个辅助类来做此类检查。这个类用来检查方法参数，所以命名为 Guard，主要代码如下：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">Guard</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">NotNull</span>(<span class="params"><span class="built_in">object</span> param, <span class="built_in">string</span> paramName</span>)</span>  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">if</span> (param <span class="keyword">is</span> <span class="literal">null</span>)  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(paramName);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">NotNullOrEmpty</span>(<span class="params"><span class="built_in">string</span> param, <span class="built_in">string</span> paramName</span>)</span>  </span><br><span class="line">    &#123;  </span><br><span class="line">        NotNull(param, paramName);  </span><br><span class="line">        <span class="keyword">if</span> (param == <span class="built_in">string</span>.Empty)  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentException(<span class="string">$&quot;The string can not be empty.&quot;</span>, paramName);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> NotNullOrEmpty&amp;lt;T&amp;gt;(IEnumerable&amp;lt;T&amp;gt; param, <span class="built_in">string</span> paramName)  </span><br><span class="line">    &#123;  </span><br><span class="line">        NotNull(param, paramName);  </span><br><span class="line">        <span class="keyword">if</span> (param.Count() == <span class="number">0</span>)  </span><br><span class="line">        &#123;  </span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentException(<span class="string">&quot;The collection can not be empty.&quot;</span>, paramName);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    ...  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个类包含了三个常见的非空检查，包括 null、空字符串、空集合的检查。使用示例：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">string</span> <span class="title">HashPassword</span>(<span class="params"><span class="built_in">string</span> password</span>)</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    Guard.NotNull(password, <span class="keyword">nameof</span>(password));  </span><br><span class="line">    ...  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> IEnumerable&amp;lt;TSource&amp;gt; DistinctBy&amp;lt;TSource, TKey&amp;gt;(  </span><br><span class="line">    <span class="keyword">this</span> IEnumerable&amp;lt;TSource&amp;gt; source,  </span><br><span class="line">    Func&amp;lt;TSource, TKey&amp;gt; keySelector)  </span><br><span class="line">&#123;  </span><br><span class="line">    Guard.NotNullOrEmpty(source, <span class="keyword">nameof</span>(source));  </span><br><span class="line">    ...  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>介于这种非空检查极其常见，C# 9.0 对此做了简化，增加了操作符‘!’，放在参数名后面，表示此参数不接受 null 值。使用方式如下：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">string</span> <span class="title">HashPassword</span>(<span class="params"><span class="built_in">string</span> password!</span>)</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    ...  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>简化了很多有木有。这个提案已经纳入 C# 9.0 的特性中，但目前（2020-06-13）还没有完成开发。</p>
+<p>这个特性只支持非 null 检查，其它参数检查场景还是不够用的，我还是会通过辅助类来进行像空字符串、空集合的检查。</p>
+<p>这个特性在写公共类库的时候很有用，但我想大多数人在写业务逻辑代码的时候可能用不到这个特性，一般会封自己的参数检查机制。比如，我在项目中，对于上层 API 开发，我通过封装一个辅助类（ApiGuard）来对对参数进行检查，如果参数不通过，则抛出相应的业务异常，而不是 ArgumentNullException。比如下面的一段截取自我的 GeekGist 小项目的代码：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">ApiGuard</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">EnsureNotNull</span>(<span class="params"><span class="built_in">object</span> param, <span class="built_in">string</span> paramName</span>)</span>  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">if</span> (param == <span class="literal">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> BadRequestException(<span class="string">$&quot;<span class="subst">&#123;paramName&#125;</span> can not be null.&quot;</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> EnsureNotEmpty&amp;lt;T&amp;gt;(IEnumerable&amp;lt;T&amp;gt; collection, <span class="built_in">string</span> paramName)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">if</span> (collection == <span class="literal">null</span> || collection.Count() == <span class="number">0</span>)  </span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> BadRequestException(<span class="string">$&quot;<span class="subst">&#123;paramName&#125;</span> can not be null or empty.&quot;</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">EnsureExist</span>(<span class="params"><span class="built_in">object</span> <span class="keyword">value</span>, <span class="built_in">string</span> message = <span class="string">&quot;Not found&quot;</span></span>)</span>  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">value</span> == <span class="literal">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> BadRequestException(message);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">EnsureNotExist</span>(<span class="params"><span class="built_in">object</span> <span class="keyword">value</span>, <span class="built_in">string</span> message = <span class="string">&quot;Already existed&quot;</span></span>)</span>  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">value</span> != <span class="literal">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> BadRequestException(message);  </span><br><span class="line">    &#125;  </span><br><span class="line">    ...  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用示例：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task <span class="title">UpdateAsync</span>(<span class="params"><span class="built_in">long</span> id, BookUpdateDto dto</span>)</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    ApiGuard.EnsureNotNull(dto, <span class="keyword">nameof</span>(dto));  </span><br><span class="line">    ApiGuard.EnsureNotEmpty(dto.TagValues, <span class="keyword">nameof</span>(dto.TagValues));  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">var</span> book = <span class="keyword">await</span> DbSet  </span><br><span class="line">        .Include(x =&gt; x.BookTags)  </span><br><span class="line">        .FirstOrDefaultAsync(x =&gt; x.Id == id);  </span><br><span class="line">    ApiGuard.EnsureExist(book);  </span><br><span class="line">  </span><br><span class="line">    Mapper.Map(dto, book);  </span><br><span class="line">  </span><br><span class="line">    ...  </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>ApiGuard 的好处是，当 API 接口接到不合要求的参数时，可以自定义响应返回内容。比如，增加一个 Filter 或中间件用来全局捕获业务代码异常，根据不同的异常返回给前端不同的状态码和消息提示：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Task <span class="title">HandleExceptionAsync</span>(<span class="params">HttpContext context, Exception exception</span>)</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    ApiResult result;  </span><br><span class="line">    <span class="keyword">if</span> (exception <span class="keyword">is</span> BadRequestException)  </span><br><span class="line">    &#123;  </span><br><span class="line">        result = ApiResult.Error(exception.Message, <span class="number">400</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (exception <span class="keyword">is</span> NotFoundException)  </span><br><span class="line">    &#123;  </span><br><span class="line">        message = <span class="built_in">string</span>.IsNullOrEmpty(message) ? <span class="string">&quot;Not Found&quot;</span> : message;  </span><br><span class="line">        result = ApiResult.Error(message, <span class="number">404</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (exception <span class="keyword">is</span> UnauthorizedAccessException)  </span><br><span class="line">    &#123;  </span><br><span class="line">        message = <span class="built_in">string</span>.IsNullOrEmpty(message) ? <span class="string">&quot;Unauthorized&quot;</span> : message;  </span><br><span class="line">        result = ApiResult.Error(message, <span class="number">401</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    ...  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>只是一个参数非空检查，在实际开发中却有不少的学问，所以学好了理论还要多实践才能更透彻的理解它。</p>
+<h2 id="目标类型推导-new-表达式"><a href="#目标类型推导-new-表达式" class="headerlink" title="目标类型推导 new 表达式"></a>目标类型推导 new 表达式</h2><p>关于类型推导想必大家都很熟悉，它是在 var 关键字引入的时候引入 C# 的。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i = <span class="number">10</span>;  </span><br><span class="line"><span class="keyword">var</span> u = <span class="keyword">new</span> User();</span><br></pre></td></tr></table></figure>
+
+<p>编译器会通过右边的字面量自动推导左边变量的类型，这种推导方式可以归纳为：从上下文右边推导出左边的类型。我们不防把它称为源类型推导（Source-typed inferring，参考 Target-typed 自创的术语）。</p>
+<p>相应的，有源类型推导就有目标类型推导 (Target-typed inferring)，它是指从上下文左边推导出右边的类型。比如数组的初始化和 Lambda 表达式常常是目标类型推导的表达式。举个例子：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 没有使用类型推导  </span></span><br><span class="line"><span class="built_in">string</span>\[\] s = <span class="keyword">new</span> <span class="built_in">string</span>\[\] &#123; <span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span> &#125;;  </span><br><span class="line"><span class="comment">// 目标类型推导（左推右）  </span></span><br><span class="line"><span class="built_in">string</span>\[\] s = <span class="keyword">new</span> &#123; <span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span> &#125;;  </span><br><span class="line"><span class="built_in">string</span>\[\] s = <span class="keyword">new</span> \[\] &#123; <span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span> &#125;;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">// 没有使用类型推导  </span></span><br><span class="line">Users.FirstOrDefault&amp;lt;User&amp;gt;(u =&gt; u.id = <span class="number">123</span>);  </span><br><span class="line"><span class="comment">// 目标类型推导（左推右）  </span></span><br><span class="line">Users.FirstOrDefault(u =&gt; u.id = <span class="number">123</span>);</span><br></pre></td></tr></table></figure>
+<p>这次在 C# 9 中，增加了用户定义类型 new 表达式的目标类型推导，即通过上下文左边自动推导 new 表达式的类型，从而在使用 new 构造时省略类型的指定，请看示例：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C# 9 之前  </span></span><br><span class="line">Point p = <span class="keyword">new</span> Point(<span class="number">3</span>, <span class="number">5</span>);  </span><br><span class="line">  </span><br><span class="line"><span class="comment">// C# 9  </span></span><br><span class="line">Point p = <span class="keyword">new</span> (<span class="number">3</span>, <span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+<p>除此之外，C# 9 也增加了操作符 <code>??</code> 和 <code>?:</code> 的目标类型推导支持。之前这两个操作符必须要求两边的操作对象都是相同的类型，否则会编译报错。而在 C# 9 中，只要目标类型是操作对象共同的基类就不再会编译报错了，比如：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Student 和 Customer 拥有共同的父类 Person  </span></span><br><span class="line">Person person = (Person)(student ?? customer); <span class="comment">// C# 9 之前  </span></span><br><span class="line">Person person = student ?? customer; <span class="comment">// C# 9  </span></span><br><span class="line">  </span><br><span class="line"><span class="comment">// 可空类型，0 和 null 都可以隐式转换为 int? 类型  </span></span><br><span class="line"><span class="built_in">int</span>? result = b ? <span class="number">0</span> : (<span class="built_in">int</span>?)<span class="literal">null</span>; <span class="comment">// C# 9 之前  </span></span><br><span class="line"><span class="built_in">int</span>? result = b ? <span class="number">0</span> : <span class="literal">null</span>; <span class="comment">// C# 9</span></span><br></pre></td></tr></table></figure>
+<p>其实本文的核心就一句代码：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Point p = <span class="keyword">new</span> (<span class="number">3</span>, <span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="只读属性和记录"><a href="#只读属性和记录" class="headerlink" title="只读属性和记录"></a>只读属性和记录</h2><p>熟悉函数式编程的童鞋一定对“只读”这个词不陌生。为了保证代码块自身的“纯洁”，函数式编程是不能随便“弄脏”外来事物（参数、变量等）的，所以“只读”对函数式编程非常重要。</p>
+<p>为了丰富 C# 对函数式编程支持，较新的 C# 版本引入了一些很有用的新特性。比如 C# 8 中就对 struct 类型的方法增加了 readonly 修饰符支持，被 readonly 修饰的方法是不能修改该方法所在类的属性的。举个例子：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">struct</span> FooValue  </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">int</span> A &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">readonly</span> <span class="built_in">int</span> <span class="title">IncreaseA</span>()</span>  </span><br><span class="line">    &#123;  </span><br><span class="line">        A = A + <span class="number">1</span>; <span class="comment">// 报错  </span></span><br><span class="line">        <span class="keyword">return</span> A;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>而 C# 9 又进一步增加了对“只读”的支持，此次增加了 init-only 属性和 record 相关特性，下面一一介绍。</p>
+<h3 id="Init-only-属性"><a href="#Init-only-属性" class="headerlink" title="Init-only 属性"></a>Init-only 属性</h3><p>我们知道类的属性有 set 和 get 两种访问器，现在 C# 9 增加一种属性访问器：init。init 是 set 访问器的变体，它的作用是使属性只能在对象初始化的时候对其赋值，之后该属性就是只读的，因此叫 init-only 属性。使用方式如下：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Foo</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> PropA &#123; <span class="keyword">get</span>; <span class="keyword">init</span>; &#125;  </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> PropB &#123; <span class="keyword">get</span>; <span class="keyword">init</span>; &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>赋值操作：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="keyword">new</span> Foo &#123;  PropA = <span class="string">&quot;A&quot;</span>, PropB = <span class="string">&quot;B&quot;</span> &#125;;  </span><br><span class="line">foo.PropA = <span class="string">&quot;AA&quot;</span>; <span class="comment">// 报错，PropA 此时是只读的！</span></span><br></pre></td></tr></table></figure>
+
+<p>由于 init 是在初始化阶段赋值，所以它可以在类内部修改 readonly 修饰的字段。比如：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Foo</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="built_in">string</span> propA;  </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="built_in">string</span> propB;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> PropA  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">get</span> =\&gt; propA;  </span><br><span class="line">        <span class="keyword">init</span> =&gt; propA = (<span class="keyword">value</span> ?? <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="keyword">nameof</span>(propA)));  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> PropA  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">get</span> =\&gt; propB;  </span><br><span class="line">        <span class="keyword">init</span> =&gt; propB = (<span class="keyword">value</span> ?? <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="keyword">nameof</span>(propB)));  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果你知道在构造函数中可以对只读字段&#x2F;属性赋值就自然也理解这一点。</p>
+<h3 id="记录-Record"><a href="#记录-Record" class="headerlink" title="记录 (Record)"></a>记录 (Record)</h3><p>做过财务系统的人都知道交易记录一旦入账是不能修改的，如果录入错误，就要新录入一笔负的记录把之前的红冲掉，再录入正确的记录。应对类似这种只读记录的场景，C# 9 引入了 Record（记录，下文均使用中文的“记录”）的概念，它用来支持整个对象的只读特性（即实例化后为只读）。使用方式如下：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> data <span class="keyword">class</span> <span class="title">Foo</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> PropA &#123; <span class="keyword">get</span>; <span class="keyword">init</span>; &#125;  </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> PropB &#123; <span class="keyword">get</span>; <span class="keyword">init</span>; &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里用了一个 data 关键字，表示该类的对象只是纯粹的记录值，它不是可修改的状态（在函数式编程中，所有的数据修改都是状态在发生变化）。</p>
+<p>上面的太麻烦了，可以这样简写：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> data <span class="keyword">class</span> <span class="title">Foo</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="built_in">string</span> PropA;  </span><br><span class="line">    <span class="built_in">string</span> PropB;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>默认属性都是 public 的，如果实在要改为 private，可以在属性定义前面加上 private 修饰符。</p>
+<h3 id="定位记录-Positional-Record"><a href="#定位记录-Positional-Record" class="headerlink" title="定位记录 (Positional Record)"></a>定位记录 (Positional Record)</h3><p>有时候为了初始化更方便，可以定义构造函数来给属性赋值，初始化时只需要把属性值按顺序传给构造函数即可，这个操作称为定位构造(Positional Construction)。同样，也可以使用解构函数(Deconstructor)来实现属性的解构，即按照解构函数的参数顺序从对象中提取属性的值，被称为定位解构(Positional Deconstructor)。实现了定位构造或定位解构的记录称为定位记录(Positional Record)。下面是一个定位记录的实现：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> data <span class="keyword">class</span> <span class="title">Foo</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="built_in">string</span> PropA;  </span><br><span class="line">    <span class="built_in">string</span> PropB;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Foo</span>(<span class="params"><span class="built_in">string</span> propA, <span class="built_in">string</span> propB</span>)</span>  </span><br><span class="line">      =\&gt; (PropA, PropB) = (propA, propB);  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Deconstruct</span>(<span class="params"><span class="keyword">out</span> <span class="built_in">string</span> propA, <span class="keyword">out</span> <span class="built_in">string</span> propB</span>)</span>  </span><br><span class="line">      =\&gt;  (propA, propB) = (PropA, PropB);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个写法太麻烦了，可以直接简写为：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> data <span class="keyword">class</span> <span class="title">Foo</span>(<span class="params"><span class="built_in">string</span> PropA, <span class="built_in">string</span> PropB</span>)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>这样简短一句代码，其内部默认实现了 init-only 自动属性，且同时为所有属性定义了构造函数和解构函数。</p>
+<p>使用示例：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo = <span class="keyword">new</span> Foo(<span class="string">&quot;AA&quot;</span>, <span class="string">&quot;BB&quot;</span>);  <span class="comment">// 构造定位  </span></span><br><span class="line"><span class="keyword">var</span> (a, b) = foo;               <span class="comment">// 解构定位</span></span><br></pre></td></tr></table></figure>
+
+<p>可以想象，记录的大部分使用场景，以上简写的写法能满足需求。若有特殊场景，就不能简单，需要进行自定义修改其默认行为。</p>
+<h3 id="with-表达式"><a href="#with-表达式" class="headerlink" title="with 表达式"></a>with 表达式</h3><p>当处理不可变数据时，若要生成不同的状态，一个常见的场景是在一条旧记录基础上拷贝一条新的记录。比如我们要修改 Foo 对象的 PropA 属性，我们就要拷贝该对象生成一个新的对象。这个操作在函数式编程中被称为“非破坏性修改 (non-destructive mutation)”。为了支持记录的这个操作，C# 9 引入了 with 表达式，它可以很方便在一条原有记录基础上创建一条新记录。示例：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> other = foo <span class="keyword">with</span> &#123; PropA = <span class="string">&quot;AA&quot;</span> &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>with 表达式内部其实是通过一个默认的 protected 构造函数来实现的，大致如下：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="title">Foo</span>(<span class="params">Foo original</span>)</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="comment">// 拷贝 original 的所有字段  </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>如果默认实现的字段拷贝不符合你的需求，你也可以手动实现这个构造函数。</p>
+<h2 id="Lambda-弃元参数"><a href="#Lambda-弃元参数" class="headerlink" title="Lambda 弃元参数"></a>Lambda 弃元参数</h2><p>弃元（Discards） 是在 C# 7.0 的时候开始支持的，它是一种人为丢弃不使用的临时虚拟变量。语法上它是用来赋值的，但它却不被分配存储空间，即没有值，所以不能从中读取值。弃元用 _ (下划线) 表示，下划线是一个关键字，只能赋值，不能读取，例如：</p>
+<p><img src="https://mmbiz.qpic.cn/sz_mmbiz_png/TIcgLjdQYUzBRouMkabxbAIxviaU8YL9RDwtpVicfY8ybS3bTTeEeuMVNhLhF7ibfIVRKOHnZFlicUiaqHyOnKRAVgg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>在 C# 7.0 中，弃元的使用场景主要有下面四种：</p>
+<ul>
+<li><p>元组和对象的解构</p>
+</li>
+<li><p>使用 is 和 switch 的模式匹配</p>
+</li>
+<li><p>对具有 out 参数的方法的调用</p>
+</li>
+<li><p>作用域内独立使用场景</p>
+</li>
+</ul>
+<p>针对这几个场景，用下面的几段代码演示一下。</p>
+<p>场景一：元组&#x2F;对象的解构</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tuple = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>);  </span><br><span class="line">(_, _, _, _, <span class="keyword">var</span> fifth) = tuple;</span><br></pre></td></tr></table></figure>
+
+<p>场景二：使用 is&#x2F;switch 的模式匹配</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = CultureInfo.CurrentCulture.DateTimeFormat;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">switch</span> (obj)  </span><br><span class="line">&#123;  </span><br><span class="line">    <span class="keyword">case</span> IFormatProvider fmt:  </span><br><span class="line">        Console.WriteLine(<span class="string">$&quot;<span class="subst">&#123;fmt&#125;</span> object&quot;</span>);  </span><br><span class="line">        <span class="keyword">break</span>;  </span><br><span class="line">    <span class="keyword">case</span> <span class="literal">null</span>:  </span><br><span class="line">        Console.Write(<span class="string">&quot;A null object reference&quot;</span>);  </span><br><span class="line">        <span class="keyword">break</span>;  </span><br><span class="line">    <span class="keyword">case</span> <span class="built_in">object</span> _:  </span><br><span class="line">        Console.WriteLine(<span class="string">&quot;Some object type without format information&quot;</span>);  </span><br><span class="line">        <span class="keyword">break</span>;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">if</span> (obj <span class="keyword">is</span> <span class="built_in">object</span> _)  </span><br><span class="line">&#123;  </span><br><span class="line">    ...  </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>场景三：对具有 out 参数的方法的调用</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> point = <span class="keyword">new</span> Point(<span class="number">10</span>, <span class="number">10</span>);  </span><br><span class="line"><span class="comment">// 只要 x, 不关心 y  </span></span><br><span class="line">point.GetCoordinates(<span class="keyword">out</span> <span class="built_in">int</span> x, <span class="keyword">out</span> _);</span><br></pre></td></tr></table></figure>
+
+<p>场景四：作用域内独立使用场景</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Test</span>(<span class="params">Dto dto</span>)</span>  </span><br><span class="line">&#123;  </span><br><span class="line">    _ = dto ?? <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="keyword">nameof</span>(dto));  </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>理解了弃元，也了解了弃元的四种使用场景，那么对下面这个 C# 9.0 新支持的弃元使用场景就容易理解了。</p>
+<p>C# 9.0 对弃元增加了一种场景支持：Lambda 参数，也包括匿名方法参数。示例：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C# 9 之前  </span></span><br><span class="line">Func&lt;<span class="built_in">int</span>, <span class="built_in">int</span>, <span class="built_in">int</span>\&gt; zero = (a, b) =&gt; <span class="number">0</span>;  </span><br><span class="line">Func&lt;<span class="built_in">int</span>, <span class="built_in">int</span>, <span class="built_in">int</span>\&gt; func = <span class="built_in">delegate</span> (<span class="built_in">int</span> a, <span class="built_in">int</span> b) &#123; <span class="keyword">return</span> <span class="number">0</span>; &#125;;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">// C# 9  </span></span><br><span class="line">Func&lt;<span class="built_in">int</span>, <span class="built_in">int</span>, <span class="built_in">int</span>\&gt; zero = (_, _) =&gt; <span class="number">0</span>;  </span><br><span class="line">Func&lt;<span class="built_in">int</span>, <span class="built_in">int</span>, <span class="built_in">int</span>\&gt; func = <span class="built_in">delegate</span> (<span class="built_in">int</span> _, <span class="built_in">int</span> _) &#123; <span class="keyword">return</span> <span class="number">0</span>; &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>在 C# 9 之前，即便不使用的 Lambda 参数也需要给它命名。C# 9 支持弃元参数一方面简化了命名，另一方面也节省了内存分配。更重要的是它使得编程的意图更明确，让人一看就知道这个参数是不用的，增强了代码的可读性和可维护性。</p>
+<h2 id="使用新语法提升-if-语句美感"><a href="#使用新语法提升-if-语句美感" class="headerlink" title="使用新语法提升 if 语句美感"></a>使用新语法提升 if 语句美感</h2><p>C# 语言一贯秉承简洁优美的宗旨，每次升级都会带来一些语法糖，让我们可以使代码变得更简洁。本文分享两个使用 C# 9.0 提升 <code>if</code> 语句美感的技巧示例。</p>
+<h3 id="使用属性模式代替-IsNullOrEmpty"><a href="#使用属性模式代替-IsNullOrEmpty" class="headerlink" title="使用属性模式代替 IsNullOrEmpty"></a>使用属性模式代替 IsNullOrEmpty</h3><p>在任何你使用 <code>IsNullOrEmpty</code> 的时候，可以考虑这样替换：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span>? hello = <span class="string">&quot;hello world&quot;</span>;  </span><br><span class="line">hello = <span class="literal">null</span>;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">// 旧的方式  </span></span><br><span class="line"><span class="keyword">if</span> (!<span class="built_in">string</span>.IsNullOrEmpty(hello))  </span><br><span class="line">&#123;  </span><br><span class="line">    Console.WriteLine(<span class="string">$&quot;<span class="subst">&#123;hello&#125;</span> has <span class="subst">&#123;hello.Length&#125;</span> letters.&quot;</span>);  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">// 新的方式  </span></span><br><span class="line"><span class="keyword">if</span> (hello <span class="keyword">is</span> &#123; Length: &gt;<span class="number">0</span> &#125;)  </span><br><span class="line">&#123;  </span><br><span class="line">    Console.WriteLine(<span class="string">$&quot;<span class="subst">&#123;hello&#125;</span> has <span class="subst">&#123;hello.Length&#125;</span> letters.&quot;</span>);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>属性模式相当灵活，你还可以把它用在数组上，对数组进行各种判断。比如判断可空字符串数组中的字符串元素是否为空或空白：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span>?\[\]? greetings = <span class="keyword">new</span> <span class="built_in">string</span>\[<span class="number">2</span>\];  </span><br><span class="line">greetings\[<span class="number">0</span>\] = <span class="string">&quot;Hello world&quot;</span>;  </span><br><span class="line">greetings = <span class="literal">null</span>;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">// 旧的方式  </span></span><br><span class="line"><span class="keyword">if</span> (greetings != <span class="literal">null</span> &amp;&amp; !<span class="built_in">string</span>.IsNullOrEmpty(greetings\[<span class="number">0</span>\]))  </span><br><span class="line">&#123;  </span><br><span class="line">    Console.WriteLine(<span class="string">$&quot;<span class="subst">&#123;greetings\[<span class="number">0</span>\]&#125;</span> has <span class="subst">&#123;greetings\[<span class="number">0</span>\].Length&#125;</span> letters.&quot;</span>);  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">// 新的方式  </span></span><br><span class="line"><span class="keyword">if</span> (greetings?\[<span class="number">0</span>\] <span class="keyword">is</span> &#123;Length: &gt; <span class="number">0</span>&#125; hi)  </span><br><span class="line">&#123;  </span><br><span class="line">    Console.WriteLine(<span class="string">$&quot;<span class="subst">&#123;hi&#125;</span> has <span class="subst">&#123;hi.Length&#125;</span> letters.&quot;</span>);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>刚开始你可能会觉得阅读体验不太好，但用多了看多了，这种简洁的方法更有利于阅读。</p>
+<h3 id="使用逻辑模式简化多重判断"><a href="#使用逻辑模式简化多重判断" class="headerlink" title="使用逻辑模式简化多重判断"></a>使用逻辑模式简化多重判断</h3><p>对于同一个值，把它与其它多个值进行比较判断，可以用 <code>or</code> 、<code>and </code>逻辑模式简化，示例：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ConsoleKeyInfo userInput = Console.ReadKey();  </span><br><span class="line">  </span><br><span class="line"><span class="comment">// 旧的方式  </span></span><br><span class="line"><span class="keyword">if</span> (userInput.KeyChar == <span class="string">&#x27;Y&#x27;</span> || userInput.KeyChar == <span class="string">&#x27;y&#x27;</span>)  </span><br><span class="line">&#123;  </span><br><span class="line">    Console.WriteLine(<span class="string">&quot;Do something.&quot;</span>);  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">// 新的方式  </span></span><br><span class="line"><span class="keyword">if</span> (userInput.KeyChar <span class="keyword">is</span> <span class="string">&#x27;Y&#x27;</span> <span class="keyword">or</span> <span class="string">&#x27;y&#x27;</span>)  </span><br><span class="line">&#123;  </span><br><span class="line">    Console.WriteLine(<span class="string">&quot;Do something.&quot;</span>);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>之前很多人不解 C# 9.0 为什么要引入 <code>or</code> 、<code>and</code> 逻辑关键字，通过这个示例就一目了然了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zzonn.com/2020/11/01/C#%209.0%20%E6%96%B0%E7%89%B9%E6%80%A7-c90%E6%96%B0%E7%89%B9%E6%80%A7/" data-id="clf0jcv6n00056ocx575d4sff" data-title="C# 9.0 新特性" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/net/" rel="tag">.net</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C#</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/03/17/%E7%9C%9F%E9%A6%99%EF%BC%81%E5%BE%AE%E8%BD%AF%E5%87%BAGo%E8%AF%AD%E8%A8%80%E6%95%99%E7%A8%8B%E4%BA%86-%E7%9C%9F%E9%A6%99%E5%BE%AE%E8%BD%AF%E5%87%BAgo%E8%AF%AD%E8%A8%80%E6%95%99%E7%A8%8B%E4%BA%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          真香！微软出Go语言教程了
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/05/24/Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8Typescript-vue-xiang-mu-zhong-shi-yong-typescript/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Vue项目中使用Typescript</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Net/">.Net</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Other/">Other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/">Tool</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/net/" rel="tag">.net</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/netcore/" rel="tag">.netcore</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abp/" rel="tag">Abp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blazor/" rel="tag">Blazor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Elasticsearch/" rel="tag">Elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/" rel="tag">Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/" rel="tag">code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/" rel="tag">mongodb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/" rel="tag">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlserver/" rel="tag">sqlserver</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vs-code/" rel="tag">vs code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag">微服务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%8F%E6%8D%B7/" rel="tag">敏捷</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/net/" style="font-size: 20px;">.net</a> <a href="/tags/netcore/" style="font-size: 16.67px;">.netcore</a> <a href="/tags/Abp/" style="font-size: 10px;">Abp</a> <a href="/tags/Blazor/" style="font-size: 10px;">Blazor</a> <a href="/tags/C/" style="font-size: 16.67px;">C#</a> <a href="/tags/Elasticsearch/" style="font-size: 10px;">Elasticsearch</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Tool/" style="font-size: 13.33px;">Tool</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.33px;">redis</a> <a href="/tags/sql/" style="font-size: 13.33px;">sql</a> <a href="/tags/sqlserver/" style="font-size: 10px;">sqlserver</a> <a href="/tags/vs-code/" style="font-size: 10px;">vs code</a> <a href="/tags/vue/" style="font-size: 13.33px;">vue</a> <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="font-size: 10px;">微服务</a> <a href="/tags/%E6%95%8F%E6%8D%B7/" style="font-size: 10px;">敏捷</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/05/28/%E8%BF%87%E6%97%A9%E7%9A%84%E7%BB%99%E6%96%B9%E6%B3%95%E4%B8%AD%20%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%20%E8%AE%BE%E4%B8%BA%20null%20%E5%8F%AF%E8%A2%AB%20GC%E6%8F%90%E5%89%8D%E5%9B%9E%E6%94%B6%E5%90%97%EF%BC%9F-%E8%BF%87%E6%97%A9%E7%9A%84%E7%BB%99%E6%96%B9%E6%B3%95%E4%B8%AD%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%E8%AE%BE%E4%B8%BAnull%E5%8F%AF%E8%A2%ABgc%E6%8F%90%E5%89%8D%E5%9B%9E%E6%94%B6%E5%90%97/">过早的给方法中 引用对象 设为 null 可被 GC提前回收吗？</a>
+          </li>
+        
+          <li>
+            <a href="/2022/05/28/Git%20%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9A%20pull%20%E5%92%8C%20push%EF%BC%8C%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87-git%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9Apull%E5%92%8Cpush%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87/">Git 不要只会 pull 和 push，试试用这些命令来提高效率</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/11/ClickHouse%E7%AE%80%E4%BB%8B-clickhouse%E7%AE%80%E4%BB%8B/">ClickHouse简介</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/04/%E5%8F%91%E5%B8%83.netcore%E9%A1%B9%E7%9B%AE%E5%88%B0linux-fa-bu-netcore-xiang-mu-dao-linux/">发布.netcore项目到linux</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/12/code%20review%20%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83-codereview%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83/">code review 流程规范</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 LiPan<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

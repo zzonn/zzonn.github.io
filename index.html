@@ -66,10 +66,10 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.zzonn.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.zzonn.com"></form>
       </div>
     </div>
   </div>
@@ -78,12 +78,16 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-过早的给方法中 引用对象 设为 null 可被 GC提前回收吗？-过早的给方法中引用对象设为null可被gc提前回收吗" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2023/03/09/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2023-03-09T01:57:58.460Z" itemprop="datePublished">2023-03-09</time>
+    <a href="/2022/05/28/%E8%BF%87%E6%97%A9%E7%9A%84%E7%BB%99%E6%96%B9%E6%B3%95%E4%B8%AD%20%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%20%E8%AE%BE%E4%B8%BA%20null%20%E5%8F%AF%E8%A2%AB%20GC%E6%8F%90%E5%89%8D%E5%9B%9E%E6%94%B6%E5%90%97%EF%BC%9F-%E8%BF%87%E6%97%A9%E7%9A%84%E7%BB%99%E6%96%B9%E6%B3%95%E4%B8%AD%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%E8%AE%BE%E4%B8%BAnull%E5%8F%AF%E8%A2%ABgc%E6%8F%90%E5%89%8D%E5%9B%9E%E6%94%B6%E5%90%97/" class="article-date">
+  <time class="dt-published" datetime="2022-05-28T02:21:34.813Z" itemprop="datePublished">2022-05-28</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Net/">.Net</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -92,7 +96,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/03/09/hello-world/">Hello World</a>
+      <a class="p-name article-title" href="/2022/05/28/%E8%BF%87%E6%97%A9%E7%9A%84%E7%BB%99%E6%96%B9%E6%B3%95%E4%B8%AD%20%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%20%E8%AE%BE%E4%B8%BA%20null%20%E5%8F%AF%E8%A2%AB%20GC%E6%8F%90%E5%89%8D%E5%9B%9E%E6%94%B6%E5%90%97%EF%BC%9F-%E8%BF%87%E6%97%A9%E7%9A%84%E7%BB%99%E6%96%B9%E6%B3%95%E4%B8%AD%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%E8%AE%BE%E4%B8%BAnull%E5%8F%AF%E8%A2%ABgc%E6%8F%90%E5%89%8D%E5%9B%9E%E6%94%B6%E5%90%97/">过早的给方法中 引用对象 设为 null 可被 GC提前回收吗？</a>
     </h1>
   
 
@@ -100,27 +104,880 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>经常在代码中看到有人将 <code>null</code> 赋值给引用类型，来达到让 GC 提前回收的目的，这样做真的有用吗？今天我们就来研究一下。<br>为了方便讲解，来一段测试代码，提前将 <code>test1=null</code> ，然后调用 <code>GC.Collect()</code> 看看是否能提前回收。</p>
+<h3 id="平台：-net5"><a href="#平台：-net5" class="headerlink" title="平台：.net5"></a>平台：<code>.net5</code></h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            ProcessRequest();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ProcessRequest</span>()</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> test1 = <span class="keyword">new</span> Test() &#123; a = <span class="number">10</span> &#125;;</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;query.a=<span class="subst">&#123;test1.a&#125;</span>&quot;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> test2 = <span class="keyword">new</span> Test() &#123; a = <span class="number">11</span> &#125;;</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;query.a=<span class="subst">&#123;test2.a&#125;</span>&quot;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">//提前释放</span></span><br><span class="line">            test1 = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> test3 = <span class="keyword">new</span> Test() &#123; a = <span class="number">12</span> &#125;;</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;query.a=<span class="subst">&#123;test3.a&#125;</span>&quot;</span>);</span><br><span class="line"></span><br><span class="line">            GC.Collect();</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;垃圾回收啦！&quot;</span>);</span><br><span class="line"></span><br><span class="line">            Console.ReadLine();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Test</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">int</span> a;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>接下来我们从 <code>Debug</code> 和 <code>Release</code> 两种模式下观察。</p>
+<h1 id="一：Debug-模式"><a href="#一：Debug-模式" class="headerlink" title="一：Debug 模式"></a>一：Debug 模式</h1><p>要找到这个答案，我们用 windbg 附加一下，找到 <code>test1</code> 然后用 <code>!gcroot</code> 查看下引用即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">0:000&gt; !clrstack -a</span><br><span class="line">OS Thread Id: 0x4dd0 (0)</span><br><span class="line">Child SP       IP Call Site</span><br><span class="line">0057F2A4 79863539 System.Console.ReadLine() [/_/src/System.Console/src/System/Console.cs @ 463]</span><br><span class="line">0057F2AC 04c405d1 ConsoleApp1.Program.ProcessRequest() [D:\net5\ConsoleApp2\ConsoleApp1\Program.cs @ 37]</span><br><span class="line">    LOCALS:</span><br><span class="line">        0x0057F2D4 = 0x00000000</span><br><span class="line">        0x0057F2D0 = 0x0283cd54</span><br><span class="line">        0x0057F2CC = 0x0283cd90</span><br><span class="line"></span><br><span class="line">0:000&gt; !dumpheap -type Test</span><br><span class="line"> Address       MT     Size</span><br><span class="line">0283a7c0 04c39008       12     </span><br><span class="line">0283cd54 04c39008       12     </span><br><span class="line">0283cd90 04c39008       12     </span><br><span class="line"></span><br><span class="line">0:000&gt; !gcroot 0283a7c0</span><br><span class="line">Thread 4dd0:</span><br><span class="line">    0057F2AC 04C405D1 ConsoleApp1.Program.ProcessRequest() [D:\net5\ConsoleApp2\ConsoleApp1\Program.cs @ 37]</span><br><span class="line">        ebp+14: 0057f2c8</span><br><span class="line">            -&gt;  0283A7C0 ConsoleApp1.Test</span><br><span class="line"></span><br><span class="line">Found 1 unique roots (run &#x27;!gcroot -all&#x27; to see all roots).</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>是不是很惊讶，test1 虽被赋 null，但并没有被 <code>GC.Collection</code>  所回收，原因在于 test1 被栈中的 <code>ebp+14</code> 位置所持有？那这个位置是咋回事？我们反编译下代码看看，简化后如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">0:000&gt; !U 04C405D1</span><br><span class="line">Normal JIT generated code</span><br><span class="line">ConsoleApp1.Program.ProcessRequest()</span><br><span class="line">ilAddr is 0268205C pImport is 052FB030</span><br><span class="line">Begin 04C40488, size 154</span><br><span class="line"></span><br><span class="line">D:\net5\ConsoleApp2\ConsoleApp1\Program.cs @ 22:</span><br><span class="line">04c404aa b90890c304      mov     ecx,4C39008h (MT: ConsoleApp1.Test)</span><br><span class="line">04c404af e8182c9afb      call    005e30cc (JitHelp: CORINFO_HELP_NEWSFAST)</span><br><span class="line">04c404b4 8945ec          mov     dword ptr [ebp-14h],eax</span><br><span class="line">04c404b7 8b4dec          mov     ecx,dword ptr [ebp-14h]</span><br><span class="line">04c404ba ff152890c304    call    dword ptr ds:[4C39028h] (ConsoleApp1.Test..ctor(), mdToken: 06000004)</span><br><span class="line">04c404c0 8b4dec          mov     ecx,dword ptr [ebp-14h]</span><br><span class="line">04c404c3 c741040a000000  mov     dword ptr [ecx+4],0Ah</span><br><span class="line">04c404ca 8b4dec          mov     ecx,dword ptr [ebp-14h]</span><br><span class="line">04c404cd 894df8          mov     dword ptr [ebp-8],ecx</span><br><span class="line"></span><br><span class="line">D:\net5\ConsoleApp2\ConsoleApp1\Program.cs @ 29:</span><br><span class="line">04c4055c 33c9            xor     ecx,ecx</span><br><span class="line">04c4055e 894df8          mov     dword ptr [ebp-8],ecx</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>虽然<code> !gcroot</code> 上显示的是 <code>ebp+14</code>，反向就是 <code>ebp-14</code>，仔细看上面的汇编代码，可以发现 test1 实例被放在了 <code>ebp-14</code> 和 <code>ebp-8</code> 两个栈位置，而 <code>test1=null</code> 只是抹去了 <code>ebp-8</code> 的栈单元，所以它能被回收的时机只能是等 <code>ProcessRequest()</code> 方法销毁之后，这也就是 Debug 模式下的 <strong>方法作用域</strong>，应该是为了 Debug 调试用的，从 <code>gcinfo</code> 上也可以看出来，<code>ebp-14</code> 是禁止被GC跟踪的内部用途的栈单元。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">0:000&gt; !U -gcinfo 04C405D1</span><br><span class="line">Normal JIT generated code</span><br><span class="line">ConsoleApp1.Program.ProcessRequest()</span><br><span class="line">ilAddr is 0268205C pImport is 052FCA58</span><br><span class="line">Begin 04C40488, size 154</span><br><span class="line"></span><br><span class="line">D:\net5\ConsoleApp2\ConsoleApp1\Program.cs @ 21:</span><br><span class="line">            [EBP-08H] an untracked  local</span><br><span class="line">            [EBP-0CH] an untracked  local</span><br><span class="line">            [EBP-10H] an untracked  local</span><br><span class="line">            [EBP-14H] an untracked  local</span><br><span class="line">            [EBP-18H] an untracked  local</span><br><span class="line">            [EBP-1CH] an untracked  local</span><br><span class="line">            [EBP-20H] an untracked  local</span><br><span class="line">            [EBP-24H] an untracked  local</span><br><span class="line">            [EBP-28H] an untracked  local</span><br><span class="line">            [EBP-2CH] an untracked  local</span><br><span class="line">            [EBP-30H] an untracked  local</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h1 id="二：Release-模式"><a href="#二：Release-模式" class="headerlink" title="二：Release 模式"></a>二：Release 模式</h1><p>大家或许都知道 <code>Release</code> 是一种高度优化的激进模式，我也很好奇在这种模式下 <code>compile</code> 或者  <code>JIT</code> 会做出怎么样的优化。</p>
+<h3 id="1-编译器层面的优化"><a href="#1-编译器层面的优化" class="headerlink" title="1. 编译器层面的优化"></a>1. 编译器层面的优化</h3><p>要寻找这个答案，我们用 ILSpy 打开生成的 IL代码，简化后如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">.method private hidebysig static </span><br><span class="line"> void ProcessRequest () cil managed </span><br><span class="line">&#123;</span><br><span class="line"> // Method begins at RVA 0x2058</span><br><span class="line"> // Code size 144 (0x90)</span><br><span class="line"> .maxstack 3</span><br><span class="line"> .locals init (</span><br><span class="line">  [0] class ConsoleApp1.Test test1,</span><br><span class="line">  [1] class ConsoleApp1.Test test2,</span><br><span class="line">  [2] class ConsoleApp1.Test test3</span><br><span class="line"> )</span><br><span class="line"></span><br><span class="line"> IL_0050: ldnull</span><br><span class="line"> IL_0051: stloc.0</span><br><span class="line"></span><br><span class="line">&#125; // end of method Program::ProcessRequest</span><br></pre></td></tr></table></figure>
+<p>从 <code>idnull</code> 上来看，没有做任何优化，居然直接翻译了，哎。。。</p>
+<h3 id="2-JIT优化"><a href="#2-JIT优化" class="headerlink" title="2. JIT优化"></a>2. JIT优化</h3><p>查看 JIT 层面的优化，只能看最终的 <code>汇编代码</code> 和 <code>托管堆</code> 啦。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">0:000&gt; !dumpheap -type Test</span><br><span class="line"> Address       MT     Size</span><br><span class="line">02eaab38 02634b10       12     </span><br><span class="line">02ead344 02634b10       12     </span><br><span class="line">02ead380 02634b10       12     </span><br><span class="line"></span><br><span class="line">Statistics:</span><br><span class="line">      MT    Count    TotalSize Class Name</span><br><span class="line">02634b10        3           36 ConsoleApp1.Test</span><br><span class="line">Total 3 objects</span><br><span class="line"></span><br><span class="line">0:000&gt; !U /d 0262549d</span><br><span class="line">Normal JIT generated code</span><br><span class="line">ConsoleApp1.Program.ProcessRequest()</span><br><span class="line">ilAddr is 025B2058 pImport is 04AFB108</span><br><span class="line">Begin 02625370, size 131</span><br><span class="line"></span><br><span class="line">D:\net5\ConsoleApp2\ConsoleApp1\Program.cs @ 22:</span><br><span class="line">02625370 55              push    ebp</span><br><span class="line">02625371 8bec            mov     ebp,esp</span><br><span class="line">0262538a b9104b6302      mov     ecx,2634B10h (MT: ConsoleApp1.Test)</span><br><span class="line">0262538f e83cddfefd      call    006130d0 (JitHelp: CORINFO_HELP_NEWSFAST)</span><br><span class="line">02625394 8945f0          mov     dword ptr [ebp-10h],eax</span><br><span class="line">02625397 8b4df0          mov     ecx,dword ptr [ebp-10h]</span><br><span class="line">0262539a e871f9ffff      call    02624d10</span><br><span class="line">0262539f 8b4df0          mov     ecx,dword ptr [ebp-10h]</span><br><span class="line">026253a2 c741040a000000  mov     dword ptr [ecx+4],0Ah</span><br><span class="line">026253a9 8b4df0          mov     ecx,dword ptr [ebp-10h]</span><br><span class="line">026253ac 894dfc          mov     dword ptr [ebp-4],ecx</span><br><span class="line"></span><br><span class="line">D:\net5\ConsoleApp2\ConsoleApp1\Program.cs @ 29:</span><br><span class="line">02625430 33c9            xor     ecx,ecx</span><br><span class="line">02625432 894dfc          mov     dword ptr [ebp-4],ecx</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>从汇编代码看，<code>Release</code> 模式下也是采用双栈保存的，也就是 <code>方法级作用域</code>。</p>
+<h1 id="三：可以得出结论了吗？"><a href="#三：可以得出结论了吗？" class="headerlink" title="三：可以得出结论了吗？"></a>三：可以得出结论了吗？</h1><p>至少在 <code>.NET5</code> 平台，<code>Release</code> 和 <code>Debug</code> 模式下的 <code>test1 = null</code>; 是没有任何区别的，其实这里有个问题 ， <code>.NET5</code> 下没区别，不代表其他平台下也没有问题，毕竟不同的 <code>JIT</code> 会作用不同的抉择，接下来我们将同样的代码搬到 <code>.NET Framework 4.5</code> 下看看情况。</p>
+<h3 id="NET-Framework-4-5-平台"><a href="#NET-Framework-4-5-平台" class="headerlink" title="NET Framework 4.5 平台"></a>NET Framework 4.5 平台</h3><h4 id="Debug-模式"><a href="#Debug-模式" class="headerlink" title="Debug 模式"></a>Debug 模式</h4><p>我们直接看托管代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">0:006&gt; !dumpheap -type Test</span><br><span class="line"> Address       MT     Size</span><br><span class="line">02564bfc 00754ddc       12     </span><br><span class="line">02564c70 00754ddc       12     </span><br><span class="line"></span><br><span class="line">Statistics:</span><br><span class="line">      MT    Count    TotalSize Class Name</span><br><span class="line">00754ddc        2           24 ConsoleApp2.Test</span><br><span class="line">Total 2 objects</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>居然是 2 个了，那为什么会这样呢？我们还是看下汇编。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">0:000&gt; !U /d 023509a6</span><br><span class="line">Normal JIT generated code</span><br><span class="line">ConsoleApp2.Program.ProcessRequest()</span><br><span class="line">Begin 02350880, size 187</span><br><span class="line">D:\net5\ConsoleApp2\ConsoleApp2\Program.cs @ 21:</span><br><span class="line">023508b1 b9dc4da200      mov     ecx,0A24DDCh (MT: ConsoleApp2.Test)</span><br><span class="line">023508b6 e839286cfe      call    00a130f4 (JitHelp: CORINFO_HELP_NEWSFAST)</span><br><span class="line">023508bb 8945ec          mov     dword ptr [ebp-14h],eax</span><br><span class="line">023508be 8b4dec          mov     ecx,dword ptr [ebp-14h]</span><br><span class="line">023508c1 ff15fc4da200    call    dword ptr ds:[0A24DFCh] (ConsoleApp2.Test..ctor(), mdToken: 06000004)</span><br><span class="line">023508c7 8b45ec          mov     eax,dword ptr [ebp-14h]</span><br><span class="line">023508ca c740040a000000  mov     dword ptr [eax+4],0Ah</span><br><span class="line">023508d1 8b45ec          mov     eax,dword ptr [ebp-14h]</span><br><span class="line">023508d4 8945f8          mov     dword ptr [ebp-8],eax</span><br><span class="line">D:\net5\ConsoleApp2\ConsoleApp2\Program.cs @ 28:</span><br><span class="line">0235097b 33d2            xor     edx,edx</span><br><span class="line">0235097d 8955f8          mov     dword ptr [ebp-8],edx</span><br><span class="line"></span><br><span class="line">0:000&gt; dp ebp-14h L1</span><br><span class="line">0019f4e8  02472358 </span><br><span class="line"></span><br><span class="line">0:000&gt; !do 02472358</span><br><span class="line">Name:        ConsoleApp2.Test</span><br><span class="line">MethodTable: 00a24ddc</span><br><span class="line">EEClass:     00a21330</span><br><span class="line">Size:        12(0xc) bytes</span><br><span class="line">File:        D:\net5\ConsoleApp2\ConsoleApp2\bin\Debug\ConsoleApp2.exe</span><br><span class="line">Fields:</span><br><span class="line">      MT    Field   Offset                 Type VT     Attr    Value Name</span><br><span class="line">637342a8  4000001        4         System.Int32  1 instance       10 a</span><br><span class="line"></span><br><span class="line">0:000&gt; dp 0019f4e8 L1</span><br><span class="line">0019f4e8  02472358</span><br><span class="line">0:000&gt; !do 02472358</span><br><span class="line">Free Object</span><br><span class="line">Size:        24(0x18) bytes</span><br></pre></td></tr></table></figure>
+<p>大家可以仔细看看输出内容，虽然也是两个 <code>栈位置</code> 存放着 <code>test1</code>，但GC做了不同的处理，它无视 <code>ebp-14</code> 还牵引着 <code>test1</code> 的事实 ,直接将它标记为 <code>free</code>，这就有点意思了。</p>
+<h4 id="Release-模式"><a href="#Release-模式" class="headerlink" title="Release 模式"></a>Release 模式</h4><p>我们直接用 <code>!dumpheap -type Test</code>  看托管堆。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">0:006&gt; !dumpheap -type Test</span><br><span class="line"> Address       MT     Size</span><br><span class="line"></span><br><span class="line">Statistics:</span><br><span class="line">      MT    Count    TotalSize Class Name</span><br><span class="line">Total 0 objects</span><br></pre></td></tr></table></figure>
+<p>居然发现，不仅 <code>test1</code> 没有了，<code>test2</code>,<code>test3</code> 都没有了。。。这就是所谓的 <code>激进式回收</code>。</p>
+<h1 id="四：结论"><a href="#四：结论" class="headerlink" title="四：结论"></a>四：结论</h1><h4 id="1-NET5-平台下"><a href="#1-NET5-平台下" class="headerlink" title="1.  .NET5 平台下"></a>1.  .NET5 平台下</h4><p>Release 和 Debug 模式下设置 test1&#x3D;null 没有任何效果。</p>
+<h4 id="2-NET-Framework-4-5-平台下"><a href="#2-NET-Framework-4-5-平台下" class="headerlink" title="2. .NET Framework 4.5 平台下"></a>2. .NET Framework 4.5 平台下</h4><p>Debug 模式下有效果，可以起到 提前回收 的目的。<br>Release模式下无效果，GC会自动激进的回收所有后续未使用到的引用对象。</p>
+<h4 id="3-个人结论"><a href="#3-个人结论" class="headerlink" title="3. 个人结论"></a>3. 个人结论</h4><p>总的来说，为了更好的平台兼容性，如果想提前回收，设置 test1 &#x3D; null; 是有一定效果的。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zzonn.com/2023/03/09/hello-world/" data-id="clf0iwcgy0000p0cx5sym4f7a" data-title="Hello World" class="article-share-link">Teilen</a>
+      <a data-url="http://www.zzonn.com/2022/05/28/%E8%BF%87%E6%97%A9%E7%9A%84%E7%BB%99%E6%96%B9%E6%B3%95%E4%B8%AD%20%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%20%E8%AE%BE%E4%B8%BA%20null%20%E5%8F%AF%E8%A2%AB%20GC%E6%8F%90%E5%89%8D%E5%9B%9E%E6%94%B6%E5%90%97%EF%BC%9F-%E8%BF%87%E6%97%A9%E7%9A%84%E7%BB%99%E6%96%B9%E6%B3%95%E4%B8%AD%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%E8%AE%BE%E4%B8%BAnull%E5%8F%AF%E8%A2%ABgc%E6%8F%90%E5%89%8D%E5%9B%9E%E6%94%B6%E5%90%97/" data-id="clf0jcv7c002k6ocx37pl9bx8" data-title="过早的给方法中 引用对象 设为 null 可被 GC提前回收吗？" class="article-share-link">Share</a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/net/" rel="tag">.net</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/netcore/" rel="tag">.netcore</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C#</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Git 不要只会 pull 和 push，试试用这些命令来提高效率-git不要只会pull和push试试用这些命令来提高效率" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/05/28/Git%20%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9A%20pull%20%E5%92%8C%20push%EF%BC%8C%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87-git%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9Apull%E5%92%8Cpush%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87/" class="article-date">
+  <time class="dt-published" datetime="2022-05-28T01:46:29.995Z" itemprop="datePublished">2022-05-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Git/">Git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/05/28/Git%20%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9A%20pull%20%E5%92%8C%20push%EF%BC%8C%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87-git%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9Apull%E5%92%8Cpush%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87/">Git 不要只会 pull 和 push，试试用这些命令来提高效率</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>使用 Git 作为代码版本管理，早已是现在开发工程师必备的技能。可大多数工程师还是只会最基本的保存、拉取、推送，遇到一些commit管理的问题就束手无策，或者用一些不优雅的方式解决。</p>
+<p>本文分享我在开发工作中实践过的实用命令。这些都能够大大提高工作效率，还能解决不少疑难场景。下面会介绍命令，列出应用场景，手摸手教学使用，让同学们看完即学会。</p>
+<p>[官方文档]：<a target="_blank" rel="noopener" href="https://git-scm.com/docs">https://git-scm.com/docs</a></p>
+<h1 id="stash"><a href="#stash" class="headerlink" title="stash"></a>stash</h1><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>当您想记录工作目录和索引的当前状态，但又想返回一个干净的工作目录时，请使用git stash。该命令将保存本地修改，并恢复工作目录以匹配头部提交。<br>stash 命令能够将还未 commit 的代码存起来，让你的工作目录变得干净。</p>
+</blockquote>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>我猜你心里一定在想：为什么要变干净？</p>
+<p>应用场景：某一天你正在 feature 分支开发新需求，突然产品经理跑过来说线上有bug，必须马上修复。而此时你的功能开发到一半，于是你急忙想切到 master 分支，因为当前有文件更改了，需要提交commit保持工作区干净才能切分支。由于情况紧急，你只有急忙 commit 上去，commit 信息也随便写了个“暂存代码”，于是该分支提交记录就留了一条黑历史(真人真事，看过这种提交)…</p>
+<h3 id="命令使用"><a href="#命令使用" class="headerlink" title="命令使用"></a>命令使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># 保存当前未commit的代码</span><br><span class="line">git stash</span><br><span class="line"></span><br><span class="line"># 保存当前未commit的代码并添加备注</span><br><span class="line">git stash save &quot;备注的内容&quot;</span><br><span class="line"></span><br><span class="line"># 列出stash的所有记录</span><br><span class="line">git stash list</span><br><span class="line"></span><br><span class="line"># 删除stash的所有记录</span><br><span class="line">git stash clear</span><br><span class="line"></span><br><span class="line"># 应用最近一次的stash</span><br><span class="line">git stash apply</span><br><span class="line"></span><br><span class="line"># 应用最近一次的stash，随后删除该记录</span><br><span class="line">git stash pop</span><br><span class="line"></span><br><span class="line"># 删除最近的一次stash</span><br><span class="line">git stash drop</span><br></pre></td></tr></table></figure>
+
+<h1 id="reset-–soft"><a href="#reset-–soft" class="headerlink" title="reset –soft"></a>reset –soft</h1><h3 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>完全不接触索引文件或工作树（但会像所有模式一样，将头部重置为）。这使您的所有更改的文件更改为“要提交的更改”。<br>回退你已提交的 commit，并将 commit 的修改内容放回到暂存区。<br>一般我们在使用 reset 命令时，git reset –hard 会被提及的比较多，它能让 commit 记录强制回溯到某一个节点。而 git reset –soft 的作用正如其名，–soft (柔软的) 除了回溯节点外，还会保留节点的修改内容。</p>
+</blockquote>
+<h3 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h3><p>回溯节点，为什么要保留修改内容？</p>
+<p>应用场景1：有时候手滑不小心把不该提交的内容 commit 了，这时想改回来，只能再 commit 一次，又多一条“黑历史”。</p>
+<p>应用场景2：规范些的团队，一般对于 commit 的内容要求职责明确，颗粒度要细，便于后续出现问题排查。本来属于两块不同功能的修改，一起 commit 上去，这种就属于不规范。这次恰好又手滑了，一次性 commit 上去。</p>
+<h3 id="命令使用-1"><a href="#命令使用-1" class="headerlink" title="命令使用"></a>命令使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 恢复最近一次 commit</span><br><span class="line">git reset --soft HEAD^</span><br></pre></td></tr></table></figure>
+<p>reset –soft 相当于后悔药，给你重新改过的机会。对于上面的场景，就可以再次修改重新提交，保持干净的 commit 记录。</p>
+<p>以上说的是还未 push 的commit。对于已经 push 的 commit，也可以使用该命令，不过再次 push 时，由于远程分支和本地分支有差异，需要强制推送 git push -f 来覆盖被 reset 的 commit。</p>
+<p>还有一点需要注意，在 reset –soft 指定 commit 号时，会将该 commit 到最近一次 commit 的所有修改内容全部恢复，而不是只针对该 commit。</p>
+<h1 id="cherry-pick"><a href="#cherry-pick" class="headerlink" title="cherry-pick"></a>cherry-pick</h1><h3 id="描述-2"><a href="#描述-2" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>给定一个或多个现有提交，应用每个提交引入的更改，为每个提交记录一个新的提交。这需要您的工作树清洁（没有从头提交的修改）。<br>将已经提交的 commit，复制出新的 commit 应用到分支里。</p>
+</blockquote>
+<h3 id="应用场景-2"><a href="#应用场景-2" class="headerlink" title="应用场景"></a>应用场景</h3><p>commit 都提交了，为什么还要复制新的出来？</p>
+<p>应用场景1：有时候版本的一些优化需求开发到一半，可能其中某一个开发完的需求要临时上，或者某些原因导致待开发的需求卡住了已开发完成的需求上线。这时候就需要把 commit 抽出来，单独处理。</p>
+<p>应用场景2：有时候开发分支中的代码记录被污染了，导致开发分支合到线上分支有问题，这时就需要拉一条干净的开发分支，再从旧的开发分支中，把 commit 复制到新分支。</p>
+<h3 id="命令使用-2"><a href="#命令使用-2" class="headerlink" title="命令使用"></a>命令使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 一次转移多个提交</span><br><span class="line">git cherry-pick commit1 commit2</span><br><span class="line"># 多个连续的commit，也可区间复制：</span><br><span class="line">git cherry-pick commit1^..commit2</span><br><span class="line"># 放弃 cherry-pick (冲突时使用)</span><br><span class="line">gits cherry-pick --abort</span><br><span class="line"># 退出 cherry-pick</span><br><span class="line">git cherry-pick --quit</span><br></pre></td></tr></table></figure>
+<h1 id="revert"><a href="#revert" class="headerlink" title="revert"></a>revert</h1><h3 id="描述-3"><a href="#描述-3" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>给定一个或多个现有提交，恢复相关提交引入的更改，并记录一些这些更改的新提交。这就要求你的工作树是干净的（没有来自头部的修改）。<br>将现有的提交还原，恢复提交的内容，并生成一条还原记录。</p>
+</blockquote>
+<h3 id="应用场景-3"><a href="#应用场景-3" class="headerlink" title="应用场景"></a>应用场景</h3><p>有一天测试突然跟你说，你开发上线的功能有问题，需要马上撤回，否则会影响到系统使用。这时可能会想到用 reset 回退，可是你看了看分支上最新的提交还有其他同事的代码，用 reset 会把这部分代码也撤回了。由于情况紧急，又想不到好方法，还是任性的使用 reset，然后再让同事把他的代码合一遍（同事听到想打人），于是你的技术形象在同事眼里一落千丈。</p>
+<h3 id="命令使用-3"><a href="#命令使用-3" class="headerlink" title="命令使用"></a>命令使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># revert 普通提交</span><br><span class="line">git revert 21dcd937fe555f58841b17466a99118deb489212</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="reflog"><a href="#reflog" class="headerlink" title="reflog"></a>reflog</h1><h3 id="描述-4"><a href="#描述-4" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>此命令管理重录中记录的信息。<br>如果说 reset –soft 是后悔药，那 reflog 就是强力后悔药。它记录了所有的 commit 操作记录，便于错误操作后找回记录。</p>
+</blockquote>
+<h3 id="应用场景-4"><a href="#应用场景-4" class="headerlink" title="应用场景"></a>应用场景</h3><p>某天你眼花，发现自己在其他人分支提交了代码还推到远程分支，这时因为分支只有你的最新提交，就想着使用 reset –hard，结果紧张不小心记错了 commitHash，reset 过头，把同事的 commit 搞没了。没办法，reset –hard 是强制回退的，找不到 commitHash 了，只能让同事从本地分支再推一次（同事瞬间拳头就硬了，怎么又是你）。于是，你的技术形象又一落千丈。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本文主要分享了5个在开发中实用的 Git 命令和设置短命令的方式。</p>
+<ul>
+<li>stash：存储临时代码。</li>
+<li>reset –soft：软回溯，回退 commit 的同时保留修改内容。</li>
+<li>cherry-pick：复制 commit。</li>
+<li>revert：撤销 commit 的修改内容。</li>
+<li>reflog：记录了 commit 的历史操作。</li>
+</ul>
+<p>文中列举的应用场景有部分不太恰当，只是想便于同学们理解，最重要的是要理解命令的作用是什么，活学活用才能发挥最大功效。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zzonn.com/2022/05/28/Git%20%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9A%20pull%20%E5%92%8C%20push%EF%BC%8C%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87-git%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9Apull%E5%92%8Cpush%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87/" data-id="clf0jcv6s000g6ocxh4mw0pr3" data-title="Git 不要只会 pull 和 push，试试用这些命令来提高效率" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-ClickHouse简介-clickhouse简介" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/11/ClickHouse%E7%AE%80%E4%BB%8B-clickhouse%E7%AE%80%E4%BB%8B/" class="article-date">
+  <time class="dt-published" datetime="2022-03-11T11:44:49.861Z" itemprop="datePublished">2022-03-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/SQL/">SQL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/11/ClickHouse%E7%AE%80%E4%BB%8B-clickhouse%E7%AE%80%E4%BB%8B/">ClickHouse简介</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><strong>ClickHouse</strong> 是一款当前非常流行的开源在线分析型数据库。<strong>ClickHouse</strong> 主要应用于实时数仓构建、大数据加速分析、宽表日志分析等通用场景，服务于流量漏斗分析，用户行为分析，人群圈选，用户画像，广告投放人群评估、ABTest 、大促分析，CDP&#x2F;DMP 等业务场景，在电商平台，新零售、游戏、广告、社交应用，在线旅游，本地生活，交通物流等行业都有广泛典型的应用案例，国内大厂阿里，字节，腾讯，快手，携程，京东，小红书等都有大规模的业务使用。</p>
+<p><strong>ClickHouse</strong>开源关注度增长非常迅速，在 DBEngine 网站公布的2021年RDBMS 产品类目产品关注度排行榜上，<strong>ClickHouse</strong> 年度关注度排名提升30名，整体排名28位。 以下是当前在线分析数据库&#x2F;实时数仓领域的几款高热度产品的流行关注度趋势，<strong>ClickHouse</strong>和 Greenplum 为开源产品，其他几款为闭源商业产品。</p>
+<p><img src="https://www.zzonn.com/upload/2022/03/image-726af7732be148699d3d81e58812fc5f.png" alt="image.png"></p>
+<p><strong>ClickHouse</strong>之所以得到这么高的关注度，个人认为两个核心的因素决定:</p>
+<p>•  一是市场驱动。当前企业客户整体业务数量规模增大，而业务实时分析决策的需求明显，触发了对在线分析型数据库&#x2F;实时数仓的需求增强；<br>• 二是产品选型，流量和用户的竞争激烈的大环境下，促使业务行为和决策更有时效性，从而提高留存率和转化，因此对数据分析引擎的性能响应要求越来越高。同时业务分析维度增多，分析数据来源多，分析数据规模膨胀，对成本控制的需求也非常明显。<strong>ClickHouse</strong>基于列式存储，向量化执行引擎和SIMD（单指令多数据流），稀疏索引，分布式计算，多核并行等核心技术以及优秀的工程实现，实现了高压缩比数据存储，高效的数据写入吞吐和亿级记录95%查询秒级返回的优异性能。</p>
+<p>社区官网公布的性能测试结果显示。<strong>ClickHouse</strong>相比 MySQL 在分析性能上有500倍以上的提升，相较于 Greenplum 等分析引擎在聚合分析场景也有 20倍以上的性能提升。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zzonn.com/2022/03/11/ClickHouse%E7%AE%80%E4%BB%8B-clickhouse%E7%AE%80%E4%BB%8B/" data-id="clf0jcv6p000b6ocx19sq1g24" data-title="ClickHouse简介" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql/" rel="tag">sql</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-发布.netcore项目到linux-fa-bu-netcore-xiang-mu-dao-linux" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/04/%E5%8F%91%E5%B8%83.netcore%E9%A1%B9%E7%9B%AE%E5%88%B0linux-fa-bu-netcore-xiang-mu-dao-linux/" class="article-date">
+  <time class="dt-published" datetime="2022-03-04T08:51:41.169Z" itemprop="datePublished">2022-03-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Net/">.Net</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/04/%E5%8F%91%E5%B8%83.netcore%E9%A1%B9%E7%9B%AE%E5%88%B0linux-fa-bu-netcore-xiang-mu-dao-linux/">发布.netcore项目到linux</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="安装-NET-SDK-或-NET-运行"><a href="#安装-NET-SDK-或-NET-运行" class="headerlink" title="安装 .NET SDK 或 .NET 运行"></a>安装 .NET SDK 或 .NET 运行</h1><p>根据微软官方文档，安装对应系统对应.net版本的运行时<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/core/install/linux-centos">https://docs.microsoft.com/zh-cn/dotnet/core/install/linux-centos </a></p>
+<h1 id="部署文件到对应目录，使用命令启用服务"><a href="#部署文件到对应目录，使用命令启用服务" class="headerlink" title="部署文件到对应目录，使用命令启用服务"></a>部署文件到对应目录，使用命令启用服务</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet XXXXXX.Admin.dll --urls &quot;http://localhost:5000&quot; </span><br></pre></td></tr></table></figure>
+
+<h1 id="Nginx设置反代"><a href="#Nginx设置反代" class="headerlink" title="Nginx设置反代"></a>Nginx设置反代</h1><ul>
+<li>方式一：宝塔中设置反向代理，目标URL填写<a href="http://localhost:5000即可，发送域名www.****.com">http://localhost:5000即可，发送域名www.****.com</a> </li>
+<li>方式二：直接修改配置文件</li>
+</ul>
+<h1 id="使用-Supervisor-守护进程"><a href="#使用-Supervisor-守护进程" class="headerlink" title="使用 Supervisor 守护进程"></a>使用 Supervisor 守护进程</h1><p>用户建议选择www，不要使用root。 其他程序的话，可以选择对应新建的用户</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zzonn.com/2022/03/04/%E5%8F%91%E5%B8%83.netcore%E9%A1%B9%E7%9B%AE%E5%88%B0linux-fa-bu-netcore-xiang-mu-dao-linux/" data-id="clf0jcv76001u6ocxchyc6irn" data-title="发布.netcore项目到linux" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/net/" rel="tag">.net</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/netcore/" rel="tag">.netcore</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-code review 流程规范-codereview流程规范" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/12/code%20review%20%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83-codereview%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83/" class="article-date">
+  <time class="dt-published" datetime="2021-08-12T06:49:29.424Z" itemprop="datePublished">2021-08-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Other/">Other</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/12/code%20review%20%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83-codereview%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83/">code review 流程规范</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>没有无缘无故的爱，也没有无缘无故的恨，当然也没有无缘无故的 code review</p>
+<h1 id="角色职能"><a href="#角色职能" class="headerlink" title="角色职能"></a>角色职能</h1><p><img src="https://www.zzonn.com/upload/2021/08/64a8ed46c6be00e95bd09df7016610b3-d724bb6f898646788b5704b53db994a1.png" alt="64a8ed46c6be00e95bd09df7016610b3.png"></p>
+<p><strong>author 即需求开发者。要求：</strong></p>
+<ul>
+<li>注重注释。对复杂业务写明相应注释，commit 写明具体提交背景，便于 reviewer 理解。</li>
+<li>端正心态接受他人 review。对 reviewer 给出的 comment，不要有抵触的情绪，对你觉得不合理的建议，可以委婉地进行拒绝，或者详细说明自己的看法以及原因。reviewer 持有的观点并不一定是合理的，所以 review 也是一个相互学习的过程。</li>
+<li>完成 comment 修改后及时反馈。commit 提交信息备注如”reivew: xxxx”，保证复检效率。</li>
+</ul>
+<p><strong>reviewer 作为 cr 参与者，建议由项目责任人和项目参与者组成。要求：</strong></p>
+<ul>
+<li>说明 comment 等级。reviewer 对相应代码段提出评价时，需要指明对应等级，如<ul>
+<li>fix: xxxxxxx  此处需强制修改，提供修改建议</li>
+<li>advise: xxxxxxx 此处主观上建议修改，不强制，可提供修改建议</li>
+<li>question: xxxxxx 此处存在疑虑，需要 author 作出解释</li>
+</ul>
+</li>
+<li>友好 comment。评价注意措辞，可以说“我们可以如何去调整修改，可能会更合适。。。”，对于比较好的代码，也应该给与足够的赞美。</li>
+<li>享受 review。避免以挑毛病的心态 review，好的 reviewer 并不是以提的问题多来衡量的。跳出自己的编码风格，主动理解 author 的思路，也是一个很好的学习过程。</li>
+</ul>
+<h1 id="CR-流程"><a href="#CR-流程" class="headerlink" title="CR 流程"></a>CR 流程</h1><p><strong>1、self-review</strong></p>
+<ul>
+<li>commit 之前要求 diff 一下，查看文件变更情况，可接着 gitk 完成。当然如果项目使用 pre-commit 关联 lint 校验，也能发现例如 debugger、console.log 之类语句。但是仍然提倡大家每次提交之前检查一下提交文件。</li>
+<li>多人协作下的 commit。多人合作下的分支在合并请求时，需要关注是否带入没必要的 commit。</li>
+<li>commit message。建议接入 husky、commitlint&#x2F;cli 以及 commitlint&#x2F;config-conventional 校验 commit message。commitlint&#x2F;config-conventional 所提供的类型如<ul>
+<li>feat: 新特性</li>
+<li>fix: 修改 bug</li>
+<li>chore: 优化，如项目结构，依赖安装更新等</li>
+<li>docs: 文档变更</li>
+<li>style: 样式相关修改</li>
+<li>refactor：项目重构</li>
+</ul>
+</li>
+</ul>
+<p>此目的为了进一步增加 commit message 信息量，帮助 reviewer 以及自己更有效的了解 commit 内容。</p>
+<p><strong>2、CR</strong></p>
+<ul>
+<li>提测时发起 cr，需求任务关联 reviewer。提供合并请求，借助 gitlab&#x2F;sourcetree&#x2F;vscode gitlens 等工具。reviewer 结束后给与反馈</li>
+<li>针对 reviewer 提出的建议修改之后，commit message 注明类似’review fix’相关信息，便于 reviewer 复检。</li>
+<li>紧急需求，特事特办，跳过 cr 环节，事后 review。</li>
+</ul>
+<h1 id="CR-标准"><a href="#CR-标准" class="headerlink" title="CR 标准"></a>CR 标准</h1><ul>
+<li>不纠结编码风格。编码风格交给 eslint&#x2F;tslint&#x2F;stylelint</li>
+<li>代码性能。大数据处理、重复渲染等</li>
+<li>代码注释。字段注释、文档注释等</li>
+<li>代码可读性。过多嵌套、低效冗余代码、功能独立、可读性变量方法命名等</li>
+<li>代码可扩展性。功能方法设计是否合理、模块拆分等</li>
+<li>控制 review 时间成本。reviewer 尽量由项目责任人组成，关注代码逻辑，无需逐字逐句理解。</li>
+</ul>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>总的来说，cr 并不是一个找 bug 挑毛病的过程，更不会降低整体开发效率。其目的是为了保证项目的规范性，使得其他开发人员在项目扩展和维护时节省更多的时间和精力。当然 cr 环节需要团队每一个成员去推动，只有每一个人都认可且参与进来，才能发挥 cr 的最大价值。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zzonn.com/2021/08/12/code%20review%20%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83-codereview%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83/" data-id="clf0jcv74001l6ocx66wi2du6" data-title="code review 流程规范" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/" rel="tag">code</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Redis都有哪些监控指标？-redis都有哪些监控指标" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/07/11/Redis%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E7%9B%91%E6%8E%A7%E6%8C%87%E6%A0%87%EF%BC%9F-redis%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E7%9B%91%E6%8E%A7%E6%8C%87%E6%A0%87/" class="article-date">
+  <time class="dt-published" datetime="2021-07-11T06:30:07.711Z" itemprop="datePublished">2021-07-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Redis/">Redis</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/07/11/Redis%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E7%9B%91%E6%8E%A7%E6%8C%87%E6%A0%87%EF%BC%9F-redis%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E7%9B%91%E6%8E%A7%E6%8C%87%E6%A0%87/">Redis都有哪些监控指标？</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="监控指标"><a href="#监控指标" class="headerlink" title="监控指标"></a>监控指标</h2><p>•性能指标：Performance<br>•内存指标: Memory<br>•基本活动指标：Basic activity<br>•持久性指标: Persistence<br>•错误指标：Error</p>
+<h2 id="性能指标：Performance"><a href="#性能指标：Performance" class="headerlink" title="性能指标：Performance"></a>性能指标：Performance</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>latency</td>
+<td>Redis响应一个请求的时间</td>
+</tr>
+<tr>
+<td>instantaneous_ops_per_sec</td>
+<td>平均每秒处理请求总数</td>
+</tr>
+<tr>
+<td>hi rate(calculated)</td>
+<td>缓存命中率（计算出来的</td>
+</tr>
+</tbody></table>
+<h2 id="内存指标-Memory"><a href="#内存指标-Memory" class="headerlink" title="内存指标: Memory"></a>内存指标: Memory</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>used_memory</td>
+<td>已使用内存</td>
+</tr>
+<tr>
+<td>mem_fragmentation_ratio</td>
+<td>内存碎片率</td>
+</tr>
+<tr>
+<td>evicted_keys</td>
+<td>由于最大内存限制被移除的key的数量</td>
+</tr>
+<tr>
+<td>blocked_clients</td>
+<td>由于BLPOP,BRPOP,or BRPOPLPUSH而备阻塞的客户端</td>
+</tr>
+</tbody></table>
+<h2 id="基本活动指标：Basic-activity"><a href="#基本活动指标：Basic-activity" class="headerlink" title="基本活动指标：Basic activity"></a>基本活动指标：Basic activity</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>connected_clients</td>
+<td>客户端连接数</td>
+</tr>
+<tr>
+<td>conected_laves</td>
+<td>slave数量</td>
+</tr>
+<tr>
+<td>master_last_io_seconds_ago</td>
+<td>最近一次主从交互之后的秒数</td>
+</tr>
+<tr>
+<td>keyspace</td>
+<td>数据库中的key值总数</td>
+</tr>
+</tbody></table>
+<h2 id="持久性指标-Persistence"><a href="#持久性指标-Persistence" class="headerlink" title="持久性指标: Persistence"></a>持久性指标: Persistence</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rdb_last_save_time</td>
+<td>最后一次持久化保存磁盘的时间戳</td>
+</tr>
+<tr>
+<td>rdb_changes_sice_last_save</td>
+<td>自最后一次持久化以来数据库的更改数</td>
+</tr>
+</tbody></table>
+<h2 id="错误指标：Error"><a href="#错误指标：Error" class="headerlink" title="错误指标：Error"></a>错误指标：Error</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rejected_connections</td>
+<td>由于达到maxclient限制而被拒绝的连接数</td>
+</tr>
+<tr>
+<td>keyspace_misses</td>
+<td>key值查找失败(没有命中)次数</td>
+</tr>
+<tr>
+<td>master_link_down_since_seconds</td>
+<td>主从断开的持续时间（以秒为单位)</td>
+</tr>
+</tbody></table>
+<h2 id="监控方式"><a href="#监控方式" class="headerlink" title="监控方式"></a>监控方式</h2><p>•redis-benchmark<br>•redis-stat<br>•redis-faina<br>•redislive<br>•redis-cli<br>•monitor<br>•showlog</p>
+<p>1.get：获取慢查询日志<br>2.len：获取慢查询日志条目数<br>3.reset：重置慢查询日志</p>
+<p>相关配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">slowlog-log-slower-than 1000 # 设置慢查询的时间下线，单位：微秒</span><br><span class="line"></span><br><span class="line">slowlog-max-len 100 # 设置慢查询命令对应的日志显示长度，单位：命令数</span><br></pre></td></tr></table></figure>
+
+
+<p>info（可以一次性获取所有的信息，也可以按块获取信息）</p>
+<p>1.server:服务器运行的环境参数<br>2.clients:客户端相关信息<br>3.memory：服务器运行内存统计数据<br>4.persistence：持久化信息<br>5.stats：通用统计数据<br>6.Replication：主从复制相关信息<br>7.CPU：CPU使用情况<br>8.cluster：集群信息<br>9.Keypass：键值对统计数量信息</p>
+<p>终端info命令使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./redis-cli info 按块获取信息 | grep 需要过滤的参数./redis-cli info stats | grep ops</span><br></pre></td></tr></table></figure>
+
+
+<p>交互式info命令使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#./redis-cli &gt; info server</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="性能监控："><a href="#性能监控：" class="headerlink" title="性能监控："></a>性能监控：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli info | grep ops # 每秒操作数</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="内存监控"><a href="#内存监控" class="headerlink" title="内存监控"></a>内存监控</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep used | grep human       </span><br><span class="line">used_memory_human:2.99M  # 内存分配器从操作系统分配的内存总量</span><br><span class="line">used_memory_rss_human:8.04M  #操作系统看到的内存占用，top命令看到的内存</span><br><span class="line">used_memory_peak_human:7.77M # redis内存消耗的峰值</span><br><span class="line">used_memory_lua_human:37.00K   # lua脚本引擎占用的内存大小</span><br></pre></td></tr></table></figure>
+
+<p>由于BLPOP,BRPOP,or BRPOPLPUSH而备阻塞的客户端</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep </span><br><span class="line">blocked_clientsblocked_clients:0  </span><br></pre></td></tr></table></figure>
+
+
+<p>由于最大内存限制被移除的key的数量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep </span><br><span class="line">evicted_keysevicted_keys:0  #</span><br></pre></td></tr></table></figure>
+
+
+<p>内存碎片率</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep</span><br><span class="line">mem_fragmentation_ratiomem_fragmentation_ratio:2.74</span><br></pre></td></tr></table></figure>
+
+
+<p>已使用内存</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep </span><br><span class="line">used_memory:used_memory:3133624  </span><br></pre></td></tr></table></figure>
+
+<h2 id="基本活动指标："><a href="#基本活动指标：" class="headerlink" title="基本活动指标："></a>基本活动指标：</h2><p>redis连接了多少客户端 通过观察其数量可以确认是否存在意料之外的连接。如果发现数量不对劲，就可以使用lcient list指令列出所有的客户端链接地址来确定源头。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep </span><br><span class="line">connected_clientsconnected_clients:1</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep </span><br><span class="line">connectedconnected_clients:1   # 客户端连接数量</span><br><span class="line">connected_slaves:1   # slave连接数量</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="持久性指标："><a href="#持久性指标：" class="headerlink" title="持久性指标："></a>持久性指标：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep </span><br><span class="line">rdb_last_save_timerdb_last_save_time:1591876204  # 最后一次持久化保存磁盘的时间戳</span><br><span class="line"></span><br><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep </span><br><span class="line">rdb_changes_since_last_saverdb_changes_since_last_save:0   # 自最后一次持久化以来数据库的更改数</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="错误指标"><a href="#错误指标" class="headerlink" title="错误指标"></a>错误指标</h2><p>由于超出最大连接数限制而被拒绝的客户端连接次数，如果这个数字很大，则意味着服务器的最大连接数设置得过低，需要调整maxclients</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep </span><br><span class="line">connected_clientsconnected_clients:1</span><br></pre></td></tr></table></figure>
+
+
+<p>key值查找失败(没有命中)次数，出现多次可能是被hei ke gongjji</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep </span><br><span class="line">keyspacekeyspace_misses:0  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>主从断开的持续时间（以秒为单位)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep </span><br><span class="line">rdb_changes_since_last_saverdb_changes_since_last_save:0  </span><br></pre></td></tr></table></figure>
+
+<p>复制积压缓冲区如果设置得太小，会导致里面的指令被覆盖掉找不到偏移量，从而触发全量同步</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep </span><br><span class="line">backlog_sizerepl_backlog_size:1048576</span><br></pre></td></tr></table></figure>
+
+
+<p>通过查看sync_partial_err变量的次数来决定是否需要扩大积压缓冲区，它表示主从半同步复制失败的次数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep </span><br><span class="line">sync_partial_errsync_partial_err:1</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="redis性能测试命令"><a href="#redis性能测试命令" class="headerlink" title="redis性能测试命令"></a>redis性能测试命令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./redis-benchmark -c 100 -n 5000</span><br></pre></td></tr></table></figure>
+
+<p>说明：100个连接，5000次请求对应的性能</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zzonn.com/2021/07/11/Redis%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E7%9B%91%E6%8E%A7%E6%8C%87%E6%A0%87%EF%BC%9F-redis%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E7%9B%91%E6%8E%A7%E6%8C%87%E6%A0%87/" data-id="clf0jcv6w000s6ocxan0x81iz" data-title="Redis都有哪些监控指标？" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/" rel="tag">redis</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Vue3响应式原理-vue3响应式原理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/07/07/Vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86-vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/" class="article-date">
+  <time class="dt-published" datetime="2021-07-07T07:30:17.465Z" itemprop="datePublished">2021-07-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Vue/">Vue</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/07/07/Vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86-vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/">Vue3响应式原理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="关于Vue3"><a href="#关于Vue3" class="headerlink" title="关于Vue3"></a>关于Vue3</h2><p>话说，Vue3已经进行到rc4版本了，4月份beta发布的时候前端圈红红火火</p>
+<p>不会吧不会吧，不会你还没开始学吧🐒</p>
+<h2 id="Vue2-响应式原理回顾"><a href="#Vue2-响应式原理回顾" class="headerlink" title="Vue2 响应式原理回顾"></a>Vue2 响应式原理回顾</h2><ul>
+<li>对象响应化：遍历每个key，通过 <code>Object.defineProperty</code> API定义getter，setter</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">// 伪代码</span><br><span class="line">function observe()&#123;</span><br><span class="line"> if(typeof obj !=&#x27;object&#x27; || obj == null)&#123;</span><br><span class="line">  return</span><br><span class="line"> &#125;</span><br><span class="line"> if(Array.isArray(obj))&#123;</span><br><span class="line">  Object.setPrototypeOf(obj,arrayProto)</span><br><span class="line"> &#125;else&#123;</span><br><span class="line">    const keys = Object.keys()</span><br><span class="line">    for(let i=0;i&lt;keys.length;i++)&#123;</span><br><span class="line">      const key = keys[i]</span><br><span class="line">      defineReactive(obj,key,obj[key])</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line">function defineReactive(target, key, val)&#123;</span><br><span class="line">  observe(val)</span><br><span class="line">  Object.defineProperty(obj, key, &#123;</span><br><span class="line">    get()&#123;</span><br><span class="line">      // 依赖收集</span><br><span class="line">      dep.depend()</span><br><span class="line">      return val</span><br><span class="line">    &#125;,</span><br><span class="line">    set(newVal)&#123;</span><br><span class="line">      if(newVal !== val)&#123;</span><br><span class="line">        observe(newVal)</span><br><span class="line">        val = newVal</span><br><span class="line">        // 通知更新</span><br><span class="line">        dep.notify()</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>数组响应化：覆盖数组的原型方法，增加通知变更的逻辑</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 伪代码</span><br><span class="line">const originalProto = Array.prototype</span><br><span class="line">const arrayProto = Object.create(originalProto)</span><br><span class="line">[&#x27;push&#x27;,&#x27;pop&#x27;,&#x27;shift&#x27;,&#x27;unshift&#x27;,&#x27;splice&#x27;,&#x27;reverse&#x27;,&#x27;sort&#x27;].forEach(key=&gt;&#123;</span><br><span class="line"> arrayProto[key] = function()&#123;</span><br><span class="line">  originalProto[key].apply(this.arguments)</span><br><span class="line">  notifyUpdate()</span><br><span class="line"> &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="vue2响应式痛点"><a href="#vue2响应式痛点" class="headerlink" title="vue2响应式痛点"></a>vue2响应式痛点</h2><ul>
+<li>递归，消耗大</li>
+<li>新增&#x2F;删除属性，需要额外实现单独的API</li>
+<li>数组，需要额外实现</li>
+<li>Map Set Class等数据类型，无法响应式</li>
+<li>修改语法有限制</li>
+</ul>
+<h2 id="vue3响应式方案"><a href="#vue3响应式方案" class="headerlink" title="vue3响应式方案"></a>vue3响应式方案</h2><p>使用ES6的 <strong><code>Proxy</code>[10]</strong> 进行数据响应化，解决上述Vue2所有痛点</p>
+<p>Proxy可以在目标对象上加一层拦截&#x2F;代理，外界对目标对象的操作，都会经过这层拦截</p>
+<p>相比 <code>Object.defineProperty</code> ，Proxy支持的对象操作十分全面：get、set、has、deleteProperty、ownKeys、defineProperty……等等</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// reactive 伪代码</span><br><span class="line">function reactice(obj)&#123;</span><br><span class="line">  return new Proxy(obj,&#123;</span><br><span class="line">    get(target, key, receiver)&#123;</span><br><span class="line">      const ret = Reflect.get(target, key, receiver)</span><br><span class="line">      return isObject(ret) ? reactice(ret) : ret</span><br><span class="line">    &#125;,</span><br><span class="line">    set(target, key, val, receiver)&#123;</span><br><span class="line">      const ret = Reflect.set(target, key, val, receiver)</span><br><span class="line">      return ret</span><br><span class="line">    &#125;,</span><br><span class="line">    deleteProperty(target, key)&#123;</span><br><span class="line">      const ret = Reflect.deleteProperty(target, key)</span><br><span class="line">      return ret</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Vue3响应式原理"><a href="#Vue3响应式原理" class="headerlink" title="Vue3响应式原理"></a>Vue3响应式原理</h2><p><img src="https://www.zzonn.com/upload/2021/07/vue3xiangyingshi2-98952fa8e3dc437b95f0e61f601caf41.png" alt="vue3xiangyingshi2"></p>
+<ul>
+<li>通过 <strong><code>effect</code></strong> 声明依赖响应式数据的函数cb ( 例如视图渲染函数render函数)，并执行cb函数，执行过程中，会触发响应式数据 <code>getter</code></li>
+<li>在响应式数据 <code>getter</code>中进行 <code>track</code>依赖收集：建立 <strong>数据&amp;cb</strong> 的映射关系存储于 <code>targetMap</code></li>
+<li>当变更响应式数据时，触发 <code>trigger</code> <strong>，</strong>根据 <code>targetMap</code> 找到关联的cb执行</li>
+<li>映射关系 <code>targetMap</code> 结构：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">targetMap: WeakMap&#123; </span><br><span class="line"> target:Map&#123; </span><br><span class="line">  key: Set[cb1,cb2...] </span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="手写vue3响应式"><a href="#手写vue3响应式" class="headerlink" title="手写vue3响应式"></a>手写vue3响应式</h2><p>大致结构</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// mini-vue3.js</span><br><span class="line"></span><br><span class="line">/* 建立响应式数据 */</span><br><span class="line">function reactice(obj)&#123;&#125;</span><br><span class="line"></span><br><span class="line">/* 声明响应函数cb(依赖响应式数据) */</span><br><span class="line">function effect(cb)&#123;&#125;</span><br><span class="line"></span><br><span class="line">/* 依赖收集：建立 数据&amp;cb 映射关系 */</span><br><span class="line">function track(target,key)&#123;&#125;</span><br><span class="line"></span><br><span class="line">/* 触发更新：根据映射关系，执行cb */</span><br><span class="line">function trigger(target,key)&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="reactive"><a href="#reactive" class="headerlink" title="reactive"></a>reactive</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">/* 建立响应式数据 */</span><br><span class="line">function reactive(obj)&#123;</span><br><span class="line">  // Proxy:http://es6.ruanyifeng.com/#docs/proxy</span><br><span class="line">  // Proxy相当于在对象外层加拦截</span><br><span class="line">  // Proxy递归是惰性的,需要添加递归的逻辑</span><br><span class="line">  </span><br><span class="line">  // Reflect:http://es6.ruanyifeng.com/#docs/reflect</span><br><span class="line">  // Reflect:用于执行对象默认操作，更规范、更友好,可以理解成操作对象的合集</span><br><span class="line">  // Proxy和Object的方法Reflect都有对应</span><br><span class="line">  if(!isObject(obj)) return obj</span><br><span class="line">  const observed = new Proxy(obj,&#123;</span><br><span class="line">    get(target, key, receiver)&#123;</span><br><span class="line">      const ret = Reflect.get(target, key, receiver)</span><br><span class="line">      console.log(&#x27;getter &#x27;+ret)</span><br><span class="line">      // 跟踪 收集依赖</span><br><span class="line">      track(target, key)</span><br><span class="line">      return reactive(ret)</span><br><span class="line">    &#125;,</span><br><span class="line">    set(target, key, val, receiver)&#123;</span><br><span class="line">      const ret = Reflect.set(target, key, val, receiver)</span><br><span class="line">      console.log(&#x27;setter &#x27;+key+&#x27;:&#x27;+val + &#x27;=&gt;&#x27; + ret)</span><br><span class="line">      // 触发更新</span><br><span class="line">      trigger(target, key)</span><br><span class="line">      return ret</span><br><span class="line">    &#125;,</span><br><span class="line">    deleteProperty(target, key)&#123;</span><br><span class="line">      const ret = Reflect.deleteProperty(target, key)</span><br><span class="line">      console.log(&#x27;delete &#x27;+key+&#x27;:&#x27;+ret)</span><br><span class="line">      // 触发更新</span><br><span class="line">      trigger(target, key)</span><br><span class="line">      return ret</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;)</span><br><span class="line">  return observed</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="effect"><a href="#effect" class="headerlink" title="effect"></a>effect</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">/* 声明响应函数cb */</span><br><span class="line">const effectStack = []</span><br><span class="line">function effect(cb)&#123;</span><br><span class="line"></span><br><span class="line">  // 对函数进行高阶封装</span><br><span class="line">  const rxEffect = function()&#123;</span><br><span class="line">    // 1.捕获异常</span><br><span class="line">    // 2.fn出栈入栈</span><br><span class="line">    // 3.执行fn</span><br><span class="line">    try&#123;</span><br><span class="line">      effectStack.push(rxEffect)</span><br><span class="line">      return cb()</span><br><span class="line">    &#125;finally&#123;</span><br><span class="line">      effectStack.pop()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 最初要执行一次,进行最初的依赖收集</span><br><span class="line">  rxEffect()</span><br><span class="line"></span><br><span class="line">  return rxEffect</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="track"><a href="#track" class="headerlink" title="track"></a>track</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">/* 依赖收集：建立 数据&amp;cb 映射关系 */</span><br><span class="line">const targetMap = new WeakMap()</span><br><span class="line">function track(target,key)&#123;</span><br><span class="line">  // 存入映射关系</span><br><span class="line">  const effectFn = effectStack[effectStack.length - 1]  // 拿出栈顶函数</span><br><span class="line">  if(effectFn)&#123;</span><br><span class="line">    let depsMap = targetMap.get(target)</span><br><span class="line">    if(!depsMap)&#123;</span><br><span class="line">      depsMap = new Map()</span><br><span class="line">      targetMap.set(target, depsMap)</span><br><span class="line">    &#125;</span><br><span class="line">    let deps = depsMap.get(key)</span><br><span class="line">    if(!deps)&#123;</span><br><span class="line">      deps = new Set()</span><br><span class="line">      depsMap.set(key, deps)</span><br><span class="line">    &#125;</span><br><span class="line">    deps.add(effectFn)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="trigger"><a href="#trigger" class="headerlink" title="trigger"></a>trigger</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/* 触发更新：根据映射关系，执行cb */</span><br><span class="line">function trigger(target, key)&#123;</span><br><span class="line">  const depsMap = targetMap.get(target)</span><br><span class="line">  if(depsMap)&#123;</span><br><span class="line">    const deps = depsMap.get(key)</span><br><span class="line">    if(deps)&#123;</span><br><span class="line">      deps.forEach(effect=&gt;effect())</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试demo"><a href="#测试demo" class="headerlink" title="测试demo"></a>测试demo</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- test.html --&gt;</span><br><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line"> &#123;&#123;msg&#125;&#125;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script src=&quot;./mini-vue3.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  // 定义一个响应式数据</span><br><span class="line">  const state = reactive(&#123;</span><br><span class="line">    msg:&#x27;message&#x27;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  // 定义一个使用到响应式数据的 dom更新函数</span><br><span class="line"> function updateDom()&#123;</span><br><span class="line">  document.getElementById(&#x27;app&#x27;).innerText = state.msg</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> // 用effect声明更新函数</span><br><span class="line">  effect(updateDom)</span><br><span class="line"></span><br><span class="line">  // 定时变更响应式数据</span><br><span class="line">  setInterval(()=&gt;&#123;</span><br><span class="line">    state.msg = &#x27;message&#x27; + Math.random()</span><br><span class="line">  &#125;,1000)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>效果：</p>
+<p><img src="https://www.zzonn.com/upload/2021/07/vue3xiangyingshi1-7b15ae33c9ae4ecc98de919062b8beb9.png" alt="vue3xiangyingshi1"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zzonn.com/2021/07/07/Vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86-vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/" data-id="clf0jcv71001a6ocxgsua3rce" data-title="Vue3响应式原理" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/" rel="tag">vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-C#常用字符串操作-csharp常用字符串操作" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/23/C#%E5%B8%B8%E7%94%A8%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C-csharp%E5%B8%B8%E7%94%A8%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/" class="article-date">
+  <time class="dt-published" datetime="2021-04-23T08:29:34.743Z" itemprop="datePublished">2021-04-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Net/">.Net</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/23/C#%E5%B8%B8%E7%94%A8%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C-csharp%E5%B8%B8%E7%94%A8%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/">C#常用字符串操作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>字符串操作在任意编程语言的日常编程中都随处可见，今天来汇总一下 C# 中关于字符串的一些常用的知识点。</p>
+<h2 id="逐字字符串"><a href="#逐字字符串" class="headerlink" title="逐字字符串"></a>逐字字符串</h2><p>在普通字符串中，反斜杠字符是转义字符。而在逐字字符串（Verbatim Strings）中，字符将被编程器按照原义进行解释。使用逐字字符串只需在字符串前面加上 @ 符号。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 逐字字符串：转义符  </span></span><br><span class="line"><span class="keyword">var</span> filename = <span class="string">@&quot;c:\\temp\\newfile.txt&quot;</span>;  </span><br><span class="line">Console.WriteLine(filenaame);  </span><br><span class="line">  </span><br><span class="line"><span class="comment">// 逐字字符串：多行文本  </span></span><br><span class="line"><span class="keyword">var</span> multiLine = <span class="string">@&quot;This is a  </span></span><br><span class="line"><span class="string">multiline paragraph.&quot;</span>;  </span><br><span class="line">Console.WriteLine(multiLine);  </span><br><span class="line">  </span><br><span class="line"><span class="comment">// 非逐字字符串  </span></span><br><span class="line"><span class="keyword">var</span> escapedFilename = <span class="string">&quot;c:\\temp\\newfile.txt&quot;</span>;  </span><br><span class="line">Console.WriteLine(escapedFilename);</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">c:\\temp\\newfile.txt  </span><br><span class="line">This <span class="keyword">is</span> a  </span><br><span class="line">multiline paragraph.  </span><br><span class="line">c: emp  </span><br><span class="line">ewfile.txt</span><br></pre></td></tr></table></figure>
+
+<p>逐字字符串中唯一不被原样解释的字符是双引号。由于双引号是定义字符串的关键字符，所以在逐字字符串中要表达双引号需要用双引号进行转义。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">varstr = <span class="string">@&quot;&quot;&quot;I don&#x27;t think so&quot;&quot;, he said.&quot;</span>;  </span><br><span class="line">Console.WriteLine(str);  </span><br><span class="line"><span class="comment">// 输出：&quot;I don&#x27;t think so&quot;, he said.</span></span><br></pre></td></tr></table></figure>
+
+<p>在逐字字符串中也可以 $ 符号实现字符串内插值。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Console.WriteLine(<span class="string">$@&quot;Testing \n 1 2 <span class="subst">&#123;<span class="number">5</span> - <span class="number">2</span>&#125;</span>&quot;</span>);  </span><br><span class="line"><span class="comment">// 输出：Testing \\n 1 2 3</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="数字格式化转换"><a href="#数字格式化转换" class="headerlink" title="数字格式化转换"></a>数字格式化转换</h2><p>典型的的格式化方法为：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span>.Format(<span class="string">&quot;&#123;index[:format]&#125;&quot;</span>, number)</span><br></pre></td></tr></table></figure>
+
+<p>可使用“0”和“#”占位符进行补位。“0” 表示位数不够位数就补充“0”，小数部分如果位数多了则会四舍五入；“#”表示占位，用于辅助“0”进行补位。</p>
+<p>标准格式化用法：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// “0”描述：占位符，如果可能，填充位  </span></span><br><span class="line"><span class="built_in">string</span>.Format(<span class="string">&quot;&#123;0:000000&#125;&quot;</span>,<span class="number">1234</span>); <span class="comment">// 结果：001234  </span></span><br><span class="line">  </span><br><span class="line"><span class="comment">// “#”描述：占位符，如果可能，填充位  </span></span><br><span class="line"><span class="built_in">string</span>.Format(<span class="string">&quot;&#123;0:######&#125;&quot;</span>,<span class="number">1234</span>); <span class="comment">// 结果：1234  </span></span><br><span class="line"><span class="built_in">string</span>.Format(<span class="string">&quot;&#123;0:#0####&#125;&quot;</span>,<span class="number">1234</span>); <span class="comment">// 结果：01234  </span></span><br><span class="line"><span class="built_in">string</span>.Format(<span class="string">&quot;&#123;0:0#0####&#125;&quot;</span>,<span class="number">1234</span>); <span class="comment">// 结果：0001234  </span></span><br><span class="line">  </span><br><span class="line"><span class="comment">// &quot;.&quot;描述：小数点  </span></span><br><span class="line"><span class="built_in">string</span>.Format(<span class="string">&quot;&#123;0:000.000&#125;&quot;</span>, <span class="number">1234</span>); <span class="comment">// 结果：1234.000  </span></span><br><span class="line"><span class="built_in">string</span>.Format(<span class="string">&quot;&#123;0:000.000&#125;&quot;</span>, <span class="number">4321.12543</span>); <span class="comment">// 结果：4321.125  </span></span><br><span class="line">  </span><br><span class="line"><span class="comment">// &quot;,&quot;描述：千分表示  </span></span><br><span class="line"><span class="built_in">string</span>.Format(<span class="string">&quot;&#123;0:0,0&#125;&quot;</span>, <span class="number">1234567</span>); <span class="comment">//结果：1,234,567  </span></span><br><span class="line">  </span><br><span class="line"><span class="comment">// &quot;%&quot;描述：格式化为百分数  </span></span><br><span class="line"><span class="built_in">string</span>.Format(<span class="string">&quot;&#123;0:0%&#125;&quot;</span>,<span class="number">1234</span>); <span class="comment">// 结果：123400%  </span></span><br><span class="line"><span class="built_in">string</span>.Format(<span class="string">&quot;&#123;0:#%&#125;&quot;</span>, <span class="number">1234.125</span>); <span class="comment">// 结果：123413%  </span></span><br><span class="line"><span class="built_in">string</span>.Format(<span class="string">&quot;&#123;0:0.00%&#125;&quot;</span>,<span class="number">1234</span>); <span class="comment">// 结果：123400.00%  </span></span><br><span class="line"><span class="built_in">string</span>.Format(<span class="string">&quot;&#123;0:#.00%&#125;&quot;</span>,<span class="number">1234.125</span>); <span class="comment">// 结果：123412.50%</span></span><br></pre></td></tr></table></figure>
+
+<p>内置快捷字母格式化用法：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// E-科学计数法表示  </span></span><br><span class="line">(<span class="number">25000</span>).ToString(<span class="string">&quot;E&quot;</span>); <span class="comment">// 结果：2.500000E+004  </span></span><br><span class="line">  </span><br><span class="line"><span class="comment">// C-货币表示，带有逗号分隔符，默认小数点后保留两位，四舍五入  </span></span><br><span class="line">(<span class="number">2.5</span>).ToString(<span class="string">&quot;C&quot;</span>); <span class="comment">// 结果：￥2.50  </span></span><br><span class="line">  </span><br><span class="line"><span class="comment">// D\[length\]-十进制数  </span></span><br><span class="line">(<span class="number">25</span>).ToString(<span class="string">&quot;D5&quot;</span>); <span class="comment">// 结果：00025  </span></span><br><span class="line">  </span><br><span class="line"><span class="comment">// F\[precision\]-浮点数，保留小数位数(四舍五入)  </span></span><br><span class="line">(<span class="number">25</span>).ToString(<span class="string">&quot;F2&quot;</span>); <span class="comment">// 结果：25.00  </span></span><br><span class="line">  </span><br><span class="line"><span class="comment">// G\[digits\]-常规，保留指定位数的有效数字，四舍五入  </span></span><br><span class="line">(<span class="number">2.52</span>).ToString(<span class="string">&quot;G2&quot;</span>); <span class="comment">// 结果：2.5  </span></span><br><span class="line">  </span><br><span class="line"><span class="comment">// N-带有逗号分隔符，默认小数点后保留两位，四舍五入  </span></span><br><span class="line">(<span class="number">2500000</span>).ToString(<span class="string">&quot;N&quot;</span>); <span class="comment">// 结果：2,500,000.00  </span></span><br><span class="line">  </span><br><span class="line"><span class="comment">// X-十六进制，非整型将产生格式异常  </span></span><br><span class="line">(<span class="number">255</span>).ToString(<span class="string">&quot;X&quot;</span>); <span class="comment">// 结果：FF</span></span><br></pre></td></tr></table></figure>
+
+<p><code>ToString()</code> 也可以自定义补零格式化：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">15</span>).ToString(<span class="string">&quot;000&quot;</span>); <span class="comment">// 结果：015  </span></span><br><span class="line">(<span class="number">15</span>).ToString(<span class="string">&quot;value is 0&quot;</span>); <span class="comment">// 结果：value is 15  </span></span><br><span class="line">(<span class="number">10.456</span>).ToString(<span class="string">&quot;0.00&quot;</span>); <span class="comment">// 结果：10.46  </span></span><br><span class="line">(<span class="number">10.456</span>).ToString(<span class="string">&quot;00&quot;</span>); <span class="comment">// 结果：10  </span></span><br><span class="line">(<span class="number">10.456</span>).ToString(<span class="string">&quot;value is 0.0&quot;</span>); <span class="comment">// 结果：value is 10.5</span></span><br></pre></td></tr></table></figure>
+
+<p>转换为二进制、八进制、十六进制输出：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> number = <span class="number">15</span>;  </span><br><span class="line">Convert.ToString(number, <span class="number">2</span>); <span class="comment">// 结果：1111  </span></span><br><span class="line">Convert.ToString(number, <span class="number">8</span>); <span class="comment">// 结果：17  </span></span><br><span class="line">Convert.ToString(number, <span class="number">16</span>); <span class="comment">// 结果：f</span></span><br></pre></td></tr></table></figure>
+
+<p>自定义格式化器：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">publicclassCustomFormat : IFormatProvider, ICustomFormatter  </span><br><span class="line">&#123;  </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">string</span> <span class="title">Format</span>(<span class="params"><span class="built_in">string</span> format, <span class="built_in">object</span> arg, IFormatProvider formatProvider</span>)</span>  </span><br><span class="line">&#123;  </span><br><span class="line"><span class="keyword">if</span> (!<span class="keyword">this</span>.Equals(formatProvider))  </span><br><span class="line">&#123;  </span><br><span class="line">returnnull;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="keyword">if</span> (format == <span class="string">&quot;Reverse&quot;</span>)  </span><br><span class="line">&#123;  </span><br><span class="line">returnstring.Join(<span class="string">&quot;&quot;</span>, arg.ToString().Reverse());  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="keyword">return</span> arg.ToString();  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">object</span> <span class="title">GetFormat</span>(<span class="params">Type formatType</span>)</span>  </span><br><span class="line">&#123;  </span><br><span class="line"><span class="keyword">return</span> formatType == <span class="keyword">typeof</span>(ICustomFormatter) ? <span class="keyword">this</span> : <span class="literal">null</span>;  </span><br><span class="line">&#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用自定义格式化器：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String.Format(newCustomFormat(), <span class="string">&quot;-&gt; &#123;0:Reverse&#125; &lt;-&quot;</span>, <span class="string">&quot;Hello World&quot;</span>);  </span><br><span class="line"><span class="comment">// 输出：-\&gt; dlroW olleH &lt;-</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h2><p>将数组中的字符串拼接成一个字符串：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> parts = <span class="keyword">new</span>[] &#123; <span class="string">&quot;Foo&quot;</span>, <span class="string">&quot;Bar&quot;</span>, <span class="string">&quot;Fizz&quot;</span>, <span class="string">&quot;Buzz&quot;</span>&#125;;  </span><br><span class="line"><span class="keyword">var</span> joined = <span class="built_in">string</span>.Join(<span class="string">&quot;, &quot;</span>, parts);  </span><br><span class="line"><span class="comment">// joined = &quot;Foo, Bar, Fizz, Buzz&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>以下四种方式都可以达到相同的字符串拼接的目的：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> first = <span class="string">&quot;Hello&quot;</span>;  </span><br><span class="line"><span class="built_in">string</span> second = <span class="string">&quot;World&quot;</span>;  </span><br><span class="line"><span class="built_in">string</span> foo = first + <span class="string">&quot; &quot;</span> + second;  </span><br><span class="line"><span class="built_in">string</span> foo = <span class="built_in">string</span>.Concat(first, <span class="string">&quot; &quot;</span>, second);  </span><br><span class="line"><span class="built_in">string</span> foo = <span class="built_in">string</span>.Format(<span class="string">&quot;&#123;0&#125; &#123;1&#125;&quot;</span>, firstname, lastname);  </span><br><span class="line"><span class="built_in">string</span> foo = <span class="string">$&quot;<span class="subst">&#123;firstname&#125;</span> <span class="subst">&#123;lastname&#125;</span>&quot;</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="字符串内插法"><a href="#字符串内插法" class="headerlink" title="字符串内插法"></a>字符串内插法</h2><p>简单用法：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">&quot;World&quot;</span>;  </span><br><span class="line"><span class="keyword">var</span> str =<span class="string">$&quot;Hello, <span class="subst">&#123;name&#125;</span>!&quot;</span>;  </span><br><span class="line"><span class="comment">// str = &quot;Hello, World!&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>带日期格式化：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> date = DateTime.Now();  </span><br><span class="line"><span class="keyword">var</span> str = <span class="string">$&quot;Today is <span class="subst">&#123;date:yyyy-MM-dd&#125;</span>！&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>补齐格式化（Padding）：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> number = <span class="number">42</span>;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">// 向左补齐  </span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">$&quot;The answer to life, the universe and everything is <span class="subst">&#123;number, <span class="number">5</span>&#125;</span>.&quot;</span>;  </span><br><span class="line"><span class="comment">// str = &quot;The answer to life, the universe and everything is ___42.&quot; (&#x27;_&#x27;表示空格)  </span></span><br><span class="line">  </span><br><span class="line"><span class="comment">// 向右补齐  </span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">$&quot;The answer to life, the universe and everything is $<span class="subst">&#123;number, <span class="number">-5</span>&#125;</span>.&quot;</span>;  </span><br><span class="line"><span class="comment">// str = &quot;The answer to life, the universe and everything is 42___.&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>结合内置快捷字母格式化：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> amount = <span class="number">2.5</span>;  </span><br><span class="line"><span class="keyword">var</span> str = <span class="string">$&quot;It costs <span class="subst">&#123;amount:C&#125;</span>&quot;</span>;  </span><br><span class="line"><span class="comment">// str = &quot;￥2.50&quot;  </span></span><br><span class="line">  </span><br><span class="line"><span class="keyword">var</span> number = <span class="number">42</span>;  </span><br><span class="line"><span class="keyword">var</span> str = <span class="string">$&quot;The answer to life, the universe and everything is <span class="subst">&#123;number, <span class="number">5</span>:f1&#125;</span>.&quot;</span>;  </span><br><span class="line"><span class="comment">// str = &quot;The answer to life, the universe and everything is ___42.1&quot;</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zzonn.com/2021/04/23/C#%E5%B8%B8%E7%94%A8%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C-csharp%E5%B8%B8%E7%94%A8%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C/" data-id="clf0jcv6r000f6ocx39jshkkl" data-title="C#常用字符串操作" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/net/" rel="tag">.net</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C#</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-ABPvNext 使用笔记-abpvnextshi-yong-bi-ji" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/23/ABPvNext%20%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0-abpvnextshi-yong-bi-ji/" class="article-date">
+  <time class="dt-published" datetime="2021-04-23T07:49:40.405Z" itemprop="datePublished">2021-04-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Net/">.Net</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/23/ABPvNext%20%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0-abpvnextshi-yong-bi-ji/">ABPvNext 使用笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Domain"><a href="#Domain" class="headerlink" title="Domain"></a>Domain</h2><p>引入Volo.Abp.Ddd.Domain</p>
+<p>创建模块：DomainModule<br>[DependsOn(typeof(AbpDddDomainModule))]</p>
+<p>创建领域模型，聚合根需要继承AggregateRoot（BasicAggregateRoot），非聚合根直接继承Entity</p>
+<h2 id="Application-Contracts"><a href="#Application-Contracts" class="headerlink" title="Application.Contracts"></a>Application.Contracts</h2><p>引入Volo.Abp.Ddd.Application.Contracts</p>
+<p>创建模块：ApplicationContractModule<br>创建对应Dto模型<br>创建IService，继承IApplicationService，定义提供的方法</p>
+<h2 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h2><p>依赖Volo.Abp.Ddd.Application<br>依赖Application.Contracts<br>依赖Domain<br>依赖Volo.Abp.AutoMapper</p>
+<p>创建Service，继承ApplicationService，继承并实现IService</p>
+<p>创建模块：ApplicationModule<br>[DependsOn]DomainModule<br>[DependsOn]ApplicationContractModule<br>[DependsOn]AbpAutoMapperModule</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">ConfigureServices</span>(<span class="params">ServiceConfigurationContext context</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//注入AutoMapper</span></span><br><span class="line">            context.Services.AddAutoMapperObjectMapper&lt;***ApplicationModule&gt;();</span><br><span class="line"></span><br><span class="line">            Configure&lt;AbpAutoMapperOptions&gt;(options=&gt; &#123;</span><br><span class="line">                options.AddMaps&lt;***ApplicationModule&gt;();</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>创建对应的Profile类，需要继承AutoMapper.Profile</p>
+<h2 id="Api"><a href="#Api" class="headerlink" title="Api"></a>Api</h2><p>依赖Volo.Abp.AspNetCore.Mvc<br>依赖Volo.Abp.Autofac<br>依赖Application<br>依赖Swashbuckle.AspNetCore（使用swagger）</p>
+<p>Program中UseAutofac()</p>
+<p>创建模块：ApiModule，配置应用程序</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">DependsOn(typeof(AbpAspNetCoreMvcModule))</span>]</span><br><span class="line">[<span class="meta">DependsOn(typeof(AbpAutofacModule))</span>]</span><br><span class="line">[<span class="meta">DependsOn(typeof(***ApplicationModule))</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ApiModule</span> : <span class="title">AbpModule</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">ConfigureServices</span>(<span class="params">ServiceConfigurationContext context</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//自动controler</span></span><br><span class="line">        Configure&lt;AbpAspNetCoreMvcOptions&gt;(options =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            options.ConventionalControllers.Create(<span class="keyword">typeof</span>(***Service).Assembly);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//配置Swagger文档</span></span><br><span class="line">        ConfigureSwaggerServices(context.Services);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnApplicationInitialization</span>(<span class="params">ApplicationInitializationContext context</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> app = context.GetApplicationBuilder();</span><br><span class="line">        <span class="keyword">var</span> env = context.GetEnvironment();</span><br><span class="line"></span><br><span class="line">        app.UseRouting();</span><br><span class="line">        app.UseConfiguredEndpoints();</span><br><span class="line"></span><br><span class="line">        app.UseSwagger();</span><br><span class="line">        app.UseSwaggerUI(options =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            options.SwaggerEndpoint(<span class="string">&quot;/swagger/v1/swagger.json&quot;</span>, <span class="string">&quot;Api&quot;</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 配置Swagger文档</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;services&quot;&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ConfigureSwaggerServices</span>(<span class="params">IServiceCollection services</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        services.AddSwaggerGen(</span><br><span class="line">            options =&gt;</span><br><span class="line">            &#123;</span><br><span class="line">                options.SwaggerDoc(<span class="string">&quot;v1&quot;</span>, <span class="keyword">new</span> OpenApiInfo &#123; Title = <span class="string">&quot;Api&quot;</span>, Version = <span class="string">&quot;v0.1&quot;</span> &#125;);</span><br><span class="line">                options.DocInclusionPredicate((docName, description) =&gt; <span class="literal">true</span>);</span><br><span class="line">                options.CustomSchemaIds(type =&gt; type.FullName);</span><br><span class="line">            &#125;</span><br><span class="line">            );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>Startup中初始化abp应用程序</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Startup</span></span><br><span class="line">   &#123;</span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ConfigureServices</span>(<span class="params">IServiceCollection services</span>)</span></span><br><span class="line">       &#123;</span><br><span class="line">           services.AddApplication&lt;ApiModule&gt;();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Configure</span>(<span class="params">IApplicationBuilder app, IWebHostEnvironment env</span>)</span></span><br><span class="line">       &#123;</span><br><span class="line">           app.InitializeApplication();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="EFCore"><a href="#EFCore" class="headerlink" title="EFCore"></a>EFCore</h2><p>依赖Volo.Abp.EntityFrameworkCore.SqlServer<br>依赖Domain</p>
+<p>创建模块：EntityFremeworkCoreModule<br>[DependsOn(typeof(AbpEntityFrameworkCoreSqlServerModule))]</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">ConfigureServices</span>(<span class="params">ServiceConfigurationContext context</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    context.Services.AddAbpDbContext&lt;ImsDbContext&gt;(options=&gt; &#123;</span><br><span class="line">        <span class="comment">//添加默认仓储</span></span><br><span class="line">        options.AddDefaultRepositories();</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    Configure&lt;AbpDbContextOptions&gt;(options=&gt; &#123;</span><br><span class="line">        options.UseSqlServer();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>创建DbContext，需要继承 <code>AbpDbContext</code>,添加对应的 <code>DbSet</code>,重写 OnModelCreating。</p>
+<p>此时已经可以在Application中的Service中 注入相应的 <code>IRepository&lt;&gt;</code>了（ApiModule需要[DependsOn(typeof(EntityFremeworkCoreModule))]）</p>
+<h2 id="UnitOfWork"><a href="#UnitOfWork" class="headerlink" title="UnitOfWork"></a>UnitOfWork</h2><p>在Service的构造函数中，直接注入IUnitOfWorkManager。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> (<span class="keyword">var</span> u =_uow.Begin())</span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">await</span> u.CompleteAsync();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zzonn.com/2021/04/23/ABPvNext%20%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0-abpvnextshi-yong-bi-ji/" data-id="clf0jcv6i00016ocx2rag9zvw" data-title="ABPvNext 使用笔记" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/netcore/" rel="tag">.netcore</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Abp/" rel="tag">Abp</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Blazor是否值得花时间学习-blazor是否值得花时间学习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/02/Blazor%E6%98%AF%E5%90%A6%E5%80%BC%E5%BE%97%E8%8A%B1%E6%97%B6%E9%97%B4%E5%AD%A6%E4%B9%A0-blazor%E6%98%AF%E5%90%A6%E5%80%BC%E5%BE%97%E8%8A%B1%E6%97%B6%E9%97%B4%E5%AD%A6%E4%B9%A0/" class="article-date">
+  <time class="dt-published" datetime="2021-04-02T09:46:09.000Z" itemprop="datePublished">2021-04-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Net/">.Net</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/02/Blazor%E6%98%AF%E5%90%A6%E5%80%BC%E5%BE%97%E8%8A%B1%E6%97%B6%E9%97%B4%E5%AD%A6%E4%B9%A0-blazor%E6%98%AF%E5%90%A6%E5%80%BC%E5%BE%97%E8%8A%B1%E6%97%B6%E9%97%B4%E5%AD%A6%E4%B9%A0/">Blazor是否值得花时间学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Blazor 是微软 .NET 团队开发的一个新的 UI 框架，目前生态发展的还不错。仅国内就出现了不少成熟的 UI 框架，比如基于 Ant Design 的企业级组件库 ant-design-blazor[1]、基于 ElementUI 的 element-blazor[2] 和基于 Bootstrap 的 BootstrapBlazor[3] 等，这些开源项目的发起人都是国内开发者。另外，你可以在 GitHub 的 awesome-blazor[4] 项目查看更丰富的 Blazor 资源。</p>
+<p>要更好地了解 Blazor，必定要先知道 WebAssembly 是什么。</p>
+<p>WebAssembly 与 .NET 无关，WebAssembly 已经慢慢开始普及被采用。简单来说，WebAssembly 是一种新的、类似汇编的网络语言。它可以在浏览器中运行，并且支持所有现代浏览器。由于经过高度优化，所以运行速度快，接近本地应用。</p>
+<p>重要的是，WebAssembly 不是一种绝大多数开发者都会写的语言，而是用来作为编译目标的。你可以将代码针对特定的处理器或操作系统编译成 WebAssembly，然后让你的程序在浏览器中运行。</p>
+<p>理解了 WebAssembly，我们再来正式介绍一下 Blazor。</p>
+<p>在概念上，Blazor 更像是 Vue 或 React，而不是 ASP.NET Core MVC。它是一个基于组件的框架，用于构建丰富的交互式 Web 应用程序。Blazor 与传统 JavaScript 框架的主要区别在于，Blazor 组件完全用 C# 和 Razor 编写，不需要用到 JavaScript，但可以和 JavaScript 交互。</p>
+<p>Blazor 有两种模式。一种是在服务器端运行再实时渲染到浏览器，叫服务端模式；一种是在客户端使用 WebAssembly 运行，叫 WebAssembly 模式。两种模式都使用了相同的面向组件的架构，但在运行这些组件的方式上却有很大的不同。</p>
+<p>服务端模式，就是渲染代码的工作在服务器上运行，它使用 SignalR（一个用于管理客户端和服务器之间的实时连接的 .NET 库）将事件从浏览器发送到服务器，并将 DOM 的差异部分发送到浏览器进行渲染。即，服务端模式是服务器渲染你的组件并通过 SignalR 管理交互。</p>
+<p>WebAssembly 模式，更容易理解一些。所有的代码，包括框架和你的组件，都在浏览器中运行。你的 C# 代码像其他 .NET 应用程序一样被编译成 DLL，随后 DLL 被发送到浏览器，然后在浏览器中运行你的代码。打开浏览器开发者工具，在第一次加载页面时，你可以看到它会下载一堆的 DLL。</p>
+<p>这两种模式都有各自的优势。服务端模式在浏览器中的工作较少，但由于涉及到网络，用户界面交互会有一些延迟。WebAssembly 模式，运行速度较快，但第一次加载较慢，需要下载 DLL，加起来大约有 2M 的样子。</p>
+<p>这就是 Blazor。现在说说我个人对 Blazor 的看法。</p>
+<p>对于 Blazor，最大的优点是前后端代码的共用以及组件的重用，而且可以不需要 JavaScript，极大简单了开发工作流。</p>
+<p>从我的体验来说，我不太满意 Blazor 的服务端模式，因为大部分交互都要经过网络，这就导致少许延迟，体验不是很好。服务端模式不适合实时性要求较高的应用，比较适合供外网访问的网站，比如公司官网和要求利于 SEO 的网站。</p>
+<p>Blazor 的未来，我看好的是 WebAssembly 模式。性能上，WebAssembly 接近于本地应用。相对本地应用，它的好处是不需要安装，不需要在客户端升级，可以说是结合了本地应用和 Web 网页的优点。而且基于 Blazor 的 WebAssembly 应用可以创建为 PWA(Progressive Web App)，以实现离线支持。</p>
+<p>WebAssembly 是未来的趋势，但要被普遍性采用，还有一段较长的路要走。首批会采用 WebAssembly 的应用会是面向企业内部的应用，比如企业的 ERP、CRM 等应用。目前各大主流浏览器都已支持 WebAssembly，这一点也证明各大浏览器厂商推 WebAssembly 技术的决心。</p>
+<p>相较于其它语言平台，基于 .NET 平台的 Blazor 在 WebAssembly 发展方面目前处于绝对的领先，更具有前瞻性。另外，群友分享的最新消息：微软公布，在 .NET 6 中，Blazor 将增加支持基于 Web 渲染的跨平台桌面应用[5]。在我看来，未来 Blazor 有望接替 Electron 的位置，成为跨平台桌面应用的新霸主。</p>
+<p>我个人非常看好 Blazor 的未来发展。对于已有 ASP.NET Core 开发经验的人来说，学习 Blazor 并没有多少学习成本。如果你是 .NET 开发者，在学有余力的情况下，我强烈建议你花点时间学一学 Blazor。</p>
+<blockquote>
+<p>[1]. <a target="_blank" rel="noopener" href="https://github.com/ant-design-blazor/ant-design-blazor">https://github.com/ant-design-blazor/ant-design-blazor</a><br>[2]. <a target="_blank" rel="noopener" href="https://github.com/Element-Blazor/Element-Blazor">https://github.com/Element-Blazor/Element-Blazor</a><br>[3]. <a target="_blank" rel="noopener" href="https://gitee.com/LongbowEnterprise/BootstrapBlazor">https://gitee.com/LongbowEnterprise/BootstrapBlazor</a><br>[4]. <a target="_blank" rel="noopener" href="https://github.com/AdrienTorris/awesome-blazor">https://github.com/AdrienTorris/awesome-blazor</a><br>[5]. <a target="_blank" rel="noopener" href="https://github.com/dotnet/aspnetcore/issues/27217">https://github.com/dotnet/aspnetcore/issues/27217</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zzonn.com/2021/04/02/Blazor%E6%98%AF%E5%90%A6%E5%80%BC%E5%BE%97%E8%8A%B1%E6%97%B6%E9%97%B4%E5%AD%A6%E4%B9%A0-blazor%E6%98%AF%E5%90%A6%E5%80%BC%E5%BE%97%E8%8A%B1%E6%97%B6%E9%97%B4%E5%AD%A6%E4%B9%A0/" data-id="clf0jcv6m00046ocxeaz9ces2" data-title="Blazor是否值得花时间学习" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/net/" rel="tag">.net</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blazor/" rel="tag">Blazor</a></li></ul>
+
     </footer>
   </div>
   
@@ -131,23 +988,20 @@
   
 
 
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
+
 </section>
         
           <aside id="sidebar">
   
     
-
-  
-    
-
-  
-    
-  
-    
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Net/">.Net</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Other/">Other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SQL/">SQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/">Tool</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li></ul>
     </div>
   </div>
 
@@ -155,12 +1009,57 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/net/" rel="tag">.net</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/netcore/" rel="tag">.netcore</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abp/" rel="tag">Abp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blazor/" rel="tag">Blazor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Elasticsearch/" rel="tag">Elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/" rel="tag">Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/" rel="tag">code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mongodb/" rel="tag">mongodb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/" rel="tag">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlserver/" rel="tag">sqlserver</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vs-code/" rel="tag">vs code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag">微服务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%8F%E6%8D%B7/" rel="tag">敏捷</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/net/" style="font-size: 20px;">.net</a> <a href="/tags/netcore/" style="font-size: 16.67px;">.netcore</a> <a href="/tags/Abp/" style="font-size: 10px;">Abp</a> <a href="/tags/Blazor/" style="font-size: 10px;">Blazor</a> <a href="/tags/C/" style="font-size: 16.67px;">C#</a> <a href="/tags/Elasticsearch/" style="font-size: 10px;">Elasticsearch</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Tool/" style="font-size: 13.33px;">Tool</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/redis/" style="font-size: 13.33px;">redis</a> <a href="/tags/sql/" style="font-size: 13.33px;">sql</a> <a href="/tags/sqlserver/" style="font-size: 10px;">sqlserver</a> <a href="/tags/vs-code/" style="font-size: 10px;">vs code</a> <a href="/tags/vue/" style="font-size: 13.33px;">vue</a> <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="font-size: 10px;">微服务</a> <a href="/tags/%E6%95%8F%E6%8D%B7/" style="font-size: 10px;">敏捷</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2023/03/09/hello-world/">Hello World</a>
+            <a href="/2022/05/28/%E8%BF%87%E6%97%A9%E7%9A%84%E7%BB%99%E6%96%B9%E6%B3%95%E4%B8%AD%20%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%20%E8%AE%BE%E4%B8%BA%20null%20%E5%8F%AF%E8%A2%AB%20GC%E6%8F%90%E5%89%8D%E5%9B%9E%E6%94%B6%E5%90%97%EF%BC%9F-%E8%BF%87%E6%97%A9%E7%9A%84%E7%BB%99%E6%96%B9%E6%B3%95%E4%B8%AD%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%E8%AE%BE%E4%B8%BAnull%E5%8F%AF%E8%A2%ABgc%E6%8F%90%E5%89%8D%E5%9B%9E%E6%94%B6%E5%90%97/">过早的给方法中 引用对象 设为 null 可被 GC提前回收吗？</a>
+          </li>
+        
+          <li>
+            <a href="/2022/05/28/Git%20%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9A%20pull%20%E5%92%8C%20push%EF%BC%8C%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87-git%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9Apull%E5%92%8Cpush%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87/">Git 不要只会 pull 和 push，试试用这些命令来提高效率</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/11/ClickHouse%E7%AE%80%E4%BB%8B-clickhouse%E7%AE%80%E4%BB%8B/">ClickHouse简介</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/04/%E5%8F%91%E5%B8%83.netcore%E9%A1%B9%E7%9B%AE%E5%88%B0linux-fa-bu-netcore-xiang-mu-dao-linux/">发布.netcore项目到linux</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/12/code%20review%20%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83-codereview%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83/">code review 流程规范</a>
           </li>
         
       </ul>
