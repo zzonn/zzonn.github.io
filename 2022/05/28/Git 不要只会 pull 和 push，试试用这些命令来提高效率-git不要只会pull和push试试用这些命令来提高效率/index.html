@@ -1,0 +1,256 @@
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Git 不要只会 pull 和 push，试试用这些命令来提高效率 | ZZONN</title><meta name="author" content="LiPan"><meta name="copyright" content="LiPan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言使用 Git 作为代码版本管理，早已是现在开发工程师必备的技能。可大多数工程师还是只会最基本的保存、拉取、推送，遇到一些commit管理的问题就束手无策，或者用一些不优雅的方式解决。 本文分享我在开发工作中实践过的实用命令。这些都能够大大提高工作效率，还能解决不少疑难场景。下面会介绍命令，列出应用场景，手摸手教学使用，让同学们看完即学会。 [官方文档]：https:&#x2F;&#x2F;git-scm.com&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git 不要只会 pull 和 push，试试用这些命令来提高效率">
+<meta property="og:url" content="http://www.zzonn.com/2022/05/28/Git%20%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9A%20pull%20%E5%92%8C%20push%EF%BC%8C%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87-git%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9Apull%E5%92%8Cpush%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87/index.html">
+<meta property="og:site_name" content="ZZONN">
+<meta property="og:description" content="前言使用 Git 作为代码版本管理，早已是现在开发工程师必备的技能。可大多数工程师还是只会最基本的保存、拉取、推送，遇到一些commit管理的问题就束手无策，或者用一些不优雅的方式解决。 本文分享我在开发工作中实践过的实用命令。这些都能够大大提高工作效率，还能解决不少疑难场景。下面会介绍命令，列出应用场景，手摸手教学使用，让同学们看完即学会。 [官方文档]：https:&#x2F;&#x2F;git-scm.com&#x2F;">
+<meta property="og:locale">
+<meta property="og:image" content="https://cdn.zzonn.com/blog/avatar.jpeg">
+<meta property="article:published_time" content="2022-05-28T01:46:29.995Z">
+<meta property="article:modified_time" content="2022-05-28T02:17:19.111Z">
+<meta property="article:author" content="LiPan">
+<meta property="article:tag" content="Git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.zzonn.com/blog/avatar.jpeg"><link rel="shortcut icon" href="https://cdn.zzonn.com/blog/favicon.png"><link rel="canonical" href="http://www.zzonn.com/2022/05/28/Git%20%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9A%20pull%20%E5%92%8C%20push%EF%BC%8C%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87-git%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9Apull%E5%92%8Cpush%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'pub-5051935968580926',
+  enable_page_level_ads: 'true'
+});</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?6bc98ab84fda4133d43c6672428688a8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Git 不要只会 pull 和 push，试试用这些命令来提高效率',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-05-28 10:17:19'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.zzonn.com/blog/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="ZZONN"><span class="site-name">ZZONN</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Git 不要只会 pull 和 push，试试用这些命令来提高效率</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-05-28T01:46:29.995Z" title="Created 2022-05-28 09:46:29">2022-05-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-05-28T02:17:19.111Z" title="Updated 2022-05-28 10:17:19">2022-05-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Git/">Git</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>5min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Git 不要只会 pull 和 push，试试用这些命令来提高效率"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>使用 Git 作为代码版本管理，早已是现在开发工程师必备的技能。可大多数工程师还是只会最基本的保存、拉取、推送，遇到一些commit管理的问题就束手无策，或者用一些不优雅的方式解决。</p>
+<p>本文分享我在开发工作中实践过的实用命令。这些都能够大大提高工作效率，还能解决不少疑难场景。下面会介绍命令，列出应用场景，手摸手教学使用，让同学们看完即学会。</p>
+<p>[官方文档]：<a target="_blank" rel="noopener" href="https://git-scm.com/docs">https://git-scm.com/docs</a></p>
+<h1 id="stash"><a href="#stash" class="headerlink" title="stash"></a>stash</h1><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>当您想记录工作目录和索引的当前状态，但又想返回一个干净的工作目录时，请使用git stash。该命令将保存本地修改，并恢复工作目录以匹配头部提交。<br>stash 命令能够将还未 commit 的代码存起来，让你的工作目录变得干净。</p>
+</blockquote>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>我猜你心里一定在想：为什么要变干净？</p>
+<p>应用场景：某一天你正在 feature 分支开发新需求，突然产品经理跑过来说线上有bug，必须马上修复。而此时你的功能开发到一半，于是你急忙想切到 master 分支，因为当前有文件更改了，需要提交commit保持工作区干净才能切分支。由于情况紧急，你只有急忙 commit 上去，commit 信息也随便写了个“暂存代码”，于是该分支提交记录就留了一条黑历史(真人真事，看过这种提交)…</p>
+<h3 id="命令使用"><a href="#命令使用" class="headerlink" title="命令使用"></a>命令使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># 保存当前未commit的代码</span><br><span class="line">git stash</span><br><span class="line"></span><br><span class="line"># 保存当前未commit的代码并添加备注</span><br><span class="line">git stash save &quot;备注的内容&quot;</span><br><span class="line"></span><br><span class="line"># 列出stash的所有记录</span><br><span class="line">git stash list</span><br><span class="line"></span><br><span class="line"># 删除stash的所有记录</span><br><span class="line">git stash clear</span><br><span class="line"></span><br><span class="line"># 应用最近一次的stash</span><br><span class="line">git stash apply</span><br><span class="line"></span><br><span class="line"># 应用最近一次的stash，随后删除该记录</span><br><span class="line">git stash pop</span><br><span class="line"></span><br><span class="line"># 删除最近的一次stash</span><br><span class="line">git stash drop</span><br></pre></td></tr></table></figure>
+
+<h1 id="reset-–soft"><a href="#reset-–soft" class="headerlink" title="reset –soft"></a>reset –soft</h1><h3 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>完全不接触索引文件或工作树（但会像所有模式一样，将头部重置为）。这使您的所有更改的文件更改为“要提交的更改”。<br>回退你已提交的 commit，并将 commit 的修改内容放回到暂存区。<br>一般我们在使用 reset 命令时，git reset –hard 会被提及的比较多，它能让 commit 记录强制回溯到某一个节点。而 git reset –soft 的作用正如其名，–soft (柔软的) 除了回溯节点外，还会保留节点的修改内容。</p>
+</blockquote>
+<h3 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h3><p>回溯节点，为什么要保留修改内容？</p>
+<p>应用场景1：有时候手滑不小心把不该提交的内容 commit 了，这时想改回来，只能再 commit 一次，又多一条“黑历史”。</p>
+<p>应用场景2：规范些的团队，一般对于 commit 的内容要求职责明确，颗粒度要细，便于后续出现问题排查。本来属于两块不同功能的修改，一起 commit 上去，这种就属于不规范。这次恰好又手滑了，一次性 commit 上去。</p>
+<h3 id="命令使用-1"><a href="#命令使用-1" class="headerlink" title="命令使用"></a>命令使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 恢复最近一次 commit</span><br><span class="line">git reset --soft HEAD^</span><br></pre></td></tr></table></figure>
+<p>reset –soft 相当于后悔药，给你重新改过的机会。对于上面的场景，就可以再次修改重新提交，保持干净的 commit 记录。</p>
+<p>以上说的是还未 push 的commit。对于已经 push 的 commit，也可以使用该命令，不过再次 push 时，由于远程分支和本地分支有差异，需要强制推送 git push -f 来覆盖被 reset 的 commit。</p>
+<p>还有一点需要注意，在 reset –soft 指定 commit 号时，会将该 commit 到最近一次 commit 的所有修改内容全部恢复，而不是只针对该 commit。</p>
+<h1 id="cherry-pick"><a href="#cherry-pick" class="headerlink" title="cherry-pick"></a>cherry-pick</h1><h3 id="描述-2"><a href="#描述-2" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>给定一个或多个现有提交，应用每个提交引入的更改，为每个提交记录一个新的提交。这需要您的工作树清洁（没有从头提交的修改）。<br>将已经提交的 commit，复制出新的 commit 应用到分支里。</p>
+</blockquote>
+<h3 id="应用场景-2"><a href="#应用场景-2" class="headerlink" title="应用场景"></a>应用场景</h3><p>commit 都提交了，为什么还要复制新的出来？</p>
+<p>应用场景1：有时候版本的一些优化需求开发到一半，可能其中某一个开发完的需求要临时上，或者某些原因导致待开发的需求卡住了已开发完成的需求上线。这时候就需要把 commit 抽出来，单独处理。</p>
+<p>应用场景2：有时候开发分支中的代码记录被污染了，导致开发分支合到线上分支有问题，这时就需要拉一条干净的开发分支，再从旧的开发分支中，把 commit 复制到新分支。</p>
+<h3 id="命令使用-2"><a href="#命令使用-2" class="headerlink" title="命令使用"></a>命令使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 一次转移多个提交</span><br><span class="line">git cherry-pick commit1 commit2</span><br><span class="line"># 多个连续的commit，也可区间复制：</span><br><span class="line">git cherry-pick commit1^..commit2</span><br><span class="line"># 放弃 cherry-pick (冲突时使用)</span><br><span class="line">gits cherry-pick --abort</span><br><span class="line"># 退出 cherry-pick</span><br><span class="line">git cherry-pick --quit</span><br></pre></td></tr></table></figure>
+<h1 id="revert"><a href="#revert" class="headerlink" title="revert"></a>revert</h1><h3 id="描述-3"><a href="#描述-3" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>给定一个或多个现有提交，恢复相关提交引入的更改，并记录一些这些更改的新提交。这就要求你的工作树是干净的（没有来自头部的修改）。<br>将现有的提交还原，恢复提交的内容，并生成一条还原记录。</p>
+</blockquote>
+<h3 id="应用场景-3"><a href="#应用场景-3" class="headerlink" title="应用场景"></a>应用场景</h3><p>有一天测试突然跟你说，你开发上线的功能有问题，需要马上撤回，否则会影响到系统使用。这时可能会想到用 reset 回退，可是你看了看分支上最新的提交还有其他同事的代码，用 reset 会把这部分代码也撤回了。由于情况紧急，又想不到好方法，还是任性的使用 reset，然后再让同事把他的代码合一遍（同事听到想打人），于是你的技术形象在同事眼里一落千丈。</p>
+<h3 id="命令使用-3"><a href="#命令使用-3" class="headerlink" title="命令使用"></a>命令使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># revert 普通提交</span><br><span class="line">git revert 21dcd937fe555f58841b17466a99118deb489212</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="reflog"><a href="#reflog" class="headerlink" title="reflog"></a>reflog</h1><h3 id="描述-4"><a href="#描述-4" class="headerlink" title="描述"></a>描述</h3><blockquote>
+<p>此命令管理重录中记录的信息。<br>如果说 reset –soft 是后悔药，那 reflog 就是强力后悔药。它记录了所有的 commit 操作记录，便于错误操作后找回记录。</p>
+</blockquote>
+<h3 id="应用场景-4"><a href="#应用场景-4" class="headerlink" title="应用场景"></a>应用场景</h3><p>某天你眼花，发现自己在其他人分支提交了代码还推到远程分支，这时因为分支只有你的最新提交，就想着使用 reset –hard，结果紧张不小心记错了 commitHash，reset 过头，把同事的 commit 搞没了。没办法，reset –hard 是强制回退的，找不到 commitHash 了，只能让同事从本地分支再推一次（同事瞬间拳头就硬了，怎么又是你）。于是，你的技术形象又一落千丈。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本文主要分享了5个在开发中实用的 Git 命令和设置短命令的方式。</p>
+<ul>
+<li>stash：存储临时代码。</li>
+<li>reset –soft：软回溯，回退 commit 的同时保留修改内容。</li>
+<li>cherry-pick：复制 commit。</li>
+<li>revert：撤销 commit 的修改内容。</li>
+<li>reflog：记录了 commit 的历史操作。</li>
+</ul>
+<p>文中列举的应用场景有部分不太恰当，只是想便于同学们理解，最重要的是要理解命令的作用是什么，活学活用才能发挥最大功效。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://www.zzonn.com">LiPan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://www.zzonn.com/2022/05/28/Git%20%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9A%20pull%20%E5%92%8C%20push%EF%BC%8C%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87-git%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9Apull%E5%92%8Cpush%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87/">http://www.zzonn.com/2022/05/28/Git%20%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9A%20pull%20%E5%92%8C%20push%EF%BC%8C%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87-git%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9Apull%E5%92%8Cpush%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Git/">Git</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.zzonn.com/blog/avatar.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/05/28/%E8%BF%87%E6%97%A9%E7%9A%84%E7%BB%99%E6%96%B9%E6%B3%95%E4%B8%AD%20%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%20%E8%AE%BE%E4%B8%BA%20null%20%E5%8F%AF%E8%A2%AB%20GC%E6%8F%90%E5%89%8D%E5%9B%9E%E6%94%B6%E5%90%97%EF%BC%9F-%E8%BF%87%E6%97%A9%E7%9A%84%E7%BB%99%E6%96%B9%E6%B3%95%E4%B8%AD%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%E8%AE%BE%E4%B8%BAnull%E5%8F%AF%E8%A2%ABgc%E6%8F%90%E5%89%8D%E5%9B%9E%E6%94%B6%E5%90%97/" title="过早的给方法中 引用对象 设为 null 可被 GC提前回收吗？"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">过早的给方法中 引用对象 设为 null 可被 GC提前回收吗？</div></div></a></div><div class="next-post pull-right"><a href="/2022/03/11/ClickHouse%E7%AE%80%E4%BB%8B-clickhouse%E7%AE%80%E4%BB%8B/" title="ClickHouse简介"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">ClickHouse简介</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2020/05/17/%E5%B8%B8%E7%94%A8Git%E5%91%BD%E4%BB%A4%E5%8A%A8%E7%94%BB%E6%BC%94%E7%A4%BA-%E5%B8%B8%E7%94%A8git%E5%91%BD%E4%BB%A4%E5%8A%A8%E7%94%BB%E6%BC%94%E7%A4%BA/" title="常用Git命令动画演示"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-05-17</div><div class="title">常用Git命令动画演示</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.zzonn.com/blog/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">LiPan</div><div class="author-info__description">www.zzonn.com</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#stash"><span class="toc-number">2.</span> <span class="toc-text">stash</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0"><span class="toc-number">2.0.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">2.0.2.</span> <span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8"><span class="toc-number">2.0.3.</span> <span class="toc-text">命令使用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#reset-%E2%80%93soft"><span class="toc-number">3.</span> <span class="toc-text">reset –soft</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-1"><span class="toc-number">3.0.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-1"><span class="toc-number">3.0.2.</span> <span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8-1"><span class="toc-number">3.0.3.</span> <span class="toc-text">命令使用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#cherry-pick"><span class="toc-number">4.</span> <span class="toc-text">cherry-pick</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-2"><span class="toc-number">4.0.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-2"><span class="toc-number">4.0.2.</span> <span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8-2"><span class="toc-number">4.0.3.</span> <span class="toc-text">命令使用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#revert"><span class="toc-number">5.</span> <span class="toc-text">revert</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-3"><span class="toc-number">5.0.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-3"><span class="toc-number">5.0.2.</span> <span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8-3"><span class="toc-number">5.0.3.</span> <span class="toc-text">命令使用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#reflog"><span class="toc-number">6.</span> <span class="toc-text">reflog</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-4"><span class="toc-number">6.0.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-4"><span class="toc-number">6.0.2.</span> <span class="toc-text">应用场景</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">7.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/05/28/%E8%BF%87%E6%97%A9%E7%9A%84%E7%BB%99%E6%96%B9%E6%B3%95%E4%B8%AD%20%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%20%E8%AE%BE%E4%B8%BA%20null%20%E5%8F%AF%E8%A2%AB%20GC%E6%8F%90%E5%89%8D%E5%9B%9E%E6%94%B6%E5%90%97%EF%BC%9F-%E8%BF%87%E6%97%A9%E7%9A%84%E7%BB%99%E6%96%B9%E6%B3%95%E4%B8%AD%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%E8%AE%BE%E4%B8%BAnull%E5%8F%AF%E8%A2%ABgc%E6%8F%90%E5%89%8D%E5%9B%9E%E6%94%B6%E5%90%97/" title="过早的给方法中 引用对象 设为 null 可被 GC提前回收吗？">过早的给方法中 引用对象 设为 null 可被 GC提前回收吗？</a><time datetime="2022-05-28T02:21:34.813Z" title="Created 2022-05-28 10:21:34">2022-05-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/05/28/Git%20%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9A%20pull%20%E5%92%8C%20push%EF%BC%8C%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87-git%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9Apull%E5%92%8Cpush%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87/" title="Git 不要只会 pull 和 push，试试用这些命令来提高效率">Git 不要只会 pull 和 push，试试用这些命令来提高效率</a><time datetime="2022-05-28T01:46:29.995Z" title="Created 2022-05-28 09:46:29">2022-05-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/03/11/ClickHouse%E7%AE%80%E4%BB%8B-clickhouse%E7%AE%80%E4%BB%8B/" title="ClickHouse简介">ClickHouse简介</a><time datetime="2022-03-11T11:44:49.861Z" title="Created 2022-03-11 19:44:49">2022-03-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/03/04/%E5%8F%91%E5%B8%83.netcore%E9%A1%B9%E7%9B%AE%E5%88%B0linux-fa-bu-netcore-xiang-mu-dao-linux/" title="发布.netcore项目到linux">发布.netcore项目到linux</a><time datetime="2022-03-04T08:51:41.169Z" title="Created 2022-03-04 16:51:41">2022-03-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/08/12/code%20review%20%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83-codereview%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83/" title="code review 流程规范">code review 流程规范</a><time datetime="2021-08-12T06:49:29.424Z" title="Created 2021-08-12 14:49:29">2021-08-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2023 By LiPan</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><span>蜀ICP备20005513号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'e5f4df8dde1312f2e8c0',
+      clientSecret: '03206d14c7cf552df36549760b3fb29ff5fd0493',
+      repo: 'https://github.com/zzonn/zzonn.github.io.git',
+      owner: 'ZZONN',
+      admin: ['ZZONN'],
+      id: '114097d099ede15cd8b4bb11e491c9f2',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    getCSS('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css')
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

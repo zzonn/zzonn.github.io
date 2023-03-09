@@ -1,0 +1,383 @@
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Redis都有哪些监控指标？ | ZZONN</title><meta name="author" content="LiPan"><meta name="copyright" content="LiPan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="监控指标•性能指标：Performance•内存指标: Memory•基本活动指标：Basic activity•持久性指标: Persistence•错误指标：Error 性能指标：Performance   Name Description    latency Redis响应一个请求的时间   instantaneous_ops_per_sec 平均每秒处理请求总数   hi rate(ca">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis都有哪些监控指标？">
+<meta property="og:url" content="http://www.zzonn.com/2021/07/11/Redis%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E7%9B%91%E6%8E%A7%E6%8C%87%E6%A0%87%EF%BC%9F-redis%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E7%9B%91%E6%8E%A7%E6%8C%87%E6%A0%87/index.html">
+<meta property="og:site_name" content="ZZONN">
+<meta property="og:description" content="监控指标•性能指标：Performance•内存指标: Memory•基本活动指标：Basic activity•持久性指标: Persistence•错误指标：Error 性能指标：Performance   Name Description    latency Redis响应一个请求的时间   instantaneous_ops_per_sec 平均每秒处理请求总数   hi rate(ca">
+<meta property="og:locale">
+<meta property="og:image" content="https://cdn.zzonn.com/blog/avatar.jpeg">
+<meta property="article:published_time" content="2021-07-11T06:30:07.711Z">
+<meta property="article:modified_time" content="2021-07-11T10:37:39.139Z">
+<meta property="article:author" content="LiPan">
+<meta property="article:tag" content="redis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.zzonn.com/blog/avatar.jpeg"><link rel="shortcut icon" href="https://cdn.zzonn.com/blog/favicon.png"><link rel="canonical" href="http://www.zzonn.com/2021/07/11/Redis%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E7%9B%91%E6%8E%A7%E6%8C%87%E6%A0%87%EF%BC%9F-redis%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E7%9B%91%E6%8E%A7%E6%8C%87%E6%A0%87/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'pub-5051935968580926',
+  enable_page_level_ads: 'true'
+});</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?6bc98ab84fda4133d43c6672428688a8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Redis都有哪些监控指标？',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-07-11 18:37:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.zzonn.com/blog/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="ZZONN"><span class="site-name">ZZONN</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Redis都有哪些监控指标？</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-07-11T06:30:07.711Z" title="Created 2021-07-11 14:30:07">2021-07-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-07-11T10:37:39.139Z" title="Updated 2021-07-11 18:37:39">2021-07-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Redis/">Redis</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">1.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>4min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Redis都有哪些监控指标？"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="监控指标"><a href="#监控指标" class="headerlink" title="监控指标"></a>监控指标</h2><p>•性能指标：Performance<br>•内存指标: Memory<br>•基本活动指标：Basic activity<br>•持久性指标: Persistence<br>•错误指标：Error</p>
+<h2 id="性能指标：Performance"><a href="#性能指标：Performance" class="headerlink" title="性能指标：Performance"></a>性能指标：Performance</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>latency</td>
+<td>Redis响应一个请求的时间</td>
+</tr>
+<tr>
+<td>instantaneous_ops_per_sec</td>
+<td>平均每秒处理请求总数</td>
+</tr>
+<tr>
+<td>hi rate(calculated)</td>
+<td>缓存命中率（计算出来的</td>
+</tr>
+</tbody></table>
+<h2 id="内存指标-Memory"><a href="#内存指标-Memory" class="headerlink" title="内存指标: Memory"></a>内存指标: Memory</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>used_memory</td>
+<td>已使用内存</td>
+</tr>
+<tr>
+<td>mem_fragmentation_ratio</td>
+<td>内存碎片率</td>
+</tr>
+<tr>
+<td>evicted_keys</td>
+<td>由于最大内存限制被移除的key的数量</td>
+</tr>
+<tr>
+<td>blocked_clients</td>
+<td>由于BLPOP,BRPOP,or BRPOPLPUSH而备阻塞的客户端</td>
+</tr>
+</tbody></table>
+<h2 id="基本活动指标：Basic-activity"><a href="#基本活动指标：Basic-activity" class="headerlink" title="基本活动指标：Basic activity"></a>基本活动指标：Basic activity</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>connected_clients</td>
+<td>客户端连接数</td>
+</tr>
+<tr>
+<td>conected_laves</td>
+<td>slave数量</td>
+</tr>
+<tr>
+<td>master_last_io_seconds_ago</td>
+<td>最近一次主从交互之后的秒数</td>
+</tr>
+<tr>
+<td>keyspace</td>
+<td>数据库中的key值总数</td>
+</tr>
+</tbody></table>
+<h2 id="持久性指标-Persistence"><a href="#持久性指标-Persistence" class="headerlink" title="持久性指标: Persistence"></a>持久性指标: Persistence</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rdb_last_save_time</td>
+<td>最后一次持久化保存磁盘的时间戳</td>
+</tr>
+<tr>
+<td>rdb_changes_sice_last_save</td>
+<td>自最后一次持久化以来数据库的更改数</td>
+</tr>
+</tbody></table>
+<h2 id="错误指标：Error"><a href="#错误指标：Error" class="headerlink" title="错误指标：Error"></a>错误指标：Error</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rejected_connections</td>
+<td>由于达到maxclient限制而被拒绝的连接数</td>
+</tr>
+<tr>
+<td>keyspace_misses</td>
+<td>key值查找失败(没有命中)次数</td>
+</tr>
+<tr>
+<td>master_link_down_since_seconds</td>
+<td>主从断开的持续时间（以秒为单位)</td>
+</tr>
+</tbody></table>
+<h2 id="监控方式"><a href="#监控方式" class="headerlink" title="监控方式"></a>监控方式</h2><p>•redis-benchmark<br>•redis-stat<br>•redis-faina<br>•redislive<br>•redis-cli<br>•monitor<br>•showlog</p>
+<p>1.get：获取慢查询日志<br>2.len：获取慢查询日志条目数<br>3.reset：重置慢查询日志</p>
+<p>相关配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">slowlog-log-slower-than 1000 # 设置慢查询的时间下线，单位：微秒</span><br><span class="line"></span><br><span class="line">slowlog-max-len 100 # 设置慢查询命令对应的日志显示长度，单位：命令数</span><br></pre></td></tr></table></figure>
+
+
+<p>info（可以一次性获取所有的信息，也可以按块获取信息）</p>
+<p>1.server:服务器运行的环境参数<br>2.clients:客户端相关信息<br>3.memory：服务器运行内存统计数据<br>4.persistence：持久化信息<br>5.stats：通用统计数据<br>6.Replication：主从复制相关信息<br>7.CPU：CPU使用情况<br>8.cluster：集群信息<br>9.Keypass：键值对统计数量信息</p>
+<p>终端info命令使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./redis-cli info 按块获取信息 | grep 需要过滤的参数./redis-cli info stats | grep ops</span><br></pre></td></tr></table></figure>
+
+
+<p>交互式info命令使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#./redis-cli &gt; info server</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="性能监控："><a href="#性能监控：" class="headerlink" title="性能监控："></a>性能监控：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli info | grep ops # 每秒操作数</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="内存监控"><a href="#内存监控" class="headerlink" title="内存监控"></a>内存监控</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep used | grep human       </span><br><span class="line">used_memory_human:2.99M  # 内存分配器从操作系统分配的内存总量</span><br><span class="line">used_memory_rss_human:8.04M  #操作系统看到的内存占用，top命令看到的内存</span><br><span class="line">used_memory_peak_human:7.77M # redis内存消耗的峰值</span><br><span class="line">used_memory_lua_human:37.00K   # lua脚本引擎占用的内存大小</span><br></pre></td></tr></table></figure>
+
+<p>由于BLPOP,BRPOP,or BRPOPLPUSH而备阻塞的客户端</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep </span><br><span class="line">blocked_clientsblocked_clients:0  </span><br></pre></td></tr></table></figure>
+
+
+<p>由于最大内存限制被移除的key的数量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep </span><br><span class="line">evicted_keysevicted_keys:0  #</span><br></pre></td></tr></table></figure>
+
+
+<p>内存碎片率</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep</span><br><span class="line">mem_fragmentation_ratiomem_fragmentation_ratio:2.74</span><br></pre></td></tr></table></figure>
+
+
+<p>已使用内存</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep </span><br><span class="line">used_memory:used_memory:3133624  </span><br></pre></td></tr></table></figure>
+
+<h2 id="基本活动指标："><a href="#基本活动指标：" class="headerlink" title="基本活动指标："></a>基本活动指标：</h2><p>redis连接了多少客户端 通过观察其数量可以确认是否存在意料之外的连接。如果发现数量不对劲，就可以使用lcient list指令列出所有的客户端链接地址来确定源头。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep </span><br><span class="line">connected_clientsconnected_clients:1</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep </span><br><span class="line">connectedconnected_clients:1   # 客户端连接数量</span><br><span class="line">connected_slaves:1   # slave连接数量</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="持久性指标："><a href="#持久性指标：" class="headerlink" title="持久性指标："></a>持久性指标：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep </span><br><span class="line">rdb_last_save_timerdb_last_save_time:1591876204  # 最后一次持久化保存磁盘的时间戳</span><br><span class="line"></span><br><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep </span><br><span class="line">rdb_changes_since_last_saverdb_changes_since_last_save:0   # 自最后一次持久化以来数据库的更改数</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="错误指标"><a href="#错误指标" class="headerlink" title="错误指标"></a>错误指标</h2><p>由于超出最大连接数限制而被拒绝的客户端连接次数，如果这个数字很大，则意味着服务器的最大连接数设置得过低，需要调整maxclients</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep </span><br><span class="line">connected_clientsconnected_clients:1</span><br></pre></td></tr></table></figure>
+
+
+<p>key值查找失败(没有命中)次数，出现多次可能是被hei ke gongjji</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep </span><br><span class="line">keyspacekeyspace_misses:0  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>主从断开的持续时间（以秒为单位)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep </span><br><span class="line">rdb_changes_since_last_saverdb_changes_since_last_save:0  </span><br></pre></td></tr></table></figure>
+
+<p>复制积压缓冲区如果设置得太小，会导致里面的指令被覆盖掉找不到偏移量，从而触发全量同步</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep </span><br><span class="line">backlog_sizerepl_backlog_size:1048576</span><br></pre></td></tr></table></figure>
+
+
+<p>通过查看sync_partial_err变量的次数来决定是否需要扩大积压缓冲区，它表示主从半同步复制失败的次数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@CombCloud-2020110836 src]# ./redis-cli info | grep </span><br><span class="line">sync_partial_errsync_partial_err:1</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="redis性能测试命令"><a href="#redis性能测试命令" class="headerlink" title="redis性能测试命令"></a>redis性能测试命令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./redis-benchmark -c 100 -n 5000</span><br></pre></td></tr></table></figure>
+
+<p>说明：100个连接，5000次请求对应的性能</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://www.zzonn.com">LiPan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://www.zzonn.com/2021/07/11/Redis%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E7%9B%91%E6%8E%A7%E6%8C%87%E6%A0%87%EF%BC%9F-redis%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E7%9B%91%E6%8E%A7%E6%8C%87%E6%A0%87/">http://www.zzonn.com/2021/07/11/Redis%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E7%9B%91%E6%8E%A7%E6%8C%87%E6%A0%87%EF%BC%9F-redis%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E7%9B%91%E6%8E%A7%E6%8C%87%E6%A0%87/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/redis/">redis</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.zzonn.com/blog/avatar.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/08/12/code%20review%20%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83-codereview%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83/" title="code review 流程规范"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">code review 流程规范</div></div></a></div><div class="next-post pull-right"><a href="/2021/07/07/Vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86-vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/" title="Vue3响应式原理"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Vue3响应式原理</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2020/02/12/Redis%E9%AB%98%E9%A2%91%E9%97%AE%E7%AD%94-redis-gao-pin-wen-da/" title="Redis高频问答"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-12</div><div class="title">Redis高频问答</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.zzonn.com/blog/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">LiPan</div><div class="author-info__description">www.zzonn.com</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%91%E6%8E%A7%E6%8C%87%E6%A0%87"><span class="toc-number">1.</span> <span class="toc-text">监控指标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87%EF%BC%9APerformance"><span class="toc-number">2.</span> <span class="toc-text">性能指标：Performance</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E6%8C%87%E6%A0%87-Memory"><span class="toc-number">3.</span> <span class="toc-text">内存指标: Memory</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%B4%BB%E5%8A%A8%E6%8C%87%E6%A0%87%EF%BC%9ABasic-activity"><span class="toc-number">4.</span> <span class="toc-text">基本活动指标：Basic activity</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%81%E4%B9%85%E6%80%A7%E6%8C%87%E6%A0%87-Persistence"><span class="toc-number">5.</span> <span class="toc-text">持久性指标: Persistence</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E6%8C%87%E6%A0%87%EF%BC%9AError"><span class="toc-number">6.</span> <span class="toc-text">错误指标：Error</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%91%E6%8E%A7%E6%96%B9%E5%BC%8F"><span class="toc-number">7.</span> <span class="toc-text">监控方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%EF%BC%9A"><span class="toc-number">8.</span> <span class="toc-text">性能监控：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%9B%91%E6%8E%A7"><span class="toc-number">9.</span> <span class="toc-text">内存监控</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%B4%BB%E5%8A%A8%E6%8C%87%E6%A0%87%EF%BC%9A"><span class="toc-number">10.</span> <span class="toc-text">基本活动指标：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%81%E4%B9%85%E6%80%A7%E6%8C%87%E6%A0%87%EF%BC%9A"><span class="toc-number">11.</span> <span class="toc-text">持久性指标：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E6%8C%87%E6%A0%87"><span class="toc-number">12.</span> <span class="toc-text">错误指标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redis%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%91%BD%E4%BB%A4"><span class="toc-number">13.</span> <span class="toc-text">redis性能测试命令</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/05/28/%E8%BF%87%E6%97%A9%E7%9A%84%E7%BB%99%E6%96%B9%E6%B3%95%E4%B8%AD%20%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%20%E8%AE%BE%E4%B8%BA%20null%20%E5%8F%AF%E8%A2%AB%20GC%E6%8F%90%E5%89%8D%E5%9B%9E%E6%94%B6%E5%90%97%EF%BC%9F-%E8%BF%87%E6%97%A9%E7%9A%84%E7%BB%99%E6%96%B9%E6%B3%95%E4%B8%AD%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%E8%AE%BE%E4%B8%BAnull%E5%8F%AF%E8%A2%ABgc%E6%8F%90%E5%89%8D%E5%9B%9E%E6%94%B6%E5%90%97/" title="过早的给方法中 引用对象 设为 null 可被 GC提前回收吗？">过早的给方法中 引用对象 设为 null 可被 GC提前回收吗？</a><time datetime="2022-05-28T02:21:34.813Z" title="Created 2022-05-28 10:21:34">2022-05-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/05/28/Git%20%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9A%20pull%20%E5%92%8C%20push%EF%BC%8C%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87-git%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9Apull%E5%92%8Cpush%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87/" title="Git 不要只会 pull 和 push，试试用这些命令来提高效率">Git 不要只会 pull 和 push，试试用这些命令来提高效率</a><time datetime="2022-05-28T01:46:29.995Z" title="Created 2022-05-28 09:46:29">2022-05-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/03/11/ClickHouse%E7%AE%80%E4%BB%8B-clickhouse%E7%AE%80%E4%BB%8B/" title="ClickHouse简介">ClickHouse简介</a><time datetime="2022-03-11T11:44:49.861Z" title="Created 2022-03-11 19:44:49">2022-03-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/03/04/%E5%8F%91%E5%B8%83.netcore%E9%A1%B9%E7%9B%AE%E5%88%B0linux-fa-bu-netcore-xiang-mu-dao-linux/" title="发布.netcore项目到linux">发布.netcore项目到linux</a><time datetime="2022-03-04T08:51:41.169Z" title="Created 2022-03-04 16:51:41">2022-03-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/08/12/code%20review%20%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83-codereview%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83/" title="code review 流程规范">code review 流程规范</a><time datetime="2021-08-12T06:49:29.424Z" title="Created 2021-08-12 14:49:29">2021-08-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2023 By LiPan</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><span>蜀ICP备20005513号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'e5f4df8dde1312f2e8c0',
+      clientSecret: '03206d14c7cf552df36549760b3fb29ff5fd0493',
+      repo: 'https://github.com/zzonn/zzonn.github.io.git',
+      owner: 'ZZONN',
+      admin: ['ZZONN'],
+      id: '5f0749d0b27c7915cacd8bc3c889cac9',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    getCSS('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css')
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

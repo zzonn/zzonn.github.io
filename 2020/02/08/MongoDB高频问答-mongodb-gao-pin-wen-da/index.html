@@ -1,0 +1,260 @@
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>MongoDB高频问答 | ZZONN</title><meta name="author" content="LiPan"><meta name="copyright" content="LiPan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1、MongoDB是什么？MongoDB是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。在高负载的情况下，添加更多的节点，可以保证服务器性能。 MongoDB旨在为WEB应用提供可扩展的高性能数据存储解决方案，将数据存储为一个文档，数据结构由键值(key&#x3D;&gt;value)对组成。MongoDB文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。 2、M">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB高频问答">
+<meta property="og:url" content="http://www.zzonn.com/2020/02/08/MongoDB%E9%AB%98%E9%A2%91%E9%97%AE%E7%AD%94-mongodb-gao-pin-wen-da/index.html">
+<meta property="og:site_name" content="ZZONN">
+<meta property="og:description" content="1、MongoDB是什么？MongoDB是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。在高负载的情况下，添加更多的节点，可以保证服务器性能。 MongoDB旨在为WEB应用提供可扩展的高性能数据存储解决方案，将数据存储为一个文档，数据结构由键值(key&#x3D;&gt;value)对组成。MongoDB文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。 2、M">
+<meta property="og:locale">
+<meta property="og:image" content="https://cdn.zzonn.com/blog/avatar.jpeg">
+<meta property="article:published_time" content="2020-02-08T02:50:14.000Z">
+<meta property="article:modified_time" content="2021-03-12T07:58:41.043Z">
+<meta property="article:author" content="LiPan">
+<meta property="article:tag" content="mongodb">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.zzonn.com/blog/avatar.jpeg"><link rel="shortcut icon" href="https://cdn.zzonn.com/blog/favicon.png"><link rel="canonical" href="http://www.zzonn.com/2020/02/08/MongoDB%E9%AB%98%E9%A2%91%E9%97%AE%E7%AD%94-mongodb-gao-pin-wen-da/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'pub-5051935968580926',
+  enable_page_level_ads: 'true'
+});</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?6bc98ab84fda4133d43c6672428688a8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'MongoDB高频问答',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-03-12 15:58:41'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.zzonn.com/blog/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="ZZONN"><span class="site-name">ZZONN</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">MongoDB高频问答</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2020-02-08T02:50:14.000Z" title="Created 2020-02-08 10:50:14">2020-02-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-03-12T07:58:41.043Z" title="Updated 2021-03-12 15:58:41">2021-03-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/SQL/">SQL</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">4.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>13min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="MongoDB高频问答"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="1、MongoDB是什么？"><a href="#1、MongoDB是什么？" class="headerlink" title="1、MongoDB是什么？"></a>1、MongoDB是什么？</h2><p>MongoDB是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。在高负载的情况下，添加更多<br>的节点，可以保证服务器性能。 MongoDB旨在为WEB应用提供可扩展的高性能数据存储解决方案，将数据存<br>储为一个文档，数据结构由键值(key&#x3D;&gt;value)对组成。MongoDB文档类似于 JSON 对象。字段值可以包含<br>其他文档，数组及文档数组。</p>
+<h2 id="2、MongoDB有哪些特点？"><a href="#2、MongoDB有哪些特点？" class="headerlink" title="2、MongoDB有哪些特点？"></a>2、MongoDB有哪些特点？</h2><p>（1）MongoDB 是一个面向文档存储的数据库，操作起来比较简单和容易；<br>（2）可以在MongoDB记录中设置任何属性的索引；<br>（3）可以通过本地或者网络创建数据镜像，这使得MongoDB有更强的扩展性：<br>（4）如果负载的增加（需要更多的存储空间和更强的处理能力），它可以分布在计算机网络中的其他节点上<br>这就是所谓的分片；<br>（5）支持丰富的查询表达式，查询指令使用JSON形式的标记，可轻易查询文档中内嵌的对象及数组。</p>
+<h2 id="3、MySQL与MongoDB之间最基本的差别是什么"><a href="#3、MySQL与MongoDB之间最基本的差别是什么" class="headerlink" title="3、MySQL与MongoDB之间最基本的差别是什么?"></a>3、MySQL与MongoDB之间最基本的差别是什么?</h2><p>MySQL和MongoDB两者都是免费开源的数据库。MySQL和MongoDB有许多基本差别包括数据的表示查询、关<br>系、事务、schema的设计和定义、标准化、速度和性能。通过比较MySQL和MongoDB，实际上我们是在比较<br>关系型和非关系型数据库，即数据存储结构不同。</p>
+<h2 id="4、monogodb中的分片什么意思？"><a href="#4、monogodb中的分片什么意思？" class="headerlink" title="4、monogodb中的分片什么意思？"></a>4、monogodb中的分片什么意思？</h2><p>分片是将数据水平切分到不同的物理节点，当应用数据越来越大的时候，数据量也会越来越大。当数据量增长<br>时，单台机器有可能无法存储数据或可接受的读取写入吞吐量，利用分片技术可以添加更多的机器来应对数据<br>量增加以及读写操作的要求。</p>
+<h2 id="5、MongoDB中的命名空间是什么意思"><a href="#5、MongoDB中的命名空间是什么意思" class="headerlink" title="5、MongoDB中的命名空间是什么意思?"></a>5、MongoDB中的命名空间是什么意思?</h2><p>mongodb存储bson对象在丛集(collection)中，数据库名字和丛集名字以句点连结起来叫做名字空间，一<br>个集合命名空间又有多个数据域(extent)，集合命名空间里存储着集合的元数据，比如集合名称，集合的第<br>一个数据域和最后一个数据域的位置等等。而一个数据域由若干条文档(document)组成，每个数据域都有一<br>个头部，记录着第一条文档和最后一条文档的为知，以及该数据域的一些元数据。extent之间，document之<br>间通过双向链表连接，索引的存储数据结构是B树，索引命名空间存储着对B树的根节点的指针。</p>
+<h2 id="6、在MongoDb中索引是什么？"><a href="#6、在MongoDb中索引是什么？" class="headerlink" title="6、在MongoDb中索引是什么？"></a>6、在MongoDb中索引是什么？</h2><p>索引用于高效的执行查询，没有索引的MongoDB将扫描整个集合中的所有文档，这种扫描效率很低，需要处理<br>大量的数据，索引是一种特殊的数据结构,将一小块数据集合保存为容易遍历的形式。索引能够存储某种特殊<br>字段或字段集的值，并按照索引指定的方式将字段值进行排序。</p>
+<h2 id="7、MongoDB成为最好NoSQL数据库的原因是什么"><a href="#7、MongoDB成为最好NoSQL数据库的原因是什么" class="headerlink" title="7、MongoDB成为最好NoSQL数据库的原因是什么?"></a>7、MongoDB成为最好NoSQL数据库的原因是什么?</h2><p>以下特点使得MongoDB成为最好的NoSQL数据库：面向文件的；高性能；高可用性；易扩展性；丰富的查询语<br>言。</p>
+<h2 id="8、解释一下什么是MongoDB中的GridFS"><a href="#8、解释一下什么是MongoDB中的GridFS" class="headerlink" title="8、解释一下什么是MongoDB中的GridFS ?"></a>8、解释一下什么是MongoDB中的GridFS ?</h2><p>为了存储和检索大文件，例如图像，视频文件和音频文件，使用GridFS。默认情况下，它使用两个文件<br>fs.files和fs.chunks来存储文件的元数据和块。</p>
+<h2 id="9、分析器在MongoDB中的作用是什么"><a href="#9、分析器在MongoDB中的作用是什么" class="headerlink" title="9、分析器在MongoDB中的作用是什么?"></a>9、分析器在MongoDB中的作用是什么?</h2><p>MongoDB中包括了一个可以显示数据库中每个操作性能特点的数据库分析器。通过这个分析器你可以找到比预<br>期慢的查询(或写操作);利用这一信息，比如，可以确定是否需要添加索引。</p>
+<h2 id="10、MongoDB更新操作会立刻-fsync-到磁盘"><a href="#10、MongoDB更新操作会立刻-fsync-到磁盘" class="headerlink" title="10、MongoDB更新操作会立刻 fsync 到磁盘?"></a>10、MongoDB更新操作会立刻 fsync 到磁盘?</h2><p>不会，磁盘写操作默认是延迟执行的。写操作可能在两三秒(默认在 60 秒内)后到达磁盘。例如，如果一秒<br>内数据库收到一千个对一个对象递增的操作，仅刷新磁盘一次。(注意，尽管 fsync 选项在命令行和经过<br>getLastError_old 是有效的）</p>
+<h2 id="11、MongoDB副本集选举条件有那些？"><a href="#11、MongoDB副本集选举条件有那些？" class="headerlink" title="11、MongoDB副本集选举条件有那些？"></a>11、MongoDB副本集选举条件有那些？</h2><p>1.复制集初始化。<br>2.主节点挂掉。<br>3.主节点脱离副本集（可能是网络原因）。<br>4.参与选举的节点数量必须大于副本集总节点数量的一半，如果已经小于一半了所有节点保持只读状态。</p>
+<h2 id="12、简单的描述下MongoDB选举流程"><a href="#12、简单的描述下MongoDB选举流程" class="headerlink" title="12、简单的描述下MongoDB选举流程"></a>12、简单的描述下MongoDB选举流程</h2><p>1、副本集中的主节点选举必须满足“大多数”的原则，所谓“大多数”是指副本中一半以上的成员。副本集中成<br>员只有在得到大多数成员投票支持时，才能成为主节点。例如：有N个副本集成员节点，必须有N&#x2F;2+1个成员<br>投票支持某个节点，此节点才能成为主节点。注意：副本集中若有成员节点处于不可用状态，并不会影响副本<br>集中的“大多数”，“大多数”是以副本集的配置来计算的。<br>2、仲裁节点（Arbiter）它并不保存数据，并且不能被选举为主节点，但是具有投票权。仲裁节点使用最小<br>的资源，不能将Arbiter部署在同一个数据集节点中。<br>3、副本集中最好是有奇数个成员节点，如果有偶数个节点，最好加一个仲裁节点。若副本集中有偶数个成员<br>节点，如图2所示，IDC1网络连不通IDC2，IDC1和IDC2内的成员节点分别会发生选举主节点的行为，然而选<br>举因都无法满足大多数的原则，都不能选出主节点；加入一个仲裁节点之后，则副本集就能满足大多数原则，<br>从中选出主节点了。<br>4.如果副本集成员节点数量是奇数，就不再需要仲裁者。但是如果在成员节点是奇数时，强行使用仲裁者，会<br>导致选举耗时变长。由于添加了仲裁者就可能出现两个成员节点票数相同的情况，从而导致选举耗时变长。<br>5.若在一轮投票中，副本集中成员节点被投了反对票，则本轮不能被选为主节点。例如，在一个10个成员节点<br>的副本集，某轮投票中，成员节点A由于数据延迟较大被某个成员节点投了反对票，则A同时收到了9票赞成<br>票，然而A仍然不能被选为主节点。<br>6.集群中的优先级为0的节点不能成为主节点，并且不能触发选举，但是具有投票权，并且拥有与主节点一致<br>的数据集。</p>
+<h2 id="13、什么是MongoDB分片集群"><a href="#13、什么是MongoDB分片集群" class="headerlink" title="13、什么是MongoDB分片集群?"></a>13、什么是MongoDB分片集群?</h2><p>Sharding cluster是一种可以水平扩展的模式,在数据量很大时特给力,实际大规模应用一般会采用这种架<br>构去构建。sharding分片很好的解决了单台服务器磁盘空间、内存、cpu等硬件资源的限制问题，把数据水<br>平拆分出去，降低单节点的访问压力。每个分片都是一个独立的数据库，所有的分片组合起来构成一个逻辑上<br>的完整的数据库。因此，分片机制降低了每个分片的数据操作量及需要存储的数据量，达到多台服务器来应对<br>不断增加的负载和数据的效果。</p>
+<h2 id="14、MongoDB中为何需要水平分片？"><a href="#14、MongoDB中为何需要水平分片？" class="headerlink" title="14、MongoDB中为何需要水平分片？"></a>14、MongoDB中为何需要水平分片？</h2><p>1）减少单机请求数,将单机负载,提高总负载<br>2）减少单机的存储空间,提高总存空间</p>
+<h2 id="15、MongoDB中分片键的意义何在？"><a href="#15、MongoDB中分片键的意义何在？" class="headerlink" title="15、MongoDB中分片键的意义何在？"></a>15、MongoDB中分片键的意义何在？</h2><p>1、一个好的片键对分片至关重要。 片键必须是一个索引 ,通 过 sh.shardCollection 加会自动创建索<br>引。一个自增的片键对写入和数据均匀分布就不是很好, 因为自增的片键总会在一个分片上写入,后续达到某<br>个阀值可能会写到别的分片。但是按照片键查询会非常高效。随机片键对数据的均匀分布效果很好。注意尽量<br>避免在多个分片上进行查询。<br>2、在所有分片上查询,mongos 会对结果进行归并排序，提高查询效率和速度</p>
+<h2 id="16、什么情况下需要用到MongoDB的分片？"><a href="#16、什么情况下需要用到MongoDB的分片？" class="headerlink" title="16、什么情况下需要用到MongoDB的分片？"></a>16、什么情况下需要用到MongoDB的分片？</h2><p>1）机器的磁盘不够用了。使用分片解决磁盘空间的问题。<br>2）单个mongod已经不能满足写数据的性能要求。通过分片让写压力分散到各个分片上面,使用分片服务器自<br>身的资源。<br>3）想把大量数据放到内存里提高性能。和上面一样,通过分片使用分片服务器自身的资源。</p>
+<h2 id="17、构建一个分片集群需要用的那些角色？分别是什么？"><a href="#17、构建一个分片集群需要用的那些角色？分别是什么？" class="headerlink" title="17、构建一个分片集群需要用的那些角色？分别是什么？"></a>17、构建一个分片集群需要用的那些角色？分别是什么？</h2><p>1）分片服务器（Shard Server）<br>mongod 实例,用于存储实际的数据块,实际生产环境中一个 shard server 角色可由几台机器组个一<br>个 relica set 承担,防止主机单点故障<br>这是一个独立普通的mongod进程,保存数据信息。可以是一个副本集也可以是单独的一台服务器。<br>2）配置服务器（Config Server）<br>mongod 实例,存储了整个 Cluster Metadata,其中包括 chunk 信息。<br>这是一个独立的mongod进程,保存集群和分片的元数据,即各分片包含了哪些数据的信息。最先开始建立,<br>启用日志功能。像启动普通的 mongod 一样启动<br>配置服务器,指定configsvr 选项。不需要太多的空间和资源,配置服务器的 1KB 空间相当于真是数据<br>的 200MB。保存的只是数据的分布表。<br>3）路由服务器（Route Server）<br>mongos实例,前端路由,客户端由此接入,且让整个集群看上去像单一数据库,前端应用<br>起到一个路由的功能,供程序连接。本身不保存数据,在启动时从配置服务器加载集群信息,开启 mongos<br>进程需要知道配置服务器的地址,指定configdb选项。</p>
+<h2 id="18、如何执行事务-x2F-加锁"><a href="#18、如何执行事务-x2F-加锁" class="headerlink" title="18、如何执行事务&#x2F;加锁?"></a>18、如何执行事务&#x2F;加锁?</h2><p>ongoDB没有使用传统的锁或者复杂的带回滚的事务，因为它设计的宗旨是轻量，快速以及可预计的高性能。<br>可以把它类比成MySQL MylSAM的自动提交模式。通过精简对事务的支持，性能得到了提升，特别是在一个可<br>能会穿过多个服务器的系统里。</p>
+<h2 id="19、副本集角色有那些？做是什么？"><a href="#19、副本集角色有那些？做是什么？" class="headerlink" title="19、副本集角色有那些？做是什么？"></a>19、副本集角色有那些？做是什么？</h2><ol>
+<li>主节点（Primary）</li>
+</ol>
+<p>接收所有的写请求，然后把修改同步到所有Secondary。一个Replica Set只能有一个Primary节点，当<br>Primary挂掉后，其他Secondary或者Arbiter节点会重新选举出来一个主节点。<br>默认读请求也是发到Primary节点处理的，可以通过修改客户端连接配置以支持读取Secondary节点。</p>
+<ol start="2">
+<li>副本节点（Secondary）</li>
+</ol>
+<p>与主节点保持同样的数据集。当主节点挂掉的时候，参与选主。</p>
+<ol start="3">
+<li>仲裁者（Arbiter）</li>
+</ol>
+<p>不保有数据，不参与选主，只进行选主投票。使用Arbiter可以减轻数据存储的硬件需求，Arbiter几乎没什<br>么大的硬件资源需求，但重要的一点是，在生产环境下它和其他数据节点不要部署在同一台机器上。</p>
+<h2 id="20、非关系型数据库有哪些类型？"><a href="#20、非关系型数据库有哪些类型？" class="headerlink" title="20、非关系型数据库有哪些类型？"></a>20、非关系型数据库有哪些类型？</h2><p>1、 Key-Value 存储 Eg:Amazon S3<br>2、图表 Eg:Neo4J<br>3、文档存储 Eg:MongoDB<br>4、基于列存储 Eg:Cassandra</p>
+<h2 id="21、数据在什么时候才会扩展到多个分片-shard-里"><a href="#21、数据在什么时候才会扩展到多个分片-shard-里" class="headerlink" title="21、数据在什么时候才会扩展到多个分片(shard)里?"></a>21、数据在什么时候才会扩展到多个分片(shard)里?</h2><p>MongoDB 分片是基于区域(range)的。所以一个集合(collection)中的所有的对象都被存放到一个块<br>(chunk)中。只有当存在多余一个块的时候，才会有多个分片获取数据的选项。现在，每个默认块的大小是<br>64Mb，所以你需要至少 64 Mb 空间才可以实施一个迁移。</p>
+<h2 id="22、如果在一个分片-shard-停止或者很慢的时候，我发起一个查询会怎样"><a href="#22、如果在一个分片-shard-停止或者很慢的时候，我发起一个查询会怎样" class="headerlink" title="22、如果在一个分片(shard)停止或者很慢的时候，我发起一个查询会怎样?"></a>22、如果在一个分片(shard)停止或者很慢的时候，我发起一个查询会怎样?</h2><p>如果一个分片(shard)停止了，除非查询设置了“Partial”选项，否则查询会返回一个错误。如果一个分片<br>(shard)响应很慢，MongoDB则会等待它的响应。</p>
+<h2 id="23、如何理解MongoDB中的GridFS机制，MongoDB为何使用GridFS来存储文件？"><a href="#23、如何理解MongoDB中的GridFS机制，MongoDB为何使用GridFS来存储文件？" class="headerlink" title="23、如何理解MongoDB中的GridFS机制，MongoDB为何使用GridFS来存储文件？"></a>23、如何理解MongoDB中的GridFS机制，MongoDB为何使用GridFS来存储文件？</h2><p>GridFS是一种将大型文件存储在MongoDB中的文件规范。使用GridFS可以将大文件分隔成多个小文档存放，<br>这样我们能够有效的保存大文档，而且解决了BSON对象有限制的问题。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="24、我应该启动一个集群分片-sharded-还是一个非集群分片的-MongoDB-环境"><a href="#24、我应该启动一个集群分片-sharded-还是一个非集群分片的-MongoDB-环境" class="headerlink" title="24、我应该启动一个集群分片(sharded)还是一个非集群分片的 MongoDB 环境?"></a>24、我应该启动一个集群分片(sharded)还是一个非集群分片的 MongoDB 环境?</h2><p>为开发便捷起见，我们建议以非集群分片(unsharded)方式开始一个 MongoDB 环境，除非一台服务器不足<br>以存放你的初始数据集。从非集群分片升级到集群分片(sharding)是无缝的，所以在你的数据集还不是很大<br>的时候没必要考虑集群分片(sharding)。</p>
+<h2 id="25、MongoDB适合应用在那些场景"><a href="#25、MongoDB适合应用在那些场景" class="headerlink" title="25、MongoDB适合应用在那些场景?"></a>25、MongoDB适合应用在那些场景?</h2><p>从目前阿里云 MongoDB 云数据库上的用户看，MongoDB 的应用已经渗透到各个领域，比如游戏、物流、电<br>商、内容管理、社交、物联网、视频直播等，以下是几个实际的应用案例。<br>游戏场景，使用 MongoDB 存储游戏用户信息，用户的装备、积分等直接以内嵌文档的形式存储，方便查询、<br>更新<br>物流场景，使用 MongoDB 存储订单信息，订单状态在运送过程中会不断更新，以 MongoDB 内嵌数组的形<br>式来存储，一次查询就能将订单所有的变更读取出来。<br>社交场景，使用 MongoDB 存储存储用户信息，以及用户发表的朋友圈信息，通过地理位置索引实现附近的<br>人、地点等功能<br>物联网场景，使用 MongoDB 存储所有接入的智能设备信息，以及设备汇报的日志信息，并对这些信息进行多<br>维度的分析<br>视频直播，使用 MongoDB 存储用户信息、礼物信息等</p>
+<h2 id="26、”ObjectID”有哪些部分组成"><a href="#26、”ObjectID”有哪些部分组成" class="headerlink" title="26、”ObjectID”有哪些部分组成"></a>26、”ObjectID”有哪些部分组成</h2><p>一共有四部分组成:时间戳、客户端ID、客户进程ID、三个字节的增量计数器。<br>_id是一个 12 字节长的十六进制数，它保证了每一个文档的唯一性。在插入文档时，需要提供_id。如果你<br>不提供，那么 MongoDB 就会为每一文档提供一个唯一的 id。_id的头 4 个字节代表的是当前的时间戳，<br>接着的后 3 个字节表示的是机器 id 号，接着的 2 个字节表示 MongoDB 服务器进程 id，最后的 3 个<br>字节代表递增值。</p>
+<h2 id="27、如何使用”AND”或”OR”条件循环查询集合中的文档"><a href="#27、如何使用”AND”或”OR”条件循环查询集合中的文档" class="headerlink" title="27、如何使用”AND”或”OR”条件循环查询集合中的文档"></a>27、如何使用”AND”或”OR”条件循环查询集合中的文档</h2><p>在 find() 方法中，如果传入多个键，并用逗号( , )分隔它们，那么 MongoDB 会把它看成是AND条件。</p>
+<blockquote>
+<p>db.mycol.find({key1:value1, key2:value2}).pretty()<br>若基于OR条件来查询文档，可以使用关键字$or。<br>db.mycol.find(<br>{<br>$or: [<br>{key1: value1}, {key2:value2}<br>]<br>}<br>).pretty()</p>
+</blockquote>
+<h2 id="28、在MongoDB中如何排序？"><a href="#28、在MongoDB中如何排序？" class="headerlink" title="28、在MongoDB中如何排序？"></a>28、在MongoDB中如何排序？</h2><p>MongoDB 中的文档排序是通过 sort() 方法来实现的。 sort() 方法可以通过一些参数来指定要进行排序<br>的字段，并使用 1 和 -1 来指定排序方式，其中 1 表示升序，而 -1 表示降序。</p>
+<blockquote>
+<p>db.connectionName.find({key:value}).sort({columnName:1})</p>
+</blockquote>
+<h2 id="29、什么是聚合？"><a href="#29、什么是聚合？" class="headerlink" title="29、什么是聚合？"></a>29、什么是聚合？</h2><p>聚合操作能够处理数据记录并返回计算结果。聚合操作能将多个文档中的值组合起来，对成组数据执行各种操<br>作，返回单一的结果。它相当于 SQL 中的 count(*) 组合 group by。对于 MongoDB 中的聚合操作，<br>应该使用 aggregate() 方法。</p>
+<blockquote>
+<p>db.COLLECTION_NAME.aggregate(AGGREGATE_OPERATION)</p>
+</blockquote>
+<h2 id="30、raft-选举过程，投票规则？"><a href="#30、raft-选举过程，投票规则？" class="headerlink" title="30、raft 选举过程，投票规则？"></a>30、raft 选举过程，投票规则？</h2><p>选举过程：<br>当系统启动好之后，初始选举后系统由1个Leader和若干个Follower角色组成。然后突然由于某个异常<br>原因，Leader服务出现了异常，导致Follower角色检测到和Leader的上次RPC更新时间超过给定阈值时间<br>时。此时Follower会认为Leader服务已出现异常，然后它将会发起一次新的Leader选举行为，同时将自身<br>的状态从Follower切换为Candidate身份。随后请求其它Follower投票选择自己。<br>投票规则：<br>当一个候选人获得了同一个任期号内的大多数选票，就成为领导人。<br>每个节点最多在一个任期内投出一张选票。并且按照先来先服务的原则。<br>一旦候选人赢得选举，立刻成为领导，并发送心跳维持权威，同时阻止新领导人的诞生</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://www.zzonn.com">LiPan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://www.zzonn.com/2020/02/08/MongoDB%E9%AB%98%E9%A2%91%E9%97%AE%E7%AD%94-mongodb-gao-pin-wen-da/">http://www.zzonn.com/2020/02/08/MongoDB%E9%AB%98%E9%A2%91%E9%97%AE%E7%AD%94-mongodb-gao-pin-wen-da/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/mongodb/">mongodb</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.zzonn.com/blog/avatar.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/02/12/Redis%E9%AB%98%E9%A2%91%E9%97%AE%E7%AD%94-redis-gao-pin-wen-da/" title="Redis高频问答"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Redis高频问答</div></div></a></div><div class="next-post pull-right"><a href="/2020/02/03/SQLServer%E9%AB%98%E9%A2%91%E9%97%AE%E7%AD%94-sqlserver-gao-pin-wen-da/" title="SQLServer高频问答"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">SQLServer高频问答</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.zzonn.com/blog/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">LiPan</div><div class="author-info__description">www.zzonn.com</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81MongoDB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">1、MongoDB是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81MongoDB%E6%9C%89%E5%93%AA%E4%BA%9B%E7%89%B9%E7%82%B9%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">2、MongoDB有哪些特点？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81MySQL%E4%B8%8EMongoDB%E4%B9%8B%E9%97%B4%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84%E5%B7%AE%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">3.</span> <span class="toc-text">3、MySQL与MongoDB之间最基本的差别是什么?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81monogodb%E4%B8%AD%E7%9A%84%E5%88%86%E7%89%87%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">4、monogodb中的分片什么意思？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81MongoDB%E4%B8%AD%E7%9A%84%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D"><span class="toc-number">5.</span> <span class="toc-text">5、MongoDB中的命名空间是什么意思?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E5%9C%A8MongoDb%E4%B8%AD%E7%B4%A2%E5%BC%95%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">6.</span> <span class="toc-text">6、在MongoDb中索引是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81MongoDB%E6%88%90%E4%B8%BA%E6%9C%80%E5%A5%BDNoSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%8E%9F%E5%9B%A0%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">7.</span> <span class="toc-text">7、MongoDB成为最好NoSQL数据库的原因是什么?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%E3%80%81%E8%A7%A3%E9%87%8A%E4%B8%80%E4%B8%8B%E4%BB%80%E4%B9%88%E6%98%AFMongoDB%E4%B8%AD%E7%9A%84GridFS"><span class="toc-number">8.</span> <span class="toc-text">8、解释一下什么是MongoDB中的GridFS ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9%E3%80%81%E5%88%86%E6%9E%90%E5%99%A8%E5%9C%A8MongoDB%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">9.</span> <span class="toc-text">9、分析器在MongoDB中的作用是什么?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10%E3%80%81MongoDB%E6%9B%B4%E6%96%B0%E6%93%8D%E4%BD%9C%E4%BC%9A%E7%AB%8B%E5%88%BB-fsync-%E5%88%B0%E7%A3%81%E7%9B%98"><span class="toc-number">10.</span> <span class="toc-text">10、MongoDB更新操作会立刻 fsync 到磁盘?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11%E3%80%81MongoDB%E5%89%AF%E6%9C%AC%E9%9B%86%E9%80%89%E4%B8%BE%E6%9D%A1%E4%BB%B6%E6%9C%89%E9%82%A3%E4%BA%9B%EF%BC%9F"><span class="toc-number">11.</span> <span class="toc-text">11、MongoDB副本集选举条件有那些？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12%E3%80%81%E7%AE%80%E5%8D%95%E7%9A%84%E6%8F%8F%E8%BF%B0%E4%B8%8BMongoDB%E9%80%89%E4%B8%BE%E6%B5%81%E7%A8%8B"><span class="toc-number">12.</span> <span class="toc-text">12、简单的描述下MongoDB选举流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AFMongoDB%E5%88%86%E7%89%87%E9%9B%86%E7%BE%A4"><span class="toc-number">13.</span> <span class="toc-text">13、什么是MongoDB分片集群?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14%E3%80%81MongoDB%E4%B8%AD%E4%B8%BA%E4%BD%95%E9%9C%80%E8%A6%81%E6%B0%B4%E5%B9%B3%E5%88%86%E7%89%87%EF%BC%9F"><span class="toc-number">14.</span> <span class="toc-text">14、MongoDB中为何需要水平分片？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15%E3%80%81MongoDB%E4%B8%AD%E5%88%86%E7%89%87%E9%94%AE%E7%9A%84%E6%84%8F%E4%B9%89%E4%BD%95%E5%9C%A8%EF%BC%9F"><span class="toc-number">15.</span> <span class="toc-text">15、MongoDB中分片键的意义何在？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16%E3%80%81%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E9%9C%80%E8%A6%81%E7%94%A8%E5%88%B0MongoDB%E7%9A%84%E5%88%86%E7%89%87%EF%BC%9F"><span class="toc-number">16.</span> <span class="toc-text">16、什么情况下需要用到MongoDB的分片？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#17%E3%80%81%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%88%86%E7%89%87%E9%9B%86%E7%BE%A4%E9%9C%80%E8%A6%81%E7%94%A8%E7%9A%84%E9%82%A3%E4%BA%9B%E8%A7%92%E8%89%B2%EF%BC%9F%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">17.</span> <span class="toc-text">17、构建一个分片集群需要用的那些角色？分别是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18%E3%80%81%E5%A6%82%E4%BD%95%E6%89%A7%E8%A1%8C%E4%BA%8B%E5%8A%A1-x2F-%E5%8A%A0%E9%94%81"><span class="toc-number">18.</span> <span class="toc-text">18、如何执行事务&#x2F;加锁?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#19%E3%80%81%E5%89%AF%E6%9C%AC%E9%9B%86%E8%A7%92%E8%89%B2%E6%9C%89%E9%82%A3%E4%BA%9B%EF%BC%9F%E5%81%9A%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">19.</span> <span class="toc-text">19、副本集角色有那些？做是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#20%E3%80%81%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9C%89%E5%93%AA%E4%BA%9B%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="toc-number">20.</span> <span class="toc-text">20、非关系型数据库有哪些类型？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#21%E3%80%81%E6%95%B0%E6%8D%AE%E5%9C%A8%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E6%89%8D%E4%BC%9A%E6%89%A9%E5%B1%95%E5%88%B0%E5%A4%9A%E4%B8%AA%E5%88%86%E7%89%87-shard-%E9%87%8C"><span class="toc-number">21.</span> <span class="toc-text">21、数据在什么时候才会扩展到多个分片(shard)里?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22%E3%80%81%E5%A6%82%E6%9E%9C%E5%9C%A8%E4%B8%80%E4%B8%AA%E5%88%86%E7%89%87-shard-%E5%81%9C%E6%AD%A2%E6%88%96%E8%80%85%E5%BE%88%E6%85%A2%E7%9A%84%E6%97%B6%E5%80%99%EF%BC%8C%E6%88%91%E5%8F%91%E8%B5%B7%E4%B8%80%E4%B8%AA%E6%9F%A5%E8%AF%A2%E4%BC%9A%E6%80%8E%E6%A0%B7"><span class="toc-number">22.</span> <span class="toc-text">22、如果在一个分片(shard)停止或者很慢的时候，我发起一个查询会怎样?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#23%E3%80%81%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3MongoDB%E4%B8%AD%E7%9A%84GridFS%E6%9C%BA%E5%88%B6%EF%BC%8CMongoDB%E4%B8%BA%E4%BD%95%E4%BD%BF%E7%94%A8GridFS%E6%9D%A5%E5%AD%98%E5%82%A8%E6%96%87%E4%BB%B6%EF%BC%9F"><span class="toc-number">23.</span> <span class="toc-text">23、如何理解MongoDB中的GridFS机制，MongoDB为何使用GridFS来存储文件？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">24.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#24%E3%80%81%E6%88%91%E5%BA%94%E8%AF%A5%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E9%9B%86%E7%BE%A4%E5%88%86%E7%89%87-sharded-%E8%BF%98%E6%98%AF%E4%B8%80%E4%B8%AA%E9%9D%9E%E9%9B%86%E7%BE%A4%E5%88%86%E7%89%87%E7%9A%84-MongoDB-%E7%8E%AF%E5%A2%83"><span class="toc-number">25.</span> <span class="toc-text">24、我应该启动一个集群分片(sharded)还是一个非集群分片的 MongoDB 环境?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#25%E3%80%81MongoDB%E9%80%82%E5%90%88%E5%BA%94%E7%94%A8%E5%9C%A8%E9%82%A3%E4%BA%9B%E5%9C%BA%E6%99%AF"><span class="toc-number">26.</span> <span class="toc-text">25、MongoDB适合应用在那些场景?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#26%E3%80%81%E2%80%9DObjectID%E2%80%9D%E6%9C%89%E5%93%AA%E4%BA%9B%E9%83%A8%E5%88%86%E7%BB%84%E6%88%90"><span class="toc-number">27.</span> <span class="toc-text">26、”ObjectID”有哪些部分组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#27%E3%80%81%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E2%80%9DAND%E2%80%9D%E6%88%96%E2%80%9DOR%E2%80%9D%E6%9D%A1%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9F%A5%E8%AF%A2%E9%9B%86%E5%90%88%E4%B8%AD%E7%9A%84%E6%96%87%E6%A1%A3"><span class="toc-number">28.</span> <span class="toc-text">27、如何使用”AND”或”OR”条件循环查询集合中的文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#28%E3%80%81%E5%9C%A8MongoDB%E4%B8%AD%E5%A6%82%E4%BD%95%E6%8E%92%E5%BA%8F%EF%BC%9F"><span class="toc-number">29.</span> <span class="toc-text">28、在MongoDB中如何排序？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#29%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E8%81%9A%E5%90%88%EF%BC%9F"><span class="toc-number">30.</span> <span class="toc-text">29、什么是聚合？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#30%E3%80%81raft-%E9%80%89%E4%B8%BE%E8%BF%87%E7%A8%8B%EF%BC%8C%E6%8A%95%E7%A5%A8%E8%A7%84%E5%88%99%EF%BC%9F"><span class="toc-number">31.</span> <span class="toc-text">30、raft 选举过程，投票规则？</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/05/28/%E8%BF%87%E6%97%A9%E7%9A%84%E7%BB%99%E6%96%B9%E6%B3%95%E4%B8%AD%20%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%20%E8%AE%BE%E4%B8%BA%20null%20%E5%8F%AF%E8%A2%AB%20GC%E6%8F%90%E5%89%8D%E5%9B%9E%E6%94%B6%E5%90%97%EF%BC%9F-%E8%BF%87%E6%97%A9%E7%9A%84%E7%BB%99%E6%96%B9%E6%B3%95%E4%B8%AD%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%E8%AE%BE%E4%B8%BAnull%E5%8F%AF%E8%A2%ABgc%E6%8F%90%E5%89%8D%E5%9B%9E%E6%94%B6%E5%90%97/" title="过早的给方法中 引用对象 设为 null 可被 GC提前回收吗？">过早的给方法中 引用对象 设为 null 可被 GC提前回收吗？</a><time datetime="2022-05-28T02:21:34.813Z" title="Created 2022-05-28 10:21:34">2022-05-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/05/28/Git%20%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9A%20pull%20%E5%92%8C%20push%EF%BC%8C%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87-git%E4%B8%8D%E8%A6%81%E5%8F%AA%E4%BC%9Apull%E5%92%8Cpush%E8%AF%95%E8%AF%95%E7%94%A8%E8%BF%99%E4%BA%9B%E5%91%BD%E4%BB%A4%E6%9D%A5%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87/" title="Git 不要只会 pull 和 push，试试用这些命令来提高效率">Git 不要只会 pull 和 push，试试用这些命令来提高效率</a><time datetime="2022-05-28T01:46:29.995Z" title="Created 2022-05-28 09:46:29">2022-05-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/03/11/ClickHouse%E7%AE%80%E4%BB%8B-clickhouse%E7%AE%80%E4%BB%8B/" title="ClickHouse简介">ClickHouse简介</a><time datetime="2022-03-11T11:44:49.861Z" title="Created 2022-03-11 19:44:49">2022-03-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/03/04/%E5%8F%91%E5%B8%83.netcore%E9%A1%B9%E7%9B%AE%E5%88%B0linux-fa-bu-netcore-xiang-mu-dao-linux/" title="发布.netcore项目到linux">发布.netcore项目到linux</a><time datetime="2022-03-04T08:51:41.169Z" title="Created 2022-03-04 16:51:41">2022-03-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/08/12/code%20review%20%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83-codereview%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83/" title="code review 流程规范">code review 流程规范</a><time datetime="2021-08-12T06:49:29.424Z" title="Created 2021-08-12 14:49:29">2021-08-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2023 By LiPan</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><span>蜀ICP备20005513号-1</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'e5f4df8dde1312f2e8c0',
+      clientSecret: '03206d14c7cf552df36549760b3fb29ff5fd0493',
+      repo: 'https://github.com/zzonn/zzonn.github.io.git',
+      owner: 'ZZONN',
+      admin: ['ZZONN'],
+      id: '329a4cbe4c5cb3d4b939d9420d79535f',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    getCSS('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css')
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
