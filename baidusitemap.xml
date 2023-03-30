@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.zzonn.com/2023/03/30/aspnetcore-developer-roadmap/</loc>
+    <lastmod>2023-03-30</lastmod>
+  </url>
+  <url>
     <loc>http://www.zzonn.com/2023/03/09/Avalonia%E4%BD%BF%E7%94%A8Prism/</loc>
     <lastmod>2023-03-09</lastmod>
   </url>
